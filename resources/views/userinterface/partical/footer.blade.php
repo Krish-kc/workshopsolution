@@ -78,14 +78,14 @@
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/isotope/isotope.pkgd.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/slick/slick.min.js"></script>
+<script src="user_assets/lib/easing/easing.min.js"></script>
+<script src="user_assets/lib/wow/wow.min.js"></script>
+<script src="user_assets/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="user_assets/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="user_assets/lib/lightbox/js/lightbox.min.js"></script>
+<script src="user_assets/lib/waypoints/waypoints.min.js"></script>
+<script src="user_assets/lib/counterup/counterup.min.js"></script>
+<script src="user_assets/lib/slick/slick.min.js"></script>
 
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
+<!-- Templateuser_assets/ Javascript -->
+<script src="user_assets/js/main.js"></script>
