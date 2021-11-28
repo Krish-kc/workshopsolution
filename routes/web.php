@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+//all user routes are here
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+//routes for admins pannel 
+Route::get('/admin',[AdminController::class,'dashbord']);
