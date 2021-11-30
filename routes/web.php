@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\WorkShopController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,4 @@ Auth::routes();
 
 //routes for admins pannel 
 Route::get('/admin',[AdminController::class,'dashbord']);
+Route::resource('workshop', WorkShopController::class);

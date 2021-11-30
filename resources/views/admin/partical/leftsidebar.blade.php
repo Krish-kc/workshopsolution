@@ -27,8 +27,28 @@
                                      User List</a></li>
                                 
                                 
-                                    </ul>
+                             </ul>
+
+                             
+
                         </li>
+                         
+                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple">
+                            </i><span class="hide-menu"> WorkShop </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{route('workshop.create')}}"><i class="mdi mdi-plus"></i>
+                                    
+                                     Add WorkShop </a></li>
+                                <li><a href=""><i class="fas fa-bars"></i>
+                                     WorkShop List</a></li>
+                                
+                                
+                             </ul>
+
+                             
+
+                        </li>
+
                         
                     </ul>
                 </nav>
