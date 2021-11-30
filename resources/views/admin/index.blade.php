@@ -9,7 +9,8 @@
     <!-- ============================================================== -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
     </div>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
@@ -40,10 +41,12 @@
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
+
+            @include('admin.partical.floting_table')
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-           @include('admin.partical.footer')
+            @include('admin.partical.footer')
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -52,7 +55,7 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-        @include('admin.partical.js')
+    @include('admin.partical.js')
 </body>
 
 </html>
