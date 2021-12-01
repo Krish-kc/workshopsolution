@@ -56,6 +56,8 @@
         <!-- ============================================================== -->
     </div>
     @include('admin.partical.js')
+    @toastr_js
+    @toastr_render
 </body>
 
 </html>

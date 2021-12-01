@@ -39,7 +39,7 @@
                                 <li><a href="{{route('workshop.create')}}"><i class="mdi mdi-plus"></i>
                                     
                                      Add WorkShop </a></li>
-                                <li><a href=""><i class="fas fa-bars"></i>
+                                <li><a href="{{route('workshop.index')}}"><i class="fas fa-bars"></i>
                                      WorkShop List</a></li>
                                 
                                 

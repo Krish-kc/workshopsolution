@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\WorkShop;
 use Illuminate\Http\Request;
 
 class WorkShopController extends Controller
@@ -14,7 +15,8 @@ class WorkShopController extends Controller
      */
     public function index()
     {
-      return view('admin.pages.workshop.list');
+      $workshop=WorkShop::all();
+      return view('admin.pages.workshop.list',compact('workshop'));
     }
 
     /**
@@ -35,7 +37,31 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+            'name'=>'required',
+            'image'=>'required|mimes:jpeg,jpg,png',
+        ]);
+      
+        if($request->hasFile('image'))
+        {
+         $image=$request->file('image');
+         $imageName = time().'.'.$image->getClientOriginalExtension(); 
+         $image->move(public_path('workshop'), $imageName);
+        }else{
+             $imageName=null;
+        }
+  
+
+         $request->merge([
+            'image'=>$imageName,
+            'user_id'=>1,
+            ]);
+     $workshop=WorkShop::create($request->all());
+    
+     
+
+        toastr()->success('Workshop information has been successfully saved!');
+       return redirect()->route('workshop.index');
     }
 
     /**

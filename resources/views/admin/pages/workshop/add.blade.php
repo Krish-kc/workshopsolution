@@ -19,31 +19,32 @@
 
          <div class="card">
              <div class="card-body">
-                 <h4 class="card-title">Add WorkShop</h4>
+                  <h4 class="card-title">Add WorkShop</h4>
                  <h6 class="card-subtitle">Please add Workshop Information</h6>
-                 <form class="form-material m-t-40">
-                     <div class="form-group">
+                <form action="{{route('workshop.store')}}" method="POST" enctype="multipart/form-data" class="form-material m-t-40">
+                @csrf
+                    <div class="form-group">
                          <label>WorkShop Name</label>
-                         <input type="text" class="form-control form-control-line" placeholder="Workshop name please...">
+                         <input type="text" name="name" class="form-control form-control-line" placeholder="Workshop name please...">
                      </div>
 
                      <div class="form-group">
                          <label>PAN No</label>
-                         <input type="text" class="form-control" placeholder="please Enter the PAN number">
+                         <input type="text" name="PAN" class="form-control" placeholder="please Enter the PAN number">
                      </div>
                      <div class="form-group">
                          <label>location</label>
-                         <input type="text" class="form-control" placeholder="Please Enter Location">
+                         <input type="text" name="location" class="form-control" placeholder="Please Enter Location">
                      </div>
                      <div class="row form-material">
                          <div class="col-md-6">
                              <label class="m-t-20">Start Time</label>
-                             <input type="time" class="form-control" placeholder="Starting-time" id="mdate"
+                             <input type="time" name="starting_time" class="form-control" placeholder="Starting-time" id="mdate"
                                  data-dtp="dtp_6eFea">
                          </div>
                          <div class="col-md-6">
                              <label class="m-t-20">Ending Time</label>
-                             <input type="time" class="form-control" id="timepicker" placeholder="Ending time"
+                             <input type="time" name="ending_time" class="form-control" id="timepicker" placeholder="Ending time"
                                  data-dtp="dtp_8Ykj1">
                          </div>
                      </div>
@@ -67,16 +68,19 @@
                      </div>
                      <div class="form-group">
                          <label>Number of Staff</label>
-                         <input type="number" class="form-control" placeholder="Please Enter Number of Working Staff">
+                         <input type="number" name="no_of_staff" class="form-control" placeholder="Please Enter Number of Working Staff">
                      </div>
 
                      <div class="button-group">
-                         <button type="submit" class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
-                         <button type="exit" class="btn waves-effect waves-light btn-rounded btn-danger">Exit</button>
+                          <button type="submit" class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
+                         <button type="reset" class="btn waves-effect waves-light btn-rounded btn-danger">Exit</button>
                      </div>
-
                  </form>
+
              </div>
+
+
+             
          </div>
 
 

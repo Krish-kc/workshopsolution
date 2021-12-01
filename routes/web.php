@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 
@@ -39,13 +39,9 @@ Auth::routes();
 
 
 
+Route::get('/workshop-index',[WorkShopController::class,'index']);
 
 //routes for admins pannel 
 Route::get('/admin',[AdminController::class,'dashbord']);
 Route::resource('workshop', WorkShopController::class);
-
-
-
-//routes for vehicle admin pannel
-
 Route::resource('vehicle', VehicleController::class);
