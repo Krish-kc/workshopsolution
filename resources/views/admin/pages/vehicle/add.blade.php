@@ -26,12 +26,12 @@
                                 @method('POST')
                                   <div class="form-group">
                                       <label>Vehicle Name :</label>
-                                      <input type="text" name="vehicle_name" class="form-control form-control-line" placeholder="Enter Name">
+                                      <input type="text" name="name" class="form-control form-control-line" placeholder="Enter Name">
                                   </div>
 
                                   <div class="form-group">
                                       <label for="vehicle_number">Vehicle Number :</label>
-                                      <input type="text" id="vehicle_number" name="number" class="form-control" placeholder="Enter vehicle">
+                                      <input type="text" id="number" name="number" class="form-control" placeholder="Enter vehicle">
                                  </div>
 
                                   <div 
