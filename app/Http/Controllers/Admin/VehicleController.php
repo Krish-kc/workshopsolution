@@ -16,7 +16,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicle=Vehicle::all();
+        return view('admin.pages.vehicle.list', compact('vehicle'));
     }
 
     /**
@@ -63,7 +64,7 @@ class VehicleController extends Controller
         $vehicle->image=$imageName;
         $vehicle->user_id=$request->user_id;
         $vehicle->save();
-        return route('vehicle.list');
+        return redirect()->route('vehicle.list');
     }
 
     /**
@@ -72,9 +73,9 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
     }
 
     /**

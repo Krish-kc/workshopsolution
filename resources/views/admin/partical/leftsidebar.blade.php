@@ -56,7 +56,7 @@
                                 <li><a href="{{route('vehicle.create')}}"><i class="mdi mdi-plus"></i>
                                     
                                      Add vehicle </a></li>
-                                <li><a href=""><i class="fas fa-bars"></i>
+                                <li><a href="{{route('vehicle.index')}}"><i class="fas fa-bars"></i>
                                      Vehicle List</a></li>
                                 
                                 
