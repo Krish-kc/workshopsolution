@@ -1,5 +1,3 @@
-    
-    
     <link href="{{asset('../assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('../assets/plugins/chartist-js/dist/chartist.min.css')}}" rel="stylesheet">
     <link href="{{asset('../assets/plugins/chartist-js/dist/chartist-init.css')}}" rel="stylesheet">
@@ -10,7 +8,4 @@
     <link href="{{asset('../assets/plugins/calendar/dist/fullcalendar.css')}}" rel="stylesheet" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/colors/blue.css')}}" id="theme" rel="stylesheet">
-
-    <link href="{{asset('../assets/plugins/datatables/media/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
-  
     @toastr_css

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use File;
 
 
 class VehicleController extends Controller
@@ -16,6 +17,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
+        
         $vehicle=Vehicle::all();
         return view('admin.pages.vehicle.list', compact('vehicle'));
     }
@@ -64,7 +66,11 @@ class VehicleController extends Controller
         $vehicle->image=$imageName;
         $vehicle->user_id=$request->user_id;
         $vehicle->save();
-        return redirect()->route('vehicle.index');
+        toastr()->success('Workshop information has been successfully saved!');
+        return redirect()->route('vehicle.list');
+
+
+
     }
 
     /**
@@ -86,8 +92,9 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        $vechile=Vehicle::findOrFail($id)->first();
-        return view('admin.pages.vehicle.edit',compact('vechile'));
+        
+        $vehicle=Vehicle::findorfail($id);
+        return view('admin.pages.vehicle.edit',compact('vehicle'));
     }
 
     /**
@@ -97,9 +104,38 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+      
+        $vehicle=Vehicle::findorfail($id);
+        if($request->hasFile('image')){
+
+            $destination = 'vehicle_image'.$vehicle->image;
+            if(File::exist($destination)){
+                File::delete($destination);
+            }
+            $image=$request->file('image');
+            $extension =$image->getClientOriginalExtension();
+            $imageName = time(). '.'.$extension;
+            $image->move('vehicle_image',$imageName);
+            $vehicle->image=$imageName;
+        }
+        else{
+            $imageName=$vehicle->image;
+        }
+
+        $vehicle->update([
+            'name'=>$request->name,
+            'number'=>$request->number,
+            'lot'=>$request->lot,
+            'company'=>$request->company,
+            'model'=>$request->model,
+            'image'=>$imageName,
+            'user_id'=>$request->user_id
+        ]);
+        toastr()->success('Vehicle list has Successfully updated');
+        return redirect()->route('vehicle.index');
+
     }
 
     /**
@@ -110,6 +146,11 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        //
+ 
+        Vehicle::findOrFail($id)->delete();
+
+        toastr()->warning('Vehicle has Successfully delete');
+        return redirect()->route('vehicle.index');
+
     }
 }
