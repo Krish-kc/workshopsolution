@@ -37,6 +37,7 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
+      
          $request->validate([
             'name'=>'required',
             'image'=>'required|mimes:jpeg,jpg,png',
@@ -50,18 +51,22 @@ class WorkShopController extends Controller
         }else{
              $imageName=null;
         }
-  
-
-         $request->merge([
+        
+        WorkShop::create([
+            'name'=>$request->name,
+            'PAN'=>$request->PAN,
+            'location'=>$request->location,
+            'starting_time'=>$request->starting_time,
+            'ending_time'=>$request->ending_time,
             'image'=>$imageName,
-            'user_id'=>1,
-            ]);
-     $workshop=WorkShop::create($request->all());
+            'no_of_staff'=>$request->no_of_staff,
+            'user_id'=>4,
+        ]);
     
      
 
         toastr()->success('Workshop information has been successfully saved!');
-       return redirect()->route('workshop.index');
+       return redirect()->route('shop.index');
     }
 
     /**

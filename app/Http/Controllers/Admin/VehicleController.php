@@ -64,7 +64,7 @@ class VehicleController extends Controller
         $vehicle->image=$imageName;
         $vehicle->user_id=$request->user_id;
         $vehicle->save();
-        return redirect()->route('vehicle.list');
+        return redirect()->route('vehicle.index');
     }
 
     /**
@@ -86,7 +86,8 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vechile=Vehicle::findOrFail($id)->first();
+        return view('admin.pages.vehicle.edit',compact('vechile'));
     }
 
     /**

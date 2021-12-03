@@ -36,10 +36,10 @@
                          <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-cogs">
                             </i><span class="hide-menu"> WorkShop </span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{route('workshop.create')}}"><i class="mdi mdi-plus"></i>
+                                <li><a href="{{route('shop.create')}}"><i class="mdi mdi-plus"></i>
                                     
                                      Add WorkShop </a></li>
-                                <li><a href="{{route('workshop.index')}}"><i class="fas fa-bars"></i>
+                                <li><a href="{{route('shop.index')}}"><i class="fas fa-bars"></i>
                                      WorkShop List</a></li>
                                 
                                 

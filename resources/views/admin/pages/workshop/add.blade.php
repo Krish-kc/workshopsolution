@@ -21,8 +21,8 @@
              <div class="card-body">
                   <h4 class="card-title">Add WorkShop</h4>
                  <h6 class="card-subtitle">Please add Workshop Information</h6>
-                <form action="{{route('workshop.store')}}" method="POST" enctype="multipart/form-data" class="form-material m-t-40">
-                @csrf
+                <form action="{{route("shop.store")}}" method="POST" enctype="multipart/form-data" class="form-material m-t-40">
+                    @csrf
                     <div class="form-group">
                          <label>WorkShop Name</label>
                          <input type="text" name="name" class="form-control form-control-line" placeholder="Workshop name please...">
