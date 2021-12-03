@@ -50,8 +50,8 @@
                                                <td>
                                                 <div class="btn-group">
                                            
-                                                    <a href="" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
-                                                    <button class="btn btn-danger btn-sm mr-1 " data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash"></i></a>
+                                                    <a href="{{route('vehicle.edit',$item->id)}}" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                                                   <a href="{{route('vechile.destroy',$item->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 </div>
                 
                                             </td>
