@@ -53,9 +53,11 @@
                                               <img src="{{asset('workshop')}}/{{$item->image}}" style="max-height: 100px;">
                                             </td>
                                             <td>
-                                                Edit 
                                                 
-                                                Delete</td>
+                                                <a href="{{route('shop.edit',$item->id)}}" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('shop.destroy',$item->id)}}" class="btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
+                                              
+                                            </td>
                                         </tr>
                                     @endforeach
                                      <tbody>
