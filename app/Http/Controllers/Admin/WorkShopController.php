@@ -126,7 +126,7 @@ class WorkShopController extends Controller
             'starting_time'=>$request->starting_time,
             'ending_time'=>$request->ending_time,
             'image'=>$imageName,
-            'no_of_staff'=>$no_of_staff,
+            'no_of_staff'=>$request->no_of_staff,
             'user_id'=>$request->user_id
         ]);
         toastr()->success('workshop list has Successfully updated');
