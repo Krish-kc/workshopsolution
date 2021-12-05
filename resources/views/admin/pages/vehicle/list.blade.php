@@ -57,7 +57,7 @@
                                                 <div class="btn-group">
                                            
                                                     <a href="{{route('vehicle.edit',$item->id)}}" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
-                                                   <a href="{{route('vechile.destroy',$item->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                   <a href="{{route('vehicle.destroy',$item->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 </div>
                 
                                             </td>

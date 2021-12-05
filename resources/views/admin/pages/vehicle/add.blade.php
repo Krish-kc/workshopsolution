@@ -21,7 +21,7 @@
                           <div class="card-body">
                               <h4 class="card-title">Vehicle Details</h4>
                               <h6 class="card-subtitle">Input the Required Information for fresh Service</h6>
-                              <form class="form-control-line m-t-40" action="{{route('vehicle.update')}}" method="POST" enctype="multipart/form-data">
+                              <form class="form-control-line m-t-40" action="{{route('vehicle.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                   <div class="form-group">
