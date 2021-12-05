@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\WorkShop;
 use Illuminate\Http\Request;
+use File;
 
 class WorkShopController extends Controller
 {
@@ -37,6 +38,7 @@ class WorkShopController extends Controller
      */
     public function store(Request $request)
     {
+      
          $request->validate([
             'name'=>'required',
             'image'=>'required|mimes:jpeg,jpg,png',
@@ -50,18 +52,22 @@ class WorkShopController extends Controller
         }else{
              $imageName=null;
         }
-  
-
-         $request->merge([
+        
+        WorkShop::create([
+            'name'=>$request->name,
+            'PAN'=>$request->PAN,
+            'location'=>$request->location,
+            'starting_time'=>$request->starting_time,
+            'ending_time'=>$request->ending_time,
             'image'=>$imageName,
-            'user_id'=>1,
-            ]);
-     $workshop=WorkShop::create($request->all());
+            'no_of_staff'=>$request->no_of_staff,
+            'user_id'=>4,
+        ]);
     
      
 
         toastr()->success('Workshop information has been successfully saved!');
-       return redirect()->route('workshop.index');
+       return redirect()->route('shop.index');
     }
 
     /**
@@ -83,7 +89,8 @@ class WorkShopController extends Controller
      */
     public function edit($id)
     {
-        //
+        $workshop=WorkShop::findOrFail($id);
+        return view('admin.pages.workshop.edit',compact('workshop'));
     }
 
     /**
@@ -95,7 +102,37 @@ class WorkShopController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            $workshop=Workshop::findorfail($id);
+            if($request->hasFile('image')){
+
+            $destination = 'vehicle_image'.$workshop->image;
+            if(File::exist($destination)){
+                File::delete($destination);
+            }
+            $image=$request->file('image');
+            $extension =$image->getClientOriginalExtension();
+            $imageName = time(). '.'.$extension;
+            $image->move('workshop_image',$imageName);
+            $workshop->image=$imageName;
+        }
+        else{
+            $imageName=$workshop->image;
+        }
+
+            $workshop->update([
+            'name'=>$request->name,
+            'PAN'=>$request->PAN,
+            'location'=>$request->location,
+            'starting_time'=>$request->starting_time,
+            'ending_time'=>$request->ending_time,
+            'image'=>$imageName,
+            'no_of_staff'=>$request->no_of_staff,
+            'user_id'=>$request->user_id
+        ]);
+        toastr()->success('workshop list has Successfully updated');
+        return redirect()->route('workshop.index');
+
+
     }
 
     /**

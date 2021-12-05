@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\WorkShopController;
 use App\Http\Controllers\Admin\VehicleController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,9 +40,10 @@ Auth::routes();
 
 
 
-Route::get('/workshop-index',[WorkShopController::class,'index']);
+Route::get('/workshop-index',[WorkShopController::class,'index'])->name('workshop-index');
 
 //routes for admins pannel 
 Route::get('/admin',[AdminController::class,'dashbord']);
-Route::resource('workshop', WorkShopController::class);
-Route::resource('vehicle', VehicleController::class);
+Route::resource('shop', App\Http\Controllers\Admin\WorkShopController::class);
+Route::resource('vehicle', App\Http\Controllers\Admin\VehicleController::class);
+// Route::resource('shop', ControllersWorkShopController::class);
