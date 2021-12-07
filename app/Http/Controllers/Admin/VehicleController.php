@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
+use App\Models\WorkShop;
 use Illuminate\Http\Request;
 use File;
 
@@ -79,9 +80,10 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-
+        $vehicle=Vehicle::findOrFail($id)->first();
+       return view('admin.pages.vehicle.view',compact('vehicle'));
     }
 
     /**
