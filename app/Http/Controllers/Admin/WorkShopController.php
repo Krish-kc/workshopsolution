@@ -127,7 +127,7 @@ class WorkShopController extends Controller
             'ending_time'=>$request->ending_time,
             'image'=>$imageName,
             'no_of_staff'=>$request->no_of_staff,
-            'user_id'=>$request->user_id
+            'user_id'=>4,
         ]);
         toastr()->success('workshop list has Successfully updated');
         return redirect()->route('workshop.index');
@@ -143,6 +143,9 @@ class WorkShopController extends Controller
      */
     public function destroy($id)
     {
-        //
+       WorkShop::findOrFail($id)->delete();
+        toastr()->warning('workshop has Successfully delete');
+        return redirect()->route('workshop.index');
+
     }
 }
