@@ -56,6 +56,7 @@
                                                 
                                                 <a href="{{route('shop.edit',$item->id)}}" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
                                                 <a href="{{route('shop.destroy',$item->id)}}" class="btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
+                                                <a href="{{route('shop.show',$item->id)}}" class="btn btn-danger btn-sm mr-1"><i class="fa fa-eye"></i></a>
                                               
                                             </td>
                                         </tr>
