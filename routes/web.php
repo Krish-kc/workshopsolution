@@ -47,3 +47,5 @@ Route::get('/admin',[AdminController::class,'dashbord']);
 Route::resource('shop', App\Http\Controllers\Admin\WorkShopController::class);
 Route::resource('vehicle', App\Http\Controllers\Admin\VehicleController::class);
 // Route::resource('shop', ControllersWorkShopController::class);
+
+Route::resource('service', App\Http\Controllers\Admin\ServiceController::class);
