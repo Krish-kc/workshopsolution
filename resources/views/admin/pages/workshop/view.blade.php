@@ -16,25 +16,87 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="card mb-3">
-            <img class="card-img-top" src="{{$workshop->image}}" alt="Card image cap">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item disabled">{{$workshop->name}}</li>
-                    <li class="list-group-item">{{$workshop->email}}</li>
-                    <li class="list-group-item">{{$workshop->location}}</li>
-                    <li class="list-group-item">{{$workshop->workshop_id}}</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                  </ul>
-            </div>
-          </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Workshop</h4>
+           
+            <p class="card-text">All the information of Workshop</p>
+               <h6 class="card-subtitle">Workshop name:{{$workshop->name}}</h6>
+               <h6 class="card-subtitle">Workshop :{{$workshop->PAN}}</h6>
+               <h6 class="card-subtitle">worksho No:{{$workshop->location}}</h6>
+               <h6 class="card-subtitle">worksho No:{{$workshop->starting_time}}</h6>
+               <h6 class="card-subtitle">worksho No:{{$workshop->ending_time}}</h6>
+
+               <img src="{{asset('Workshop_image/'.$workshop->image)}}" style="max-height: 150px;">
+         
+
+        </div>
+    </div>
         <div class="button-group">
             <button id="open" data-toggle="modal" data-target="#exampleModalLong" type="submit" class="btn waves-effect waves-light btn-rounded btn-success">Add Service</button>
        </div>
+
+       <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">List of Services</h4>
+            <div class="table-responsive m-t-40">
+                <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                   
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
+                                role="grid" aria-describedby="myTable_info">
+                               <thead>
+                                    <tr role="row">
+                                       <th>S.No</th>
+                                       <th>Name</th>
+                                       <th>Service Duration</th>
+                                       <th>Service Charge</th>
+                                       <th>Service Details</th>
+                                       <th>Workshop Id</th>>
+                                       <th>Action</th>
+                                    </thead>
+                                 
+                                    @foreach ($service as $item)
+                                 <tbody>
+                                     
+                                 
+                                     <tr role="row" class="odd">
+                                       <td>{{ $loop->iteration}}</td>
+                                         <td class="sorting_1">{{$item->title}}</td>
+                                         <td>{{$item->duration}}</td>
+                                         <td>{{$item->charge}}</td> 
+                                         <td>{{$item->details}}</td>
+                                         <td>{{$item->workshop_id}}</td>
+                                          <td>
+                                           <div class="btn-group">
+                                      
+                                               <a href="{{route('service.edit',$item->id)}}"  class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                              <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                           </div>
+                                       </td>
+                                       </tr>
+                                   </tbody>
+                                   @endforeach
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
+</div> 
+
+
+
 </div>
+    
+
+
+
+
+
 
    
 
@@ -88,8 +150,9 @@
         </div>
       </div>
     </div>
-
     
+   
+      
 
 
 

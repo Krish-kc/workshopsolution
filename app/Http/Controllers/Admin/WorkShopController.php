@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\WorkShop;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use File;
 
@@ -79,7 +80,9 @@ class WorkShopController extends Controller
     public function show($id)
     {
         $workshop=Workshop::findorFail($id);
-        return view('admin.pages.workshop.view',compact('workshop'));
+        $service=Service::all();
+        return view('admin.pages.workshop.view',compact('workshop','service'));
+  
     }
 
     /**
@@ -91,7 +94,7 @@ class WorkShopController extends Controller
     public function edit($id)
     {
         $workshop=WorkShop::findOrFail($id);
-        return view('admin.pages.workshop.edit',compact('workshop'));
+        return view('admin.pages.workshop.view',compact('workshop'));
     }
 
     /**
@@ -132,6 +135,8 @@ class WorkShopController extends Controller
         ]);
         toastr()->success('workshop list has Successfully updated');
         return redirect()->route('workshop.index');
+
+
 
 
     }
