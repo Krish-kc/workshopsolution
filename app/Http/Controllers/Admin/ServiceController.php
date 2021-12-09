@@ -15,7 +15,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+   
     }
 
     /**
@@ -67,7 +67,10 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service=Service::findOrFail($id);
+        return view('admin.pages.workshop.modal',compact('service'));
+
+
     }
 
     /**
@@ -79,7 +82,20 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $service=Service::findOrFail($id);
+        $service->update([
+
+            'title'=>$request->title,
+            'duration'=>$request->duration,
+            'charge'=>$request->charge,
+            'details'=>$request->details,
+            'workshop_id'=>$request->workshop_id,
+
+        ]);
+        toastr()->success('workshop list has Successfully updated');
+
+        return redirect()->route('shop.index');
     }
 
     /**

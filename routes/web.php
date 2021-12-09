@@ -4,6 +4,10 @@ use App\Http\Controllers\Admin\ServiceBookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\WorkShopController;
 use App\Http\Controllers\Admin\VehicleController;
+
+use App\Http\Controllers\Admin\ServiceController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
