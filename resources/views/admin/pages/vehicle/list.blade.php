@@ -54,12 +54,12 @@
                                               <td><img src="{{asset('vehicle_image')}}/{{$item->image}}" style="max-height: 100px;"></td>
                                                </td>
                                                <td>
-                                                <div class="btn-group">
-                                           
-                                                    <a href="{{route('vehicle.edit',$item->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                                                   <a href="{{route('vehicle.destroy',$item->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                                    <a href="{{route('vehicle.show',$item->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                                                </div>
+                                                   <div class="btn-group">
+                                                       
+                                                       <a href="{{route('vehicle.edit',$item->id)}}" class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
+                                                       <a href="{{route('vehicle.destroy',$item->id)}}" class="btn btn-danger m-1"><i class="fa fa-trash"></i></a>
+                                                       <a href="{{route('vehicle.show',$item->id)}}" class="btn btn-success m-1"><i class="fa fa-eye"></i></a>
+                                                                                                       </div>
                 
                                             </td>
 

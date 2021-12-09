@@ -82,6 +82,7 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
+        
         $vehicle=Vehicle::findOrFail($id)->first();
        return view('admin.pages.vehicle.view',compact('vehicle'));
     }
@@ -148,7 +149,7 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
- 
+        dd($id);
         Vehicle::findOrFail($id)->delete();
 
         toastr()->warning('Vehicle has Successfully delete');
