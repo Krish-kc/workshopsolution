@@ -14,11 +14,12 @@
       </div>
    </div>
          <div class="row">
-                    <div class="col-12 m-t-30">
+               <div class="col-12 m-t-30">
                         <h4 class="m-b-0">Wellcome to our Vehicle page</h4>
                         <p class="text-muted m-t-0 font-12">You can get all the infromation about you vehicle.</p>
                     </div>
                     <div class="col-md-8">
+                    
                         <div class="card">
                             <div class="card-body">
                                  <h4 class="card-title">Vehicle</h4>
@@ -32,19 +33,27 @@
                                  
                             </div>
                         </div>
+                    
+                       
                                    <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="btn waves-effect waves-light btn-rounded btn-primary">Service Book</button>
    
                     </div>
+                    @if ($vehicle->service)
+                        
                     <div class="col-md-4">
                         <div class="card text-center">
                             <div class="card-body">
-                                <h4 class="card-title">Special title treatment</h4>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h4 class="card-title">Service Book</h4>
+                                <p class="card-text">Our servicebook provide all the infromation related to services.</p>
+                                <h4>Owner Name :{{$vehicle->service->owner_name}} </h4>
+                                <h4>Engeen Number :{{$vehicle->service->engeen_number}} </h4>
+                                <h4>Chassis Number :{{$vehicle->service->chassis_number}} </h4>
+                                <a href="#" class="btn btn-primary">Open Servicebook</a>
                             </div>
                         </div>
                     </div>
-                   
+                   @endif
+
                 </div>
 
 

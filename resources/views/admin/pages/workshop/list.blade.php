@@ -53,11 +53,14 @@
                                               <img src="{{asset('workshop')}}/{{$item->image}}" style="max-height: 100px;">
                                             </td>
                                             <td>
-                                                
+                                            <div class="btn-group">
                                                 <a href="{{route('shop.edit',$item->id)}}" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
+
                                                 <a data-toggle="modal" data-target="#deletemodal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 <a href="{{route('shop.show',$item->id)}}" class="btn btn-danger btn-sm mr-1"><i class="fa fa-eye"></i></a>
                                               
+                                              </div>  
+
                                             </td>
                                         </tr>
                                         <tbody>
