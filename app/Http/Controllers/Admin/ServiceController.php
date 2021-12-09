@@ -106,6 +106,9 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Service::findOrFail($id)->delete();
+        toastr()->warning('Vehicle has Successfully delete');
+        return redirect()->route('shop.index');
+
     }
 }

@@ -14,11 +14,12 @@
       </div>
    </div>
          <div class="row">
-                    <div class="col-12 m-t-30">
+               <div class="col-12 m-t-30">
                         <h4 class="m-b-0">Wellcome to our Vehicle page</h4>
                         <p class="text-muted m-t-0 font-12">You can get all the infromation about you vehicle.</p>
                     </div>
                     <div class="col-md-8">
+                    
                         <div class="card">
                             <div class="card-body">
                                  <h4 class="card-title">Vehicle</h4>
@@ -32,9 +33,13 @@
                                  
                             </div>
                         </div>
+                    
+                       
                                    <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="btn waves-effect waves-light btn-rounded btn-primary">Service Book</button>
    
                     </div>
+                    @if ($vehicle->service)
+                        
                     <div class="col-md-4">
                         <div class="card text-center">
                             <div class="card-body">
@@ -47,7 +52,8 @@
                             </div>
                         </div>
                     </div>
-                   
+                   @endif
+
                 </div>
 
 

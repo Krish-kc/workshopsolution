@@ -7,7 +7,7 @@ use App\Models\Vehicle;
 use App\Models\WorkShop;
 use Illuminate\Http\Request;
 use File;
-
+use Illuminate\Support\Facades\Auth;
 
 class VehicleController extends Controller
 {
@@ -65,10 +65,10 @@ class VehicleController extends Controller
         $vehicle->company=$request->company;
         $vehicle->model=$request->model;
         $vehicle->image=$imageName;
-        $vehicle->user_id=$request->user_id;
+        $vehicle->user_id=Auth::id();
         $vehicle->save();
         toastr()->success('Workshop information has been successfully saved!');
-        return redirect()->route('vehicle.list');
+        return redirect()->route('vehicle.index');
 
 
 
@@ -83,7 +83,7 @@ class VehicleController extends Controller
     public function show($id)
     {
         
-        $vehicle=Vehicle::findOrFail($id)->first();
+        $vehicle=Vehicle::findOrFail($id);
        return view('admin.pages.vehicle.view',compact('vehicle'));
     }
 
@@ -149,7 +149,7 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        
         Vehicle::findOrFail($id)->delete();
 
         toastr()->warning('Vehicle has Successfully delete');
