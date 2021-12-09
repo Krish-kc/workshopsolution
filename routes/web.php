@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\ServiceBookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\WorkShopController;
 use App\Http\Controllers\Admin\VehicleController;
+
 use App\Http\Controllers\Admin\ServiceController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -45,8 +48,10 @@ Route::get('/workshop-index',[WorkShopController::class,'index'])->name('worksho
 
 //routes for admins pannel 
 Route::get('/admin',[AdminController::class,'dashbord']);
-Route::resource('shop', App\Http\Controllers\Admin\WorkShopController::class);
-Route::resource('vehicle', App\Http\Controllers\Admin\VehicleController::class);
+Route::resource('shop', WorkShopController::class);
+Route::resource('vehicle', VehicleController::class);
+Route::resource('servicebook', ServiceBookController::class);
+
 // Route::resource('shop', ControllersWorkShopController::class);
 
-Route::resource('service', App\Http\Controllers\Admin\ServiceController::class);
+Route::resource('service', ServiceController::class);
