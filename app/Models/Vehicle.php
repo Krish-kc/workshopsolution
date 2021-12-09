@@ -11,4 +11,11 @@ class Vehicle extends Model
     protected $fillable=[
         'name','number','lot','company','model','image','user_id'
     ];
+
+    public function service(){
+        return $this->hasOne(ServiceBook::class,'vechile_id');
+    }
+
+
+
 }

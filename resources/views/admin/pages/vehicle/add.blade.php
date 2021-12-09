@@ -49,11 +49,7 @@
                                       <label>Model Year :</label>
                                       <input type="text" name="model" class="form-control" placeholder="Enter Model year">
                                  </div>
-                                  <div 
-                                      class="form-group">
-                                      <label>User Id :</label>
-                                      <input type="text" name="user_id" class="form-control" placeholder="Enter user id">
-                                 </div>
+                               
 
                                  <div class="form-group">
                                       <label>Image Upload :</label>
