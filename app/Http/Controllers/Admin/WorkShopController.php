@@ -151,7 +151,7 @@ class WorkShopController extends Controller
     {
        WorkShop::findOrFail($id)->delete();
         toastr()->warning('workshop has Successfully delete');
-        return redirect()->route('workshop.index');
+        return redirect()->route('shop.index');
 
     }
 }

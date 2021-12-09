@@ -55,15 +55,40 @@
                                             <td>
                                                 
                                                 <a href="{{route('shop.edit',$item->id)}}" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
-                                                <a href="{{route('shop.destroy',$item->id)}}" class="btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
+                                                <a data-toggle="modal" data-target="#deletemodal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 <a href="{{route('shop.show',$item->id)}}" class="btn btn-danger btn-sm mr-1"><i class="fa fa-eye"></i></a>
                                               
                                             </td>
                                         </tr>
-                                    @endforeach
-                                     <tbody>
-                                     
-                                    </tbody>
+                                        <tbody>
+                                            
+                                        </tbody>
+                                        <div id="deletemodal" class="modal fade">
+                                            <div class="modal-dialog modal-confirm">
+                                            <form action="{{route('shop.destroy',$item->id)}}" method="POST" id="deletebanner">
+                                              @csrf
+                                              @method('DELETE')
+                                              
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-danger ">				
+                                                        <h4 class="modal-title w-100">Are you sure?</h4>	
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary" >Sumbit</button>
+                                                      
+                                                    </div>
+                                                </div>
+                                            
+                                            
+                                            </form>
+                                            </div>
+                                        </div>
+                                        @endforeach
 
                                  </table>
                              </div>
