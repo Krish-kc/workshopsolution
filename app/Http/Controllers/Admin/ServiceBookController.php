@@ -15,7 +15,7 @@ class ServiceBookController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

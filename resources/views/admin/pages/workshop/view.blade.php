@@ -80,6 +80,8 @@
                                        </td>
                                        </tr>
                                    </tbody>
+
+
                                    <div id="deletemodal" class="modal fade">
                                     <div class="modal-dialog modal-confirm">
                                     <form action="{{route('service.destroy',$item->id)}}" method="POST" id="deletebanner">

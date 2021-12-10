@@ -18,7 +18,7 @@ class ServiceRecord extends Model
         'service_duration',
         'nextService',
         'description',
-        'bill_image',
+        'image',
         'serviceCenter_name',
         
     ];

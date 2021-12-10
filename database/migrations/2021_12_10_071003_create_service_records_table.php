@@ -15,16 +15,16 @@ class CreateServiceRecordsTable extends Migration
     {
         Schema::create('service_records', function (Blueprint $table) {
             $table->id();
-            $table->bigIntiger('serviceBook_id');
-            $table->string('date');
-            $table->string('kilometer');
-            $table->string('part_change');
-            $table->string('service_charge');
-            $table->string('service_duration');
-            $table->string('nextService');
-            $table->longText('description');
-            $table->string('bill_image');
-            $table->string('serviceCenter_name');
+            $table->bigInteger('serviceBook_id')->nullable();
+            $table->string('date')->nullable();
+            $table->string('kilometer')->nullable();
+            $table->string('part_change')->nullable();
+            $table->string('service_charge')->nullable();
+            $table->string('service_duration')->nullable();
+            $table->string('nextService')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('serviceCenter_name')->nullable();
             $table->timestamps();
         });
     }
