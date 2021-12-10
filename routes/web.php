@@ -4,8 +4,8 @@ use App\Http\Controllers\Admin\ServiceBookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\WorkShopController;
 use App\Http\Controllers\Admin\VehicleController;
-
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ServiceRecordController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -55,3 +55,5 @@ Route::resource('servicebook', ServiceBookController::class);
 // Route::resource('shop', ControllersWorkShopController::class);
 
 Route::resource('service', ServiceController::class);
+
+Route::resource('serviceRecord', ServiceRecordController::class);
