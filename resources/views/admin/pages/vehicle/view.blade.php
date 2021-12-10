@@ -24,11 +24,11 @@
                             <div class="card-body">
                                  <h4 class="card-title">Vehicle</h4>
                                     <p class="card-text">All the information of Vehicle</p>
-                                    <h6 class="card-subtitle">Vehicle Name:{{$vehicle->name}}</h6>
-                                    <h6 class="card-subtitle">Vehicle No:{{$vehicle->number}}</h6>
-                                    <h6 class="card-subtitle">Vehicle No:{{$vehicle->lot}}</h6>
-                                    <h6 class="card-subtitle">Vehicle No:{{$vehicle->company}}</h6>
-                                    <h6 class="card-subtitle">Vehicle No:{{$vehicle->model}}</h6>
+                                    <h6 class="card-subtitle">Vehicle Name: {{$vehicle->name}}</h6>
+                                    <h6 class="card-subtitle">Vehicle Number: {{$vehicle->number}}</h6>
+                                    <h6 class="card-subtitle">Vehicle Lot: {{$vehicle->lot}}</h6>
+                                    <h6 class="card-subtitle">Vehicle Company: {{$vehicle->company}}</h6>
+                                    <h6 class="card-subtitle">Vehicle Model: {{$vehicle->model}}</h6>
                                     <img src="{{asset('vehicle_image/'.$vehicle->image)}}" style="max-height: 150px;">                                
                                  
                             </div>
@@ -48,7 +48,7 @@
                                 <h4>Owner Name :{{$vehicle->service->owner_name}} </h4>
                                 <h4>Engeen Number :{{$vehicle->service->engeen_number}} </h4>
                                 <h4>Chassis Number :{{$vehicle->service->chassis_number}} </h4>
-                                <a href="#" class="btn btn-primary">Open Servicebook</a>
+                                <a href="{{route('serviceRecord.create')}}" class="btn btn-primary">Open Servicebook</a>
                             </div>
                         </div>
                     </div>
