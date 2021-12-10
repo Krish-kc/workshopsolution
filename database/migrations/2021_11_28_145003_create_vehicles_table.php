@@ -21,7 +21,10 @@ class CreateVehiclesTable extends Migration
             $table->string('company');
             $table->string('model');
             $table->string('image');
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

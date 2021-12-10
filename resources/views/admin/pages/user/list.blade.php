@@ -23,7 +23,8 @@
                                 <h6 class="card-subtitle">Input the Required Information for Registering New User</h6>
                    
                               <div class="table-responsive m-t-40">
-                                    <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="myTable_length"><label>Show <select name="myTable_length" aria-controls="myTable" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="myTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="myTable"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                                    <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                     <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
                                         <thead>
                                            <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 173.266px;">Name</th>
@@ -40,10 +41,11 @@
                                                 <td>{{$item->email}}</td>
                                                 <td>Image</td>
                                                   <td>
-                                                    <a class="btn btn-info" href="{{ route('user.show',$item->id) }}">Show</a>
+                                                      <div class="button-group"
+                                                     <a class="btn btn-info" href="{{ route('user.show',$item->id) }}">Show</a>
 
                                                      <a class="btn btn-primary" href="{{ route('user.edit',$item->id) }}">Edit</a>
-               
+                                                        </div>
                                                  </td>
                                               </tr>
                                         @endforeach

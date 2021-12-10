@@ -80,8 +80,8 @@ class WorkShopController extends Controller
     public function show($id)
     {
         $workshop=Workshop::findorFail($id);
-        $service=Service::all();
-        return view('admin.pages.workshop.view',compact('workshop','service'));
+       
+        return view('admin.pages.workshop.view',compact('workshop'));
   
     }
 
