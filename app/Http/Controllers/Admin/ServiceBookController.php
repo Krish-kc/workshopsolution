@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ServiceBook;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class ServiceBookController extends Controller
@@ -15,7 +16,7 @@ class ServiceBookController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -57,8 +58,11 @@ class ServiceBookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+
     {
-        //
+
+        $vehicle=Vehicle::findOrFail($id);
+        return view('admin.pages.vehicle.serviceBook.add', compact('vehicle'));
     }
 
     /**

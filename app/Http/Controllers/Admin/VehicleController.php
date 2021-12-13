@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ServiceRecord;
 use App\Models\Vehicle;
 use App\Models\WorkShop;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        
+
         $vehicle=Vehicle::all();
         return view('admin.pages.vehicle.list', compact('vehicle'));
     }
@@ -29,14 +30,14 @@ class VehicleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
+    {
         return view('admin.pages.vehicle.add');
     }
 
  public function add(){
-    
+
         // return view('admin.pages.vehicle.add');
-     
+
  }
 
     /**
@@ -51,11 +52,11 @@ class VehicleController extends Controller
         if($request->hasFile('image'))
         {
          $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension(); 
+         $imageName = time().'.'.$image->getClientOriginalExtension();
          $image->move(public_path('vehicle_image'), $imageName);
         }else{
              $imageName=null;
- 
+
         }
 
         $vehicle=new Vehicle();
@@ -82,8 +83,9 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
-        
+
         $vehicle=Vehicle::findOrFail($id);
+        // $serviceRecord= ServiceRecord::all();
        return view('admin.pages.vehicle.view',compact('vehicle'));
     }
 
@@ -95,7 +97,7 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        
+
         $vehicle=Vehicle::findorfail($id);
         return view('admin.pages.vehicle.edit',compact('vehicle'));
     }
@@ -109,22 +111,42 @@ class VehicleController extends Controller
      */
     public function update(Request $request,$id)
     {
-      
-        $vehicle=Vehicle::findorfail($id);
-        if($request->hasFile('image')){
 
-            $destination = 'vehicle_image'.$vehicle->image;
-            if(File::exist($destination)){
-                File::delete($destination);
-            }
-            $image=$request->file('image');
-            $extension =$image->getClientOriginalExtension();
-            $imageName = time(). '.'.$extension;
-            $image->move('vehicle_image',$imageName);
-            $vehicle->image=$imageName;
-        }
-        else{
-            $imageName=$vehicle->image;
+        // $vehicle =Vehicle::findorFail($id);
+
+        // if($request->file != ''){
+        //      $path = public_path().'vehicle_image';
+
+        //      //code for remove old file
+        //      if($vehicle->file != ''  && $vehicle->file != null){
+        //           $file_old = $path.$vehicle->file;
+        //           unlink($file_old);
+        //      }
+
+        //      //upload new file
+        //      $image = $request->file;
+        //      $imageName = $image->getClientOriginalName();
+        //      $image->move($path, $imageName);
+        //      $vehicle->image=$imageName;
+
+             //for update in table
+            //  $vehicle->update(['file' => $imageName]);
+        // }
+        // else{
+        //     $imageName=$vehicle->image;
+        // }
+
+
+
+        $vehicle=Vehicle::findorfail($id);
+        if($request->hasFile('image'))
+        {
+         $image=$request->file('image');
+         $imageName = time().'.'.$image->getClientOriginalExtension();
+         $image->move(public_path('vehicle_image'), $imageName);
+        }else{
+             $imageName=null;
+
         }
 
         $vehicle->update([
@@ -149,7 +171,7 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        
+
         Vehicle::findOrFail($id)->delete();
 
         toastr()->warning('Vehicle has Successfully delete');

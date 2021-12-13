@@ -1,4 +1,4 @@
-@extends('admin.index')      
+@extends('admin.index')
 @section('content')
 <div class="container-fluid">
    <!-- ============================================================== -->
@@ -16,29 +16,131 @@
 
    <div class="row">
     <div class="col-12 m-t-30">
-             <h4 class="m-b-0">Wellcome to our Vehicle page</h4>
-             <p class="text-muted m-t-0 font-12">You can get all the infromation about you vehicle.</p>
+             <h4 class="m-b-0">Wellcome to our Service Record page</h4>
+             <p class="text-muted m-t-0 font-12">You can get all the infromation about your  vehicle servicing.</p>
          </div>
          <div class="col-md-8">
-         
+
              <div class="card">
                  <div class="card-body">
-                      <h4 class="card-title">Vehicle</h4>
-                         <p class="card-text">All the information of Vehicle</p>
-                         <h6 class="card-subtitle">Vehicle Name: </h6>
-                         <h6 class="card-subtitle">Vehicle Number: </h6>
-                         <h6 class="card-subtitle">Vehicle Lot: </h6>
-                         <h6 class="card-subtitle">Vehicle Company: </h6>
-                         <h6 class="card-subtitle">Vehicle Model: </h6>
-                         <img src="" style="max-height: 150px;">                                
-                      
+                      <h4 class="card-title">Service Book</h4>
+                         <p class="card-text">All the information of Vehicle Servicing</p>
+                         <h6 class="card-subtitle">Owner Name:{{$vehicle->service->owner_name}} </h6>
+                         <h6 class="card-subtitle">Vehicle Name:{{$vehicle->name}} </h6>
+                         <h6 class="card-subtitle">Vehicle Number: {{$vehicle->number}}</h6>
+                         <h6 class="card-subtitle">Engine Number:{{$vehicle->service->engeen_number}} </h6>
+                         <h6 class="card-subtitle">Chasis Number:{{$vehicle->service->chassis_number}} </h6>
+                         <img src="" style="max-height: 150px;">
+
                  </div>
              </div>
-         
-            
+
+
                         <button type="button" data-toggle="modal" data-target="#exampleModalLong" class="btn waves-effect waves-light btn-rounded btn-primary">Add Service Record</button>
 
          </div>
+
+         <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">List of Services</h4>
+                <div class="table-responsive m-t-40">
+                    <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
+                                    role="grid" aria-describedby="myTable_info">
+                                   <thead>
+                                        <tr role="row">
+                                           <th>S.No</th>
+                                           <th>Service Book Id</th>
+                                           <th>Date</th>
+                                           <th>Kilometer</th>
+                                           <th>Part Changed</th>
+                                           <th>Service Charge</th>
+                                           <th>Service Duration</th>
+                                           <th>Next Service</th>
+                                           <th>Description</th>
+                                           <th>Bill Image</th>
+                                           <th>Service center Name</th>
+                                           <th>Action</th>
+                                        </thead>
+
+                                        @if (!$vehicle->service->record->isEmpty())
+
+
+                                         @foreach ($vehicle->service->record as $item)
+                                      <tbody>
+
+
+
+
+                                         <tr role="row" class="odd">
+                                           <td>{{ $loop->iteration}}</td>
+                                             <td class="sorting_1">{{$item->serviceBook_id}}</td>
+                                             <td>{{$item->date}}</td>
+                                             <td>{{$item->kilometer}}</td>
+                                             <td>{{$item->part_change}}</td>
+                                             <td>{{$item->service_charge}}</td>
+                                             <td>{{$item->service_duration}}</td>
+                                             <td>{{$item->nextService}}</td>
+                                             <td>{{$item->description}}</td>
+                                             <td>{{$item->image}}</td>
+                                             <td>{{$item->serviceCenter_name}}</td>
+                                              <td>
+                                               <div class="btn-group">
+
+                                                   <a href=""  class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                  <a href="" data-toggle="modal" data-target="#deletemodal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                               </div>
+                                           </td>
+                                           </tr>
+                                       </tbody>
+
+
+                                       <div id="deletemodal" class="modal fade">
+                                        <div class="modal-dialog modal-confirm">
+                                        <form action="" method="POST" id="deletebanner">
+                                          @csrf
+                                          @method('DELETE')
+
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-danger ">
+                                                    <h4 class="modal-title w-100">Are you sure?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary" >Sumbit</button>
+
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+                                        </div>
+                                    </div>
+
+                                       @endforeach
+                                       @endif
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 
 
          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -51,41 +153,41 @@
                      </button>
                   </div>
                   <div class="modal-body">
-                     <form action="{{route('serviceRecord.store')}}" method="POST" class="form-material m-t-40">
+                     <form action="{{route('serviceRecord.store')}}" method="POST" class="form-material m-t-40"  enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <input type="hidden" name="vehicle_id" value="">
                         <div class="form-group">
-                           <label>Service Book Id</label>
-                           <input type="text" name="serviceBook_id" class="form-control form-control-line" placeholder="Some text value..."> 
+
+                           <input type="hidden" name="serviceBook_id" value="{{$vehicle->service->id}}" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                            <label>Date</label>
-                           <input type="text" name="date" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="date" name="date" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                            <label>Kilometer</label>
-                           <input type="text" name="kilometer" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="text" name="kilometer" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                            <label>Part Changed</label>
-                           <input type="text" name="part_change" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="text" name="part_change" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                            <label>Service Charge</label>
-                           <input type="text" name="service_charge" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="text" name="service_charge" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                            <label>Service Duration</label>
-                           <input type="text" name="service_duration" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="text" name="service_duration" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                            <label>Next Service</label>
-                           <input type="text" name="nextService" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="text" name="nextService" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                            <label>Description</label>
-                           <input type="text" name="description" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="text" name="description" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                         <div class="form-group">
                             <label>Bill Image</label>
@@ -93,7 +195,7 @@
                         </div>
                         <div class="form-group">
                            <label>Service center Name</label>
-                           <input type="text" name="serviceCenter_name" class="form-control form-control-line" placeholder="Some text value..."> 
+                           <input type="text" name="serviceCenter_name" class="form-control form-control-line" placeholder="Some text value...">
                         </div>
                   </div>
                   <div class="modal-footer">
@@ -108,18 +210,18 @@
 
 
 
-         
+
 
 
 </div>
-         
 
 
 
-            
 
 
-   
+
+
+
 
 
 
