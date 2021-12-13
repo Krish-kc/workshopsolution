@@ -20,10 +20,10 @@
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple">
                             </i><span class="hide-menu"> Users </span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href=""><i class="mdi mdi-plus"></i>
+                                <li><a href="{{route('user.create')}}"><i class="mdi mdi-plus"></i>
                                     
                                      Add User </a></li>
-                                <li><a href=""><i class="fas fa-bars"></i>
+                                <li><a href="{{route('user.index')}}"><i class="fas fa-bars"></i>
                                      User List</a></li>
                                 
                                 

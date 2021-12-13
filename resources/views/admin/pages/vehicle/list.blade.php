@@ -17,8 +17,8 @@
 
          <div class="card">
              <div class="card-body">
-                 <h4 class="card-title">List of Register User</h4>
-                 <h6 class="card-subtitle">Input the Required Information for Registering New User</h6>
+                 <h4 class="card-title">List of Register Vehicle</h4>
+                 <h6 class="card-subtitle">All the Required Information Of Register Vehicle</h6>
 
                  <div class="table-responsive m-t-40">
                      <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -35,7 +35,6 @@
                                             <th>Lot</th>
                                             <th>Company</th>
                                             <th>Model</th>
-                                            <th>User Id</th>
                                             <th>Image</th>
                                             <th>Action</th>
                                          </thead>
@@ -50,7 +49,7 @@
                                               <td>{{$item->lot}}</td>
                                               <td>{{$item->company}}</td>
                                               <td>{{$item->model}}</td>
-                                              <td>{{$item->user_id}}</td>
+                                           
                                               <td><img src="{{asset('vehicle_image')}}/{{$item->image}}" style="max-height: 100px;"></td>
                                                </td>
                                                <td>

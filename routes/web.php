@@ -5,7 +5,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\WorkShopController;
 use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\ServiceController;
+
+use App\Http\Controllers\Admin\UserController;
+
 use App\Http\Controllers\Admin\ServiceRecordController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -51,6 +55,7 @@ Route::get('/admin',[AdminController::class,'dashbord']);
 Route::resource('shop', WorkShopController::class);
 Route::resource('vehicle', VehicleController::class);
 Route::resource('servicebook', ServiceBookController::class);
+Route::resource('user', UserController::class);
 
 // Route::resource('shop', ControllersWorkShopController::class);
 

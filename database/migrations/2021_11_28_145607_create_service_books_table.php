@@ -18,7 +18,10 @@ class CreateServiceBooksTable extends Migration
             $table->string('owner_name');
             $table->string('engeen_number');
             $table->string('chassis_number');
-            $table->bigInteger('vechile_id');
+             $table->unsignedBigInteger('vechile_id');
+            $table->foreign('vechile_id')
+            ->references('id')->on('vehicles')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
