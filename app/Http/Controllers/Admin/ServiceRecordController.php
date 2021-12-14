@@ -91,7 +91,8 @@ class ServiceRecordController extends Controller
      */
     public function edit($id)
     {
-        //
+        $serviceRecord = ServiceRecord::findorFail($id);
+        return view('admin.pages.vehicle.serviceBook.edit', compact('serviceRecord'));
     }
 
     /**
@@ -103,7 +104,32 @@ class ServiceRecordController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $serviceRecord=ServiceRecord::findorfail($id);
+        if($request->hasFile('image'))
+        {
+         $image=$request->file('image');
+         $imageName = time().'.'.$image->getClientOriginalExtension();
+         $image->move(public_path('bill'), $imageName);
+        }else{
+             $imageName=null;
+
+        }
+
+        $serviceRecord->update([
+            'date'=>$request->date,
+            'kilometer'=>$request->kilometer,
+            'part_change'=>$request->part_change,
+            'service_charge'=>$request->service_charge,
+            'service_duration'=>$request->service_duration,
+            'nextService'=>$request->nextService,
+            'description'=>$request->description,
+            'image'=>$imageName,
+            'serviceCenter_name'=>$request->serviceCenter_name,
+
+        ]);
+        toastr()->success('Service Record list has Successfully updated');
+        return redirect()->route('vehicle.index');
+
     }
 
     /**
@@ -114,6 +140,12 @@ class ServiceRecordController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $serviceRecord=ServiceRecord::find($id);
+        unlink("bill/".$serviceRecord->image);
+
+        ServiceRecord::where("image", $serviceRecord->image)->delete();
+        toastr()->warning('Banner has been delete successfully!');
+        return redirect()->route('vehicle.index');
+
     }
 }
