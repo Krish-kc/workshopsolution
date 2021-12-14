@@ -56,6 +56,7 @@
                                             <div class="btn-group">
                                                 <a href="{{route('shop.edit',$item->id)}}" class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
 
+                                
                                                 <a href="" data-toggle="modal" data-target="#deletemodal" class="btn btn-danger m-1"><i class="fa fa-trash"></i></a>
                                                 <a href="{{route('shop.show',$item->id)}}" class="btn btn-success  m-1"><i class="fa fa-eye"></i></a>
 

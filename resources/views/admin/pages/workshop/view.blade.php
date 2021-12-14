@@ -28,8 +28,8 @@
                <h6 class="card-subtitle">worksho No:{{$workshop->ending_time}}</h6>
 
 
-               <img src="{{asset('Workshop_image/'.$workshop->image)}}" style="max-height: 150px;">
-
+               <img src="{{asset('workshop')}}/{{$workshop->image}}" style="max-height: 150px;">
+         
 
 
         </div>
@@ -42,9 +42,7 @@
         <div class="card-body">
             <h4 class="card-title">List of Services</h4>
 
-            <div class="table-responsive m-t-40">
-                <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-
+            <div class="table-responsive m-t-40" >
 
                     <div class="row">
                         <div class="col-sm-12">
@@ -60,11 +58,16 @@
                                        <th>Action</th>
                                     </thead>
 
+                                
+                                 
+                                     
+                                 @if (!$workshop->services->isEmpty())    
+                                    @foreach ($workshop->services as $item)
 
-                                    @if (!$service->isEmpty())
 
 
-                                    @foreach ($service as $item)
+                                
+
 
                                  <tbody>
 
@@ -124,9 +127,6 @@
             </div>
         </div>
     </div>
-
-
-
     @endif
 
 </div> 

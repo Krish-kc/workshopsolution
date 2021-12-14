@@ -15,7 +15,7 @@ class CreateServiceRecordsTable extends Migration
     {
         Schema::create('service_records', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('serviceBook_id')->nullable();
+      
             $table->string('date')->nullable();
             $table->string('kilometer')->nullable();
             $table->string('part_change')->nullable();
@@ -25,6 +25,11 @@ class CreateServiceRecordsTable extends Migration
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
             $table->string('serviceCenter_name')->nullable();
+             $table->unsignedBigInteger('serviceBook_id')->nullable();
+             $table->foreign('serviceBook_id')
+            ->references('id')->on('service_books')
+            ->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
