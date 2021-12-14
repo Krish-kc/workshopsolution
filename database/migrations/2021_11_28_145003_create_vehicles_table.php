@@ -15,13 +15,18 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('number')->nullable();
-            $table->string('lot')->nullable();
-            $table->string('company')->nullable();
-            $table->string('model')->nullable();
-            $table->string('image')->nullable();
-            $table->bigInteger('user_id')->nullable();
+
+            $table->string('name');
+            $table->string('number');
+            $table->string('lot');
+            $table->string('company');
+            $table->string('model');
+            $table->string('image');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

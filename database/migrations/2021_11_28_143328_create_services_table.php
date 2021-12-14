@@ -19,7 +19,8 @@ class CreateServicesTable extends Migration
             $table->string('duration');
             $table->string('charge');
             $table->longText('details');
-            $table->string('workshop_id');
+            $table->unsignedBigInteger('workshop_id');
+             $table->foreign('workshop_id')->references('id')->on('work_shops')->onDelete('cascade');
 
             $table->timestamps();
         });

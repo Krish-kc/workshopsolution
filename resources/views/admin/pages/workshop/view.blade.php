@@ -27,7 +27,9 @@
                <h6 class="card-subtitle">worksho No:{{$workshop->starting_time}}</h6>
                <h6 class="card-subtitle">worksho No:{{$workshop->ending_time}}</h6>
 
+
                <img src="{{asset('Workshop_image/'.$workshop->image)}}" style="max-height: 150px;">
+
 
 
         </div>
@@ -35,17 +37,18 @@
         <div class="button-group">
             <button id="open" data-toggle="modal" data-target="#exampleModalLong" type="submit" class="btn waves-effect waves-light btn-rounded btn-success">Add Service</button>
        </div>
-
+   @if (!$workshop->services->isEmpty())
        <div class="card">
         <div class="card-body">
             <h4 class="card-title">List of Services</h4>
+
             <div class="table-responsive m-t-40">
                 <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
+
                     <div class="row">
                         <div class="col-sm-12">
-                            <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
-                                role="grid" aria-describedby="myTable_info">
+                            <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" >
                                <thead>
                                     <tr role="row">
                                        <th>S.No</th>
@@ -57,10 +60,12 @@
                                        <th>Action</th>
                                     </thead>
 
+
                                     @if (!$service->isEmpty())
 
 
                                     @foreach ($service as $item)
+
                                  <tbody>
 
 
@@ -109,16 +114,23 @@
                                 </div>
 
                                    @endforeach
-                                   @endif
+                               
 
                             </table>
                         </div>
-                    </div>
-                </div>
+                    
+                      </div>
+              
             </div>
         </div>
     </div>
-</div>
+
+
+
+    @endif
+
+</div> 
+
 
 
 
@@ -165,10 +177,7 @@
                       <label for="text">Service Details</label>
                       <input type="text" name="details" class="form-control" id="exampleInputPassword1" placeholder="Enter service Details">
                     </div>
-                    <div class="form-group">
-                      <label for="text">WorkShop ID</label>
-                      <input type="text" name="workshop_id" class="form-control" id="exampleInputPassword1" placeholder="Enter service Details">
-                    </div>
+                   <input type="hidden" name="workshop_id" value="{{$workshop->id}}">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit"  class="btn btn-primary">Add Services</button>

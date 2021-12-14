@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Service;
 
-class ServiceController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-
+       $data=User::all();
+       return view('admin.pages.user.list',compact('data'));
     }
 
     /**
@@ -36,16 +37,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $service= new Service();
-        $service->title=$request->title;
-        $service->duration=$request->duration;
-        $service->charge=$request->charge;
-        $service->details=$request->details;
-        $service->workshop_id=$request->workshop_id;
-        $service->save();
-
-        toastr()->success('Service added successfully');
-        return redirect()->route('shop.index');
+        //
     }
 
     /**
@@ -56,8 +48,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service=Service::findOrFail($id);
-        return view('admin.pages.vehicle.list',compact('service'));
+        //
     }
 
     /**
@@ -68,10 +59,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service=Service::findOrFail($id);
-        return view('admin.pages.workshop.modal',compact('service'));
-
-
+        //
     }
 
     /**
@@ -83,20 +71,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $service=Service::findOrFail($id);
-        $service->update([
-
-            'title'=>$request->title,
-            'duration'=>$request->duration,
-            'charge'=>$request->charge,
-            'details'=>$request->details,
-            'workshop_id'=>$request->workshop_id,
-
-        ]);
-        toastr()->success('workshop list has Successfully updated');
-
-        return back();
+        //
     }
 
     /**
@@ -107,9 +82,6 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        Service::findOrFail($id)->delete();
-        toastr()->warning('Vehicle has Successfully delete');
-        return redirect()->route('shop.index');
-
+        //
     }
 }
