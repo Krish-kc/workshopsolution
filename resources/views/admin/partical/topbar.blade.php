@@ -250,9 +250,11 @@
                                         <div class="dw-user-box">
                                             <div class="u-img"><img src="{{asset('../assets/images/users/1.jpg')}}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p class="text-muted"><a href="https://www.wrappixel.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9aecfbe8eff4dafdf7fbf3f6b4f9f5f7">[email&#160;protected]</a></p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                        </div>
+                                                @if (Auth::user())
+                                                <h4> {{ Auth::user()->name }}</h4>
+                                                <h4> {{ Auth::user()->email}}</h4>
+                                                   @endif
+                                            </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
@@ -261,8 +263,13 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a></li>
+
                                 </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                             </div>
                         </li>
                         <!-- ============================================================== -->
