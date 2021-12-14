@@ -15,7 +15,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-   
+
     }
 
     /**
@@ -43,8 +43,8 @@ class ServiceController extends Controller
         $service->details=$request->details;
         $service->workshop_id=$request->workshop_id;
         $service->save();
-        
-        // toastr()->sucess('Service added successfully');
+
+        toastr()->success('Service added successfully');
         return redirect()->route('shop.index');
     }
 
@@ -56,7 +56,8 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        //
+        $service=Service::findOrFail($id);
+        return view('admin.pages.vehicle.list',compact('service'));
     }
 
     /**
@@ -82,7 +83,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $service=Service::findOrFail($id);
         $service->update([
 

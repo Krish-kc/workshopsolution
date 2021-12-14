@@ -18,8 +18,8 @@ class ServiceRecordController extends Controller
      */
     public function index()
     {
-        
-        return view('admin.pages.vehicle.serviceBook.add');
+
+
     }
 
     /**
@@ -29,7 +29,7 @@ class ServiceRecordController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.vehicle.serviceBook.add');
+
     }
 
     /**
@@ -44,16 +44,14 @@ class ServiceRecordController extends Controller
         if($request->hasFile('image'))
         {
          $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension(); 
+         $imageName = time().'.'.$image->getClientOriginalExtension();
          $image->move(public_path('bill'), $imageName);
         }else{
              $imageName=null;
-        }  
+        }
 
-     
-     
-     
-        dd($imageName);
+
+
 
         $service_record=new ServiceRecord();
         $service_record->serviceBook_id=$request->serviceBook_id;
@@ -68,7 +66,7 @@ class ServiceRecordController extends Controller
         $service_record->image=$imageName;
         $service_record->save();
         toastr()->success('Service Record information has been successfully saved!');
-        return redirect()->route('service.index');
+        return redirect()->route('vehicle.index');
 
     }
 
@@ -80,8 +78,9 @@ class ServiceRecordController extends Controller
      */
     public function show($id)
     {
-        $service= Service::findorFail($id);
-        return view('admin.pages.vehicle.serviceBook.add', compact('service'));
+
+        // $serviceRecord= ServiceRecord::all();
+        // return view('admin.pages.vehicle.serviceBook.add', compact('serviceRecord'));
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('admin.index');
 @section('content')
-    
+
 <div class="container-fluid">
 
     <!-- ============================================================== -->
@@ -19,7 +19,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Workshop</h4>
-           
+
             <p class="card-text">All the information of Workshop</p>
                <h6 class="card-subtitle">Workshop name:{{$workshop->name}}</h6>
                <h6 class="card-subtitle">Workshop :{{$workshop->PAN}}</h6>
@@ -27,8 +27,10 @@
                <h6 class="card-subtitle">worksho No:{{$workshop->starting_time}}</h6>
                <h6 class="card-subtitle">worksho No:{{$workshop->ending_time}}</h6>
 
-               <img src="{{asset('workshop')}}/{{$workshop->image}}" style="max-height: 150px;">
-         
+
+               <img src="{{asset('Workshop_image/'.$workshop->image)}}" style="max-height: 150px;">
+
+
 
         </div>
     </div>
@@ -39,7 +41,11 @@
        <div class="card">
         <div class="card-body">
             <h4 class="card-title">List of Services</h4>
-            <div class="table-responsive m-t-40" >
+
+            <div class="table-responsive m-t-40">
+                <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" >
@@ -53,24 +59,26 @@
                                        <th>Workshop Id</th>>
                                        <th>Action</th>
                                     </thead>
-                                
-                                 
-                                     
-                                 
-                                    @foreach ($workshop->services as $item)
+
+
+                                    @if (!$service->isEmpty())
+
+
+                                    @foreach ($service as $item)
+
                                  <tbody>
-                                     
-                                 
+
+
                                      <tr role="row" class="odd">
                                        <td>{{ $loop->iteration}}</td>
                                          <td class="sorting_1">{{$item->title}}</td>
                                          <td>{{$item->duration}}</td>
-                                         <td>{{$item->charge}}</td> 
+                                         <td>{{$item->charge}}</td>
                                          <td>{{$item->details}}</td>
                                          <td>{{$item->workshop_id}}</td>
                                           <td>
                                            <div class="btn-group">
-                                      
+
                                                <a href="{{route('service.edit',$item->id)}}"  class="btn btn-success"><i class="fa fa-edit"></i></a>
                                               <a href="" data-toggle="modal" data-target="#deletemodal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                            </div>
@@ -84,10 +92,10 @@
                                     <form action="{{route('service.destroy',$item->id)}}" method="POST" id="deletebanner">
                                       @csrf
                                       @method('DELETE')
-                                      
+
                                         <div class="modal-content">
-                                            <div class="modal-header bg-danger ">				
-                                                <h4 class="modal-title w-100">Are you sure?</h4>	
+                                            <div class="modal-header bg-danger ">
+                                                <h4 class="modal-title w-100">Are you sure?</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                             </div>
                                             <div class="modal-body">
@@ -96,11 +104,11 @@
                                             <div class="modal-footer justify-content-center">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                 <button type="submit" class="btn btn-primary" >Sumbit</button>
-                                              
+
                                             </div>
                                         </div>
-                                    
-                                    
+
+
                                     </form>
                                     </div>
                                 </div>
@@ -116,24 +124,28 @@
             </div>
         </div>
     </div>
+
+
+
     @endif
 
 </div> 
 
 
 
+
 </div>
-    
 
 
 
 
 
 
-   
 
 
-      
+
+
+
       <!-- Modal -->
       <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -145,7 +157,7 @@
               </button>
             </div>
             <div class="modal-body">
-             
+
                 <form action="{{route('service.store')}}" method="POST" enctype="multipart/form-data" class="form-material m-t-40">
                   @csrf
                   @method('POST')
@@ -182,12 +194,12 @@
 
 
 
-  
 
 
-    
-   
-      
+
+
+
+
 
 
 
