@@ -38,7 +38,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Auth::routes();
+// Auth::routes();
 
 
 
@@ -46,7 +46,7 @@ Auth::routes();
 
 Route::get('/workshop-index',[WorkShopController::class,'index'])->name('workshop-index');
 
-//routes for admins pannel 
+//routes for admins pannel
 Route::get('/admin',[AdminController::class,'dashbord']);
 Route::resource('shop', WorkShopController::class);
 Route::resource('vehicle', VehicleController::class);

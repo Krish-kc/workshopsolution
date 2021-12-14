@@ -136,6 +136,15 @@ class VehicleController extends Controller
         //     $imageName=$vehicle->image;
         // }
 
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'number' => 'required',
+            'lot' => 'required',
+            'company' => 'required',
+            'model' => 'required',
+            'user_id' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+        ]);
 
 
         $vehicle=Vehicle::findorfail($id);
