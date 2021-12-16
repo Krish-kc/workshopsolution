@@ -46,7 +46,7 @@
                                 <h4 class="card-title">Service Book</h4>
                                 <p class="card-text">Our servicebook provide all the infromation related to services.</p>
                                 <h4>Owner Name :{{$vehicle->service->owner_name}} </h4>
-                                <h4>Engeen Number :{{$vehicle->service->engeen_number}} </h4>
+                                <h4>Engine Number :{{$vehicle->service->engeen_number}} </h4>
                                 <h4>Chassis Number :{{$vehicle->service->chassis_number}}</h4>
                                 <a href="{{route('servicebook.show',$vehicle->id)}}" class="btn btn-primary">Open Servicebook</a>
                             </div>
@@ -55,9 +55,9 @@
                    @endif
 
                 </div>
+            </div>
 
-
-</div>
+        </div>
 </div>
 
 
@@ -82,7 +82,7 @@
                   <input type="text" name="owner_name" class="form-control form-control-line" placeholder="Some text value...">
                </div>
                <div class="form-group">
-                  <label>Engeen Number</label>
+                  <label>Engine Number</label>
                   <input type="text" name="engeen_number" class="form-control form-control-line" placeholder="Some text value...">
                </div>
                <div class="form-group">

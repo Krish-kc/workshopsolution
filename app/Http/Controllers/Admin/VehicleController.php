@@ -49,6 +49,16 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
 
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'number' => 'required',
+            'lot' => 'required',
+            'company' => 'required',
+            'model' => 'required',
+            'user_id' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+        ]);
+
         if($request->hasFile('image'))
         {
          $image=$request->file('image');

@@ -1,7 +1,7 @@
- @extends('admin.index')      
+ @extends('admin.index')
   @section('content')
-      
-          
+
+
         <div class="container-fluid">
 
                 <!-- ============================================================== -->
@@ -43,15 +43,15 @@
                                     </div>
 
                                     <div class="row button-group">
-                                   
+
                                     <div class="col-lg-2 col-md-4">
                                         <button type="button" class="btn btn-rounded btn-block btn-success">Save</button>
                                     </div>
                                     <div class="col-lg-2 col-md-4">
                                         <button type="button" class="ml-3 btn btn-rounded btn-block btn-danger">Exit</button>
                                     </div>
-                                </div>   
-                                  
+                                </div>
+
                                 </form>
                             </div>
                         </div>
@@ -108,4 +108,4 @@
                 </div>
             </div>
 
-@endsection 
+@endsection
