@@ -37,16 +37,18 @@
                 <div>
                     <button type="button" data-toggle="modal" data-target="#exampleModalLong"
                         class="btn waves-effect waves-light btn-rounded btn-primary">Add Service Record</button>
-
                 </div>
+            </div>
+        </div>
+    </div>
 
 
 
 
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">List of Register User</h4>
-                        <h6 class="card-subtitle">Input the Required Information for Registering New User</h6>
+                        <h4 class="card-title">List of Service Records</h4>
+                        <h6 class="card-subtitle">Service Records Information Till Now</h6>
 
                         <div class="table-responsive m-t-40">
                             <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -107,7 +109,7 @@
 
                                                     <div id="deletemodal" class="modal fade">
                                                         <div class="modal-dialog modal-confirm">
-                                                            <form action="{{ route('vehicle.destroy', $item->id) }}"
+                                                            <form action="{{ route('serviceRecord.destroy', $item->id) }}"
                                                                 method="POST" id="deletebanner">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -150,6 +152,8 @@
             </div>
         </div>
     </div>
+</div>
+
 
 
 
@@ -180,51 +184,81 @@
                         <div class="form-group">
 
                             <input type="hidden" name="serviceBook_id" value="{{ $vehicle->service->id }}"
-                                class="form-control form-control-line" placeholder="Some text value...">
+                                class="form-control form-control-line  @error('serviceBook_id') is-invalid @enderror " placeholder="Some text value...">
+                                @error('serviceBook_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Date</label>
-                            <input type="date" name="date" class="form-control form-control-line"
+                            <input type="date" name="date" class="form-control form-control-line @error('date') is-invalid @enderror"
                                 placeholder="Some text value...">
+                                @error('date')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Kilometer</label>
-                            <input type="text" name="kilometer" class="form-control form-control-line"
+                            <input type="text" name="kilometer" class="form-control form-control-line @error('kilometer') is-invalid @enderror"
                                 placeholder="Some text value...">
+                                @error('kilometer')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-group">
                             <label>Part Changed</label>
-                            <input type="text" name="part_change" class="form-control form-control-line"
+                            <input type="text" name="part_change" class="form-control form-control-line @error('part_change') is-invalid @enderror"
                                 placeholder="Some text value...">
+                                @error('part_change')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-group">
                             <label>Service Charge</label>
-                            <input type="text" name="service_charge" class="form-control form-control-line"
+                            <input type="text" name="service_charge" class="form-control form-control-line @error('service_charge') is-invalid @enderror"
                                 placeholder="Some text value...">
+                                @error('service_charge')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-group">
                             <label>Service Duration</label>
-                            <input type="text" name="service_duration" class="form-control form-control-line"
+                            <input type="text" name="service_duration" class="form-control form-control-line @error('service_charge') is-invalid @enderror "
                                 placeholder="Some text value...">
+                                @error('service_duration')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-group">
                             <label>Next Service</label>
-                            <input type="text" name="nextService" class="form-control form-control-line"
+                            <input type="date" name="nextService" class="form-control form-control-line @error('nextService') is-invalid @enderror "
                                 placeholder="Some text value...">
+                                @error('nextService')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <input type="text" name="description" class="form-control form-control-line"
+                            <input type="text" name="description" class="form-control form-control-line  @error('nextService') is-invalid @enderror "
                                 placeholder="Some text value...">
+                                @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-group">
                             <label>Bill Image</label>
-                            <input type="file" class="fileinput fileinput-new input-group" name="image">
+                            <input type="file" class="fileinput fileinput-new input-group @error('image') is-invalid @enderror" name="image">
+                            @error('image')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Service center Name</label>
-                            <input type="text" name="serviceCenter_name" class="form-control form-control-line"
+                            <input type="text" name="serviceCenter_name" class="form-control form-control-line @error('serviceCenter_name') is-invalid @enderror"
                                 placeholder="Some text value...">
+                                @error('serviceCenter_name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                 </div>
                 <div class="modal-footer">

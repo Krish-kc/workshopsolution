@@ -24,7 +24,7 @@
 
                  <div class="table-responsive m-t-40">
                      <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                        
+
                          <div class="row">
                              <div class="col-sm-12">
                                  <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
@@ -45,55 +45,63 @@
                                                  colspan="1" aria-label="Age: activate to sort column ascending"
                                                  style="width: 53.2188px;">Action</th>
                                      </thead>
-                                    @foreach ($workshop as $item)
-                                        <tr>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->location}}</td>
-                                            <td>
-                                              <img src="{{asset('workshop')}}/{{$item->image}}" style="max-height: 100px;">
-                                            </td>
-                                            <td>
-                                            <div class="btn-group">
-                                                <a href="{{route('shop.edit',$item->id)}}" class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
+                                     @foreach ($workshop as $item)
+                                         <tr>
+                                             <td>{{ $item->name }}</td>
+                                             <td>{{ $item->location }}</td>
+                                             <td>
+                                                 <img src="{{ asset('workshop') }}/{{ $item->image }}"
+                                                     style="max-height: 100px;">
+                                             </td>
+                                             <td>
+                                                 <div class="btn-group">
+                                                     <a href="{{ route('shop.edit', $item->id) }}"
+                                                         class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
 
-                                
-                                                <a href="" data-toggle="modal" data-target="#deletemodal" class="btn btn-danger m-1"><i class="fa fa-trash"></i></a>
-                                                <a href="{{route('shop.show',$item->id)}}" class="btn btn-success  m-1"><i class="fa fa-eye"></i></a>
 
-                                              
-                                              </div>  
+                                                     <a href="" data-toggle="modal" data-target="#deletemodal"
+                                                         class="btn btn-danger m-1"><i class="fa fa-trash"></i></a>
+                                                     <a href="{{ route('shop.show', $item->id) }}"
+                                                         class="btn btn-success  m-1"><i class="fa fa-eye"></i></a>
 
-                                            </td>
-                                        </tr>
-                                        <tbody>
-                                            
-                                        </tbody>
-                                        <div id="deletemodal" class="modal fade">
-                                            <div class="modal-dialog modal-confirm">
-                                            <form action="{{route('shop.destroy',$item->id)}}" method="POST" id="deletebanner">
-                                              @csrf
-                                              @method('DELETE')
-                                              
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-danger ">				
-                                                        <h4 class="modal-title w-100">Are you sure?</h4>	
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-center">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="submit" class="btn btn-primary" >Sumbit</button>
-                                                      
-                                                    </div>
-                                                </div>
-                                            
-                                            
-                                            </form>
-                                            </div>
-                                        </div>
-                                        @endforeach
+
+                                                 </div>
+
+                                             </td>
+                                         </tr>
+                                         <tbody>
+
+                                         </tbody>
+                                         <div id="deletemodal" class="modal fade">
+                                             <div class="modal-dialog modal-confirm">
+                                                 <form action="{{ route('shop.destroy', $item->id) }}" method="POST"
+                                                     id="deletebanner">
+                                                     @csrf
+                                                     @method('DELETE')
+
+                                                     <div class="modal-content">
+                                                         <div class="modal-header bg-danger ">
+                                                             <h4 class="modal-title w-100">Are you sure?</h4>
+                                                             <button type="button" class="close"
+                                                                 data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                         </div>
+                                                         <div class="modal-body">
+                                                             <p>Do you really want to delete these records? This process
+                                                                 cannot be undone.</p>
+                                                         </div>
+                                                         <div class="modal-footer justify-content-center">
+                                                             <button type="button" class="btn btn-secondary"
+                                                                 data-dismiss="modal">Cancel</button>
+                                                             <button type="submit" class="btn btn-primary">Sumbit</button>
+
+                                                         </div>
+                                                     </div>
+
+
+                                                 </form>
+                                             </div>
+                                         </div>
+                                     @endforeach
 
                                  </table>
                              </div>
@@ -108,7 +116,7 @@
 
 
 
-    
-     
+
+
 
  @endsection

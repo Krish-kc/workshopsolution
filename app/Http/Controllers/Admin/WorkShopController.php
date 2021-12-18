@@ -40,9 +40,15 @@ class WorkShopController extends Controller
     public function store(Request $request)
     {
 
-         $request->validate([
-            'name'=>'required',
-            'image'=>'required|mimes:jpeg,jpg,png',
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'PAN' => 'required',
+            'location' => 'required',
+            'starting_time' => 'required',
+            'ending_time' => 'required',
+            'description' => 'required',
+            'no_of_staff' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
 
         if($request->hasFile('image'))
@@ -81,7 +87,7 @@ class WorkShopController extends Controller
     {
         $workshop=Workshop::findorFail($id);
         return view('admin.pages.workshop.view',compact('workshop'));
-  
+
 
     }
 
@@ -123,6 +129,17 @@ class WorkShopController extends Controller
         // else{
         //     $imageName=$workshop->image;
         // }
+
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'PAN' => 'required',
+            'location' => 'required',
+            'starting_time' => 'required',
+            'ending_time' => 'required',
+            'description' => 'required',
+            'no_of_staff' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+        ]);
 
             $workshop->update([
             'name'=>$request->name,
