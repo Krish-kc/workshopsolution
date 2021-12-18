@@ -9,9 +9,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\ServiceRecordController;
-
-
-
+use App\Http\Controllers\User\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +30,11 @@ Route::get('/', function () {
 
 
 
-//all user routes are here
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//all userUI Routes
+Route::get('/home',[PageController::class,'home'])->name('home');
+Route::get('/about',[PageController::class,'about'])->name('about');
+Route::get('/workshop-service',[PageController::class,'service'])->name('workshop-service');
+Route::get('/contact',[PageController::class,'contact'])->name('contact');
 
 
 
