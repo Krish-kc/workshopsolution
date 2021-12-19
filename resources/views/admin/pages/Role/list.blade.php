@@ -37,65 +37,29 @@
                                     </thead>
                                     @foreach ($role as $item)
                                         <tbody>
-
-
                                             <tr role="row" class="odd">
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td class="sorting_1">{{ $item->name }}</td>
-                                                <td>@foreach ($item->getPermissionNames() as $permission)
-                                                    {{$permission}}
-                                                @endforeach</td>
-
-
+                                                <td>
+                                                    @foreach ($item->getPermissionNames() as $permission)
+                                                        {{ $permission }}
+                                                    @endforeach
+                                                </td>
                                                 <td>
                                                     <div class="btn-group">
 
 
-                                                        <a href="{{route('role.edit',$item->id)}}"
+                                                        <a href="{{ route('role.edit', $item->id) }}"
                                                             class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
-                                                            <a href="" data-toggle="modal" data-target="#deletemodal"
-                                                            class="btn btn-danger m-1"><i class="fa fa-trash"></i></a>
+                                                        <a href="#" class="btn btn-danger m-1"
+                                                            onclick="handeldelete({{ $item->id }})">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
                                                     </div>
-
                                                 </td>
-
-
                                             </tr>
                                         </tbody>
-
-                                        <div id="deletemodal" class="modal fade">
-                                            <div class="modal-dialog modal-confirm">
-                                                <form action="{{ route('role.destroy',$item->id) }}" method="POST"
-                                                    id="deleterole">
-
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <div class="modal-content">
-                                                        <div class="modal-header bg-danger ">
-                                                            <h4 class="modal-title w-100">Are you sure?</h4>
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Do you really want to delete these records? This process
-                                                                cannot be undone.</p>
-                                                        </div>
-                                                        <div class="modal-footer justify-content-center">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-primary">Sumbit</button>
-
-                                                        </div>
-                                                    </div>
-
-
-                                                </form>
-                                            </div>
-                                        </div>
-
                                     @endforeach
-
                                 </table>
                             </div>
                         </div>
@@ -104,11 +68,42 @@
             </div>
         </div>
     </div>
+    </div>
+    {{-- Delete Model --}}
+    <div id="deletemodal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <form action="#" method="POST" id="deleterole">
+                @csrf
+                @method('DELETE')
 
+                <div class="modal-content">
+                    <div class="modal-header bg-danger ">
+                        <h4 class="modal-title w-100">Are you sure?</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
     </div>
 
+@endsection
+@section('js')
+    <script>
+        function handeldelete(id) {
+            var form = document.getElementById('deleterole')
+            $('#deletemodal').modal('show')
+            form.action = 'role/' + id
 
-
-
-
+        }
+    </script>
 @endsection
