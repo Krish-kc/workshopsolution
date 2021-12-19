@@ -1,8 +1,8 @@
-  
-  
+
+
   <script data-cfasync="false" src="{{asset('../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
   <script src="{{asset('../assets/plugins/jquery/jquery.min.js')}}"></script>
-    
+
     <script src="{{asset('../assets/plugins/popper/popper.min.js')}}"></script>
     <script src="{{asset('../assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
@@ -22,11 +22,11 @@
     <script src="{{asset('../assets/plugins/calendar/dist/cal-init.js')}}"></script>
     <script src="{{asset('../assets/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <script src="{{asset('../assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
-    
+
     <script src="{{asset('../assets/plugins/datatables/datatables.min.js')}}"></script>
     <!-- start - This is for export functionality only -->
-   
-    
+
+
     <script>
     $(document).ready(function() {
         $('#myTable').DataTable();

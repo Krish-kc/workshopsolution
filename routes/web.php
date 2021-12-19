@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\WorkShopController;
 use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\PermissionController;
 
 use App\Http\Controllers\Admin\UserController;
 
@@ -62,3 +64,9 @@ Route::resource('user', UserController::class);
 Route::resource('service', ServiceController::class);
 
 Route::resource('serviceRecord', ServiceRecordController::class);
+
+// Role and Permission route
+
+Route::resource('role', RoleController::class);
+
+Route::resource('permission', PermissionController::class);

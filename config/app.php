@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
          Yoeunes\Toastr\ToastrServiceProvider::class,
+         Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Package Service Providers...
          */
