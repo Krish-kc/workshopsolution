@@ -8,4 +8,5 @@
     <link href="{{asset('../assets/plugins/calendar/dist/fullcalendar.css')}}" rel="stylesheet" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/colors/blue.css')}}" id="theme" rel="stylesheet">
+
     @toastr_css

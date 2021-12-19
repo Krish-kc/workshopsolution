@@ -1,4 +1,4 @@
-@extends('admin.index')      
+@extends('admin.index')
 @section('content')
   <div class="container-fluid">
 
@@ -22,7 +22,7 @@
 
                  <div class="table-responsive m-t-40">
                      <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                        
+
                          <div class="row">
                              <div class="col-sm-12">
                                  <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
@@ -40,8 +40,8 @@
                                          </thead>
                                          @foreach ($vehicle as $item)
                                       <tbody>
-                                          
-                                      
+
+
                                           <tr role="row" class="odd">
                                             <td>{{ $loop->iteration}}</td>
                                               <td class="sorting_1">{{$item->name}}</td>
@@ -49,17 +49,17 @@
                                               <td>{{$item->lot}}</td>
                                               <td>{{$item->company}}</td>
                                               <td>{{$item->model}}</td>
-                                           
+
                                               <td><img src="{{asset('vehicle_image')}}/{{$item->image}}" style="max-height: 100px;"></td>
                                                </td>
                                                <td>
                                                 <div class="btn-group">
-                                           
+
                                                     <a href="{{route('vehicle.edit',$item->id)}}" class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
                                                    <a href="" data-toggle="modal" data-target="#deletemodal" class="btn btn-danger m-1" ><i class="fa fa-trash"></i></a>
                                                     <a href="{{route('vehicle.show',$item->id)}}" class="btn btn-success m-1"><i class="fa fa-eye"></i></a>
                                                 </div>
-                
+
                                             </td>
 
 
@@ -71,10 +71,10 @@
                                             <form action="{{route('vehicle.destroy',$item->id)}}" method="POST" id="deletebanner">
                                               @csrf
                                               @method('DELETE')
-                                              
+
                                                 <div class="modal-content">
-                                                    <div class="modal-header bg-danger ">				
-                                                        <h4 class="modal-title w-100">Are you sure?</h4>	
+                                                    <div class="modal-header bg-danger ">
+                                                        <h4 class="modal-title w-100">Are you sure?</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                     </div>
                                                     <div class="modal-body">
@@ -83,15 +83,15 @@
                                                     <div class="modal-footer justify-content-center">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                         <button type="submit" class="btn btn-primary" >Sumbit</button>
-                                                      
+
                                                     </div>
                                                 </div>
-                                            
-                                            
+
+
                                             </form>
                                             </div>
                                         </div>
-        
+
                                         @endforeach
 
                                  </table>
@@ -101,14 +101,13 @@
                  </div>
              </div>
          </div>
-     </div>    
-    
+     </div>
+
     </div>
 
 
 
 
 
-@endsection 
+@endsection
 
- 
