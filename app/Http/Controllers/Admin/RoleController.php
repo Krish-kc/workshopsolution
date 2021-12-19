@@ -108,10 +108,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
-        // Role::findOrFail($id)->delete();
-        $role = Role::find($id);
-        $role->delete();
+        Role::findOrFail($id)->delete();
 
         toastr()->warning('Role has Successfully deleted');
         return redirect()->route('role.index');
