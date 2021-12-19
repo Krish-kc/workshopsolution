@@ -1,5 +1,6 @@
 
 
+
   <script data-cfasync="false" src="{{asset('../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
   <script src="{{asset('../assets/plugins/jquery/jquery.min.js')}}"></script>
 
@@ -74,3 +75,5 @@
         ]
     });
     </script>
+  @yield('js')
+
