@@ -96,6 +96,9 @@ class ServiceBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ServiceBook::findOrFail($id)->delete();
+
+        toastr()->warning('ServiceBook has Successfully delete');
+        return redirect()->route('vehicle.index');
     }
 }

@@ -154,11 +154,12 @@ class ServiceRecordController extends Controller
      */
     public function destroy($id)
     {
-        $serviceRecord=ServiceRecord::find($id);
+        // $serviceRecord=ServiceRecord::findorFail($id);
         // unlink("bill/".$serviceRecord->image);
 
-        ServiceRecord::where("image", $serviceRecord->image)->delete();
-        toastr()->warning('Banner has been delete successfully!');
+        // ServiceRecord::where("image", $serviceRecord->image)->delete();
+        ServiceRecord::findOrFail($id)->delete();
+        toastr()->warning('serviceRecord has been delete successfully!');
         return redirect()->route('vehicle.index');
 
     }

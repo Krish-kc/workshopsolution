@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+
 
 class UserController extends Controller
 {
@@ -37,7 +39,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //    $user=new User();
+
     }
 
     /**
@@ -59,7 +62,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::findorFail($id);
+        $role=Role::all();
+        return view('admin.pages.user.edit',compact('user','role'));
     }
 
     /**
@@ -71,7 +76,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+      $user= User::findorFail($id);
+
+      $user->update([
+        'name'=>$request->name,
+        'email'=>$request->email,
+      ]);
+
+      $user->assignRole($request->role);
+      $user->save();
+      toastr()->success('User has Successfully updated');
+      return redirect()->route('user.index');
+
+
     }
 
     /**
