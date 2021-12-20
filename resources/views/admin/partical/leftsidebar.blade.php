@@ -63,13 +63,15 @@
 
                         </li>
                          <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-male">
-                            </i><span class="hide-menu"> Role & Permission Management </span></a>
+                            </i><span class="hide-menu"> Role & Permission</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{route('role.index')}}"><i class="mdi mdi-plus"></i>
 
                                       Role </a></li>
                                 <li><a href="{{route('permission.index')}}"><i class="mdi mdi-plus"></i>
                                      Permission</a></li>
+                                <li><a href="{{route('user.index')}}"><i class="mdi mdi-plus"></i>
+                                     Assign Role</a></li>
 
 
                              </ul>
