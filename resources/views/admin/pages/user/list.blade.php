@@ -1,7 +1,7 @@
- @extends('admin.index')      
+ @extends('admin.index')
   @section('content')
-      
-          
+
+
         <div class="container-fluid">
 
                 <!-- ============================================================== -->
@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">List of Register User</h4>
                                 <h6 class="card-subtitle">Input the Required Information for Registering New User</h6>
-                   
+
                               <div class="table-responsive m-t-40">
                                     <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                      <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
@@ -29,13 +29,13 @@
                                            <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 173.266px;">Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 283.344px;">Email</th>
-                                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 129.984px;">Image</th>
+                                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 129.984px;">Role</th>
                                             <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 53.2188px;">Action</th>
                                            </thead>
                                         <tbody>
                                         @foreach ($data as $item)
-                                            
-                                        
+
+
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{$item->name}}</td>
                                                 <td>{{$item->email}}</td>
@@ -59,9 +59,9 @@
                  </div>
             </div>
         </div>
-        
-                         
-                    
+
+
+
 
 
                 <div class="right-sidebar">
@@ -116,4 +116,4 @@
                 </div>
             </div>
 
-@endsection 
+@endsection
