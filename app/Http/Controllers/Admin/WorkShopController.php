@@ -15,6 +15,15 @@ class WorkShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+         $this->middleware('permission:workshop-list', ['only' => ['index','show']]);
+         $this->middleware('permission:workshop-create', ['only' => ['create','store']]);
+         $this->middleware('permission:workshop-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:workshop-delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
       $workshop=WorkShop::all();
