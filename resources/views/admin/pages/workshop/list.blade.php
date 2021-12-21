@@ -55,16 +55,18 @@
                                              </td>
                                              <td>
                                                  <div class="btn-group">
-                                                     <a href="{{ route('shop.edit', $item->id) }}"
-                                                         class="btn btn-success m-1"><i class="fa fa-edit"></i>
-                                                    </a>
+                                                     @can('workshop-edit')
+                                                         <a href="{{ route('shop.edit', $item->id) }}"
+                                                             class="btn btn-success m-1"><i class="fa fa-edit"></i>
+                                                         </a>
+                                                     @endcan
 
-
-                                                     <a href="#" class="btn btn-danger m-1"
-                                                         onclick="handeldelete({{ $item->id }})">
-                                                         <i class="fa fa-trash"></i>
-                                                     </a>
-
+                                                     @can('workshop-delete')
+                                                         <a href="#" class="btn btn-danger m-1"
+                                                             onclick="handeldelete({{ $item->id }})">
+                                                             <i class="fa fa-trash"></i>
+                                                         </a>
+                                                     @endcan
 
                                                      <a href="{{ route('shop.show', $item->id) }}"
                                                          class="btn btn-success  m-1"><i class="fa fa-eye"></i>

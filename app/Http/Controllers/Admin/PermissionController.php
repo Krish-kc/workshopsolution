@@ -41,7 +41,7 @@ class PermissionController extends Controller
         $permission->name=$request->name;
         $permission->guard_name="web";
         $permission->save();
-        toastr()->success('Role information has been successfully saved!');
+        toastr()->success('Permission has been successfully saved!');
         return redirect()->route('permission.index');
     }
 
@@ -79,11 +79,11 @@ class PermissionController extends Controller
     {
         $permission=Permission::findOrFail($id);
         $permission->update([
-            'id'=>$request->id,
+           
             'name'=>$request->name,
             'guard_name'=>$request->guard_name,
         ]);
-        toastr()->success('Role list has Successfully updated');
+        toastr()->success('Permission has Successfully updated');
         return redirect()->route('permission.index');
     }
 

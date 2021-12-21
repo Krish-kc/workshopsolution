@@ -44,29 +44,29 @@ Route::get('/contact',[PageController::class,'contact'])->name('contact');
 
 
 
+
+
+
 Auth::routes();
-
-
-
-
-
-Route::get('/workshop-index',[WorkShopController::class,'index'])->name('workshop-index');
-
 //routes for admins pannel
-Route::get('/admin',[AdminController::class,'dashbord']);
-Route::resource('shop', WorkShopController::class);
-Route::resource('vehicle', VehicleController::class);
-Route::resource('servicebook', ServiceBookController::class);
-Route::resource('user', UserController::class);
+Route::group(['middleware' => ['auth']], function() {
+        
+                Route::get('/admin',[AdminController::class,'dashbord'])->name('admin');
+                Route::resource('shop', WorkShopController::class);
+                Route::resource('vehicle', VehicleController::class);
+                Route::resource('servicebook', ServiceBookController::class);
+                Route::resource('user', UserController::class);
 
-// Route::resource('shop', ControllersWorkShopController::class);
+                // Route::resource('shop', ControllersWorkShopController::class);
 
-Route::resource('service', ServiceController::class);
+                Route::resource('service', ServiceController::class);
 
-Route::resource('serviceRecord', ServiceRecordController::class);
+                Route::resource('serviceRecord', ServiceRecordController::class);
 
-// Role and Permission route
+                // Role and Permission route
 
-Route::resource('role', RoleController::class);
+                Route::resource('role', RoleController::class);
 
-Route::resource('permission', PermissionController::class);
+                Route::resource('permission', PermissionController::class);
+
+});

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ServiceRecord;
 use App\Models\Vehicle;
-use App\Models\WorkShop;
 use Illuminate\Http\Request;
-use File;
 use Illuminate\Support\Facades\Auth;
 
 class VehicleController extends Controller
@@ -17,6 +14,13 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     function __construct()
+    {
+         $this->middleware('permission:vehicle-list', ['only' => ['index','show']]);
+         $this->middleware('permission:vehicle-create', ['only' => ['create','store']]);
+         $this->middleware('permission:vehicle-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:vehicle-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
 
@@ -78,7 +82,7 @@ class VehicleController extends Controller
         $vehicle->image=$imageName;
         $vehicle->user_id=Auth::id();
         $vehicle->save();
-        toastr()->success('Workshop information has been successfully saved!');
+        toastr()->success('vehicle information has been successfully saved!');
         return redirect()->route('vehicle.index');
 
 

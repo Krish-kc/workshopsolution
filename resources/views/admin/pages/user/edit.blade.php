@@ -18,38 +18,38 @@
         <div class="card-body">
             <h4 class="card-title">Add Role</h4>
             <h6 class="card-subtitle">Please add Role Information</h6>
-            <form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data"
+            <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data"
                 class="form-material m-t-40">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
                     <label>User Name</label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                    value="{{$user->name}}">
+                        value="{{ $user->name }}">
                     @error('name')
-                    <div class="text-danger">{{ $message }}</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
-                    value="{{$user->email}}">
+                        value="{{ $user->email }}">
                     @error('email')
-                    <div class="text-danger">{{ $message }}</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <label class="input-group-text" for="inputGroupSelect01">Role</label>
+                        <label class="input-group-text" for="inputGroupSelect01">Role</label>
                     </div>
                     <select class="custom-select" name="role" id="inputGroupSelect01">
                         <option selected>Choose...</option>
                         @foreach ($role as $item)
-                      <option value="{{$item->id}}">{{$item->name}}</option>
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
 
-                      @endforeach
+                        @endforeach
                     </select>
-                  </div>
+                </div>
 
 
                 {{-- <div class="form-group">
@@ -80,5 +80,3 @@
 
 
 @endsection
-
-
