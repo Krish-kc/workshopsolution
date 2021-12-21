@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Builderz - Construction Company Website Template</title>
+    <title>E-WorkShop - Service your vehicle smartly</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Construction Company Website Template" name="keywords">
     <meta content="Construction Company Website Template" name="description">
