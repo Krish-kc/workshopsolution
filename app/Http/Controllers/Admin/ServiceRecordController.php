@@ -16,6 +16,14 @@ class ServiceRecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('permission:serviceRecord-list', ['only'=>['index','show']]);
+        $this->middleware('permission:serviceRecord-create', ['only'=>['create','store']]);
+        $this->middleware('permission:serviceRecord-edit', ['only'=>['edit','update']]);
+        $this->middleware('permission:serviceRecord-delete', ['only'=>['destroy']]);
+    }
     public function index()
     {
 

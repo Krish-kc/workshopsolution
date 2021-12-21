@@ -14,6 +14,15 @@ class ServiceBookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('permission:serviceBook-list', ['only'=>['index','show']]);
+        $this->middleware('permission:serviceBook-create', ['only'=>['create','store']]);
+        $this->middleware('permission:serviceBook-edit', ['only'=>['edit','update']]);
+        $this->middleware('permission:serviceBook-delete', ['only'=>['destory']]);
+    }
+
     public function index()
     {
 

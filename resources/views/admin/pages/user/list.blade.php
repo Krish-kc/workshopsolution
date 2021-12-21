@@ -50,7 +50,12 @@
                                          <td>{{ $item->email }}</td>
                                          <td>
                                              @foreach ($item->roles as $role)
-                                                 <span class="badge bg-primary">{{ $role->name }}</span>
+                                                 <span></span>
+                                                 @if ($role->name == 'Admin')
+                                                     <span class=" badge badge-primary">{{$role->name}}</span>
+                                                 @else
+                                                    <span class="badge badge-warning">{{$role->name}}</span>
+                                                 @endif
                                              @endforeach
 
                                          </td>
