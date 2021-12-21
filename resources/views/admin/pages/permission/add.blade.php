@@ -31,14 +31,6 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label>Guard Name</label>
-                    <input type="text" name="guard_name" class="form-control @error('guard_name') is-invalid @enderror"
-                        placeholder="Please Enter...">
-                    @error('guard_name')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
 
                 <div class="button-group">
                     <button type="submit" class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>

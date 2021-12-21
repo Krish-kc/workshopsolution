@@ -30,11 +30,18 @@
                                     class="mdi mdi-account-multiple">
                                 </i><span class="hide-menu"> Users </span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('user.create') }}"><i class="mdi mdi-plus"></i>
-
-                                        Add User </a></li>
-                                <li><a href="{{ route('user.index') }}"><i class="fas fa-bars"></i>
-                                        User List</a></li>
+                                @can('user-create')
+                                <li>
+                                    <a href="{{ route('user.create') }}"><i class="mdi mdi-plus"></i>
+                                    Add User </a>
+                                </li>
+                                @endcan
+                                @can('user-list')
+                                <li>
+                                    <a href="{{ route('user.index') }}"><i class="fas fa-bars"></i>
+                                        User List</a>
+                                    </li>
+                                @endcan
 
 
                             </ul>
@@ -77,11 +84,18 @@
                                     class="fa fa-car">
                                 </i><span class="hide-menu"> vehicle </span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('vehicle.create') }}"><i class="mdi mdi-plus"></i>
-
-                                        Add vehicle </a></li>
-                                <li><a href="{{ route('vehicle.index') }}"><i class="fas fa-bars"></i>
-                                        Vehicle List</a></li>
+                                @can('vehicle-create')
+                                    <li>
+                                        <a href="{{ route('vehicle.create') }}"><i class="mdi mdi-plus"></i>
+                                            Add vehicle </a>
+                                    </li>
+                                @endcan
+                                @can('vehicle-list')
+                                    <li>
+                                        <a href="{{ route('vehicle.index') }}"><i class="fas fa-bars"></i>
+                                            Vehicle List</a>
+                                    </li>
+                                @endcan
 
                             </ul>
 
@@ -90,13 +104,24 @@
                                     class="fa fa-male">
                                 </i><span class="hide-menu"> Role & Permission</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('role.index') }}"><i class="mdi mdi-plus"></i>
-
-                                        Role </a></li>
-                                <li><a href="{{ route('permission.index') }}"><i class="mdi mdi-plus"></i>
-                                        Permission</a></li>
-                                <li><a href="{{ route('user.index') }}"><i class="mdi mdi-plus"></i>
-                                        Assign Role</a></li>
+                                @can('role-create')
+                                <li>
+                                    <a href="{{ route('role.index') }}"><i class="mdi mdi-plus"></i>
+                                        Role </a>
+                                </li>
+                                @endcan
+                                @can('permission-create')
+                                <li>
+                                    <a href="{{ route('permission.index') }}"><i class="mdi mdi-plus"></i>
+                                        Permission</a>
+                                </li>
+                                @endcan
+                                @can('user-create')
+                                <li>
+                                    <a href="{{ route('user.index') }}"><i class="mdi mdi-plus"></i>
+                                        Assign Role</a>
+                                </li>
+                                @endcan
 
 
                             </ul>

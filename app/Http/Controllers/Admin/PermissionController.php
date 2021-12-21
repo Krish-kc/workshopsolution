@@ -13,6 +13,15 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     function __construct()
+     {
+         $this->middleware('permission:permission-list',['only'=>['index','show']]);
+         $this->middleware('permission:permission-create',['only'=>['create','store']]);
+         $this->middleware('permission:permission-edit',['only'=>['edit','update']]);
+         $this->middleware('permission:permission-delete',['only'=>['destory']]);
+     }
+
     public function index()
     {
        $permission= Permission::all();
@@ -79,7 +88,7 @@ class PermissionController extends Controller
     {
         $permission=Permission::findOrFail($id);
         $permission->update([
-           
+
             'name'=>$request->name,
             'guard_name'=>$request->guard_name,
         ]);

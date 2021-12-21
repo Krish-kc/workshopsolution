@@ -13,6 +13,17 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     function __construct()
+     {
+         $this->middleware('permission:service-list',['only' => ['index','show']]);
+         $this->middleware('permission:service-create',['only' => ['create','store']]);
+         $this->middleware('permission:service-edit',['only' => ['edit','update']]);
+         $this->middleware('permission:service-delete',['only' => ['destroy']]);
+
+     }
+
+
     public function index()
     {
 

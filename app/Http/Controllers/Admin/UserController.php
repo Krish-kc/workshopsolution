@@ -15,6 +15,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     function __construct()
+     {
+         $this->middleware('permission:user-list',['only'=>['index','show']]);
+         $this->middleware('permission:user-create',['only'=>['create','store']]);
+         $this->middleware('permission:user-edit',['only'=>['edit','update']]);
+         $this->middleware('permission:user-delete',['only'=>['destory']]);
+     }
     public function index()
     {
        $data=User::all();
@@ -83,10 +91,10 @@ class UserController extends Controller
         'name'=>$request->name,
         'email'=>$request->email,
       ]);
-      
+
       $user->syncRoles($request->role);
 
-    
+
       toastr()->success('User has Successfully updated');
       return redirect()->route('user.index');
 
