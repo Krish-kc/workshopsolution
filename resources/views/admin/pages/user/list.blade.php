@@ -39,7 +39,9 @@
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{$item->name}}</td>
                                                 <td>{{$item->email}}</td>
-                                                <td>Image</td>
+                                                <td>@foreach ($item->getRoleNames() as $role)
+                                                    {{ $role }}
+                                                @endforeach</td>
                                                   <td>
                                                       <div class="button-group"
                                                      <a class="btn btn-info" href="{{ route('user.show',$item->id) }}">Show</a>

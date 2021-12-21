@@ -45,7 +45,7 @@
                     <select class="custom-select" name="role" id="inputGroupSelect01">
                         <option selected>Choose...</option>
                         @foreach ($role as $item)
-                      <option value="1">{{$item->name}}</option>
+                      <option value="{{$item->id}}">{{$item->name}}</option>
 
                       @endforeach
                     </select>

@@ -84,9 +84,9 @@ class UserController extends Controller
         'email'=>$request->email,
       ]);
 
-      $user->assignRole($request->role);
-      $user->save();
-      toastr()->success('User has Successfully updated');
+      $user->syncRoles($request->role);
+    //   $user->save();
+      toastr()->success('Role Successfully assigned to user');
       return redirect()->route('user.index');
 
 
