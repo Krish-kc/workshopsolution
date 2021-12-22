@@ -48,19 +48,17 @@ class ServiceRecordController extends Controller
      */
     public function store(Request $request)
     {
-        // $validated = $request->validate([
-        //     // 'name' => 'required|max:255',
-        //     'date' => 'required',
-        //     'kilometer' => 'required',
-        //     'part_change' => 'required',
-        //     'service_charge' => 'required',
-        //     'service_duration' => 'required',
-        //     'nextService' => 'required',
-        //     'description' => 'required',
-        //     'serviceCenter_name' => 'required',
-        //     'user_id' => 'required',
-        //     'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
-        // ]);
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'date' => 'required',
+            'kilometer' => 'required',
+            'part_change' => 'required',
+            'service_charge' => 'required',
+            'service_duration' => 'required',
+            'nextService' => 'required',
+            'serviceCenter_name' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
+        ]);
 
 
 

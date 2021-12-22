@@ -59,7 +59,6 @@ class VehicleController extends Controller
             'lot' => 'required',
             'company' => 'required',
             'model' => 'required',
-            'user_id' => 'required',
             'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
 
