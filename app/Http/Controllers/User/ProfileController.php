@@ -16,10 +16,10 @@ class ProfileController extends Controller
     public function index()
     {
         if(Auth::user()->profile){
-            
-            return view('userinterface.pages.profile.add');
-        }else{
             return view('userinterface.pages.profile.index');
+            
+        }else{
+            return view('userinterface.pages.profile.add');
         }
     }
 

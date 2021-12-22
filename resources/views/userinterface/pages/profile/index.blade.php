@@ -1,4 +1,248 @@
 @extends('userinterface.master')
+@section('css')
+    <style>
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .gray-bg {
+            background-color: #f5f5f5;
+        }
+
+        img {
+            max-width: 80%;
+        }
+
+        img {
+            vertical-align: middle;
+            border-style: none;
+        }
+
+        /* About Me 
+    ---------------------*/
+        .about-text h3 {
+            font-size: 45px;
+            font-weight: 700;
+            margin: 0 0 6px;
+        }
+
+        @media (max-width: 767px) {
+            .about-text h3 {
+                font-size: 35px;
+            }
+        }
+
+        .about-text h6 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 767px) {
+            .about-text h6 {
+                font-size: 18px;
+            }
+        }
+
+        .about-text p {
+            font-size: 18px;
+            max-width: 450px;
+        }
+
+        .about-text p mark {
+            font-weight: 600;
+            color: #20247b;
+        }
+
+        .about-list {
+            padding-top: 10px;
+        }
+
+        .about-list .media {
+            padding: 5px 0;
+        }
+
+        .about-list label {
+            color: #20247b;
+            font-weight: 600;
+            width: 88px;
+            margin: 0;
+            position: relative;
+        }
+
+        .about-list label:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 11px;
+            width: 1px;
+            height: 12px;
+            background: #20247b;
+            -moz-transform: rotate(15deg);
+            -o-transform: rotate(15deg);
+            -ms-transform: rotate(15deg);
+            -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+            margin: auto;
+            opacity: 0.5;
+        }
+
+        .about-list p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        @media (max-width: 991px) {
+            .about-avatar {
+                margin-top: 30px;
+            }
+        }
+
+        .about-section .counter {
+            padding: 22px 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+        }
+
+        .about-section .counter .count-data {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .about-section .counter .count {
+            font-weight: 700;
+            color: #20247b;
+            margin: 0 0 5px;
+        }
+
+        .about-section .counter p {
+            font-weight: 600;
+            margin: 0;
+        }
+
+        mark {
+            background-image: linear-gradient(rgba(252, 83, 86, 0.6),
+                    rgba(252, 83, 86, 0.6));
+            background-size: 100% 3px;
+            background-repeat: no-repeat;
+            background-position: 0 bottom;
+            background-color: transparent;
+            padding: 0;
+            color: currentColor;
+        }
+
+        .theme-color {
+            color: #fc5356;
+        }
+
+        .dark-color {
+            color: #20247b;
+        }
+
+        /*
+    *
+    * ==========================================
+    * CUSTOM UTIL CLASSES
+    * ==========================================
+    */
+        .nav-pills-custom .nav-link {
+            color: #aaa;
+            background: #fff;
+            position: relative;
+        }
+
+        .nav-pills-custom .nav-link.active {
+            color: #45b649;
+            background: #fff;
+        }
+
+        /* Add indicator arrow for the active tab */
+        @media (min-width: 992px) {
+            .nav-pills-custom .nav-link::before {
+                content: "";
+                display: block;
+                border-top: 8px solid transparent;
+                border-left: 10px solid #fff;
+                border-bottom: 8px solid transparent;
+                position: absolute;
+                top: 50%;
+                right: -10px;
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+        }
+
+        .nav-pills-custom .nav-link.active::before {
+            opacity: 1;
+        }
+
+        form h1 {
+            font-size: 18px;
+            background: #f6aa93 none repeat scroll 0% 0%;
+            color: rgb(255, 255, 255);
+            padding: 22px 25px;
+            border-radius: 5px 5px 0px 0px;
+            margin: auto;
+            text-shadow: none;
+            text-align: left;
+        }
+
+        form {
+            border-radius: 5px;
+            max-width: 700px;
+            width: 100%;
+            margin: 5% auto;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        p span {
+            color: #f00;
+        }
+
+        p {
+            margin: 0px;
+            font-weight: 500;
+            line-height: 2;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #666;
+            text-shadow: 1px 1px 0px #fff;
+            margin: 50px 0px 0px 0px;
+        }
+
+        input {
+            border-radius: 0px 5px 5px 0px;
+            border: 1px solid #eee;
+            margin-bottom: 15px;
+            width: 75%;
+            height: 40px;
+            float: left;
+            padding: 0px 15px;
+        }
+
+        a {
+            text-decoration: inherit;
+        }
+
+        textarea {
+            border-radius: 0px 5px 5px 0px;
+            border: 1px solid #eee;
+            margin: 0;
+            width: 75%;
+            height: 130px;
+            float: left;
+            padding: 0px 15px;
+        }
+
+    </style>
+
+@endsection
 @section('content')
     <section class="section about-section gray-bg" id="about">
         <div class="container">
@@ -6,9 +250,6 @@
                 <div class="col-lg-6">
                     <div class="about-text go-to">
                         <h3 class="dark-color">About Me</h3>
-                        <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating
-                            stylish, modern websites, web services and online stores. My passion is to design digital user
-                            experiences through the bold interface and meaningful interactions.</p>
                         <div class="row about-list">
                             <div class="col-md-6">
                                 <div class="media">
