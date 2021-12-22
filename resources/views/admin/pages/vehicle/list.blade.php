@@ -39,6 +39,9 @@
                                             <th>Action</th>
                                          </thead>
                                          @foreach ($vehicle as $item)
+                                         @can('view',$item)
+
+
                                       <tbody>
 
 
@@ -69,6 +72,7 @@
                                             </tr>
                                         </tbody>
 
+                                        @endcan
                                         @endforeach
 
                                  </table>
