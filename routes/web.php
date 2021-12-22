@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\User\PageController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +39,7 @@ Route::get('/about',[PageController::class,'about'])->name('about');
 Route::get('/workshop-service',[PageController::class,'service'])->name('workshop-service');
 Route::get('/contact',[PageController::class,'contact'])->name('contact');
 
-
+Route::resource('userprofile',ProfileController::class);
 
 
 
