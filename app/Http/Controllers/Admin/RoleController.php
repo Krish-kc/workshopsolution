@@ -98,8 +98,6 @@ class RoleController extends Controller
        $role->update([
         'id'=>$request->id,
         'name'=>$request->name,
-
-
        ]);
        $permission[]=$request->permission;
        $role->syncPermissions($permission);
