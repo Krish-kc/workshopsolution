@@ -27,5 +27,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('user_assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('user_assets/css/userprofile.css') }}" rel="stylesheet">
+    @yield('css')
 
 </head>

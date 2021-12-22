@@ -36,7 +36,8 @@
                               @if (Auth::user())
 
 
-                                  <a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i>
+                                  <a class="dropdown-item" href="{{ route('userprofile.index') }}"><i
+                                          class="fa fa-user" aria-hidden="true"></i>
                                       Profile</a>
                                   <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i>
                                       Settings</a>
