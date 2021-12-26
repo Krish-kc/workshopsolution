@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\BannerController;
 
 use App\Http\Controllers\Admin\UserController;
 
@@ -51,7 +52,7 @@ Route::resource('userprofile',ProfileController::class);
 Auth::routes();
 //routes for admins pannel
 Route::group(['middleware' => ['auth']], function() {
-        
+
                 Route::get('/admin',[AdminController::class,'dashbord'])->name('admin');
                 Route::resource('shop', WorkShopController::class);
                 Route::resource('vehicle', VehicleController::class);
@@ -70,4 +71,9 @@ Route::group(['middleware' => ['auth']], function() {
 
                 Route::resource('permission', PermissionController::class);
 
+                //Banner Route
+
+                Route::resource('banner',BannerController::class);
+
 });
+

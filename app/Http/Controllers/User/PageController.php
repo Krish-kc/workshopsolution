@@ -4,11 +4,13 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Banner;
 class PageController extends Controller
 {
     public function home(){
-        return view('userinterface.pages.home');
+        // $banner=Banner::all();
+        $banner=Banner::where('status','on')->get();
+        return view('userinterface.pages.home',compact('banner'));
     }
     public function about(){
         return view('userinterface.pages.about');
