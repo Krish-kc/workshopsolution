@@ -57,7 +57,7 @@
 
                                                         <a href="{{route('banner.edit',$item->id)}}" class="btn btn-success m-1"><i
                                                                 class="fa fa-edit"></i></a>
-                                                        <a href="" class="btn btn-danger m-1"
+                                                        <a href="#" class="btn btn-danger m-1"
                                                             onclick="handeldelete({{ $item->id }})">
                                                             <i class="fa fa-trash"></i>
                                                         </a>

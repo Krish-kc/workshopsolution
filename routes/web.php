@@ -8,10 +8,10 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\BannerController;
-
+use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\UserController;
 
-use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\User\PageController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +74,9 @@ Route::group(['middleware' => ['auth']], function() {
                 //Banner Route
 
                 Route::resource('banner',BannerController::class);
+                //About  Route
+
+                Route::resource('about',AboutController::class);
 
 });
 

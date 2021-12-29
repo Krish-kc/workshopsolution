@@ -4,28 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Banner;
+use App\Models\About;
 
-class BannerController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     function __construct()
     {
-        $this->middleware('permission:banner-list', ['only'=>['index','show']]);
-        $this->middleware('permission:banner-create', ['only'=>['create','store']]);
-        $this->middleware('permission:banner-edit', ['only'=>['edit','update']]);
-        $this->middleware('permission:banner-delete', ['only'=>['destory']]);
+        $this->middleware('permission:about-list', ['only'=>['index','show']]);
+        $this->middleware('permission:about-create', ['only'=>['create','store']]);
+        $this->middleware('permission:about-edit', ['only'=>['edit','update']]);
+        $this->middleware('permission:about-delete', ['only'=>['destory']]);
 
     }
     public function index()
     {
-        $banner= Banner::all();
-        return view('admin.pagination.Banner.list',compact('banner'));
+        $about=About::all();
+        return view('admin.pagination.About.list',compact('about'));
     }
 
     /**
@@ -35,7 +34,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('admin.pagination.Banner.add');
+       return view('admin.pagination.About.add');
     }
 
     /**
@@ -46,24 +45,25 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+
         if($request->hasFile('image'))
         {
          $image=$request->file('image');
          $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('banner_image'), $imageName);
+         $image->move(public_path('about_image'), $imageName);
         }else{
              $imageName=null;
-
         }
 
-        $banner = new Banner();
-        $banner->title=$request->title;
-        $banner->description=$request->description;
-        $banner->image=$imageName;
-        $banner->status=$request->status;
-        $banner->save();
-        toastr()->success('Banner successfully added');
-        return redirect()->route('banner.index');
+        $about=new About();
+        $about->title=$request->title;
+        $about->description=$request->description;
+        $about->image=$imageName;
+        $about->status=$request->status;
+        $about->save();
+        toastr()->success('About has been successfully added');
+        return redirect()->route('about.index');
+
     }
 
     /**
@@ -85,8 +85,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-       $banner=Banner::findorFail($id);
-       return view('admin.pagination.Banner.edit',compact('banner'));
+        $about=About::findorFail($id);
+        return view('admin.pagination.About.edit',compact('about'));
     }
 
     /**
@@ -98,26 +98,26 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $banner=Banner::findorFail($id);
+        $about=About::findorFail($id);
         if($request->hasFile('image'))
         {
          $image=$request->file('image');
          $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('banner_image'), $imageName);
+         $image->move(public_path('about_image'), $imageName);
         }else{
              $imageName=null;
 
         }
 
-        $banner->update([
+
+        $about->update([
             'title'=>$request->title,
             'description'=>$request->description,
             'image'=>$imageName,
             'status'=>$request->status,
         ]);
-        toastr()->success('Banner list has Successfully updated');
-        return redirect()->route('banner.index');
-
+        toastr()->success('About is successfully updated');
+        return redirect()->route('about.index');
     }
 
     /**
@@ -128,9 +128,9 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        Banner::findOrFail($id)->delete();
+        About::findOrFail($id)->delete();
 
-        toastr()->warning('Banner has Successfully delete');
-        return redirect()->route('banner.index');
+        toastr()->warning('About has Successfully delete');
+        return redirect()->route('about.index');
     }
 }

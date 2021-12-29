@@ -142,7 +142,7 @@
 
 
                                 <li>
-                                    <a href=""><i class="mdi mdi-plus"></i>
+                                    <a href="{{route('about.create')}}"><i class="mdi mdi-plus"></i>
                                         About</a>
                                 </li>
 
