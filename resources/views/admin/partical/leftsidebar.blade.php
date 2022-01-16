@@ -138,7 +138,7 @@
                                 @can('banner-create')
                                 <li>
                                     <a href="{{route('banner.create')}}"><i class="mdi mdi-plus"></i>
-                                        Home </a>
+                                        Banner </a>
                                 </li>
                                 @endcan
                                 @can('about-create')
