@@ -9,7 +9,7 @@
               <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                   <div class="navbar-nav mr-auto">
                       <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
-                      <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                      <a href="" class="nav-item nav-link">About</a>
                       <a href="{{ route('workshop-service') }}" class="nav-item nav-link">Workshop</a>
                       <!-- <a href="team.html" class="nav-item nav-link">Team</a>
                                 <a href="portfolio.html" class="nav-item nav-link">Project</a>

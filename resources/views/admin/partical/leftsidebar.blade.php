@@ -31,15 +31,15 @@
                                 </i><span class="hide-menu"> Users </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @can('user-create')
-                                <li>
-                                    <a href="{{ route('user.create') }}"><i class="mdi mdi-plus"></i>
-                                    Add User </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('user.create') }}"><i class="mdi mdi-plus"></i>
+                                            Add User </a>
+                                    </li>
                                 @endcan
                                 @can('user-list')
-                                <li>
-                                    <a href="{{ route('user.index') }}"><i class="fas fa-bars"></i>
-                                        User List</a>
+                                    <li>
+                                        <a href="{{ route('user.index') }}"><i class="fas fa-bars"></i>
+                                            User List</a>
                                     </li>
                                 @endcan
 
@@ -80,7 +80,8 @@
 
                         </li>
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                     class="fa fa-car">
                                 </i><span class="hide-menu"> vehicle </span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -100,34 +101,60 @@
                             </ul>
 
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                     class="fa fa-male">
                                 </i><span class="hide-menu"> Role & Permission</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @can('role-create')
-                                <li>
-                                    <a href="{{ route('role.index') }}"><i class="mdi mdi-plus"></i>
-                                        Role </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('role.index') }}"><i class="mdi mdi-plus"></i>
+                                            Role </a>
+                                    </li>
                                 @endcan
                                 @can('permission-create')
-                                <li>
-                                    <a href="{{ route('permission.index') }}"><i class="mdi mdi-plus"></i>
-                                        Permission</a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('permission.index') }}"><i class="mdi mdi-plus"></i>
+                                            Permission</a>
+                                    </li>
                                 @endcan
                                 @can('user-create')
-                                <li>
-                                    <a href="{{ route('user.index') }}"><i class="mdi mdi-plus"></i>
-                                        Assign Role</a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('user.index') }}"><i class="mdi mdi-plus"></i>
+                                            Assign Role</a>
+                                    </li>
                                 @endcan
 
 
                             </ul>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-male">
+                                </i><span class="hide-menu">Pagination</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                @can('banner-create')
+                                <li>
+                                    <a href="{{route('banner.create')}}"><i class="mdi mdi-plus"></i>
+                                        Home </a>
+                                </li>
+                                @endcan
+                                @can('about-create')
+                                <li>
+                                    <a href="{{route('about.create')}}"><i class="mdi mdi-plus"></i>
+                                        About</a>
+                                </li>
+                                @endcan
+
+                                <li>
+                                    <a href=""><i class="mdi mdi-plus"></i>
+                                        Workshop</a>
+                                </li>
 
 
-
+                            </ul>
                         </li>
 
 

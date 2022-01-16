@@ -9,7 +9,7 @@
             <div class="col-md-5 col-8 align-self-center">
                 <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">User List</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Banner List</a></li>
                     <li class="breadcrumb-item active">Users</li>
                 </ol>
             </div>
@@ -17,9 +17,9 @@
 
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">List of Role</h4>
-                <a href="{{ route('role.create') }}" class="btn btn-primary float-right">Add role</a>
-                <h6 class="card-subtitle"></h6>
+                <h4 class="card-title">List of Banner</h4>
+                <a href="{{route('banner.create')}}" class="btn btn-primary float-right">Add Banner </a>
+                <h6 class="card-subtitle">All the Required Information Of Banner</h6>
 
                 <div class="table-responsive m-t-40">
                     <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -31,35 +31,45 @@
                                     <thead>
                                         <tr role="row">
                                             <th>S.No</th>
-                                            <th>Role Name</th>
-                                            <th>Permission</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>Image</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                     </thead>
-                                    @foreach ($role as $item)
+                                    @foreach ($banner as $item)
+
+
                                         <tbody>
+
+
                                             <tr role="row" class="odd">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td class="sorting_1">{{ $item->name }}</td>
-                                                <td>
-                                                    @foreach ($item->getPermissionNames() as $permission)
-                                                        {{ $permission }}
-                                                    @endforeach
+                                                <td class="sorting_1">{{ $item->title }}</td>
+                                                <td>{{ $item->description }}</td>
+
+                                                <td><img src="{{ asset('banner_image') }}/{{ $item->image }}"
+                                                        style="max-height: 100px;"></td>
                                                 </td>
+                                                <td>{{ $item->status }}</td>
                                                 <td>
                                                     <div class="btn-group">
 
-
-                                                        <a href="{{ route('role.edit', $item->id) }}"
-                                                            class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
+                                                        <a href="{{route('banner.edit',$item->id)}}" class="btn btn-success m-1"><i
+                                                                class="fa fa-edit"></i></a>
                                                         <a href="#" class="btn btn-danger m-1"
                                                             onclick="handeldelete({{ $item->id }})">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                     </div>
+
                                                 </td>
+
+
                                             </tr>
                                         </tbody>
                                     @endforeach
+
                                 </table>
                             </div>
                         </div>
@@ -68,14 +78,12 @@
             </div>
         </div>
     </div>
+
     </div>
 
-
-
-    {{-- Delete Model --}}
     <div id="deletemodal" class="modal fade">
         <div class="modal-dialog modal-confirm">
-            <form action="#" method="POST" id="deleterole">
+            <form action="#" method="POST" id="deletevehicle">
                 @csrf
                 @method('DELETE')
 
@@ -90,7 +98,8 @@
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-primary">Sumbit</button>
+
                     </div>
                 </div>
 
@@ -99,13 +108,18 @@
         </div>
     </div>
 
+
+
+
+
 @endsection
+
 @section('js')
     <script>
         function handeldelete(id) {
-            var form = document.getElementById('deleterole')
+            var form = document.getElementById('deletevehicle')
             $('#deletemodal').modal('show')
-            form.action = 'role/' + id
+            form.action = 'banner/' + id
 
         }
     </script>
