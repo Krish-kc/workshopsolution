@@ -67,42 +67,80 @@
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="row mt-2">
                             <div class="col-md-6">
-                                <label class="labels">Name</label>
-                                <input type="text" class="form-control" placeholder="first name" value="">
+                                <label class="labels">Full Name</label>
+                                <input type="text" class="form-control" name="fullname" placeholder="first name" value="">
                             </div>
                             <div class="col-md-6">
-                                <label class="labels">Surname</label>
-                                <input type="text" class="form-control" value="" placeholder="surname">
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label class="labels">PhoneNumber</label>
-                                <input type="text" class="form-control" placeholder="enter phone number" value="">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Address</label>
-                                <input type="text" class="form-control" placeholder="enter address" value="">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Email ID</label>
-                                <input type="text" class="form-control" placeholder="enter email id" value="">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Education</label>
-                                <input type="text" class="form-control" placeholder="education" value="">
+                                <label class="labels">Nick Name</label>
+                                <input type="text" class="form-control" name="nickname" value="" placeholder="nickname">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
-                                <label class="labels">Country</label>
-                                <input type="text" class="form-control" placeholder="country" value="">
+                                <label class="labels">Phone Number</label>
+                                <input type="text" class="form-control" name="mobile_one" placeholder="enter phone number" value="">
                             </div>
                             <div class="col-md-6">
-                                <label class="labels">State/Region</label>
-                                <input type="text" class="form-control" value="" placeholder="state">
+                                <label class="labels">Phone Number (optional)</label>
+                                <input type="text" class="form-control" name="mobile_two" placeholder="enter phone number" value="">
                             </div>
                         </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <label class="labels">District</label>
+                                <input type="text" class="form-control" name="district" placeholder="enter address" value="">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="labels">City</label>
+                                <input type="text" class="form-control" name="city" placeholder="enter address" value="">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="labels">Local Area</label>
+                                <input type="text" class="form-control" name="local_area" placeholder="enter address" value="">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Street Address</label>
+                                <input type="text" class="form-control" name="street_address" placeholder="enter email id" value="">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">House Number</label>
+                                <input type="text" class="form-control" name="house_number" placeholder="House Number" value="">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Birthday</label>
+                                <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Age</label>
+                                <input type="number" class="form-control" name="age" placeholder="Age" value="">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label for="exampleFormControlSelect1">Gender</label>
+                                <select class="form-control" name="status" id="exampleFormControlSelect1">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Others</option>
+                                </select>
+
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <label>Profile Image</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <input type="file"
+                                        class="fileinput fileinput-new input-group @error('image') is-invalid @enderror"
+                                        name="image">
+                                    <div class="form-control" data-trigger="fileinput"></div>
+                                    @error('image')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
+                                </div>
+                            </div>
+
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" type="button">
                                 Save Profile

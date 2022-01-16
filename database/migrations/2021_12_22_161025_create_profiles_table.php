@@ -29,7 +29,7 @@ class CreateProfilesTable extends Migration
             $table->string('gender')->nullable();
             $table->string('profile_pic')->nullable();
             $table->unsignedBigInteger('user_id');
-           $table->foreign('user_id')
+            $table->foreign('user_id')
             ->references('id')->on('users')
             ->onDelete('cascade');
 

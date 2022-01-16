@@ -135,16 +135,18 @@
                                     class="fa fa-male">
                                 </i><span class="hide-menu">Pagination</span></a>
                             <ul aria-expanded="false" class="collapse">
+                                @can('banner-create')
                                 <li>
                                     <a href="{{route('banner.create')}}"><i class="mdi mdi-plus"></i>
                                         Home </a>
                                 </li>
-
-
+                                @endcan
+                                @can('about-create')
                                 <li>
                                     <a href="{{route('about.create')}}"><i class="mdi mdi-plus"></i>
                                         About</a>
                                 </li>
+                                @endcan
 
                                 <li>
                                     <a href=""><i class="mdi mdi-plus"></i>

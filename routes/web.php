@@ -78,5 +78,8 @@ Route::group(['middleware' => ['auth']], function() {
 
                 Route::resource('about',AboutController::class);
 
+                //Profile Route
+
+
 });
 
