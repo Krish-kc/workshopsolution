@@ -49,7 +49,8 @@
                                                 <td>{{ $item->description }}</td>
 
                                                 <td><img src="{{ asset('banner_image') }}/{{ $item->image }}"
-                                                        style="max-height: 100px;"></td>
+                                                        style="max-height: 100px;">
+                                                </td>
                                                 </td>
                                                 <td>{{ $item->status }}</td>
                                                 <td>

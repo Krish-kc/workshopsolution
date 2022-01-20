@@ -147,7 +147,7 @@ class WorkShopController extends Controller
             'ending_time' => 'required',
             'description' => 'required',
             'no_of_staff' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
         ]);
 
             $workshop->update([
