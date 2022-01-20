@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
                 Route::resource('servicebook', ServiceBookController::class);
                 Route::resource('user', UserController::class);
 
+
                 // Route::resource('shop', ControllersWorkShopController::class);
 
                 Route::resource('service', ServiceController::class);
@@ -78,7 +79,11 @@ Route::group(['middleware' => ['auth']], function() {
 
                 Route::resource('about',AboutController::class);
 
-                //Profile Route
+                //
+
+
+
+
 
 
 });

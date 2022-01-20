@@ -35,7 +35,7 @@
                                   <a class="dropdown-item" href="{{ route('userprofile.index') }}"><i
                                           class="fa fa-user" aria-hidden="true"></i>
                                       Profile</a>
-                                  <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i>
+                                  <a class="dropdown-item" href="{{route('userprofile.edit',Auth::id())}}"><i class="fas fa-user-cog"></i>
                                       Settings</a>
                                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>

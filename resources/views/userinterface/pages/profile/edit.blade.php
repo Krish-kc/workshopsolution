@@ -54,66 +54,67 @@
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                        src="https://bootdey.com/img/Content/avatar/avatar7.png"><span
-                        class="font-weight-bold"></span><span class="text-black-50"></span><span>
-                    </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" src="{{ asset('profile_image/'.$profile->profile_pic) }} " style="max-height: 250px;" alt="">
+
+                </div>
             </div>
             <div class="col-md-9 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
-                    <form action="{{ route('userprofile.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('userprofile.update',$profile->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="labels">Full Name</label>
-                                <input type="text" class="form-control" name="fullname" placeholder="first name" value="">
+                                <input type="text" class="form-control" name="fullname" placeholder="Full Name" value="{{$profile->fullname}}">
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Nick Name</label>
-                                <input type="text" class="form-control" name="nickname" value="" placeholder="nickname">
+                                <input type="text" class="form-control" name="nickname" placeholder="Nickname" value="{{$profile->nickname}}">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label class="labels">Phone Number</label>
-                                <input type="text" class="form-control" name="mobile_one" placeholder="enter phone number" value="">
+                                <input type="text" class="form-control" name="mobile_one" placeholder="Enter Phone Number" value="{{$profile->mobile_one}}">
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Phone Number (optional)</label>
-                                <input type="text" class="form-control" name="mobile_two" placeholder="enter phone number" value="">
+                                <input type="text" class="form-control" name="mobile_two" placeholder="Enter Phone Number" value="{{$profile->mobile_two}}">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-4">
                                 <label class="labels">District</label>
-                                <input type="text" class="form-control" name="district" placeholder="enter address" value="">
+                                <input type="text" class="form-control" name="district" placeholder="enter District" value="{{$profile->district}}">
                             </div>
                             <div class="col-md-4">
                                 <label class="labels">City</label>
-                                <input type="text" class="form-control" name="city" placeholder="enter address" value="">
+                                <input type="text" class="form-control" name="city" placeholder="Enter City" value="{{$profile->city}}">
                             </div>
                             <div class="col-md-4">
                                 <label class="labels">Local Area</label>
-                                <input type="text" class="form-control" name="local_area" placeholder="enter address" value="">
+                                <input type="text" class="form-control" name="local_area" placeholder="Enter Address" value="{{$profile->local_area}}">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Street Address</label>
-                                <input type="text" class="form-control" name="street_address" placeholder="enter street address" value="">
+                                <input type="text" class="form-control" name="street_address" placeholder="Enter Street Address" value="{{$profile->street_address}}">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">House Number</label>
-                                <input type="text" class="form-control" name="house_number" placeholder="House Number" value="">
+                                <input type="text" class="form-control" name="house_number" placeholder="House Number" value="{{$profile->house_number}}">
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Birthday</label>
-                                <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="">
+                                <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="{{$profile->birthday}}">
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Age</label>
-                                <input type="number" class="form-control" name="age" placeholder="Age" value="">
+                                <input type="number" class="form-control" name="age" placeholder="Age" value="{{$profile->age}}">
                             </div>
                         </div>
 
@@ -134,16 +135,17 @@
                                     <input type="file"
                                         class="fileinput fileinput-new input-group @error('image') is-invalid @enderror"
                                         name="image">
-                                    <div class="form-control" data-trigger="fileinput"></div>
-                                    @error('image')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-
+                                    <div class="form-control" data-trigger="fileinput">
+                                        <img src="{{asset('profile_image/' . $profile->profile_pic)}} " style="max-height: 50px;"  </div>
+                                        @error('image')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
 
                         <div class="button-group mt-5 text-center">
-                            <button type="submit" class="btn btn-primary profile-button">Save Profile</button>
+                            <button type="submit" class="btn btn-primary profile-button">Update Profile</button>
                         </div>
                     </form>
                 </div>
