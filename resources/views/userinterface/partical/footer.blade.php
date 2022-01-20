@@ -40,7 +40,8 @@
                 <div class="newsletter">
                     <h2>Newsletter</h2>
                     <p>
-                        Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu
+                        Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non
+                        vulpu
                     </p>
                     <div class="form">
                         <input class="form-control" placeholder="Email here">
@@ -78,14 +79,14 @@
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="user_assets/lib/easing/easing.min.js"></script>
-<script src="user_assets/lib/wow/wow.min.js"></script>
-<script src="user_assets/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="user_assets/lib/isotope/isotope.pkgd.min.js"></script>
-<script src="user_assets/lib/lightbox/js/lightbox.min.js"></script>
-<script src="user_assets/lib/waypoints/waypoints.min.js"></script>
-<script src="user_assets/lib/counterup/counterup.min.js"></script>
-<script src="user_assets/lib/slick/slick.min.js"></script>
+<script src="{{ asset('user_assets/lib/easing/easing.min.js') }}"></script>
+<script src="{{ asset('user_assets/lib/wow/wow.min.js') }}"></script>
+<script src="{{ asset('user_assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('user_assets/lib/isotope/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('user_assets/lib/lightbox/js/lightbox.min.js') }}"></script>
+<script src="{{ asset('user_assets/lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ asset('user_assets/lib/counterup/counterup.min.js') }}"></script>
+<script src="{{ asset('user_assets/lib/slick/slick.min.js') }}"></script>
 
 <!-- Templateuser_assets/ Javascript -->
-<script src="user_assets/js/main.js"></script>
+<script src="{{ asset('user_assets/js/main.js') }}"></script>

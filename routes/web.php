@@ -36,7 +36,7 @@ Route::get('/', function () {
 
 //all userUI Routes
 Route::get('/home',[PageController::class,'home'])->name('home');
-Route::get('/about',[PageController::class,'about'])->name('about');
+Route::get('/aboutework',[PageController::class,'about'])->name('aboutework');
 Route::get('/workshop-service',[PageController::class,'service'])->name('workshop-service');
 Route::get('/contact',[PageController::class,'contact'])->name('contact');
 
