@@ -19,7 +19,7 @@
             border-style: none;
         }
 
-        /* About Me 
+        /* About Me
     ---------------------*/
         .about-text h3 {
             font-size: 45px;
@@ -249,58 +249,66 @@
             <div class="row align-items-center flex-row-reverse">
                 <div class="col-lg-6">
                     <div class="about-text go-to">
+                        @foreach ($profile as $item)
                         <h3 class="dark-color">About Me</h3>
                         <div class="row about-list">
                             <div class="col-md-6">
                                 <div class="media">
+                                    <label>Name</label>
+                                    <p>{{$item->fullname}}</p>
+                                </div>
+                                <div class="media">
                                     <label>Birthday</label>
-                                    <p>4th april 1998</p>
+                                    <p>{{$item->birthday}}</p>
                                 </div>
                                 <div class="media">
                                     <label>Age</label>
-                                    <p>22 Yr</p>
+                                    <p>{{$item->age}}</p>
                                 </div>
                                 <div class="media">
                                     <label>Residence</label>
-                                    <p>Canada</p>
+                                    <p>{{$item->city}}</p>
                                 </div>
                                 <div class="media">
                                     <label>Address</label>
-                                    <p>California, USA</p>
+                                    <p>{{$item->district}}</p>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="media">
-                                    <label>E-mail</label>
-                                    <p>info@domain.com</p>
+                                    <label>House Number</label>
+                                    <p>{{$item->house_number}}</p>
                                 </div>
                                 <div class="media">
                                     <label>Phone</label>
-                                    <p>820-885-3321</p>
+                                    <p>{{$item->mobile_one}}</p>
                                 </div>
                                 <div class="media">
-                                    <label>Skype</label>
-                                    <p>skype.0404</p>
+                                    <label>Gender</label>
+                                    <p>{{$item->gender}}</p>
                                 </div>
                                 <div class="media">
-                                    <label>Freelance</label>
-                                    <p>Available</p>
+                                    <label>Nickname</label>
+                                    <p>{{$item->nickname}}</p>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="about-avatar">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+                    <div class="rounded-circle mt-5">
+                        <img src="{{ asset('profile_image/'.$item->profile_pic) }} " style="max-height: 250px;" alt="">
                     </div>
                 </div>
+                @endforeach
             </div>
             <div class="counter">
                 <div class="row">
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
-                            <h6 class="count h2" data-to="500" data-speed="500">500</h6>
+                            <h6 class="count h2" data-to="500" data-speed="500">{{$vehicle->}}</h6>
                             <p class="m-0px font-w-600">Vehicle</p>
                         </div>
                     </div>

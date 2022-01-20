@@ -53,8 +53,15 @@
                                                  <span></span>
                                                  @if ($role->name == 'Admin')
                                                      <span class=" badge badge-primary">{{$role->name}}</span>
-                                                 @else
+                                                 @elseif ($role->name=='User')
                                                     <span class="badge badge-warning">{{$role->name}}</span>
+                                                 @endif
+                                                 @if ($role->name == 'Editor')
+                                                     <span class="badge badge-secondary">{{$role->name}}</span>
+                                                  @elseif ($role->name =='Destroyer')
+                                                  <span class ="badge badge-success">{{$role->name}}</span>
+                                                  @elseif ($role->name == 'Creator')
+                                                  <span class="badge badge-dark">{{$role->name}}</span>
                                                  @endif
                                              @endforeach
 
