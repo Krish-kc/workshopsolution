@@ -8,19 +8,15 @@
 
               <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                   <div class="navbar-nav mr-auto">
-                      <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
-                      <a href="" class="nav-item nav-link">About</a>
-                      <a href="{{ route('workshop-service') }}" class="nav-item nav-link">Workshop</a>
-                      <!-- <a href="team.html" class="nav-item nav-link">Team</a>
-                                <a href="portfolio.html" class="nav-item nav-link">Project</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                    <div class="dropdown-menu">
-                                        <a href="blog.html" class="dropdown-item">Blog Page</a>
-                                        <a href="single.html" class="dropdown-item">Single Page</a>
-                                    </div>
-                                </div> -->
-                      <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
+                      <a href="{{ route('home') }}"
+                          class="nav-item nav-link {{ request()->is('home') ? 'active' : '' }}">Home</a>
+                      <a href="{{ route('aboutework') }}"
+                          class="nav-item nav-link {{ request()->is('aboutework') ? 'active' : '' }}">About</a>
+                      <a href="{{ route('workshop-service') }}"
+                          class="nav-item nav-link  {{ request()->is('workshop-service') ? 'active' : '' }}">Workshop</a>
+
+                      <a href="{{ route('contact') }}"
+                          class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
                   </div>
                   <li class="nav-item ">
                       <div class="ml-auto ">

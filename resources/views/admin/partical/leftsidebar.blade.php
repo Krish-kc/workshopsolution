@@ -26,8 +26,8 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Dashboard</li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="mdi mdi-account-multiple">
+                        <li> <a class="has-arrow waves-effect waves-dark {{ request()->is('user') ? 'active' : '' }}"
+                                href="#" aria-expanded="false"><i class="mdi mdi-account-multiple">
                                 </i><span class="hide-menu"> Users </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @can('user-create')
@@ -50,7 +50,8 @@
 
                         </li>
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <li> <a class="has-arrow waves-effect waves-dark {{ request()->is('shop') ? 'active' : '' }}"
+                                href="#" aria-expanded="false">
                                 <i class="fa fa-cogs"></i>
                                 <span class="hide-menu"> WorkShop </span>
                             </a>
@@ -81,8 +82,8 @@
                         </li>
 
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-car">
+                            <a class="has-arrow waves-effect waves-dark {{ request()->is('vehicle') ? 'active' : '' }}"
+                                href="#" aria-expanded="false"><i class="fa fa-car">
                                 </i><span class="hide-menu"> vehicle </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @can('vehicle-create')
@@ -103,8 +104,8 @@
                         </li>
 
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-male">
+                            <a class="has-arrow waves-effect waves-dark{{ request()->is('role') ? 'active' : '' }}"
+                                href="#" aria-expanded="false"><i class="fa fa-male">
                                 </i><span class="hide-menu"> Role & Permission</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @can('role-create')
@@ -131,21 +132,23 @@
                         </li>
 
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-male">
-                                </i><span class="hide-menu">Page Management</span></a>
+
+                            <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
+                                href="#" aria-expanded="false"><i class="fa fa-male">
+                                </i><span class="hide-menu">Pagination</span></a>
+                           
                             <ul aria-expanded="false" class="collapse">
                                 @can('banner-create')
-                                <li>
-                                    <a href="{{route('banner.create')}}"><i class="mdi mdi-plus"></i>
-                                        Banner </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('banner.create') }}"><i class="mdi mdi-plus"></i>
+                                            Banner </a>
+                                    </li>
                                 @endcan
                                 @can('about-create')
-                                <li>
-                                    <a href="{{route('about.create')}}"><i class="mdi mdi-plus"></i>
-                                        About</a>
-                                </li>
+                                    <li>
+                                        <a href="{{ route('about.create') }}"><i class="mdi mdi-plus"></i>
+                                            About</a>
+                                    </li>
                                 @endcan
 
                                 <li>

@@ -2,48 +2,30 @@
 @section('content')
 
 
-    <!-- Carousel Start -->
-
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-        @foreach ($banner as $item)
-        <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-        </ol>
-
-
-
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{asset('banner_image')}}/{{$item->image}}" alt="Carousel Image">
-                <div class="carousel-caption">
-                    <p class="animated fadeInRight">{{$item->title}}</p>
-                    <h1 class="animated fadeInLeft">{{$item->description}}</h1>
-                    <a class="btn animated fadeInUp"
-                        href="{{route('login')}}">Login</a>
+            @foreach ($banner as $key => $item)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <img src="{{ asset('banner_image/' . $item->image) }}" alt="Carousel Image">
+                    <div class="carousel-caption">
+                        <h1 class="animated fadeInLeft">{{ $item->title }}</h1>
+                        <p class="animated fadeInRight">{{ $item->description }}</p>
+                        <a class="btn animated fadeInUp"
+                            href="https://htmlcodex.com/construction-company-website-template">Login</a>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"> </span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-        @endforeach
     </div>
 
-
-    <!-- Carousel End -->
 
 
     <!-- Feature Start-->
@@ -199,55 +181,55 @@
 
     <!-- Fact Start -->
     <!-- <div class="fact">
-                                    <div class="container-fluid">
-                                        <div class="row counters">
-                                            <div class="col-md-6 fact-left wow slideInLeft">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <div class="fact-icon">
-                                                            <i class="flaticon-worker"></i>
-                                                        </div>
-                                                        <div class="fact-text">
-                                                            <h2 data-toggle="counter-up">109</h2>
-                                                            <p>Expert Workers</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="fact-icon">
-                                                            <i class="flaticon-building"></i>
-                                                        </div>
-                                                        <div class="fact-text">
-                                                            <h2 data-toggle="counter-up">485</h2>
-                                                            <p>Happy Clients</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 fact-right wow slideInRight">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <div class="fact-icon">
-                                                            <i class="flaticon-address"></i>
-                                                        </div>
-                                                        <div class="fact-text">
-                                                            <h2 data-toggle="counter-up">789</h2>
-                                                            <p>Completed Projects</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="fact-icon">
-                                                            <i class="flaticon-crane"></i>
-                                                        </div>
-                                                        <div class="fact-text">
-                                                            <h2 data-toggle="counter-up">890</h2>
-                                                            <p>Running Projects</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                                                                                                                                                                                                                                        <div class="container-fluid">
+                                                                                                                                                                                                                                                            <div class="row counters">
+                                                                                                                                                                                                                                                                <div class="col-md-6 fact-left wow slideInLeft">
+                                                                                                                                                                                                                                                                    <div class="row">
+                                                                                                                                                                                                                                                                        <div class="col-6">
+                                                                                                                                                                                                                                                                            <div class="fact-icon">
+                                                                                                                                                                                                                                                                                <i class="flaticon-worker"></i>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                            <div class="fact-text">
+                                                                                                                                                                                                                                                                                <h2 data-toggle="counter-up">109</h2>
+                                                                                                                                                                                                                                                                                <p>Expert Workers</p>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                        <div class="col-6">
+                                                                                                                                                                                                                                                                            <div class="fact-icon">
+                                                                                                                                                                                                                                                                                <i class="flaticon-building"></i>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                            <div class="fact-text">
+                                                                                                                                                                                                                                                                                <h2 data-toggle="counter-up">485</h2>
+                                                                                                                                                                                                                                                                                <p>Happy Clients</p>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                <div class="col-md-6 fact-right wow slideInRight">
+                                                                                                                                                                                                                                                                    <div class="row">
+                                                                                                                                                                                                                                                                        <div class="col-6">
+                                                                                                                                                                                                                                                                            <div class="fact-icon">
+                                                                                                                                                                                                                                                                                <i class="flaticon-address"></i>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                            <div class="fact-text">
+                                                                                                                                                                                                                                                                                <h2 data-toggle="counter-up">789</h2>
+                                                                                                                                                                                                                                                                                <p>Completed Projects</p>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                        <div class="col-6">
+                                                                                                                                                                                                                                                                            <div class="fact-icon">
+                                                                                                                                                                                                                                                                                <i class="flaticon-crane"></i>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                            <div class="fact-text">
+                                                                                                                                                                                                                                                                                <h2 data-toggle="counter-up">890</h2>
+                                                                                                                                                                                                                                                                                <p>Running Projects</p>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                    </div> -->
     <!-- Fact End -->
 
 
