@@ -135,8 +135,8 @@
 
                             <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
                                 href="#" aria-expanded="false"><i class="fa fa-male">
-                                </i><span class="hide-menu">Pagination</span></a>
-                           
+                                </i><span class="hide-menu">Page Management</span></a>
+
                             <ul aria-expanded="false" class="collapse">
                                 @can('banner-create')
                                     <li>
