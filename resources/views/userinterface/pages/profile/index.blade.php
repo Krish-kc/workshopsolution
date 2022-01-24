@@ -20,7 +20,7 @@
         }
 
         /* About Me
-    ---------------------*/
+            ---------------------*/
         .about-text h3 {
             font-size: 45px;
             font-weight: 700;
@@ -142,11 +142,11 @@
         }
 
         /*
-    *
-    * ==========================================
-    * CUSTOM UTIL CLASSES
-    * ==========================================
-    */
+            *
+            * ==========================================
+            * CUSTOM UTIL CLASSES
+            * ==========================================
+            */
         .nav-pills-custom .nav-link {
             color: #aaa;
             background: #fff;
@@ -250,56 +250,56 @@
                 <div class="col-lg-6">
                     <div class="about-text go-to">
                         @foreach ($profile as $item)
-                        <h3 class="dark-color">About Me</h3>
-                        <div class="row about-list">
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <label>Name</label>
-                                    <p>{{$item->fullname}}</p>
+                            <h3 class="dark-color">About Me</h3>
+                            <div class="row about-list">
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>Name</label>
+                                        <p>{{ $item->fullname }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Birthday</label>
+                                        <p>{{ $item->birthday }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Age</label>
+                                        <p>{{ $item->age }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Residence</label>
+                                        <p>{{ $item->city }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Address</label>
+                                        <p>{{ $item->district }}</p>
+                                    </div>
                                 </div>
-                                <div class="media">
-                                    <label>Birthday</label>
-                                    <p>{{$item->birthday}}</p>
-                                </div>
-                                <div class="media">
-                                    <label>Age</label>
-                                    <p>{{$item->age}}</p>
-                                </div>
-                                <div class="media">
-                                    <label>Residence</label>
-                                    <p>{{$item->city}}</p>
-                                </div>
-                                <div class="media">
-                                    <label>Address</label>
-                                    <p>{{$item->district}}</p>
-                                </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <label>House Number</label>
-                                    <p>{{$item->house_number}}</p>
-                                </div>
-                                <div class="media">
-                                    <label>Phone</label>
-                                    <p>{{$item->mobile_one}}</p>
-                                </div>
-                                <div class="media">
-                                    <label>Gender</label>
-                                    <p>{{$item->gender}}</p>
-                                </div>
-                                <div class="media">
-                                    <label>Nickname</label>
-                                    <p>{{$item->nickname}}</p>
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>House Number</label>
+                                        <p>{{ $item->house_number }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Phone</label>
+                                        <p>{{ $item->mobile_one }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Gender</label>
+                                        <p>{{ $item->gender }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Nickname</label>
+                                        <p>{{ $item->nickname }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="rounded-circle mt-5">
-                        <img src="{{ asset('profile_image/'.$item->profile_pic) }} " style="max-height: 250px;" alt="">
+                        <img src="{{ asset('profile_image/' . $item->profile_pic) }} " style="max-height: 250px;" alt="">
                     </div>
                 </div>
                 @endforeach
@@ -308,7 +308,7 @@
                 <div class="row">
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
-                            <h6 class="count h2" data-to="500" data-speed="500">{{$vehicle->}}</h6>
+                            <h6 class="count h2" data-to="500" data-speed="500">15</h6>
                             <p class="m-0px font-w-600">Vehicle</p>
                         </div>
                     </div>

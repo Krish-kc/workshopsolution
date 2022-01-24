@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->string('user_id');
             $table->string('vehicle_id');
             $table->string('service_id');
+            $table->string('workshop_id');
             $table->string('date');
             $table->string('time');
             $table->string('status');
