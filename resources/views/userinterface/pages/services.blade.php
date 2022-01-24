@@ -128,36 +128,37 @@
     <!-- Page Header End -->
 
 
+
     @if (\Session::has('success'))
         <div class="fact">
             <div class="container-fluid">
                 <div class="row counters">
-                    <div class="col-md-6 fact-left wow slideInLeft"
+                    <div class="col-md-4 fact-left wow slideInLeft"
                         style="visibility: visible; animation-name: slideInLeft;">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-6">
 
                                 <div class="fact-text">
 
                                     <h2>Thankyou</h2>
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-6">
 
                                 <div class="fact-text">
-                                    <h2>{{ Auth::user()->name }} Your Booking</h2>
+                                    <h2>{{ Auth::user()->name }} </h2>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 fact-right wow slideInRight"
+                    <div class="col-md-8 fact-right wow slideInRight"
                         style="visibility: visible; animation-name: slideInRight;">
                         <div class="row">
+
                             <div class="col-12">
 
                                 <div class="fact-text">
-                                    <h2> has been Sucessfully Placed
-                                        {!! \Session::get('success') !!}
+                                    <h2>{!! \Session::get('success') !!}
                                     </h2>
                                 </div>
                             </div>
@@ -348,11 +349,14 @@
 
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <select class="browser-default custom-select mb-4" name="workshop_id" id="select">
+                                    <select class="browser-default custom-select mb-4 " name="workshop_id"
+                                        id="workshop_name">
                                         <option value="" disabled="" selected="">Select WorkShop</option>
-                                        <option value="1">New Delhi</option>
-                                        <option value="2">Mumbai</option>
-                                        <option value="3">Bangalore</option>
+                                        @foreach ($workshop as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+
+                                        @endforeach
+
                                     </select>
                                 </div>
                                 <div class="col-sm-6">
@@ -376,20 +380,17 @@
                         <!--Fourth Row-->
                         <div class="row mt-4">
                             <div class="col-sm-6">
-                                <select class="browser-default custom-select mb-4" name="service_id" id="select">
-                                    <option value="" disabled="" selected="">Service Type</option>
-                                    <option value="1">Servicing</option>
-                                    <option value="1">Maintainance</option>
-                                    <option value="2">Washing</option>
-                                    <option value="3">Dentpaint</option>
+                                <select class="browser-default custom-select mb-4" name="service_id" id="services">
+
                                 </select>
                             </div>
                             <div class="col-sm-6">
                                 <select class="browser-default custom-select mb-4" name="vehicle_id" id="select">
                                     <option value="" disabled="" selected="">Select Vehicle</option>
-                                    <option value="1">R15</option>
-                                    <option value="2">Bullet 350</option>
-                                    <option value="3">Ntorq-scooter</option>
+                                    @foreach ($vehicle as $item)
+
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -405,4 +406,42 @@
         </div>
     </div>
     </div>
+@endsection
+@section('js')
+
+
+    <script>
+        $(document).ready(function() {
+            $('#workshop_name').on('change', function() {
+                var workshopID = $(this).val();
+                if (workshopID) {
+                    $.ajax({
+                        url: '/serviceName/' + workshopID,
+                        type: "GET",
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data) {
+                                $('#services').empty();
+                                $('#services').append('<option hidden>Choose Service</option>');
+                                $.each(data, function(key, services) {
+                                    $('select[name="service_id"]').append(
+                                        '<option value="' + key + '">' + services
+                                        .title + '</option>');
+                                });
+                            } else {
+                                $('#services').empty();
+                            }
+                        }
+                    });
+                } else {
+                    $('#services').empty();
+                }
+            });
+        });
+    </script>
+
+
 @endsection
