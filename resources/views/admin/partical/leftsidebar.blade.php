@@ -135,8 +135,8 @@
 
                             <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
                                 href="#" aria-expanded="false"><i class="fa fa-male">
-                                </i><span class="hide-menu">Pagination</span></a>
-                           
+                                </i><span class="hide-menu">Page Management</span></a>
+
                             <ul aria-expanded="false" class="collapse">
                                 @can('banner-create')
                                     <li>
@@ -151,12 +151,25 @@
                                     </li>
                                 @endcan
 
-                                <li>
+                                {{-- <li>
                                     <a href=""><i class="mdi mdi-plus"></i>
                                         Workshop</a>
-                                </li>
+                                </li> --}}
 
 
+                            </ul>
+                        </li>
+                        <li>
+
+                            <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
+                                href="#" aria-expanded="false"><i class="fa fa-book">
+                                </i><span class="hide-menu">Booking</span></a>
+
+                            <ul aria-expanded="false" class="collapse">
+                                    <li>
+                                        <a href="{{route('booking.index')}}"><i class="mdi mdi-plus"></i>
+                                            Confirm Booking</a>
+                                    </li>
                             </ul>
                         </li>
 

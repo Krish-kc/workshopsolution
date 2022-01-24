@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,9 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $booking = Booking::all();
+        return view('admin.pages.booking.list',compact('booking'));
+
     }
 
     /**
@@ -37,7 +40,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-      
+
         Booking::create([
             'user_id'=>Auth::id(),
             'vehicle_id'=>$request->vehicle_id,
@@ -48,9 +51,11 @@ class BookingController extends Controller
             'rate'=>'1000',
             'status'=>'Pending',
         ]);
+
         return redirect()
         ->back()
         ->with('success','Your Booking has been successfully Placed!');
+
     }
 
     /**
@@ -61,7 +66,10 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        $vehicle=Vehicle::findorFail($id);
+        return view('admin.pages.booking.list',compact('vehicle'));
+
+
     }
 
     /**

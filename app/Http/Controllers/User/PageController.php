@@ -5,9 +5,12 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
+
 use App\Models\Vehicle;
 use App\Models\WorkShop;
 use Illuminate\Support\Facades\Auth;
+
+use App\Models\About;
 
 class PageController extends Controller
 {
@@ -17,7 +20,8 @@ class PageController extends Controller
         return view('userinterface.pages.home',compact('banner'));
     }
     public function about(){
-        return view('userinterface.pages.about');
+        $about=About::where('status','on')->get();
+        return view('userinterface.pages.about',compact('about'));
     }
     public function service(){
         $user_id=Auth::id();
