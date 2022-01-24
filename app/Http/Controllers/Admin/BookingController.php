@@ -48,8 +48,9 @@ class BookingController extends Controller
             'rate'=>'1000',
             'status'=>'Pending',
         ]);
-        return  redirect()->back()->with('sucess,Booking has been successfully created!');
-        
+        return redirect()
+        ->back()
+        ->with('success','Your Booking has been successfully Placed!');
     }
 
     /**

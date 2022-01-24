@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\WorkShop;
 
 class ServiceController extends Controller
 {
@@ -123,4 +124,10 @@ class ServiceController extends Controller
         return redirect()->route('shop.index');
 
     }
+
+    public function serviceName($id){
+        $data=Service::where("workshop_id",$id)->take(10)->get();    
+        return response()->json($data);
+    }
+
 }

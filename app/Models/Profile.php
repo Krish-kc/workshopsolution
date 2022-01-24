@@ -24,4 +24,6 @@ class Profile extends Model
         'profile_pic',
         'user_id',
     ];
+
+    
 }

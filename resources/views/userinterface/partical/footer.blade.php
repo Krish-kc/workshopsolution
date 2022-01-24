@@ -90,3 +90,4 @@
 
 <!-- Templateuser_assets/ Javascript -->
 <script src="{{ asset('user_assets/js/main.js') }}"></script>
+@yield('js')

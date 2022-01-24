@@ -41,9 +41,10 @@ Route::get('/aboutework',[PageController::class,'about'])->name('aboutework');
 Route::get('/workshop-service',[PageController::class,'service'])->name('workshop-service');
 Route::get('/contact',[PageController::class,'contact'])->name('contact');
 
+Route::get("/serviceName/{id}",[ServiceController::class,'serviceName']);
+
 Route::resource('userprofile',ProfileController::class);
 Route::resource('booking',BookingController::class);
-
 
 
 
@@ -66,6 +67,7 @@ Route::group(['middleware' => ['auth']], function() {
                 // Route::resource('shop', ControllersWorkShopController::class);
 
                 Route::resource('service', ServiceController::class);
+             
 
                 Route::resource('serviceRecord', ServiceRecordController::class);
 
