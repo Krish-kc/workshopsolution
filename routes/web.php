@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -41,6 +42,8 @@ Route::get('/workshop-service',[PageController::class,'service'])->name('worksho
 Route::get('/contact',[PageController::class,'contact'])->name('contact');
 
 Route::resource('userprofile',ProfileController::class);
+Route::resource('booking',BookingController::class);
+
 
 
 
