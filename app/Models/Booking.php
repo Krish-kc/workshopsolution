@@ -12,4 +12,20 @@ class Booking extends Model
     protected $fillable=[
         'user_id','workshop_id','vehicle_id','service_id','date','time','status','rate'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function vehicle(){
+        return $this->belongsTo(Vehicle::class,'vehicle_id');
+    }
+
+    public function workshop(){
+        return $this->belongsTo(WorkShop::class,'workshop_id');
+    }
+    public function service(){
+        return $this->belongsTo(Service::class,'service_id');
+    }
+
 }
