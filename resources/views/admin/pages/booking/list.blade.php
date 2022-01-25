@@ -10,7 +10,7 @@
                 <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">User List</a></li>
-                    <li class="breadcrumb-item active">Permission</li>
+                    <li class="breadcrumb-item active">Reservation</li>
                 </ol>
             </div>
         </div>
@@ -31,7 +31,10 @@
                                     <thead>
                                         <tr role="row">
                                             <th>S.No</th>
+                                            <th>User Name</th>
                                             <th>Vehicle Name</th>
+                                            <th>Workshop Name</th>
+                                            <th>Task Name</th>
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Rate</th>
@@ -39,14 +42,18 @@
                                             <th>Action</th>
                                     </thead>
                                     @foreach ( $booking as $item )
+
+
+
+
                                         <tbody>
-
-
-
 
                                             <tr role="row" class="odd">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td class="sorting_1">{{$item->vehicle_id}}</td>
+                                                <td class="sorting_1">{{$item->user->name}}</td>
+                                                <td>{{$item->vehicle->name}}</td>
+                                                <td>{{$item->workshop->name}}</td>
+                                                <td></td>
                                                 <td>{{$item->date}}</td>
                                                 <td>{{$item->time}}</td>
                                                 <td>{{$item->rate}}</td>

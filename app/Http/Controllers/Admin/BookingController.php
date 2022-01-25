@@ -18,6 +18,8 @@ class BookingController extends Controller
     public function index()
     {
         $booking = Booking::all();
+
+
         return view('admin.pages.booking.list',compact('booking'));
 
     }
