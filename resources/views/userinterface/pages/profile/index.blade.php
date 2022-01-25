@@ -20,7 +20,7 @@
         }
 
         /* About Me
-                    ---------------------*/
+                                                                                    ---------------------*/
         .about-text h3 {
             font-size: 45px;
             font-weight: 700;
@@ -142,11 +142,11 @@
         }
 
         /*
-                    *
-                    * ==========================================
-                    * CUSTOM UTIL CLASSES
-                    * ==========================================
-                    */
+                                                                                    *
+                                                                                    * ==========================================
+                                                                                    * CUSTOM UTIL CLASSES
+                                                                                    * ==========================================
+                                                                                    */
         .nav-pills-custom .nav-link {
             color: #aaa;
             background: #fff;
@@ -368,13 +368,141 @@
                             aria-labelledby="v-pills-home-tab">
                             <h4 class="font-italic mb-4">Vehicle information</h4>
                             <p class="font-italic text-muted mb-2">All the information of your vehicle are listed here</p>
-                            <a></a>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <img class="card-img-top" src="..." alt="Card image cap">   
+                                        <div class="card-body">
+                                            <h5 class="card-title">Special title treatment</h5>
+                                            <p class="card-text">With supporting text below as a natural lead-in to
+                                                additional content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Special title treatment</h5>
+                                            <p class="card-text">With supporting text below as a natural lead-in to
+                                                additional content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+
+
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Add Vehicle
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Vehicle Details</h4>
+                                                <h6 class="card-subtitle">Input the Required Information for fresh Service
+                                                </h6>
+                                                <form class="form-control-line m-t-40"
+                                                    action="{{ route('vehicle.store') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <div class="form-group">
+                                                        <label>Vehicle Name :</label>
+                                                        <input type="text" name="name"
+                                                            class="form-control form-control-line @error('name') is-invalid @enderror"
+                                                            placeholder="Enter Name">
+                                                        @error('name')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="vehicle_number">Vehicle Number :</label>
+                                                        <input type="text" id="number" name="number"
+                                                            class="form-control  @error('number') is-invalid @enderror"
+                                                            placeholder="Enter vehicle">
+                                                        @error('number')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Vehicle Lot :</label>
+                                                        <input type="text" name="lot"
+                                                            class="form-control @error('lot') is-invalid @enderror"
+                                                            placeholder="Enter lot number">
+                                                        @error('lot')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Vehicle Company Name :</label>
+                                                        <input type="text" name="company"
+                                                            class="form-control @error('company') is-invalid @enderror "
+                                                            placeholder="Enter Company Name">
+                                                        @error('company')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Model Year :</label>
+                                                        <input type="text" name="model"
+                                                            class="form-control @error('model') is-invalid @enderror "
+                                                            placeholder="Enter Model year">
+                                                        @error('model')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label>Image Upload :</label>
+                                                        <input type="file"
+                                                            class="form-control @error('image') is-invalid @enderror "
+                                                            name="image">
+                                                        @error('image')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="row button-group">
+
+                                                        <div class="col-lg-4 col-md-4">
+                                                            <button type="submit"
+                                                                class="btn btn-rounded btn-block btn-success">Save</button>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4">
+                                                            <button type="button"
+                                                                class="ml-3 btn btn-rounded btn-block btn-danger"
+                                                                data-dismiss="modal">Exit</button>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-profile" role="tabpanel"
                             aria-labelledby="v-pills-profile-tab">
                             <h4 class="font-italic mb-4">Bookings</h4>
-                            <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit,
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                                 irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -385,7 +513,8 @@
                         <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messages" role="tabpanel"
                             aria-labelledby="v-pills-messages-tab">
                             <h4 class="font-italic mb-4">Reviews</h4>
-                            <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit,
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                                 irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -396,7 +525,8 @@
                         <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-settings" role="tabpanel"
                             aria-labelledby="v-pills-settings-tab">
                             <h4 class="font-italic mb-4">Confirm booking</h4>
-                            <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit,
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                                 irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
