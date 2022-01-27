@@ -12,7 +12,7 @@ class VehiclePolicy
 
     public function before(User $user, $ability)
 {
-    if ($user->hasRole('admin')) {
+    if ($user->hasRole('Admin')) {
         return true;
     }
 }

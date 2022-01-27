@@ -134,7 +134,7 @@
                         <li>
 
                             <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
-                                href="#" aria-expanded="false"><i class="fa fa-male">
+                                href="#" aria-expanded="false"><i class="fa fa-book">
                                 </i><span class="hide-menu">Page Management</span></a>
 
                             <ul aria-expanded="false" class="collapse">
@@ -162,7 +162,7 @@
                         <li>
 
                             <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
-                                href="#" aria-expanded="false"><i class="fa fa-book">
+                                href="#" aria-expanded="false"><i class="fa fa-window-maximize">
                                 </i><span class="hide-menu">Booking</span></a>
 
                             <ul aria-expanded="false" class="collapse">

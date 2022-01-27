@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
+use App\Models\ServiceBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -82,7 +83,7 @@ class VehicleController extends Controller
         $vehicle->user_id=Auth::id();
         $vehicle->save();
         toastr()->success('vehicle information has been successfully saved!');
-        return redirect()->route('vehicle.index');
+        return redirect()->route('userprofile.index');
 
 
 

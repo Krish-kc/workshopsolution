@@ -44,7 +44,12 @@ Route::get('/contact',[PageController::class,'contact'])->name('contact');
 Route::get("/serviceName/{id}",[ServiceController::class,'serviceName']);
 
 Route::resource('userprofile',ProfileController::class);
-Route::resource('booking',BookingController::class);
+
+
+
+
+
+
 
 
 
@@ -59,17 +64,20 @@ Route::group(['middleware' => ['auth']], function() {
 
                 Route::get('/admin',[AdminController::class,'dashbord'])->name('admin');
                 Route::resource('shop', WorkShopController::class);
-                Route::resource('vehicle', VehicleController::class);
-                Route::resource('servicebook', ServiceBookController::class);
                 Route::resource('user', UserController::class);
 
 
                 // Route::resource('shop', ControllersWorkShopController::class);
+                Route::resource('booking',BookingController::class);
+
+                Route::resource('vehicle', VehicleController::class);
+
+                Route::resource('servicebook', ServiceBookController::class);
 
                 Route::resource('service', ServiceController::class);
-             
 
                 Route::resource('serviceRecord', ServiceRecordController::class);
+
 
                 // Role and Permission route
 

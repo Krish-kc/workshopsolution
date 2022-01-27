@@ -126,7 +126,7 @@ class ServiceController extends Controller
     }
 
     public function serviceName($id){
-        $data=Service::where("workshop_id",$id)->take(10)->get();    
+        $data=Service::where("workshop_id",$id)->take(10)->get();
         return response()->json($data);
     }
 

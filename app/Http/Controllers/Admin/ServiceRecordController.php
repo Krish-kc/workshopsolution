@@ -48,17 +48,19 @@ class ServiceRecordController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'date' => 'required',
-            'kilometer' => 'required',
-            'part_change' => 'required',
-            'service_charge' => 'required',
-            'service_duration' => 'required',
-            'nextService' => 'required',
-            'serviceCenter_name' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
-        ]);
+        //  dd($request);
+
+        // $validated = $request->validate([
+        //     'name' => 'required|max:255',
+        //     'date' => 'required',
+        //     'kilometer' => 'required',
+        //     'part_change' => 'required',
+        //     'service_charge' => 'required',
+        //     'service_duration' => 'required',
+        //     'nextService' => 'required',
+        //     'serviceCenter_name' => 'required',
+        //     'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
+        // ]);
 
 
 
@@ -70,6 +72,7 @@ class ServiceRecordController extends Controller
         }else{
              $imageName=null;
         }
+
 
 
 
