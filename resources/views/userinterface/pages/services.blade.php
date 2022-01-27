@@ -61,15 +61,15 @@
             margin-left: 3.5%
         }
 
-        .icons {
+        /* .icons {
             margin: auto !important
-        }
+        } */
 
         .fa {
-            border-radius: 25px;
+            /* border-radius: 25px; */
             width: 10%;
             margin-left: 5%;
-            border: solid 2px #dbdad7;
+            /* border: solid 2px #dbdad7; */
             margin-top: 5%;
             text-align: center
         }
@@ -235,89 +235,36 @@
 
 
             <div class="row">
+                @foreach ($workshop as $item)
                 <div class="col-sm-12">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
+                            <img src="{{asset('workshop/'.$item->image)}}"  alt="Image">
                         </div>
                         <div class="service-text">
                             <div class="service-title">
-                                <h3>Building Construction</h3>
+                                <h3>{{$item->name}}</h3>
                                 <div class="time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    5 hours
+                                    <i class="fa fa-map-marker"></i>
+                                    {{$item->location}}
                                 </div>
                             </div>
 
                             <h5>Service List</h5>
+                            @foreach ($item->services as $krish)
                             <ul>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Phasellus nec pretium mi. Curabitur facilisis
-                                    ornare</li>
-                                <li><i class="fas fa-angle-double-right"></i> Aliquam metus tortor, auctor id gravida
-                                    condimentum, viverra quis sem</li>
-                            </ul>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">View More</a>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                        </div>
-                        <div class="service-text">
-                            <div class="service-title">
-                                <h3>Building Construction</h3>
-                                <div class="time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    5 hours
-                                </div>
-                            </div>
 
-                            <h5>Service List</h5>
-                            <ul>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Phasellus nec pretium mi. Curabitur facilisis
-                                    ornare</li>
-                                <li><i class="fas fa-angle-double-right"></i> Aliquam metus tortor, auctor id gravida
-                                    condimentum, viverra quis sem</li>
-                            </ul>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">View More</a>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                        </div>
-                        <div class="service-text">
-                            <div class="service-title">
-                                <h3>Building Construction</h3>
-                                <div class="time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    5 hours
-                                </div>
-                            </div>
 
-                            <h5>Service List</h5>
-                            <ul>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Phasellus nec pretium mi. Curabitur facilisis
-                                    ornare</li>
-                                <li><i class="fas fa-angle-double-right"></i> Aliquam metus tortor, auctor id gravida
-                                    condimentum, viverra quis sem</li>
-                            </ul>
+                                 <li><i class="fas fa-angle-double-right"> {{$krish->title}}</i></li>
+
+                                </ul>
+                                @endforeach
                             <a class="btn" href="img/service-1.jpg" data-lightbox="service">View More</a>
                         </div>
                     </div>
+
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
