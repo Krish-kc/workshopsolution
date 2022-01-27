@@ -21,11 +21,11 @@
                 <h4 class="card-title">Workshop</h4>
 
                 <p class="card-text">All the information of Workshop</p>
-                <h6 class="card-subtitle">Workshop name:{{ $workshop->name }}</h6>
-                <h6 class="card-subtitle">Workshop :{{ $workshop->PAN }}</h6>
-                <h6 class="card-subtitle">worksho No:{{ $workshop->location }}</h6>
-                <h6 class="card-subtitle">worksho No:{{ $workshop->starting_time }}</h6>
-                <h6 class="card-subtitle">worksho No:{{ $workshop->ending_time }}</h6>
+                <h6 class="card-subtitle">Workshop Name:{{ $workshop->name }}</h6>
+                <h6 class="card-subtitle">Workshop Pan :{{ $workshop->PAN }}</h6>
+                <h6 class="card-subtitle">workshop Location:{{ $workshop->location }}</h6>
+                <h6 class="card-subtitle">workshop Starting time:{{ $workshop->starting_time }}</h6>
+                <h6 class="card-subtitle">workshop ending:{{ $workshop->ending_time }}</h6>
 
 
                 <img src="{{ asset('workshop') }}/{{ $workshop->image }}" style="max-height: 150px;">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use App\Models\ServiceBook;
+use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -16,8 +18,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        $user_id=Auth::user()->id;
         if(Auth::user()->profile){
-            $profile= Profile::all();
+            $profile=(Auth::user()->profile);
             return view('userinterface.pages.profile.index', compact('profile'));
 
         }else{
@@ -82,6 +85,10 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
+        $profile=(Auth::user()->profile);
+        $vehicle=Vehicle::findorFail($id);
+        return view('userinterface.pages.profile.view',compact('vehicle','profile'));
+
 
     }
 

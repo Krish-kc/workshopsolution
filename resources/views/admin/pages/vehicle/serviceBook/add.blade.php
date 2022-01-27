@@ -144,7 +144,7 @@
                         <div class="form-group">
 
                             <input type="hidden" name="serviceBook_id" value="{{ $vehicle->service->id }}"
-                                class="form-control form-control-line  @error('serviceBook_id') is-invalid @enderror " placeholder="Some text value...">
+                                class="form-control form-control-line  @error('serviceBook_id') is-invalid @enderror " >
                                 @error('serviceBook_id')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -152,7 +152,7 @@
                         <div class="form-group">
                             <label>Date</label>
                             <input type="date" name="date" class="form-control form-control-line @error('date') is-invalid @enderror"
-                                placeholder="Some text value...">
+                                placeholder="Enter service Date">
                                 @error('date')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -160,7 +160,7 @@
                         <div class="form-group">
                             <label>Kilometer</label>
                             <input type="text" name="kilometer" class="form-control form-control-line @error('kilometer') is-invalid @enderror"
-                                placeholder="Some text value...">
+                                placeholder="Enter Kilometer">
                                 @error('kilometer')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -168,7 +168,7 @@
                         <div class="form-group">
                             <label>Part Changed</label>
                             <input type="text" name="part_change" class="form-control form-control-line @error('part_change') is-invalid @enderror"
-                                placeholder="Some text value...">
+                                placeholder="Enter the part changed">
                                 @error('part_change')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -176,7 +176,7 @@
                         <div class="form-group">
                             <label>Service Charge</label>
                             <input type="text" name="service_charge" class="form-control form-control-line @error('service_charge') is-invalid @enderror"
-                                placeholder="Some text value...">
+                                placeholder="Enter Service charge">
                                 @error('service_charge')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -184,7 +184,7 @@
                         <div class="form-group">
                             <label>Service Duration</label>
                             <input type="text" name="service_duration" class="form-control form-control-line @error('service_charge') is-invalid @enderror "
-                                placeholder="Some text value...">
+                                placeholder="Enter Service Duration">
                                 @error('service_duration')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -192,7 +192,7 @@
                         <div class="form-group">
                             <label>Next Service</label>
                             <input type="date" name="nextService" class="form-control form-control-line @error('nextService') is-invalid @enderror "
-                                placeholder="Some text value...">
+                                placeholder="Enter Next service date">
                                 @error('nextService')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -200,7 +200,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <input type="text" name="description" class="form-control form-control-line  @error('nextService') is-invalid @enderror "
-                                placeholder="Some text value...">
+                                placeholder="Enter description">
                                 @error('description')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -215,7 +215,7 @@
                         <div class="form-group">
                             <label>Service center Name</label>
                             <input type="text" name="serviceCenter_name" class="form-control form-control-line @error('serviceCenter_name') is-invalid @enderror"
-                                placeholder="Some text value...">
+                                placeholder="Enter Service center ">
                                 @error('serviceCenter_name')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror

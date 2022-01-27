@@ -25,5 +25,14 @@ class Profile extends Model
         'user_id',
     ];
 
-    
+    // public function vehicle(){
+    //     return $this->hasMany(Vehicle::class,'user_id');
+    // }
+
+    // public function service(){
+    //     return $this->hasOne(ServiceBook::class,'vechile_id');
+    // }
+
+
+
 }

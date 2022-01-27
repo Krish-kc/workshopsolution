@@ -46,6 +46,13 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class,'user_id');
     }
+        public function vehicle(){
+        return $this->hasMany(Vehicle::class,'user_id');
+    }
+    // public function servicebook(){
+    //     return $this->hasMany(ServiceBook::class,'vechile_id');
+    // }
 
-    
+
+
 }

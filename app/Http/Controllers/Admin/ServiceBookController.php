@@ -25,7 +25,8 @@ class ServiceBookController extends Controller
 
     public function index()
     {
-
+        $servicebook=ServiceBook::all();
+        return view('userinterface.pages.profile.view',compact('servicebook'));
     }
 
     /**
