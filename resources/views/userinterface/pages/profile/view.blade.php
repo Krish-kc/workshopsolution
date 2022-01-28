@@ -20,7 +20,7 @@
         }
 
         /* About Me
-                                                                                    ---------------------*/
+                                                                                                                                                                    ---------------------*/
         .about-text h3 {
             font-size: 45px;
             font-weight: 700;
@@ -142,11 +142,11 @@
         }
 
         /*
-                                                                                    *
-                                                                                    * ==========================================
-                                                                                    * CUSTOM UTIL CLASSES
-                                                                                    * ==========================================
-                                                                                    */
+                                                                                                                                                                    *
+                                                                                                                                                                    * ==========================================
+                                                                                                                                                                    * CUSTOM UTIL CLASSES
+                                                                                                                                                                    * ==========================================
+                                                                                                                                                                    */
         .nav-pills-custom .nav-link {
             color: #aaa;
             background: #fff;
@@ -250,60 +250,61 @@
                 <div class="col-lg-6">
                     <div class="about-text go-to">
                         {{-- @foreach ($profile as $profile) --}}
-                            <h3 class="dark-color">About Me</h3>
-                            <div class="row about-list">
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>Name</label>
-                                        <p>{{$profile->fullname}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Birthday</label>
-                                        <p>{{$profile->birthday}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Age</label>
-                                        <p>{{$profile->age}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>City</label>
-                                        <p>{{$profile->city}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>District</label>
-                                        <p>{{$profile->district}}</p>
-                                    </div>
+                        <h3 class="dark-color">About Me</h3>
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Name</label>
+                                    <p>{{ $profile->fullname }}</p>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>House Number</label>
-                                        <p>{{$profile->house_number}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Phone</label>
-                                        <p>{{$profile->mobile_one}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Phone</label>
-                                        <p>{{$profile->mobile_two}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Gender</label>
-                                        <p>{{$profile->gender}}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Nickname</label>
-                                        <p>{{$profile->nickname}}</p>
-                                    </div>
+                                <div class="media">
+                                    <label>Birthday</label>
+                                    <p>{{ $profile->birthday }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Age</label>
+                                    <p>{{ $profile->age }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>City</label>
+                                    <p>{{ $profile->city }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>District</label>
+                                    <p>{{ $profile->district }}</p>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>House Number</label>
+                                    <p>{{ $profile->house_number }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Phone</label>
+                                    <p>{{ $profile->mobile_one }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Phone</label>
+                                    <p>{{ $profile->mobile_two }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Gender</label>
+                                    <p>{{ $profile->gender }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Nickname</label>
+                                    <p>{{ $profile->nickname }}</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="rounded-circle mt-5">
-                        <img src="{{asset('profile_image/'.$profile->profile_pic)}} " style="max-height: 250px;" alt="">
+                        <img src="{{ asset('profile_image/' . $profile->profile_pic) }} " style="max-height: 250px;"
+                            alt="">
                     </div>
                 </div>
                 {{-- @endforeach --}}
@@ -312,7 +313,9 @@
                 <div class="row">
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
-                            <h6 class="count h2" data-to="500" data-speed="500">{{Auth::user()->vehicle->count()}}</h6>
+                            <h6 class="count h2" data-to="500" data-speed="500">
+                                {{ Auth::user()->vehicle->count() }}
+                            </h6>
                             <p class="m-0px font-w-600">Vehicle</p>
                         </div>
                     </div>
@@ -342,130 +345,156 @@
 
 
 
-                @if ($vehicle->service)
+            @if ($vehicle->service)
 
 
 
-                    <div class="col-md-12">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h4 class="card-title">Service Book</h4>
-                                <p class="card-text">Our servicebook provide all the infromation related to services.</p>
-                                <h4>Owner Name: {{$vehicle->service->owner_name}}</h4>
-                                <h4>Vehicle Name: {{$vehicle->name}} </h4>
-                                <h4>Engine Number: {{$vehicle->service->engeen_number}} </h4>
-                                <h4>Chassis Number: {{$vehicle->service->chassis_number}}</h4>
-                                <div class="rounded-circle mt-5">
-                                    <img src="{{asset('vehicle_image/'.$vehicle->image)}} " style="max-height: 150px;" alt="">
-                                </div>
-                                <br>
-                                <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">View ServiceRecords</button>
+                <div class="col-md-12">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">Service Book</h4>
+                            <p class="card-text">Our servicebook provide all the infromation related to services.</p>
+                            <div class="rounded-circle mt-5">
+                                <img src="{{ asset('vehicle_image/' . $vehicle->image) }} " style="max-height: 150px;"
+                                    alt="">
                             </div>
+                            </br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Owner Name: {{ $vehicle->service->owner_name }}</h5>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Vehicle Name: {{ $vehicle->name }} </h5>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Engine Number: {{ $vehicle->service->engeen_number }} </h5>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Chassis Number: {{ $vehicle->service->chassis_number }}</h5>
+
+                                </div>
+                            </div>
+                            <br>
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample"
+                                aria-expanded="false" aria-controls="collapseExample">View ServiceRecords</button>
                         </div>
                     </div>
+                </div>
 
-                    @else
-                    <p> No service Book Available Please create  your service center</p>
-                    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Add ServiceBook
-  </button>
+            @else
+                <p> No service Book Available Please create your service Book</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Add ServiceBook
+                </button>
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLongTitle">Add Service Book</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true"></span>
-               </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('servicebook.store')}}" method="POST" class="form-material m-t-40">
-                    @csrf
-                    <input type="hidden" name="vehicle_id" value="{{$vehicle->id}}">
-                    <div class="form-group">
-                       <label>Owner Name</label>
-                       <input type="text" name="owner_name" class="form-control form-control-line" placeholder="Some text value...">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Add Service Book</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('servicebook.store') }}" method="POST"
+                                    class="form-material m-t-40">
+                                    @csrf
+                                    <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                                    <div class="form-group">
+                                        <label>Owner Name</label>
+                                        <input type="text" name="owner_name" class="form-control form-control-line"
+                                            placeholder="Some text value...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Engine Number</label>
+                                        <input type="text" name="engeen_number" class="form-control form-control-line"
+                                            placeholder="Some text value...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Chassis Number</label>
+                                        <input type="text" name="chassis_number" class="form-control form-control-line"
+                                            placeholder="Some text value...">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                            </form>
+
+                        </div>
                     </div>
-                    <div class="form-group">
-                       <label>Engine Number</label>
-                       <input type="text" name="engeen_number" class="form-control form-control-line" placeholder="Some text value...">
-                    </div>
-                    <div class="form-group">
-                       <label>Chassis Number</label>
-                       <input type="text" name="chassis_number" class="form-control form-control-line" placeholder="Some text value...">
-                    </div>
-              </div>
-              <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-              </form>
-
-         </div>
-    </div>
-  </div>
+                </div>
 
 
-     @endif
+            @endif
 
-                    <div class="col-md-12">
-                        <div class="card text-center collapse" id="collapseExample">
-                            <div class="card-body">
-                                <h3>Service Record Information</h3>
-                                <div class="table-responsive m-t-40">
-                                    <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="col-md-12">
+                <div class="card text-center collapse" id="collapseExample">
+                    <div class="card-body">
+                        <h3>Service Record Information</h3>
+                        <div class="table-responsive m-t-40">
+                            <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
-                                                    role="grid" aria-describedby="myTable_info">
-                                                    <thead>
-                                                        <tr role="row">
-                                                            <th>S.No</th>
-                                                            <th>Date</th>
-                                                            <th>Part Changed</th>
-                                                            <th>Service Charge</th>
-                                                            <th>Next Service</th>
-                                                            <th>Bill Image</th>
-                                                            <th>Service center Name</th>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
+                                            role="grid" aria-describedby="myTable_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th>S.No</th>
+                                                    <th>Date</th>
+                                                    <th>Part Changed</th>
+                                                    <th>Service Charge</th>
+                                                    <th>Next Service</th>
+                                                    <th>Bill Image</th>
+                                                    <th>Service center Name</th>
 
-                                                    </thead>
-                                                    @if (!$vehicle->service->record->isEmpty())
+                                            </thead>
+                                            @if (!$vehicle->service->record->isEmpty())
 
 
-                                                        @foreach ($vehicle->service->record as $item)
-                                                            <tbody>
+                                                @foreach ($vehicle->service->record as $item)
+                                                    <tbody>
 
-                                                                <tr role="row" class="odd">
-                                                                    <td>{{ $loop->iteration }}</td>
-                                                                    <td>{{ $item->date }}</td>
-                                                                    <td>{{ $item->part_change }}</td>
-                                                                    <td>{{ $item->service_charge }}</td>
-                                                                    <td>{{ $item->nextService }}</td>
-                                                                    <td>
-                                                                        <img src="{{ asset('bill') }}/{{ $item->image }}"
-                                                                            style="max-height: 100px;">
-                                                                    </td>
-                                                                    <td>{{ $item->serviceCenter_name }}</td>
+                                                        <tr role="row" class="odd">
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ $item->date }}</td>
+                                                            <td>{{ $item->part_change }}</td>
+                                                            <td>{{ $item->service_charge }}</td>
+                                                            <td>{{ $item->nextService }}</td>
+                                                            <td>
+                                                                <img src="{{ asset('bill') }}/{{ $item->image }}"
+                                                                    style="max-height: 100px;">
+                                                            </td>
+                                                            <td>{{ $item->serviceCenter_name }}</td>
 
-                                                                </tr>
-                                                            </tbody>
+                                                        </tr>
+                                                    </tbody>
 
-                                                        @endforeach
-                                                    @endif
+                                                @endforeach
+                                            @else
+                                                No record Founds
+                                            @endif
 
-                                                </table>
-                                            </div>
-                                        </div>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
 
 

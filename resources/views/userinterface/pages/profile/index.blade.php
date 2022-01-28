@@ -20,7 +20,7 @@
         }
 
         /* About Me
-                                                                                    ---------------------*/
+                                                                                                                        ---------------------*/
         .about-text h3 {
             font-size: 45px;
             font-weight: 700;
@@ -142,11 +142,11 @@
         }
 
         /*
-                                                                                    *
-                                                                                    * ==========================================
-                                                                                    * CUSTOM UTIL CLASSES
-                                                                                    * ==========================================
-                                                                                    */
+                                                                                                                        *
+                                                                                                                        * ==========================================
+                                                                                                                        * CUSTOM UTIL CLASSES
+                                                                                                                        * ==========================================
+                                                                                                                        */
         .nav-pills-custom .nav-link {
             color: #aaa;
             background: #fff;
@@ -250,56 +250,57 @@
                 <div class="col-lg-6">
                     <div class="about-text go-to">
                         {{-- @foreach ($profile as $profile) --}}
-                            <h3 class="dark-color">About Me</h3>
-                            <div class="row about-list">
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>Name</label>
-                                        <p>{{ $profile->fullname }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Birthday</label>
-                                        <p>{{ $profile->birthday }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Age</label>
-                                        <p>{{ $profile->age }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>City</label>
-                                        <p>{{ $profile->city }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>District</label>
-                                        <p>{{ $profile->district }}</p>
-                                    </div>
+                        <h3 class="dark-color">About Me</h3>
+                        <div class="row about-list">
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>Name</label>
+                                    <p>{{ $profile->fullname }}</p>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>House Number</label>
-                                        <p>{{ $profile->house_number }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Phone</label>
-                                        <p>{{ $profile->mobile_one }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Gender</label>
-                                        <p>{{ $profile->gender }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Nickname</label>
-                                        <p>{{ $profile->nickname }}</p>
-                                    </div>
+                                <div class="media">
+                                    <label>Birthday</label>
+                                    <p>{{ $profile->birthday }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Age</label>
+                                    <p>{{ $profile->age }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>City</label>
+                                    <p>{{ $profile->city }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>District</label>
+                                    <p>{{ $profile->district }}</p>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <label>House Number</label>
+                                    <p>{{ $profile->house_number }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Phone</label>
+                                    <p>{{ $profile->mobile_one }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Gender</label>
+                                    <p>{{ $profile->gender }}</p>
+                                </div>
+                                <div class="media">
+                                    <label>Nickname</label>
+                                    <p>{{ $profile->nickname }}</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="rounded-circle mt-5">
-                        <img src="{{ asset('profile_image/' . $profile->profile_pic) }} " style="max-height: 250px;" alt="">
+                        <img src="{{ asset('profile_image/' . $profile->profile_pic) }} " style="max-height: 250px;"
+                            alt="">
                     </div>
                 </div>
                 {{-- @endforeach --}}
@@ -308,7 +309,9 @@
                 <div class="row">
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
-                            <h6 class="count h2" data-to="500" data-speed="500">{{Auth::user()->vehicle->count()}}</h6>
+                            <h6 class="count h2" data-to="500" data-speed="500">
+                                {{ Auth::user()->vehicle->count() }}
+                            </h6>
                             <p class="m-0px font-w-600">Vehicle</p>
                         </div>
                     </div>
@@ -370,17 +373,21 @@
                             <p class="font-italic text-muted mb-2">All the information of your vehicle are listed here</p>
 
 
-                            <div class="row">
-                                @foreach (Auth::user()->vehicle as $item )
-                                <div class="col-sm-6">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('vehicle_image/' . $item->image) }} " style="max-height: 150px;" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{$item->name}}</h5>
-                                            <a href="{{route('userprofile.show',$item->id)}}" class="btn btn-primary">Service Book</a>
+
+                            <div class="row single-related wow fadeInUp">
+                                @foreach (Auth::user()->vehicle as $item)
+                                    <div class="col-sm-6">
+                                        <div class="card">
+                                            <img class="card-img-top"
+                                                src="{{ asset('vehicle_image/' . $item->image) }} "
+                                                style="max-height: 150px;" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $item->name }}</h5>
+                                                <a href="{{ route('userprofile.show', $item->id) }}"
+                                                    class="btn btn-primary">Service Book</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                             </br>
