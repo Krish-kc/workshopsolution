@@ -21,6 +21,14 @@
             width: 80%
         }
 
+        .card-titleE {
+            margin: auto;
+            padding: 15px;
+            background-color: #030F27;
+            color: white;
+            width: 80%
+        }
+
         div.card-body {
             padding: 0px
         }
@@ -34,13 +42,14 @@
         }
 
         input {
+            margin: 8px 0;
             outline: 0 !important;
             border-width: 0 0 2px !important;
             border-color: #d1d1cf !important
         }
 
         input:focus {
-            border-color: #d1d1cf !important;
+            border-color: #030F27 !important;
             -webkit-box-shadow: none !important;
             box-shadow: none !important
         }
@@ -52,7 +61,7 @@
         }
 
         select:focus {
-            border-color: #d1d1cf !important;
+            border-color: #030F27 !important;
             -webkit-box-shadow: none !important;
             box-shadow: none !important
         }
@@ -62,8 +71,8 @@
         }
 
         /* .icons {
-            margin: auto !important
-        } */
+                                                                                                                                                    margin: auto !important
+                                                                                                                                                } */
 
         .fa {
             /* border-radius: 25px; */
@@ -196,15 +205,17 @@
                             </a>
                         </div>
                         <div class="col-sm-3 mb-2">
-                            <div class="icon-block yellow">
-                                <div class="fact-icon">
-                                    <img src="user_assets/img/support.svg" alt="">
+                            <a href="" data-toggle="modal" data-target="#EmergencyBreakdownModal">
+                                <div class="icon-block yellow">
+                                    <div class="fact-icon">
+                                        <img src="user_assets/img/support.svg" alt="">
+                                    </div>
+                                    <div class="fact-text">
+                                        <h2>Emergency Breakdown</h2>
+                                        <p>Please Click here and give some information</p>
+                                    </div>
                                 </div>
-                                <div class="fact-text">
-                                    <h2>Washing</h2>
-                                    <p>To wash or vehicle please click here </p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-sm-3 mb-2">
                             <div class="icon-block blue">
@@ -236,43 +247,118 @@
 
             <div class="row">
                 @foreach ($workshop as $item)
-                <div class="col-sm-12">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{asset('workshop/'.$item->image)}}"  alt="Image">
-                        </div>
-                        <div class="service-text">
-                            <div class="service-title">
-                                <h3>{{$item->name}}</h3>
-                                <div class="time">
-                                    <i class="fa fa-map-marker"></i>
-                                    {{$item->location}}
-                                </div>
+                    <div class="col-sm-12">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ asset('workshop/' . $item->image) }}" alt="Image">
                             </div>
+                            <div class="service-text">
+                                <div class="service-title">
+                                    <h3>{{ $item->name }}</h3>
+                                    <div class="time">
+                                        <i class="fa fa-map-marker"></i>
+                                        {{ $item->location }}
+                                    </div>
+                                </div>
 
-                            <h5>Service List</h5>
-                            @foreach ($item->services as $krish)
-                            <ul>
+                                <h5>Service List</h5>
+                                @foreach ($item->services as $krish)
+                                    <ul>
 
 
-                                 <li><i class="fas fa-angle-double-right"> {{$krish->title}}</i></li>
+                                        <li><i class="fas fa-angle-double-right"> {{ $krish->title }}</i></li>
 
-                                </ul>
+                                    </ul>
                                 @endforeach
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">View More</a>
+                                <a class="btn" href="img/service-1.jpg" data-lightbox="service">View More</a>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
                 @endforeach
             </div>
         </div>
     </div>
     <!-- Service End -->
+    <!-- Modal of servicing  -->
+    <div class="modal custom fade" id="EmergencyBreakdownModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form action="{{ route('booking.store') }}" method="POST" enctype="multipart/form-data">
+
+                    @csrf
+                    @method('POST')
+                    <div class="card shadow mb-5 bg-white rounded">
+                        <!--Card-Body-->
+                        <div class="card-body">
+                            <!--Card-Title-->
+                            <p class="card-titleE text-center shadow mb-5 rounded">Emergency Breakdown</p>
+                            <div class="icons text-center">
+                                <i class="fa fa-motorcycle fa-2x" aria-hidden="true"></i>
+                                <i class="fa fa-taxi fa-2x" aria-hidden="true"></i>
+
+                            </div>
+                            <hr>
+                            <p class="searchText"><strong>Please Select the Following </strong></p>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" placeholder="Enter Your Name">
+
+                                </div>
+                                {{-- <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Enter Your Location">
+                                </div> --}}
+                            </div>
+                        </div>
+                        <!--Third Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" name="text" placeholder=" Enter Your Location" class="form-control">
+                            </div>
+                            <div class="col-sm-6">
+
+                                <input type="text" name="text" placeholder="Enter Phone Number" class="form-control">
+                            </div>
+                        </div>
+                        <!--Fourth Row-->
+                        <div class="row mt-4">
+                            <div class="col-sm-6">
+
+                                <input type="text" name="text" placeholder="Enter Vehicle Number" class="form-control">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <select class="browser-default custom-select mb-4" name="vehicle_id" id="select">
+                                    <option value="" disabled="" selected="">Select Vehicle</option>
+                                    <option value="">Bike</option>
+                                    <option value="">Scoter</option>
+                                    <option value="">Car</option>
 
 
+                                </select>
+                            </div>
+                            <div class="col-sm-12">
 
-    <!-- Modal -->
+                                <input type="text" name="text" placeholder="Enter Problem Description"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <!--Fifth Row-->
+                        <div class="row">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal of servicing  -->
     <div class="modal custom fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
