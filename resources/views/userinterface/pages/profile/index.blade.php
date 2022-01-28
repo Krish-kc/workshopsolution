@@ -317,20 +317,20 @@
                     </div>
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
-                            <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                            <h6 class="count h2" data-to="150" data-speed="150">{{$booking->count()}}</h6>
                             <p class="m-0px font-w-600">Reservation</p>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
-                            <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                            <h6 class="count h2" data-to="850" data-speed="850">{{ Auth::user()->vehicle->count()}}</h6>
                             <p class="m-0px font-w-600">Service Book</p>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
                             <h6 class="count h2" data-to="190" data-speed="190">190</h6>
-                            <p class="m-0px font-w-600">Telephonic Talk</p>
+                            <p class="m-0px font-w-600">Service Records</p>
                         </div>
                     </div>
                 </div>
@@ -499,13 +499,57 @@
                         <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-profile" role="tabpanel"
                             aria-labelledby="v-pills-profile-tab">
                             <h4 class="font-italic mb-4">Bookings</h4>
-                            <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                                anim id est laborum.</p>
+                            <div class="table-responsive m-t-40">
+                                <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            @if (!$booking->isEmpty())
+                                            <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
+                                                role="grid" aria-describedby="myTable_info">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th>S.No</th>
+                                                        <th>Workshop Name</th>
+                                                        <th>Service Type</th>
+                                                        <th>Date</th>
+                                                        <th>Time</th>
+                                                        <th>Rate</th>
+                                                        <th>Status</th>
+                                                </thead>
+
+
+                                                @foreach ( $booking as $item )
+
+                                                    <tbody>
+
+                                                        <tr role="row" class="odd">
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{$item->workshop->name}}</td>
+                                                            <td>{{$item->service->title}}</td>
+                                                            <td>{{$item->date}}</td>
+                                                            <td>{{$item->time}}</td>
+                                                            <td>{{$item->rate}}</td>
+                                                            <td>{{$item->status}}</td>
+
+
+
+
+                                                        </tr>
+                                                    </tbody>
+
+                                                @endforeach
+                                                @else
+                                                <h6>No Booking Record Found</h6>
+                                                @endif
+
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messages" role="tabpanel"
