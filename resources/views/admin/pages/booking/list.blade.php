@@ -53,7 +53,7 @@
                                                 <td class="sorting_1">{{$item->user->name}}</td>
                                                 <td>{{$item->vehicle->name}}</td>
                                                 <td>{{$item->workshop->name}}</td>
-                                                <td></td>
+                                                <td>{{$item->service->title}}</td>
                                                 <td>{{$item->date}}</td>
                                                 <td>{{$item->time}}</td>
                                                 <td>{{$item->rate}}</td>

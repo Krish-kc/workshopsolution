@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\ServiceBook;
+use App\Models\Booking;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,8 @@ class ProfileController extends Controller
         $user_id=Auth::user()->id;
         if(Auth::user()->profile){
             $profile=(Auth::user()->profile);
-            return view('userinterface.pages.profile.index', compact('profile'));
+            $booking=Booking::where('user_id',Auth::id())->get();
+            return view('userinterface.pages.profile.index', compact('profile','booking'));
 
         }else{
             return view('userinterface.pages.profile.add');
