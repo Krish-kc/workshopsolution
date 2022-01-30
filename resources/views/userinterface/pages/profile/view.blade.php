@@ -386,6 +386,64 @@
                     </div>
                 </div>
 
+                <div class="col-md-12">
+                    <div class="card text-center collapse" id="collapseExample">
+                        <div class="card-body">
+                            <h3>Service Record Information</h3>
+                            <div class="table-responsive m-t-40">
+                                <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    @if (!$vehicle->service->record->isEmpty())
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
+                                                role="grid" aria-describedby="myTable_info">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th>S.No</th>
+                                                        <th>Date</th>
+                                                        <th>Part Changed</th>
+                                                        <th>Service Charge</th>
+                                                        <th>Next Service</th>
+                                                        <th>Bill Image</th>
+                                                        <th>Service center Name</th>
+
+                                                </thead>
+
+
+
+                                                    @foreach ($vehicle->service->record as $item)
+                                                        <tbody>
+
+                                                            <tr role="row" class="odd">
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $item->date }}</td>
+                                                                <td>{{ $item->part_change }}</td>
+                                                                <td>{{ $item->service_charge }}</td>
+                                                                <td>{{ $item->nextService }}</td>
+                                                                <td>
+                                                                    <img src="{{ asset('bill') }}/{{ $item->image }}"
+                                                                        style="max-height: 100px;">
+                                                                </td>
+                                                                <td>{{ $item->serviceCenter_name }}</td>
+
+                                                            </tr>
+                                                        </tbody>
+
+                                                    @endforeach
+                                                @else
+                                                    No record Founds
+                                                @endif
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             @else
                 <p> No service Book Available Please create your service Book</p>
                 <!-- Button trigger modal -->
@@ -439,62 +497,6 @@
 
             @endif
 
-            <div class="col-md-12">
-                <div class="card text-center collapse" id="collapseExample">
-                    <div class="card-body">
-                        <h3>Service Record Information</h3>
-                        <div class="table-responsive m-t-40">
-                            <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
-                                            role="grid" aria-describedby="myTable_info">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th>S.No</th>
-                                                    <th>Date</th>
-                                                    <th>Part Changed</th>
-                                                    <th>Service Charge</th>
-                                                    <th>Next Service</th>
-                                                    <th>Bill Image</th>
-                                                    <th>Service center Name</th>
-
-                                            </thead>
-                                            @if (!$vehicle->service->record->isEmpty())
-
-
-                                                @foreach ($vehicle->service->record as $item)
-                                                    <tbody>
-
-                                                        <tr role="row" class="odd">
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $item->date }}</td>
-                                                            <td>{{ $item->part_change }}</td>
-                                                            <td>{{ $item->service_charge }}</td>
-                                                            <td>{{ $item->nextService }}</td>
-                                                            <td>
-                                                                <img src="{{ asset('bill') }}/{{ $item->image }}"
-                                                                    style="max-height: 100px;">
-                                                            </td>
-                                                            <td>{{ $item->serviceCenter_name }}</td>
-
-                                                        </tr>
-                                                    </tbody>
-
-                                                @endforeach
-                                            @else
-                                                No record Founds
-                                            @endif
-
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
 
