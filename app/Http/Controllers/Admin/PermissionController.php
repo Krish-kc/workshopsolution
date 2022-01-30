@@ -14,18 +14,18 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     function __construct()
-     {
-         $this->middleware('permission:permission-list',['only'=>['index','show']]);
-         $this->middleware('permission:permission-create',['only'=>['create','store']]);
-         $this->middleware('permission:permission-edit',['only'=>['edit','update']]);
-         $this->middleware('permission:permission-delete',['only'=>['destory']]);
-     }
+    function __construct()
+    {
+        $this->middleware('permission:permission-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:permission-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:permission-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:permission-delete', ['only' => ['destory']]);
+    }
 
     public function index()
     {
-       $permission= Permission::all();
-       return view('admin.pages.permission.list',compact('permission'));
+        $permission = Permission::all();
+        return view('admin.pages.permission.list', compact('permission'));
     }
 
     /**
@@ -46,9 +46,9 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $permission= new Permission();
-        $permission->name=$request->name;
-        $permission->guard_name="web";
+        $permission = new Permission();
+        $permission->name = $request->name;
+        $permission->guard_name = "web";
         $permission->save();
         toastr()->success('Permission has been successfully saved!');
         return redirect()->route('permission.index');
@@ -73,8 +73,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $permission=Permission::findOrFail($id);
-        return view('admin.pages.Permission.edit',compact('permission'));
+        $permission = Permission::findOrFail($id);
+        return view('admin.pages.Permission.edit', compact('permission'));
     }
 
     /**
@@ -86,11 +86,11 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $permission=Permission::findOrFail($id);
+        $permission = Permission::findOrFail($id);
         $permission->update([
 
-            'name'=>$request->name,
-            'guard_name'=>$request->guard_name,
+            'name' => $request->name,
+            'guard_name' => $request->guard_name,
         ]);
         toastr()->success('Permission has Successfully updated');
         return redirect()->route('permission.index');
@@ -107,6 +107,5 @@ class PermissionController extends Controller
         Permission::findorFail($id)->delete();
         toastr()->warning('Permission has Successfully deleted');
         return redirect()->route('permission.index');
-
     }
 }

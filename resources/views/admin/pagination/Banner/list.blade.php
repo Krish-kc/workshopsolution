@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">List of Banner</h4>
-                <a href="{{route('banner.create')}}" class="btn btn-primary float-right">Add Banner </a>
+                <a href="{{ route('banner.create') }}" class="btn btn-primary float-right">Add Banner </a>
                 <h6 class="card-subtitle">All the Required Information Of Banner</h6>
 
                 <div class="table-responsive m-t-40">
@@ -56,8 +56,8 @@
                                                 <td>
                                                     <div class="btn-group">
 
-                                                        <a href="{{route('banner.edit',$item->id)}}" class="btn btn-success m-1"><i
-                                                                class="fa fa-edit"></i></a>
+                                                        <a href="{{ route('banner.edit', $item->id) }}"
+                                                            class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
                                                         <a href="#" class="btn btn-danger m-1"
                                                             onclick="handeldelete({{ $item->id }})">
                                                             <i class="fa fa-trash"></i>

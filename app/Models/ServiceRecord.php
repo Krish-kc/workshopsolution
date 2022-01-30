@@ -9,7 +9,7 @@ class ServiceRecord extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'serviceBook_id',
         'date',
         'kilometer',
@@ -20,6 +20,6 @@ class ServiceRecord extends Model
         'description',
         'image',
         'serviceCenter_name',
-        
+
     ];
 }

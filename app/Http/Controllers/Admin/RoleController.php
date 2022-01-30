@@ -16,18 +16,19 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     function __construct()
-     {
-         $this->middleware('permission:role-list',['only'=>['index','show']]);
-         $this->middleware('permission:role-create',['only'=>['create','store']]);
-         $this->middleware('permission:role-edit',['only'=>['edit','update']]);
-         $this->middleware('permission:role-delete',['only'=>['destory']]);
-     }
+    function __construct()
+    {
+        $this->middleware('permission:role-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:role-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:role-delete', ['only' => ['destory']]);
+    }
 
     public function index()
-    {   $permission=Permission::all();
-        $role=Role::all();
-        return view('admin.pages.Role.list',compact('role','permission'));
+    {
+        $permission = Permission::all();
+        $role = Role::all();
+        return view('admin.pages.Role.list', compact('role', 'permission'));
     }
 
     /**
@@ -37,8 +38,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-       $permission=Permission::all();
-       return view('admin.pages.role.add',compact('permission'));
+        $permission = Permission::all();
+        return view('admin.pages.role.add', compact('permission'));
     }
 
     /**
@@ -49,10 +50,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role= new Role();
-        $role->name=$request->name;
-        $role->guard_name="web";
-        $permission[]=$request->permission;
+        $role = new Role();
+        $role->name = $request->name;
+        $role->guard_name = "web";
+        $permission[] = $request->permission;
         foreach ($permission as $item) {
             $role->givePermissionTo($item);
         }
@@ -69,7 +70,6 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -80,9 +80,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-       $permission=Permission::all();
-       $role=Role::findorFail($id);
-       return view('admin.pages.Role.edit',compact('role','permission'));
+        $permission = Permission::all();
+        $role = Role::findorFail($id);
+        return view('admin.pages.Role.edit', compact('role', 'permission'));
     }
 
     /**
@@ -94,17 +94,16 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $role=Role::findorfail($id);
-       $role->update([
-        'id'=>$request->id,
-        'name'=>$request->name,
-       ]);
-       $permission[]=$request->permission;
-       $role->syncPermissions($permission);
-       $role->save();
-       toastr()->success('Role list has Successfully updated');
-       return redirect()->route('role.index');
-
+        $role = Role::findorfail($id);
+        $role->update([
+            'id' => $request->id,
+            'name' => $request->name,
+        ]);
+        $permission[] = $request->permission;
+        $role->syncPermissions($permission);
+        $role->save();
+        toastr()->success('Role list has Successfully updated');
+        return redirect()->route('role.index');
     }
 
     /**
@@ -119,6 +118,5 @@ class RoleController extends Controller
 
         toastr()->warning('Role has Successfully deleted');
         return redirect()->route('role.index');
-
     }
 }

@@ -16,17 +16,17 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     function __construct()
-     {
-         $this->middleware('permission:user-list',['only'=>['index','show']]);
-         $this->middleware('permission:user-create',['only'=>['create','store']]);
-         $this->middleware('permission:user-edit',['only'=>['edit','update']]);
-         $this->middleware('permission:user-delete',['only'=>['destory']]);
-     }
+    function __construct()
+    {
+        $this->middleware('permission:user-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destory']]);
+    }
     public function index()
     {
-       $data=User::all();
-       return view('admin.pages.user.list',compact('data'));
+        $data = User::all();
+        return view('admin.pages.user.list', compact('data'));
     }
 
     /**
@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-    //    $user=new User();
+        //    $user=new User();
 
     }
 
@@ -70,9 +70,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user=User::findorFail($id);
-        $role=Role::all();
-        return view('admin.pages.user.edit',compact('user','role'));
+        $user = User::findorFail($id);
+        $role = Role::all();
+        return view('admin.pages.user.edit', compact('user', 'role'));
     }
 
     /**
@@ -85,20 +85,18 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request);
-      $user= User::findorFail($id);
+        $user = User::findorFail($id);
 
-      $user->update([
-        'name'=>$request->name,
-        'email'=>$request->email,
-      ]);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
 
-      $user->syncRoles($request->role);
-
-
-      toastr()->success('User has Successfully updated');
-      return redirect()->route('user.index');
+        $user->syncRoles($request->role);
 
 
+        toastr()->success('User has Successfully updated');
+        return redirect()->route('user.index');
     }
 
     /**

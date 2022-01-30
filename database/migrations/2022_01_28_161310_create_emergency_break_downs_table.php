@@ -15,6 +15,12 @@ class CreateEmergencyBreakDownsTable extends Migration
     {
         Schema::create('emergency_break_downs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('location');
+            $table->string('phone');
+            $table->string('vehicle_number');
+            $table->string('vehicle_type');
+            $table->string('description');
             $table->timestamps();
         });
     }

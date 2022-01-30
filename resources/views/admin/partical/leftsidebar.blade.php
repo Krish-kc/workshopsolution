@@ -167,8 +167,21 @@
 
                             <ul aria-expanded="false" class="collapse">
                                     <li>
-                                        <a href="{{route('booking.index')}}"><i class="mdi mdi-plus"></i>
-                                            Confirm Booking</a>
+                                        <a href="{{route('booking.index')}}"><i class="fas fa-bars "></i>
+                                          Booking list</a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li>
+
+                            <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
+                                href="#" aria-expanded="false"><i class="fa fa-exclamation-triangle">
+                                </i><span class="hide-menu">Emergency</span></a>
+
+                            <ul aria-expanded="false" class="collapse">
+                                    <li>
+                                        <a href="{{route('emergency.index')}}"><i class="fas fa-bars "></i>
+                                         Emergency Booking list</a>
                                     </li>
                             </ul>
                         </li>

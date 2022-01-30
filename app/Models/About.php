@@ -9,7 +9,7 @@ class About extends Model
 {
     use HasFactory;
 
-    protected $fillable=([
+    protected $fillable = ([
         'title',
         'description',
         'image',

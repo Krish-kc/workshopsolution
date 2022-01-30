@@ -24,8 +24,8 @@
             <div class="card-body">
                 <h4 class="card-title">Permission Details</h4>
                 <h6 class="card-subtitle">Input the Required Information for Permission</h6>
-                <form class="form-control-line m-t-40" action="{{ route('permission.update', $permission->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="form-control-line m-t-40" action="{{ route('permission.update', $permission->id) }}"
+                    method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -34,16 +34,16 @@
                         <label>Role ID :</label>
                         <input type="text" name="id"
                             class="form-control form-control-line @error('id') is-invalid @enderror"
-                            value="{{$permission->id}}">
+                            value="{{ $permission->id }}">
                         @error('id')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="form-group">
-                        <label >Role Name :</label>
+                        <label>Role Name :</label>
                         <input type="text" id="number" name="name" class="form-control @error('name') is-invalid @enderror "
-                            value="{{$permission->name}}">
+                            value="{{ $permission->name }}">
                         @error('name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label>Guard Name :</label>
                         <input type="text" name="guard_name" class="form-control @error('guard_name') is-invalid @enderror"
-                            value="{{$permission->guard_name}}">
+                            value="{{ $permission->guard_name }}">
                         @error('guard_name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

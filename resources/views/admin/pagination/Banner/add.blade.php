@@ -22,7 +22,7 @@
                 <h4 class="card-title">Add Banner</h4>
                 <a href="{{ route('banner.index') }}" class="btn btn-primary float-right">Banner list</a>
                 <h6 class="card-subtitle">Please add Banner Information</h6>
-                <form action="{{route('banner.store')}}" method="POST" enctype="multipart/form-data"
+                <form action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data"
                     class="form-material m-t-40">
                     @csrf
                     @method('POST')
@@ -38,7 +38,8 @@
 
                     <div class="form-group">
                         <label>Description</label>
-                        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror"
+                        <input type="text" name="description"
+                            class="form-control @error('description') is-invalid @enderror"
                             placeholder="Please enter description">
                         @error('description')
                             <div class="text-danger">{{ $message }}</div>
@@ -85,6 +86,3 @@
     </div>
 
 @endsection
-
-
-

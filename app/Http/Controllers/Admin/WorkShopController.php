@@ -18,16 +18,16 @@ class WorkShopController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:workshop-list', ['only' => ['index','show']]);
-         $this->middleware('permission:workshop-create', ['only' => ['create','store']]);
-         $this->middleware('permission:workshop-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:workshop-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:workshop-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:workshop-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:workshop-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:workshop-delete', ['only' => ['destroy']]);
     }
 
     public function index()
     {
-      $workshop=WorkShop::all();
-      return view('admin.pages.workshop.list',compact('workshop'));
+        $workshop = WorkShop::all();
+        return view('admin.pages.workshop.list', compact('workshop'));
     }
 
     /**
@@ -37,7 +37,7 @@ class WorkShopController extends Controller
      */
     public function create()
     {
-         return view('admin.pages.workshop.add');
+        return view('admin.pages.workshop.add');
     }
 
     /**
@@ -60,30 +60,29 @@ class WorkShopController extends Controller
             'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
 
-        if($request->hasFile('image'))
-        {
-         $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('workshop'), $imageName);
-        }else{
-             $imageName=null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('workshop'), $imageName);
+        } else {
+            $imageName = null;
         }
 
         WorkShop::create([
-            'name'=>$request->name,
-            'PAN'=>$request->PAN,
-            'location'=>$request->location,
-            'starting_time'=>$request->starting_time,
-            'ending_time'=>$request->ending_time,
-            'image'=>$imageName,
-            'no_of_staff'=>$request->no_of_staff,
-            'user_id'=>4,
+            'name' => $request->name,
+            'PAN' => $request->PAN,
+            'location' => $request->location,
+            'starting_time' => $request->starting_time,
+            'ending_time' => $request->ending_time,
+            'image' => $imageName,
+            'no_of_staff' => $request->no_of_staff,
+            'user_id' => 4,
         ]);
 
 
 
         toastr()->success('Workshop information has been successfully saved!');
-       return redirect()->route('shop.index');
+        return redirect()->route('shop.index');
     }
 
     /**
@@ -94,10 +93,8 @@ class WorkShopController extends Controller
      */
     public function show($id)
     {
-        $workshop=Workshop::findorFail($id);
-        return view('admin.pages.workshop.view',compact('workshop'));
-
-
+        $workshop = Workshop::findorFail($id);
+        return view('admin.pages.workshop.view', compact('workshop'));
     }
 
     /**
@@ -108,9 +105,9 @@ class WorkShopController extends Controller
      */
     public function edit($id)
     {
-        $workshop=WorkShop::findOrFail($id);
-        $service=Service::all();
-        return view('admin.pages.workshop.view',compact('workshop','service'));
+        $workshop = WorkShop::findOrFail($id);
+        $service = Service::all();
+        return view('admin.pages.workshop.view', compact('workshop', 'service'));
     }
 
     /**
@@ -122,7 +119,7 @@ class WorkShopController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $workshop=Workshop::findorfail($id);
+        $workshop = Workshop::findorfail($id);
         //     if($request->hasFile('image')){
 
         //     $destination = 'vehicle_image'.$workshop->image;
@@ -150,22 +147,18 @@ class WorkShopController extends Controller
             'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
         ]);
 
-            $workshop->update([
-            'name'=>$request->name,
-            'PAN'=>$request->PAN,
-            'location'=>$request->location,
-            'starting_time'=>$request->starting_time,
-            'ending_time'=>$request->ending_time,
+        $workshop->update([
+            'name' => $request->name,
+            'PAN' => $request->PAN,
+            'location' => $request->location,
+            'starting_time' => $request->starting_time,
+            'ending_time' => $request->ending_time,
             // 'image'=>$imageName,
-            'no_of_staff'=>$request->no_of_staff,
-            'user_id'=>4,
+            'no_of_staff' => $request->no_of_staff,
+            'user_id' => 4,
         ]);
         toastr()->success('workshop list has Successfully updated');
         return redirect()->route('workshop.index');
-
-
-
-
     }
 
     /**
@@ -176,9 +169,8 @@ class WorkShopController extends Controller
      */
     public function destroy($id)
     {
-       WorkShop::findOrFail($id)->delete();
+        WorkShop::findOrFail($id)->delete();
         toastr()->warning('workshop has Successfully delete');
         return redirect()->route('shop.index');
-
     }
 }

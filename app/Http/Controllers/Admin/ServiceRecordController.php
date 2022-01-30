@@ -19,15 +19,13 @@ class ServiceRecordController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:serviceRecord-list', ['only'=>['index','show']]);
-        $this->middleware('permission:serviceRecord-create', ['only'=>['create','store']]);
-        $this->middleware('permission:serviceRecord-edit', ['only'=>['edit','update']]);
-        $this->middleware('permission:serviceRecord-delete', ['only'=>['destroy']]);
+        $this->middleware('permission:serviceRecord-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:serviceRecord-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:serviceRecord-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:serviceRecord-delete', ['only' => ['destroy']]);
     }
     public function index()
     {
-
-
     }
 
     /**
@@ -37,7 +35,6 @@ class ServiceRecordController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -64,33 +61,31 @@ class ServiceRecordController extends Controller
 
 
 
-        if($request->hasFile('image'))
-        {
-         $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('bill'), $imageName);
-        }else{
-             $imageName=null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('bill'), $imageName);
+        } else {
+            $imageName = null;
         }
 
 
 
 
-        $service_record=new ServiceRecord();
-        $service_record->serviceBook_id=$request->serviceBook_id;
-        $service_record->date=$request->date;
-        $service_record->kilometer=$request->kilometer;
-        $service_record->part_change=$request->part_change;
-        $service_record->service_charge=$request->service_charge;
-        $service_record->service_duration=$request->service_duration;
-        $service_record->nextService=$request->nextService;
-        $service_record->description=$request->description;
-        $service_record->serviceCenter_name=$request->serviceCenter_name;
-        $service_record->image=$imageName;
+        $service_record = new ServiceRecord();
+        $service_record->serviceBook_id = $request->serviceBook_id;
+        $service_record->date = $request->date;
+        $service_record->kilometer = $request->kilometer;
+        $service_record->part_change = $request->part_change;
+        $service_record->service_charge = $request->service_charge;
+        $service_record->service_duration = $request->service_duration;
+        $service_record->nextService = $request->nextService;
+        $service_record->description = $request->description;
+        $service_record->serviceCenter_name = $request->serviceCenter_name;
+        $service_record->image = $imageName;
         $service_record->save();
         toastr()->success('Service Record information has been successfully saved!');
         return redirect()->route('vehicle.index');
-
     }
 
     /**
@@ -127,32 +122,29 @@ class ServiceRecordController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $serviceRecord=ServiceRecord::findorfail($id);
-        if($request->hasFile('image'))
-        {
-         $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('bill'), $imageName);
-        }else{
-             $imageName=null;
-
+        $serviceRecord = ServiceRecord::findorfail($id);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('bill'), $imageName);
+        } else {
+            $imageName = null;
         }
 
         $serviceRecord->update([
-            'date'=>$request->date,
-            'kilometer'=>$request->kilometer,
-            'part_change'=>$request->part_change,
-            'service_charge'=>$request->service_charge,
-            'service_duration'=>$request->service_duration,
-            'nextService'=>$request->nextService,
-            'description'=>$request->description,
-            'image'=>$imageName,
-            'serviceCenter_name'=>$request->serviceCenter_name,
+            'date' => $request->date,
+            'kilometer' => $request->kilometer,
+            'part_change' => $request->part_change,
+            'service_charge' => $request->service_charge,
+            'service_duration' => $request->service_duration,
+            'nextService' => $request->nextService,
+            'description' => $request->description,
+            'image' => $imageName,
+            'serviceCenter_name' => $request->serviceCenter_name,
 
         ]);
         toastr()->success('Service Record list has Successfully updated');
         return redirect()->route('vehicle.index');
-
     }
 
     /**
@@ -170,6 +162,5 @@ class ServiceRecordController extends Controller
         ServiceRecord::findOrFail($id)->delete();
         toastr()->warning('serviceRecord has been delete successfully!');
         return redirect()->route('vehicle.index');
-
     }
 }

@@ -16,16 +16,15 @@ class BannerController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:banner-list', ['only'=>['index','show']]);
-        $this->middleware('permission:banner-create', ['only'=>['create','store']]);
-        $this->middleware('permission:banner-edit', ['only'=>['edit','update']]);
-        $this->middleware('permission:banner-delete', ['only'=>['destory']]);
-
+        $this->middleware('permission:banner-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:banner-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:banner-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:banner-delete', ['only' => ['destory']]);
     }
     public function index()
     {
-        $banner= Banner::all();
-        return view('admin.pagination.Banner.list',compact('banner'));
+        $banner = Banner::all();
+        return view('admin.pagination.Banner.list', compact('banner'));
     }
 
     /**
@@ -46,21 +45,19 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('image'))
-        {
-         $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('banner_image'), $imageName);
-        }else{
-             $imageName=null;
-
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('banner_image'), $imageName);
+        } else {
+            $imageName = null;
         }
 
         $banner = new Banner();
-        $banner->title=$request->title;
-        $banner->description=$request->description;
-        $banner->image=$imageName;
-        $banner->status=$request->status;
+        $banner->title = $request->title;
+        $banner->description = $request->description;
+        $banner->image = $imageName;
+        $banner->status = $request->status;
         $banner->save();
         toastr()->success('Banner successfully added');
         return redirect()->route('banner.index');
@@ -85,8 +82,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-       $banner=Banner::findorFail($id);
-       return view('admin.pagination.Banner.edit',compact('banner'));
+        $banner = Banner::findorFail($id);
+        return view('admin.pagination.Banner.edit', compact('banner'));
     }
 
     /**
@@ -98,26 +95,23 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $banner=Banner::findorFail($id);
-        if($request->hasFile('image'))
-        {
-         $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('banner_image'), $imageName);
-        }else{
-             $imageName=null;
-
+        $banner = Banner::findorFail($id);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('banner_image'), $imageName);
+        } else {
+            $imageName = null;
         }
 
         $banner->update([
-            'title'=>$request->title,
-            'description'=>$request->description,
-            'image'=>$imageName,
-            'status'=>$request->status,
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $imageName,
+            'status' => $request->status,
         ]);
         toastr()->success('Banner list has Successfully updated');
         return redirect()->route('banner.index');
-
     }
 
     /**

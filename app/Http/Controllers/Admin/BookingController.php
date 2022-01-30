@@ -20,8 +20,7 @@ class BookingController extends Controller
         $booking = Booking::all();
 
 
-        return view('admin.pages.booking.list',compact('booking'));
-
+        return view('admin.pages.booking.list', compact('booking'));
     }
 
     /**
@@ -44,20 +43,19 @@ class BookingController extends Controller
     {
 
         Booking::create([
-            'user_id'=>Auth::id(),
-            'vehicle_id'=>$request->vehicle_id,
-            'service_id'=>$request->service_id,
-            'workshop_id'=>$request->workshop_id,
-            'date'=>$request->date,
-            'time'=>$request->time,
-            'rate'=>'1000',
-            'status'=>'Pending',
+            'user_id' => Auth::id(),
+            'vehicle_id' => $request->vehicle_id,
+            'service_id' => $request->service_id,
+            'workshop_id' => $request->workshop_id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'rate' => '1000',
+            'status' => 'Pending',
         ]);
 
         return redirect()
-        ->back()
-        ->with('success','Your Booking has been successfully Placed!');
-
+            ->back()
+            ->with('success', 'Your Booking has been successfully Placed!');
     }
 
     /**
@@ -68,10 +66,8 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        $vehicle=Vehicle::findorFail($id);
-        return view('admin.pages.booking.list',compact('vehicle'));
-
-
+        $vehicle = Vehicle::findorFail($id);
+        return view('admin.pages.booking.list', compact('vehicle'));
     }
 
     /**

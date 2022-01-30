@@ -20,31 +20,31 @@
     <!-- About Start -->
     <div class="about wow fadeInUp" data-wow-delay="0.1s">
         @foreach ($about as $item)
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6">
-                    <div class="about-img">
-                        <img src="{{ asset('about_image/' . $item->image) }}" alt="Image">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="about-img">
+                            <img src="{{ asset('about_image/' . $item->image) }}" alt="Image">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-7 col-md-6">
-                    <div class="section-header text-left">
-                        {{-- <p>{{$item->title}}</p> --}}
-                        <h2>{{$item->title}}</h2>
-                    </div>
-                    <div class="about-text">
-                        <p>
-                            {{$item->description}}
-                        </p>
+                    <div class="col-lg-7 col-md-6">
+                        <div class="section-header text-left">
+                            {{-- <p>{{$item->title}}</p> --}}
+                            <h2>{{ $item->title }}</h2>
+                        </div>
+                        <div class="about-text">
+                            <p>
+                                {{ $item->description }}
+                            </p>
 
 
 
-                        <a class="btn" href="">Learn More</a>
+                            <a class="btn" href="">Learn More</a>
+                        </div>
                     </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
+        @endforeach
+    </div>
+    </div>
     </div>
     <!-- About End -->
 
