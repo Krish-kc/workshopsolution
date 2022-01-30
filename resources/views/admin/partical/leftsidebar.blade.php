@@ -170,9 +170,13 @@
                                         <a href="{{route('booking.index')}}"><i class="fas fa-bars "></i>
                                           Booking list</a>
                                     </li>
+                                    <li>
+                                        <a href="{{route('booking.index')}}"><i class="fas fa-bars "></i>
+                                            Emergency Booking list</a>
+                                    </li>
                             </ul>
                         </li>
-                        <li>
+                        {{-- <li>
 
                             <a class="has-arrow waves-effect waves-dark{{ request()->is('banner') ? 'active' : '' }}"
                                 href="#" aria-expanded="false"><i class="fa fa-exclamation-triangle">
@@ -184,7 +188,7 @@
                                          Emergency Booking list</a>
                                     </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
 
                     </ul>
