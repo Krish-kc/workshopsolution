@@ -15,16 +15,15 @@ class AboutController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:about-list', ['only'=>['index','show']]);
-        $this->middleware('permission:about-create', ['only'=>['create','store']]);
-        $this->middleware('permission:about-edit', ['only'=>['edit','update']]);
-        $this->middleware('permission:about-delete', ['only'=>['destory']]);
-
+        $this->middleware('permission:about-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:about-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:about-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:about-delete', ['only' => ['destory']]);
     }
     public function index()
     {
-        $about=About::all();
-        return view('admin.pagination.About.list',compact('about'));
+        $about = About::all();
+        return view('admin.pagination.About.list', compact('about'));
     }
 
     /**
@@ -34,7 +33,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-       return view('admin.pagination.About.add');
+        return view('admin.pagination.About.add');
     }
 
     /**
@@ -46,24 +45,22 @@ class AboutController extends Controller
     public function store(Request $request)
     {
 
-        if($request->hasFile('image'))
-        {
-         $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('about_image'), $imageName);
-        }else{
-             $imageName=null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('about_image'), $imageName);
+        } else {
+            $imageName = null;
         }
 
-        $about=new About();
-        $about->title=$request->title;
-        $about->description=$request->description;
-        $about->image=$imageName;
-        $about->status=$request->status;
+        $about = new About();
+        $about->title = $request->title;
+        $about->description = $request->description;
+        $about->image = $imageName;
+        $about->status = $request->status;
         $about->save();
         toastr()->success('About has been successfully added');
         return redirect()->route('about.index');
-
     }
 
     /**
@@ -85,8 +82,8 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $about=About::findorFail($id);
-        return view('admin.pagination.About.edit',compact('about'));
+        $about = About::findorFail($id);
+        return view('admin.pagination.About.edit', compact('about'));
     }
 
     /**
@@ -98,23 +95,21 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $about=About::findorFail($id);
-        if($request->hasFile('image'))
-        {
-         $image=$request->file('image');
-         $imageName = time().'.'.$image->getClientOriginalExtension();
-         $image->move(public_path('about_image'), $imageName);
-        }else{
-             $imageName=null;
-
+        $about = About::findorFail($id);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('about_image'), $imageName);
+        } else {
+            $imageName = null;
         }
 
 
         $about->update([
-            'title'=>$request->title,
-            'description'=>$request->description,
-            'image'=>$imageName,
-            'status'=>$request->status,
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $imageName,
+            'status' => $request->status,
         ]);
         toastr()->success('About is successfully updated');
         return redirect()->route('about.index');

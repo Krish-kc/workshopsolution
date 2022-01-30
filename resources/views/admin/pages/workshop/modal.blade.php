@@ -26,8 +26,8 @@
                     @csrf
                     <div class="form-group">
                         <label>WorkShop Name</label>
-                        <input type="text" name="title" value="{{ $service->title }}" class="form-control form-control-line"
-                            placeholder="Workshop name please...">
+                        <input type="text" name="title" value="{{ $service->title }}"
+                            class="form-control form-control-line" placeholder="Workshop name please...">
                     </div>
 
                     <div class="form-group">

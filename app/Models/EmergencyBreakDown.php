@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class EmergencyBreakDown extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+        'name',
+        'location',
+        'phone',
+        'vehicle_number',
+        'vehicle_type',
+        'description',
+    ];
 }

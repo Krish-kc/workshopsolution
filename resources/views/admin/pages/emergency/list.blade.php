@@ -32,16 +32,14 @@
                                         <tr role="row">
                                             <th>S.No</th>
                                             <th>User Name</th>
-                                            <th>Vehicle Name</th>
-                                            <th>Workshop Name</th>
-                                            <th>Task Name</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Rate</th>
-                                            <th>Status</th>
+                                            <th>Location</th>
+                                            <th>Phone Number</th>
+                                            <th>Vehicle Type</th>
+                                            <th>Vehicle Number</th>
+                                            <th>Description</th>
                                             <th>Action</th>
                                     </thead>
-                                    @foreach ($booking as $item)
+                                    @foreach ($emergency as $item)
 
 
 
@@ -50,14 +48,12 @@
 
                                             <tr role="row" class="odd">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td class="sorting_1">{{ $item->user->name }}</td>
-                                                <td>{{ $item->vehicle->name }}</td>
-                                                <td>{{ $item->workshop->name }}</td>
-                                                <td>{{ $item->service->title }}</td>
-                                                <td>{{ $item->date }}</td>
-                                                <td>{{ $item->time }}</td>
-                                                <td>{{ $item->rate }}</td>
-                                                <td>{{ $item->status }}</td>
+                                                <td class="sorting_1">{{ $item->name }}</td>
+                                                <td>{{ $item->location }}</td>
+                                                <td>{{ $item->phone }}</td>
+                                                <td>{{ $item->vehicle_type }}</td>
+                                                <td>{{ $item->vehicle_number }}</td>
+                                                <td>{{ $item->description }}</td>
 
 
                                                 <td>
@@ -90,46 +86,5 @@
 
     </div>
 
-    <div id="deletemodal" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-            <form action="#" method="POST" id="deletepermission">
-                @csrf
-                @method('DELETE')
 
-                <div class="modal-content">
-                    <div class="modal-header bg-danger ">
-                        <h4 class="modal-title w-100">Are you sure?</h4>
-                        <button type="button" class="close" data-dismiss="modal"
-                            aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Do you really want to delete these records? This process cannot be undone.</p>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-
-
-            </form>
-        </div>
-    </div>
-
-
-
-
-
-
-@endsection
-
-@section('js')
-    <script>
-        function handeldelete(id) {
-            var form = document.getElementById('deletepermission')
-            $('#deletemodal').modal('show')
-            form.action = 'permission/' + id
-
-        }
-    </script>
 @endsection

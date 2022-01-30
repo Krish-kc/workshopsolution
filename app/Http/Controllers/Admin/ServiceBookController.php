@@ -17,16 +17,16 @@ class ServiceBookController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:serviceBook-list', ['only'=>['index','show']]);
-        $this->middleware('permission:serviceBook-create', ['only'=>['create','store']]);
-        $this->middleware('permission:serviceBook-edit', ['only'=>['edit','update']]);
-        $this->middleware('permission:serviceBook-delete', ['only'=>['destory']]);
+        $this->middleware('permission:serviceBook-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:serviceBook-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:serviceBook-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:serviceBook-delete', ['only' => ['destory']]);
     }
 
     public function index()
     {
-        $servicebook=ServiceBook::all();
-        return view('userinterface.pages.profile.view',compact('servicebook'));
+        $servicebook = ServiceBook::all();
+        return view('userinterface.pages.profile.view', compact('servicebook'));
     }
 
     /**
@@ -48,16 +48,16 @@ class ServiceBookController extends Controller
     public function store(Request $request)
     {
         $request->merge([
-            'vechile_id'=>$request->vehicle_id
+            'vechile_id' => $request->vehicle_id
         ]);
 
-        $servicebook =ServiceBook::create($request->all());
-        if($servicebook){
-             toastr()->success('ServiceBook has Created Successfully');
-             return back();
-        }else{
-             toastr()->error('ServiceBook Cannot be Created Please try again');
-             return back();
+        $servicebook = ServiceBook::create($request->all());
+        if ($servicebook) {
+            toastr()->success('ServiceBook has Created Successfully');
+            return back();
+        } else {
+            toastr()->error('ServiceBook Cannot be Created Please try again');
+            return back();
         }
     }
 
@@ -71,7 +71,7 @@ class ServiceBookController extends Controller
 
     {
 
-        $vehicle=Vehicle::findOrFail($id);
+        $vehicle = Vehicle::findOrFail($id);
         return view('admin.pages.vehicle.serviceBook.add', compact('vehicle'));
     }
 

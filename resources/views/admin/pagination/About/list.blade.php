@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">List of About</h4>
-                <a href="{{route('about.create')}}" class="btn btn-primary float-right">Add About </a>
+                <a href="{{ route('about.create') }}" class="btn btn-primary float-right">Add About </a>
                 <h6 class="card-subtitle">All the Required Information Of About page</h6>
 
                 <div class="table-responsive m-t-40">
@@ -55,12 +55,12 @@
                                                 <td>
                                                     <div class="btn-group">
 
-                                                        <a href="{{route('about.edit',$item->id)}}" class="btn btn-success m-1"><i
-                                                                class="fa fa-edit"></i></a>
-                                                                <a href="#" class="btn btn-danger m-1"
-                                                                onclick="handeldelete({{ $item->id }})">
-                                                                <i class="fa fa-trash"></i>
-                                                            </a>
+                                                        <a href="{{ route('about.edit', $item->id) }}"
+                                                            class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
+                                                        <a href="#" class="btn btn-danger m-1"
+                                                            onclick="handeldelete({{ $item->id }})">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
                                                     </div>
 
                                                 </td>

@@ -532,9 +532,6 @@
                                                             <td>{{$item->rate}}</td>
                                                             <td>{{$item->status}}</td>
 
-
-
-
                                                         </tr>
                                                     </tbody>
 

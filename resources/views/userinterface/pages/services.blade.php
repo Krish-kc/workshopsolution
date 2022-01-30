@@ -54,6 +54,19 @@
             box-shadow: none !important
         }
 
+        textarea {
+            margin: 8px 0;
+            outline: 0 !important;
+            border-width: 0 0 2px !important;
+            border-color: #d1d1cf !important
+        }
+
+        textarea:focus {
+            border-color: #030F27 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important
+        }
+
         select {
             outline: 0 !important;
             border-width: 0 0 2px !important;
@@ -66,13 +79,27 @@
             box-shadow: none !important
         }
 
+        button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
         .radiobtn {
             margin-left: 3.5%
         }
 
         /* .icons {
-                                                                                                                                                    margin: auto !important
-                                                                                                                                                } */
+                                                                                                                                                        margin: auto !important
+                                                                                                                                                    } */
 
         .fa {
             /* border-radius: 25px; */
@@ -285,7 +312,7 @@
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form action="{{ route('booking.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('emergency.store') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
                     @method('POST')
@@ -304,45 +331,46 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" placeholder="Enter Your Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Your Name">
 
                                 </div>
-                                {{-- <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Enter Your Location">
-                                </div> --}}
                             </div>
                         </div>
                         <!--Third Row-->
                         <div class="row">
                             <div class="col-sm-6">
-                                <input type="text" name="text" placeholder=" Enter Your Location" class="form-control">
+                                <input type="text" name="location" placeholder=" Enter Your Location"
+                                    class="form-control">
                             </div>
                             <div class="col-sm-6">
 
-                                <input type="text" name="text" placeholder="Enter Phone Number" class="form-control">
+                                <input type="text" name="phone" placeholder="Enter Phone Number" class="form-control">
                             </div>
                         </div>
                         <!--Fourth Row-->
                         <div class="row mt-4">
                             <div class="col-sm-6">
 
-                                <input type="text" name="text" placeholder="Enter Vehicle Number" class="form-control">
+                                <input type="text" name="vehicle_number" placeholder="Enter Vehicle Number"
+                                    class="form-control">
                             </div>
 
                             <div class="col-sm-6">
-                                <select class="browser-default custom-select mb-4" name="vehicle_id" id="select">
+                                <select class="browser-default custom-select mb-4" name="vehicle_type" id="select">
                                     <option value="" disabled="" selected="">Select Vehicle</option>
-                                    <option value="">Bike</option>
-                                    <option value="">Scoter</option>
-                                    <option value="">Car</option>
+                                    <option value="Bike">Bike</option>
+                                    <option value="Scooter">Scooter</option>
+                                    <option value="Car">Car</option>
+                                    <option value="others">Others</option>
 
 
                                 </select>
                             </div>
                             <div class="col-sm-12">
+                                <textarea class="form-control" name="description" rows="3" cols="55"
+                                    placeholder="Enter Problem Description"></textarea>
 
-                                <input type="text" name="text" placeholder="Enter Problem Description"
-                                    class="form-control">
+
                             </div>
                         </div>
                         <!--Fifth Row-->

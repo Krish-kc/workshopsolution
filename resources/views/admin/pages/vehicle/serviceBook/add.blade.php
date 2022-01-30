@@ -45,83 +45,82 @@
 
 
 
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">List of Service Records</h4>
-                        <h6 class="card-subtitle">Service Records Information Till Now</h6>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">List of Service Records</h4>
+            <h6 class="card-subtitle">Service Records Information Till Now</h6>
 
-                        <div class="table-responsive m-t-40">
-                            <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="table-responsive m-t-40">
+                <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
-                                            role="grid" aria-describedby="myTable_info">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th>S.No</th>
-                                                    <th>Service Book Id</th>
-                                                    <th>Date</th>
-                                                    <th>Kilometer</th>
-                                                    <th>Part Changed</th>
-                                                    <th>Service Charge</th>
-                                                    <th>Service Duration</th>
-                                                    <th>Next Service</th>
-                                                    <th>Description</th>
-                                                    <th>Bill Image</th>
-                                                    <th>Service center Name</th>
-                                                    <th>Action</th>
-                                            </thead>
-                                            @if (!$vehicle->service->record->isEmpty())
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid"
+                                aria-describedby="myTable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>S.No</th>
+                                        <th>Service Book Id</th>
+                                        <th>Date</th>
+                                        <th>Kilometer</th>
+                                        <th>Part Changed</th>
+                                        <th>Service Charge</th>
+                                        <th>Service Duration</th>
+                                        <th>Next Service</th>
+                                        <th>Description</th>
+                                        <th>Bill Image</th>
+                                        <th>Service center Name</th>
+                                        <th>Action</th>
+                                </thead>
+                                @if (!$vehicle->service->record->isEmpty())
 
 
-                                                @foreach ($vehicle->service->record as $item)
-                                                    <tbody>
+                                    @foreach ($vehicle->service->record as $item)
+                                        <tbody>
 
-                                                        <tr role="row" class="odd">
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td class="sorting_1">{{ $item->serviceBook_id }}</td>
-                                                            <td>{{ $item->date }}</td>
-                                                            <td>{{ $item->kilometer }}</td>
-                                                            <td>{{ $item->part_change }}</td>
-                                                            <td>{{ $item->service_charge }}</td>
-                                                            <td>{{ $item->service_duration }}</td>
-                                                            <td>{{ $item->nextService }}</td>
-                                                            <td>{{ $item->description }}</td>
-                                                            <td>
-                                                                <img src="{{ asset('bill') }}/{{ $item->image }}"
-                                                                    style="max-height: 100px;">
-                                                            </td>
-                                                            <td>{{ $item->serviceCenter_name }}</td>
-                                                            <td>
-                                                                <div class="btn-group">
+                                            <tr role="row" class="odd">
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td class="sorting_1">{{ $item->serviceBook_id }}</td>
+                                                <td>{{ $item->date }}</td>
+                                                <td>{{ $item->kilometer }}</td>
+                                                <td>{{ $item->part_change }}</td>
+                                                <td>{{ $item->service_charge }}</td>
+                                                <td>{{ $item->service_duration }}</td>
+                                                <td>{{ $item->nextService }}</td>
+                                                <td>{{ $item->description }}</td>
+                                                <td>
+                                                    <img src="{{ asset('bill') }}/{{ $item->image }}"
+                                                        style="max-height: 100px;">
+                                                </td>
+                                                <td>{{ $item->serviceCenter_name }}</td>
+                                                <td>
+                                                    <div class="btn-group">
 
-                                                                    <a href="{{ route('serviceRecord.edit', $item->id) }}"
-                                                                        class="btn btn-success"><i
-                                                                            class="fa fa-edit"></i></a>
-                                                                            <a href="#" class="btn btn-danger m-1"
-                                                                            onclick="handeldelete({{ $item->id }})">
-                                                                            <i class="fa fa-trash"></i>
-                                                                        </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                        <a href="{{ route('serviceRecord.edit', $item->id) }}"
+                                                            class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                        <a href="#" class="btn btn-danger m-1"
+                                                            onclick="handeldelete({{ $item->id }})">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
 
-                                                @endforeach
-                                            @endif
+                                    @endforeach
+                                @endif
 
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
 
@@ -144,81 +143,91 @@
                         <div class="form-group">
 
                             <input type="hidden" name="serviceBook_id" value="{{ $vehicle->service->id }}"
-                                class="form-control form-control-line  @error('serviceBook_id') is-invalid @enderror " >
-                                @error('serviceBook_id')
+                                class="form-control form-control-line  @error('serviceBook_id') is-invalid @enderror ">
+                            @error('serviceBook_id')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Date</label>
-                            <input type="date" name="date" class="form-control form-control-line @error('date') is-invalid @enderror"
+                            <input type="date" name="date"
+                                class="form-control form-control-line @error('date') is-invalid @enderror"
                                 placeholder="Enter service Date">
-                                @error('date')
+                            @error('date')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Kilometer</label>
-                            <input type="text" name="kilometer" class="form-control form-control-line @error('kilometer') is-invalid @enderror"
+                            <input type="text" name="kilometer"
+                                class="form-control form-control-line @error('kilometer') is-invalid @enderror"
                                 placeholder="Enter Kilometer">
-                                @error('kilometer')
+                            @error('kilometer')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Part Changed</label>
-                            <input type="text" name="part_change" class="form-control form-control-line @error('part_change') is-invalid @enderror"
+                            <input type="text" name="part_change"
+                                class="form-control form-control-line @error('part_change') is-invalid @enderror"
                                 placeholder="Enter the part changed">
-                                @error('part_change')
+                            @error('part_change')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Service Charge</label>
-                            <input type="text" name="service_charge" class="form-control form-control-line @error('service_charge') is-invalid @enderror"
+                            <input type="text" name="service_charge"
+                                class="form-control form-control-line @error('service_charge') is-invalid @enderror"
                                 placeholder="Enter Service charge">
-                                @error('service_charge')
+                            @error('service_charge')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Service Duration</label>
-                            <input type="text" name="service_duration" class="form-control form-control-line @error('service_charge') is-invalid @enderror "
+                            <input type="text" name="service_duration"
+                                class="form-control form-control-line @error('service_charge') is-invalid @enderror "
                                 placeholder="Enter Service Duration">
-                                @error('service_duration')
+                            @error('service_duration')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Next Service</label>
-                            <input type="date" name="nextService" class="form-control form-control-line @error('nextService') is-invalid @enderror "
+                            <input type="date" name="nextService"
+                                class="form-control form-control-line @error('nextService') is-invalid @enderror "
                                 placeholder="Enter Next service date">
-                                @error('nextService')
+                            @error('nextService')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <input type="text" name="description" class="form-control form-control-line  @error('nextService') is-invalid @enderror "
+                            <input type="text" name="description"
+                                class="form-control form-control-line  @error('nextService') is-invalid @enderror "
                                 placeholder="Enter description">
-                                @error('description')
+                            @error('description')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Bill Image</label>
-                            <input type="file" class="fileinput fileinput-new input-group @error('image') is-invalid @enderror" name="image">
+                            <input type="file"
+                                class="fileinput fileinput-new input-group @error('image') is-invalid @enderror"
+                                name="image">
                             @error('image')
-                            <div class="text-danger">{{ $message }}</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Service center Name</label>
-                            <input type="text" name="serviceCenter_name" class="form-control form-control-line @error('serviceCenter_name') is-invalid @enderror"
+                            <input type="text" name="serviceCenter_name"
+                                class="form-control form-control-line @error('serviceCenter_name') is-invalid @enderror"
                                 placeholder="Enter Service center ">
-                                @error('serviceCenter_name')
+                            @error('serviceCenter_name')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            @enderror
                         </div>
                 </div>
                 <div class="modal-footer">

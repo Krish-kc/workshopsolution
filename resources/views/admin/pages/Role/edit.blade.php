@@ -41,11 +41,13 @@
                     <div class="form-group">
                         <label>Permission :</label>
                         @foreach ($permission as $item)
-                        <div>
-                            <input type="checkbox" id="{{$item->name}}" name="permission[]" value="{{$item->id}}"{{ $role->haspermissionTo($item->name) ? 'checked' : '' }}>
-                            <label for="{{$item->name}}">{{$item->name}}</label><br>
-                        </div>
-                            @endforeach
+                            <div>
+                                <input type="checkbox" id="{{ $item->name }}" name="permission[]"
+                                    value="{{ $item->id }}"
+                                    {{ $role->haspermissionTo($item->name) ? 'checked' : '' }}>
+                                <label for="{{ $item->name }}">{{ $item->name }}</label><br>
+                            </div>
+                        @endforeach
                     </div>
 
 

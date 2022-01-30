@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">List of Permission</h4>
-                <a href="{{route('permission.create')}}" class="btn btn-primary float-right">Add Permission</a>
+                <a href="{{ route('permission.create') }}" class="btn btn-primary float-right">Add Permission</a>
                 <h6 class="card-subtitle"></h6>
 
                 <div class="table-responsive m-t-40">
@@ -48,7 +48,7 @@
                                                 <td>
                                                     <div class="btn-group">
 
-                                                        <a href="{{route('permission.edit',$item->id)}}"
+                                                        <a href="{{ route('permission.edit', $item->id) }}"
                                                             class="btn btn-success m-1"><i class="fa fa-edit"></i></a>
 
                                                         <a href="#" class="btn btn-danger m-1"

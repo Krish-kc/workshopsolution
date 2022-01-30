@@ -15,19 +15,17 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     function __construct()
-     {
-         $this->middleware('permission:service-list',['only' => ['index','show']]);
-         $this->middleware('permission:service-create',['only' => ['create','store']]);
-         $this->middleware('permission:service-edit',['only' => ['edit','update']]);
-         $this->middleware('permission:service-delete',['only' => ['destroy']]);
-
-     }
+    function __construct()
+    {
+        $this->middleware('permission:service-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:service-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:service-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:service-delete', ['only' => ['destroy']]);
+    }
 
 
     public function index()
     {
-
     }
 
     /**
@@ -48,12 +46,12 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $service= new Service();
-        $service->title=$request->title;
-        $service->duration=$request->duration;
-        $service->charge=$request->charge;
-        $service->details=$request->details;
-        $service->workshop_id=$request->workshop_id;
+        $service = new Service();
+        $service->title = $request->title;
+        $service->duration = $request->duration;
+        $service->charge = $request->charge;
+        $service->details = $request->details;
+        $service->workshop_id = $request->workshop_id;
         $service->save();
 
         toastr()->success('Service added successfully');
@@ -68,8 +66,8 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service=Service::findOrFail($id);
-        return view('admin.pages.vehicle.list',compact('service'));
+        $service = Service::findOrFail($id);
+        return view('admin.pages.vehicle.list', compact('service'));
     }
 
     /**
@@ -80,10 +78,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service=Service::findOrFail($id);
-        return view('admin.pages.workshop.modal',compact('service'));
-
-
+        $service = Service::findOrFail($id);
+        return view('admin.pages.workshop.modal', compact('service'));
     }
 
     /**
@@ -96,14 +92,14 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
 
-        $service=Service::findOrFail($id);
+        $service = Service::findOrFail($id);
         $service->update([
 
-            'title'=>$request->title,
-            'duration'=>$request->duration,
-            'charge'=>$request->charge,
-            'details'=>$request->details,
-            'workshop_id'=>$request->workshop_id,
+            'title' => $request->title,
+            'duration' => $request->duration,
+            'charge' => $request->charge,
+            'details' => $request->details,
+            'workshop_id' => $request->workshop_id,
 
         ]);
         toastr()->success('workshop list has Successfully updated');
@@ -122,12 +118,11 @@ class ServiceController extends Controller
         Service::findOrFail($id)->delete();
         toastr()->warning('Vehicle has Successfully delete');
         return redirect()->route('shop.index');
-
     }
 
-    public function serviceName($id){
-        $data=Service::where("workshop_id",$id)->take(10)->get();
+    public function serviceName($id)
+    {
+        $data = Service::where("workshop_id", $id)->take(10)->get();
         return response()->json($data);
     }
-
 }

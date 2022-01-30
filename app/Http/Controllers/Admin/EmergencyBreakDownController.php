@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\EmergencyBreakDown;
 
 class EmergencyBreakDownController extends Controller
 {
@@ -14,7 +15,8 @@ class EmergencyBreakDownController extends Controller
      */
     public function index()
     {
-        //
+        $emergency = EmergencyBreakDown::all();
+        return view('admin.pages.emergency.list', compact('emergency'));
     }
 
     /**
@@ -35,7 +37,17 @@ class EmergencyBreakDownController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $emergency = new EmergencyBreakDown();
+        $emergency->name = $request->name;
+        $emergency->location = $request->location;
+        $emergency->phone = $request->phone;
+        $emergency->vehicle_number = $request->vehicle_number;
+        $emergency->vehicle_type = $request->vehicle_type;
+        $emergency->description = $request->description;
+        $emergency->save();
+        return redirect()
+            ->back()
+            ->with('success', 'Your Booking has been successfully Placed!');
     }
 
     /**
