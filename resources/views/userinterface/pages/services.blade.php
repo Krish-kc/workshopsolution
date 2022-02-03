@@ -98,8 +98,8 @@
         }
 
         /* .icons {
-                                                                                                                                                        margin: auto !important
-                                                                                                                                                    } */
+                                                                                                                                                                                                                                                                                                                margin: auto !important
+                                                                                                                                                                                                                                                                                                            } */
 
         .fa {
             /* border-radius: 25px; */
@@ -425,15 +425,17 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <!--Third Row-->
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="date" class="form-label">Enter Date</label>
 
-                                <input type="date" name="date" class="form-control">
+                                <input type="date" name="date" class="form-control ">
                             </div>
                             <div class="col-sm-6">
-                                <label for="date" class="form-label">Enter Time</label>
+                                <label for="time" class="form-label">Enter Time</label>
 
                                 <input type="time" name="time" class="form-control">
                             </div>
@@ -446,7 +448,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-6">
-                                <select class="browser-default custom-select mb-4" name="vehicle_id" id="select">
+                                <select class="browser-default custom-select mb-4" name="vehicle_id">
                                     <option value="" disabled="" selected="">Select Vehicle</option>
                                     @foreach ($vehicle as $item)
 
@@ -487,9 +489,11 @@
                             if (data) {
                                 $('#services').empty();
                                 $('#services').append('<option hidden>Choose Service</option>');
-                                $.each(data, function(key, services) {
+                                $.each(data, function(index,
+                                    services) {
                                     $('select[name="service_id"]').append(
-                                        '<option value="' + key + '">' + services
+                                        '<option value="' + services.id + '">' +
+                                        services
                                         .title + '</option>');
                                 });
                             } else {

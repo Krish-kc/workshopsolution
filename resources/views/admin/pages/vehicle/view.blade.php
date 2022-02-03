@@ -34,10 +34,10 @@
                     </div>
                 </div>
 
-
-                <button type="button" data-toggle="modal" data-target="#exampleModalLong"
-                    class="btn waves-effect waves-light btn-rounded btn-primary">Service Book</button>
-
+                @if (!$vehicle->service)
+                    <button type="button" data-toggle="modal" data-target="#exampleModalLong"
+                        class="btn waves-effect waves-light btn-rounded btn-primary">Service Book</button>
+                @endif
             </div>
             @if ($vehicle->service)
 
