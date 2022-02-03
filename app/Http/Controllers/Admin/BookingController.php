@@ -41,6 +41,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->service_id);
 
         Booking::create([
             'user_id' => Auth::id(),

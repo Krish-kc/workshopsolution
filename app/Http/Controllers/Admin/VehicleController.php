@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
 use App\Models\ServiceBook;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -122,48 +123,22 @@ class VehicleController extends Controller
     public function update(Request $request, $id)
     {
 
-        // $vehicle =Vehicle::findorFail($id);
-
-        // if($request->file != ''){
-        //      $path = public_path().'vehicle_image';
-
-        //      //code for remove old file
-        //      if($vehicle->file != ''  && $vehicle->file != null){
-        //           $file_old = $path.$vehicle->file;
-        //           unlink($file_old);
-        //      }
-
-        //      //upload new file
-        //      $image = $request->file;
-        //      $imageName = $image->getClientOriginalName();
-        //      $image->move($path, $imageName);
-        //      $vehicle->image=$imageName;
-
-        //for update in table
-        //  $vehicle->update(['file' => $imageName]);
-        // }
-        // else{
-        //     $imageName=$vehicle->image;
-        // }
-
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'number' => 'required',
-            'lot' => 'required',
-            'company' => 'required',
-            'model' => 'required',
-            'user_id' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
-        ]);
-
-
         $vehicle = Vehicle::findorfail($id);
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('vehicle_image'), $imageName);
-        } else {
-            $imageName = null;
+        if($request->hasFile('image'))
+        {
+            $destination ='vehicle_image'.$vehicle->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $image=$request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time(). '.' .$extension;
+            $image->move('vehicle_image',$imageName);
+            $vehicle->image=$imageName;
+
+        }else{
+            $imageName=$vehicle->image;
         }
 
         $vehicle->update([
@@ -178,6 +153,7 @@ class VehicleController extends Controller
         toastr()->success('Vehicle list has Successfully updated');
         return redirect()->route('vehicle.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

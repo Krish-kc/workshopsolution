@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use File;
 use App\Models\About;
 
 class AboutController extends Controller
@@ -96,12 +97,21 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $about = About::findorFail($id);
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('about_image'), $imageName);
-        } else {
-            $imageName = null;
+        if($request->hasFile('image'))
+        {
+            $destination ='about_image'.$about->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $image=$request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time(). '.' .$extension;
+            $image->move('about_image',$imageName);
+            $about->image=$imageName;
+
+        }else{
+            $imageName=$about->image;
         }
 
 
