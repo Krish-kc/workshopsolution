@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use File;
 
 class BannerController extends Controller
 {
@@ -96,12 +97,21 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $banner = Banner::findorFail($id);
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('banner_image'), $imageName);
-        } else {
-            $imageName = null;
+        if($request->hasFile('image'))
+        {
+            $destination ='banner_image'.$banner->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $image=$request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time(). '.' .$extension;
+            $image->move('banner_image',$imageName);
+            $banner->image=$imageName;
+
+        }else{
+            $imageName=$banner->image;
         }
 
         $banner->update([

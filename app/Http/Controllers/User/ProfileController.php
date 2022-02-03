@@ -119,12 +119,19 @@ class ProfileController extends Controller
         $profile=Profile::findorfail($id);
         if($request->hasFile('image'))
         {
-         $profile_pic=$request->file('image');
-         $imageName = time().'.'.$profile_pic->getClientOriginalExtension();
-         $profile_pic->move(public_path('profile_image'), $imageName);
-        }else{
-             $imageName=null;
+            $destination ='profile_image'.$profile->profile_pic;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $image=$request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time(). '.' .$extension;
+            $image->move('profile_image',$imageName);
+            $profile->profile_pic=$imageName;
 
+        }else{
+            $imageName=$profile->profile_pic;
         }
 
         $profile->update([

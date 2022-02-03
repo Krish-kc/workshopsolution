@@ -73,15 +73,12 @@
 
 
 
-                     <div class="form-group">
-                         <label>Short Description</label>
-                         <textarea name="description" class="form-control  @error('description') is-invalid @enderror"
-                             placeholder="Give some description about Workshop" rows="5"></textarea>
-                         @error('description')
-                             <div class="text-danger">{{ $message }}</div>
-                         @enderror
+                     <div class="col-sm-12">
+                         <label class="m-t-20">Description</label>
+                        <textarea class="form-control" name="description" rows="5" cols="55"></textarea>
 
-                     </div>
+
+                    </div>
 
 
                      <div class="form-group">
