@@ -90,4 +90,6 @@
 
 <!-- Templateuser_assets/ Javascript -->
 <script src="{{ asset('user_assets/js/main.js') }}"></script>
+<script src="{{ asset('user_assets/js/simplepicker.js') }}"></script>
+
 @yield('js')

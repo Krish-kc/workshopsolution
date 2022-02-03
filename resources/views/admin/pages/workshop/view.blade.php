@@ -178,12 +178,12 @@
                         </div>
                         <div class="form-group">
                             <label for="text">Duration</label>
-                            <input type="text" name="duration" class="form-control" id="exampleInputPassword1"
-                                placeholder="Enter Duration">
+                            <input type="number" name="duration" class="form-control" id="exampleInputPassword1"
+                                placeholder="Enter Duration in minutes ">
                         </div>
                         <div class="form-group">
                             <label for="text">Service Charge</label>
-                            <input type="text" name="charge" class="form-control" id="exampleInputPassword1"
+                            <input type="number" name="charge" class="form-control" id="exampleInputPassword1"
                                 placeholder="Enter service charge">
                         </div>
                         <div class="form-group">

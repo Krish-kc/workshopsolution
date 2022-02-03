@@ -20,7 +20,8 @@ class CreateBookingsTable extends Migration
             $table->string('service_id');
             $table->string('workshop_id');
             $table->string('date');
-            $table->string('time');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->string('status');
             $table->string('rate');
             $table->timestamps();
