@@ -26,6 +26,7 @@ class ServiceRecordController extends Controller
     }
     public function index()
     {
+        //
     }
 
     /**
@@ -85,7 +86,7 @@ class ServiceRecordController extends Controller
         $service_record->image = $imageName;
         $service_record->save();
         toastr()->success('Service Record information has been successfully saved!');
-        return redirect()->route('vehicle.index');
+        return redirect()->route('serviceRecord.index');
     }
 
     /**
@@ -123,12 +124,21 @@ class ServiceRecordController extends Controller
     public function update(Request $request, $id)
     {
         $serviceRecord = ServiceRecord::findorfail($id);
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('bill'), $imageName);
-        } else {
-            $imageName = null;
+        if($request->hasFile('image'))
+        {
+            $destination ='vehicle_image'.$serviceRecord->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $image=$request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time(). '.' .$extension;
+            $image->move('bill',$imageName);
+            $serviceRecord->image=$imageName;
+
+        }else{
+            $imageName=$serviceRecord->image;
         }
 
         $serviceRecord->update([

@@ -42,6 +42,9 @@
                                                  colspan="1" aria-label="Office: activate to sort column ascending"
                                                  style="width: 129.984px;">Image</th>
                                              <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1"
+                                                 colspan="1" aria-label="Office: activate to sort column ascending"
+                                                 style="width: 129.984px;">Description</th>
+                                             <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1"
                                                  colspan="1" aria-label="Age: activate to sort column ascending"
                                                  style="width: 53.2188px;">Action</th>
                                      </thead>
@@ -53,6 +56,7 @@
                                                  <img src="{{ asset('workshop') }}/{{ $item->image }}"
                                                      style="max-height: 100px;">
                                              </td>
+                                             <td>{{ $item->description }}</td>
                                              <td>
                                                  <div class="btn-group">
                                                      @can('workshop-edit')

@@ -20,7 +20,7 @@
         }
 
         /* About Me
-                                                                                                                                                                    ---------------------*/
+                                                                                                                                                                        ---------------------*/
         .about-text h3 {
             font-size: 45px;
             font-weight: 700;
@@ -142,11 +142,11 @@
         }
 
         /*
-                                                                                                                                                                    *
-                                                                                                                                                                    * ==========================================
-                                                                                                                                                                    * CUSTOM UTIL CLASSES
-                                                                                                                                                                    * ==========================================
-                                                                                                                                                                    */
+                                                                                                                                                                        *
+                                                                                                                                                                        * ==========================================
+                                                                                                                                                                        * CUSTOM UTIL CLASSES
+                                                                                                                                                                        * ==========================================
+                                                                                                                                                                        */
         .nav-pills-custom .nav-link {
             color: #aaa;
             background: #fff;
@@ -386,115 +386,117 @@
                     </div>
                 </div>
 
-            @else
-                <p> No service Book Available Please create your service Book</p>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Add ServiceBook
-                </button>
+                <div class="col-md-12">
+                    <div class="card text-center collapse" id="collapseExample">
+                        <div class="card-body">
+                            <h3>Service Record Information</h3>
+                            <div class="table-responsive m-t-40">
+                                <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    @if (!$vehicle->service->record->isEmpty())
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table id="myTable"
+                                                    class="table table-bordered table-striped dataTable no-footer"
+                                                    role="grid" aria-describedby="myTable_info">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th>S.No</th>
+                                                            <th>Date</th>
+                                                            <th>Part Changed</th>
+                                                            <th>Service Charge</th>
+                                                            <th>Next Service</th>
+                                                            <th>Bill Image</th>
+                                                            <th>Service center Name</th>
+
+                                                    </thead>
 
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Add Service Book</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{{ route('servicebook.store') }}" method="POST"
-                                    class="form-material m-t-40">
-                                    @csrf
-                                    <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-                                    <div class="form-group">
-                                        <label>Owner Name</label>
-                                        <input type="text" name="owner_name" class="form-control form-control-line"
-                                            placeholder="Some text value...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Engine Number</label>
-                                        <input type="text" name="engeen_number" class="form-control form-control-line"
-                                            placeholder="Some text value...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Chassis Number</label>
-                                        <input type="text" name="chassis_number" class="form-control form-control-line"
-                                            placeholder="Some text value...">
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
-                            </div>
-                            </form>
 
-                        </div>
-                    </div>
-                </div>
+                                                    @foreach ($vehicle->service->record as $item)
+                                                        <tbody>
 
+                                                            <tr role="row" class="odd">
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $item->date }}</td>
+                                                                <td>{{ $item->part_change }}</td>
+                                                                <td>{{ $item->service_charge }}</td>
+                                                                <td>{{ $item->nextService }}</td>
+                                                                <td>
+                                                                    <img src="{{ asset('bill') }}/{{ $item->image }}"
+                                                                        style="max-height: 100px;">
+                                                                </td>
+                                                                <td>{{ $item->serviceCenter_name }}</td>
 
-            @endif
+                                                            </tr>
+                                                        </tbody>
 
-            <div class="col-md-12">
-                <div class="card text-center collapse" id="collapseExample">
-                    <div class="card-body">
-                        <h3>Service Record Information</h3>
-                        <div class="table-responsive m-t-40">
-                            <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                    @endforeach
+                                                @else
+                                                    No record Founds
+                                    @endif
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
-                                            role="grid" aria-describedby="myTable_info">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th>S.No</th>
-                                                    <th>Date</th>
-                                                    <th>Part Changed</th>
-                                                    <th>Service Charge</th>
-                                                    <th>Next Service</th>
-                                                    <th>Bill Image</th>
-                                                    <th>Service center Name</th>
-
-                                            </thead>
-                                            @if (!$vehicle->service->record->isEmpty())
-
-
-                                                @foreach ($vehicle->service->record as $item)
-                                                    <tbody>
-
-                                                        <tr role="row" class="odd">
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $item->date }}</td>
-                                                            <td>{{ $item->part_change }}</td>
-                                                            <td>{{ $item->service_charge }}</td>
-                                                            <td>{{ $item->nextService }}</td>
-                                                            <td>
-                                                                <img src="{{ asset('bill') }}/{{ $item->image }}"
-                                                                    style="max-height: 100px;">
-                                                            </td>
-                                                            <td>{{ $item->serviceCenter_name }}</td>
-
-                                                        </tr>
-                                                    </tbody>
-
-                                                @endforeach
-                                            @else
-                                                No record Founds
-                                            @endif
-
-                                        </table>
-                                    </div>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+        </div>
+        </div>
+
+
+    @else
+        <p> No service Book Available Please create your service Book</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Add ServiceBook
+        </button>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Service Book</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('servicebook.store') }}" method="POST" class="form-material m-t-40">
+                            @csrf
+                            <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                            <div class="form-group">
+                                <label>Owner Name</label>
+                                <input type="text" name="owner_name" class="form-control form-control-line"
+                                    placeholder="Some text value...">
+                            </div>
+                            <div class="form-group">
+                                <label>Engine Number</label>
+                                <input type="text" name="engeen_number" class="form-control form-control-line"
+                                    placeholder="Some text value...">
+                            </div>
+                            <div class="form-group">
+                                <label>Chassis Number</label>
+                                <input type="text" name="chassis_number" class="form-control form-control-line"
+                                    placeholder="Some text value...">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+
+                </div>
             </div>
+        </div>
+
+
+        @endif
+
 
 
 

@@ -43,6 +43,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->service_id);
 
      $booking=Booking::all();
      $currentTime = Carbon::parse($request->time);

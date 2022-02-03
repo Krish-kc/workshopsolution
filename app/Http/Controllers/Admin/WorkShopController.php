@@ -49,17 +49,6 @@ class WorkShopController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'PAN' => 'required',
-            'location' => 'required',
-            'starting_time' => 'required',
-            'ending_time' => 'required',
-            'description' => 'required',
-            'no_of_staff' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
-        ]);
-
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -75,6 +64,7 @@ class WorkShopController extends Controller
             'starting_time' => $request->starting_time,
             'ending_time' => $request->ending_time,
             'image' => $imageName,
+            'description' => $request->description,
             'no_of_staff' => $request->no_of_staff,
             'user_id' => 4,
         ]);
@@ -120,32 +110,20 @@ class WorkShopController extends Controller
     public function update(Request $request, $id)
     {
         $workshop = Workshop::findorfail($id);
-        //     if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
+            $destination = 'vehicle_image' . $workshop->image;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time() . '.' . $extension;
+            $image->move('workshop', $imageName);
+            $workshop->image = $imageName;
+        } else {
+            $imageName = $workshop->image;
+        }
 
-        //     $destination = 'vehicle_image'.$workshop->image;
-        //     if(File::exist($destination)){
-        //         File::delete($destination);
-        //     }
-        //     $image=$request->file('image');
-        //     $extension =$image->getClientOriginalExtension();
-        //     $imageName = time(). '.'.$extension;
-        //     $image->move('workshop_image',$imageName);
-        //     $workshop->image=$imageName;
-        // }
-        // else{
-        //     $imageName=$workshop->image;
-        // }
-
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'PAN' => 'required',
-            'location' => 'required',
-            'starting_time' => 'required',
-            'ending_time' => 'required',
-            'description' => 'required',
-            'no_of_staff' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
-        ]);
 
         $workshop->update([
             'name' => $request->name,
@@ -153,7 +131,7 @@ class WorkShopController extends Controller
             'location' => $request->location,
             'starting_time' => $request->starting_time,
             'ending_time' => $request->ending_time,
-            // 'image'=>$imageName,
+            'image' => $imageName,
             'no_of_staff' => $request->no_of_staff,
             'user_id' => 4,
         ]);

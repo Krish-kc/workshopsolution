@@ -125,7 +125,6 @@
                                     <option>Female</option>
                                     <option>Others</option>
                                 </select>
-
                             </div>
                         </div>
                             <div class="form-group">
