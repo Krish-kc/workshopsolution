@@ -134,59 +134,56 @@
 
 <body>
     <div class="signup-form">
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{url('/reset')}}">
             @csrf
-            <h2>Sign In</h2>
-            <p>Please Enter your Email & Password for signIn!</p>
+            <h2>Forget Password</h2>
+            <p>Please Enter your Email to reset the password</p>
             <hr>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="text-center">
+                    <h3><i class="fa fa-lock "></i></h3>
+                    <p>You can reset your password here.</p>
+                    <div class="panel-body">
 
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="fa fa-paper-plane"></i>
-                        </span>
+                      <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                            <input id="email" name="email"  class="form-control"  type="email">
+
+                          </div>
+                        </div>
+
+                        @if (session('error'))
+                            <div>
+                            {{session('error')}}
+                            </div>
+                        @endif
+                        @if (session('success'))
+                        <div>
+                            {{session('success')}}
+                        </div>
+                        @endif
+                        <div class="form-group">
+                          <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Send Reset link" type="submit">
+                        </div>
+
+                        <input type="hidden" class="hide" name="token" id="token" value="">
+                      </form>
+
                     </div>
-                    <input type="email" placeholder="Email Address"
-                        class="form-control @error('email') is-invalid @enderror" name="email"
-                        value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                  </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="fa fa-lock"></i>
-                        </span>
-                    </div>
-                    <input type="password" class="form-control  @error('password') is-invalid @enderror" name="password"
-                        placeholder="Password" autocomplete="current-password">
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+              </div>
 
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label class="form-check-label">
-                    <input type="checkbox" required="required" name="remember" id="remember"
-                        {{ old('remember') ? 'checked' : '' }}> Remember Me</label>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
-            </div>
-            <div class="text-center"><a href="/forgotpassword">Forgot password ? </a></div>
+
         </form>
-        <div class="text-center">New to this account? <a href="/register">Register here</a></div>
     </div>
 </body>
 
 </html>
+
+

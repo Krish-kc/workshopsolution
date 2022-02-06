@@ -56,6 +56,12 @@
         </div>
         <!-- Top Bar End -->
         @include('userinterface.partical.navigation')
+        @if(Session::has('success'))
+            <div class="alert alert-success alert-dismissible p-2">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+               <strong>Success!</strong> {!! session('success')!!}.
+            </div>
+            @endif
 
         @yield('content')
 
