@@ -29,7 +29,7 @@
 
 
     <!-- Feature Start-->
-    <div class="feature wow fadeInUp" data-wow-delay="0.1s">
+    {{-- <div class="feature wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 col-md-12">
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Feature End-->
 
 
