@@ -23,11 +23,18 @@ class PageController extends Controller
         $about=About::where('status','on')->get();
         return view('userinterface.pages.about',compact('about'));
     }
-    public function service(){
+    public function service(Request $request){
         $user_id=Auth::id();
-        $workshop=WorkShop::all();
+        $search =$request['search'] ?? "";
+        if($search != ""){
+
+            $workshop = WorkShop::where('location',"LIKE","%$search%")->get();
+        }else{
+
+            $workshop=WorkShop::all();
+        }
         $vehicle=Vehicle::where('user_id',$user_id)->get();
-        return view('userinterface.pages.services',compact('workshop','vehicle'));
+        return view('userinterface.pages.services',compact('workshop','vehicle','search'));
     }
     public function contact(){
         return view('userinterface.pages.contact');

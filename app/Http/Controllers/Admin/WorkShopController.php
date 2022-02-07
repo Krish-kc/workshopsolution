@@ -151,4 +151,6 @@ class WorkShopController extends Controller
         toastr()->warning('workshop has Successfully delete');
         return redirect()->route('shop.index');
     }
+
+
 }
