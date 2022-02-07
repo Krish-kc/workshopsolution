@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Pusher\Pusher;
 
 
 class UserController extends Controller
@@ -108,5 +109,23 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function notify(){
+         $options = array(
+                            'cluster' => env('PUSHER_APP_CLUSTER'),
+                            'encrypted' => true
+                            );
+                            
+                $pusher = new Pusher(
+                                    env('PUSHER_APP_KEY'),
+                                    env('PUSHER_APP_SECRET'),
+                                    env('PUSHER_APP_ID'), 
+                                    $options
+                                );
+
+                $data['message'] = 'New User has Register';
+                $pusher->trigger('channel-register', 'App\\Events\\Notify', $data);
+                dd('sucessfull register');
+
     }
 }

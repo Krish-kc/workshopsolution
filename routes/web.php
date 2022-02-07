@@ -50,11 +50,17 @@ Route::resource('userprofile', ProfileController::class);
 
 Route::resource('emergency', EmergencyBreakDownController::class);
 
+
+Route::get('/notification',[UserController::class,'notify']);
+
+Route::post('/mark-as-read',[AdminController::class,'markNotification'])->name('markNotification');
+
 Route::get('/forgotpassword',[ForgotPasswordController::class,'forgotpassword']);
 Route::post('/reset',[ForgotPasswordController::class,'reset']);
 
 Route::get('/reset_password/{id}',[ResetPasswordController::class,'changepassword'])->name('reset_password');
 Route::post('/update_password',[ResetPasswordController::class,'passwordUpdate'])->name('update.password');
+
 
 
 

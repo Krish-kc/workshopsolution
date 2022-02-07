@@ -24,7 +24,7 @@ src="{{ asset('../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-deco
 <script src="{{ asset('../assets/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
 
 <script src="{{ asset('../assets/plugins/datatables/datatables.min.js') }}"></script>
-<!-- start - This is for export functionality only -->
+
 
 
 <script>
@@ -76,4 +76,6 @@ src="{{ asset('../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-deco
         ]
     });
 </script>
+
+
 @yield('js')
