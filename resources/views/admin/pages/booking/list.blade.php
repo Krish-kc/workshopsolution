@@ -21,69 +21,76 @@
                 {{-- <a href="{{route('permission.create')}}" class="btn btn-primary float-right">Add Permission</a> --}}
                 <h6 class="card-subtitle"></h6>
 
-                <div class="table-responsive m-t-40">
-                    <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
-                                    role="grid" aria-describedby="myTable_info">
-                                    <thead>
-                                        <tr role="row">
-                                            <th>S.No</th>
-                                            <th>User Name</th>
-                                            <th>Vehicle Name</th>
-                                            <th>Workshop Name</th>
-                                            <th>Task Name</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Rate</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                    </thead>
-                                    @foreach ($booking as $item)
+                @if (!$booking->isEmpty())
 
 
+                    <div class="table-responsive m-t-40">
+                        <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
+                                        role="grid" aria-describedby="myTable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>S.No</th>
+                                                <th>User Name</th>
+                                                <th>Vehicle Name</th>
+                                                <th>Workshop Name</th>
+                                                <th>Task Name</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Rate</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                        </thead>
+                                        @foreach ($booking as $item)
 
 
-                                        <tbody>
-
-                                            <tr role="row" class="odd">
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td class="sorting_1">{{ $item->user->name }}</td>
-                                                <td>{{ $item->vehicle->name }}</td>
-                                                <td>{{ $item->workshop->name }}</td>
-                                                <td></td>
-                                                <td>{{ $item->date }}</td>
-                                                <td>{{ $item->time }}</td>
-                                                <td>{{ $item->rate }}</td>
-                                                <td>{{ $item->status }}</td>
 
 
-                                                <td>
-                                                    <div class="btn-group">
 
-                                                        <a href="" class="btn btn-success m-1"><i
-                                                                class="fa fa-edit"></i></a>
+                                            <tbody>
 
-                                                        <a href="#" class="btn btn-danger m-1" onclick="handeldelete()">
-                                                            <i class="fa fa-trash"></i>
-                                                        </a>
-                                                    </div>
+                                                <tr role="row" class="odd">
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td class="sorting_1">{{ $item->user->name }}</td>
+                                                    <td>{{ $item->vehicle->name }}</td>
+                                                    <td>{{ $item->workshop->name }}</td>
+                                                    <td>{{ $item->service->title }}</td>
+                                                    <td>{{ $item->date }}</td>
+                                                    <td>{{ $item->time }}</td>
+                                                    <td>{{ $item->rate }}</td>
+                                                    <td>{{ $item->status }}</td>
 
-                                                </td>
+
+                                                    <td>
+                                                        <div class="btn-group">
+
+                                                            <a href="" class="btn btn-success m-1"><i
+                                                                    class="fa fa-edit"></i></a>
+
+                                                            <a href="#" class="btn btn-danger m-1" onclick="handeldelete()">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+                                                    </td>
 
 
-                                            </tr>
-                                        </tbody>
+                                                </tr>
+                                            </tbody>
 
-                                    @endforeach
+                                        @endforeach
 
-                                </table>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    No Record Found
+                @endif
             </div>
         </div>
     </div>
