@@ -13,7 +13,8 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\EmergencyBreakDownController;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\User\PageController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::get('/', function () {
 
 
 
+
 //all userUI Routes
 Route::get('/home', [PageController::class, 'home'])->name('home');
 Route::get('/aboutework', [PageController::class, 'about'])->name('aboutework');
@@ -48,10 +50,16 @@ Route::resource('userprofile', ProfileController::class);
 
 Route::resource('emergency', EmergencyBreakDownController::class);
 
+
 Route::get('/notification',[UserController::class,'notify']);
 
 Route::post('/mark-as-read',[AdminController::class,'markNotification'])->name('markNotification');
 
+Route::get('/forgotpassword',[ForgotPasswordController::class,'forgotpassword']);
+Route::post('/reset',[ForgotPasswordController::class,'reset']);
+
+Route::get('/reset_password/{id}',[ResetPasswordController::class,'changepassword'])->name('reset_password');
+Route::post('/update_password',[ResetPasswordController::class,'passwordUpdate'])->name('update.password');
 
 
 
@@ -65,7 +73,10 @@ Route::post('/mark-as-read',[AdminController::class,'markNotification'])->name('
 
 
 
-Auth::routes();
+
+
+
+Auth::routes(['verify'=>true]);
 //routes for admins pannel
 Route::group(['middleware' => ['auth']], function () {
 

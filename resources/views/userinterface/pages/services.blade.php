@@ -98,8 +98,7 @@
         }
 
         /* .icons {
-                                                                                                                                                                                                                                                                                                                margin: auto !important
-                                                                                                                                                                                                                                                                                                            } */
+
 
         .fa {
             /* border-radius: 25px; */
@@ -206,13 +205,35 @@
         </div>
     @endif
 
+    <div class="feature wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 col-md-12">
+                    <div class="feature-form ">
+                        <form>
+                            <div class="feature-group-2">
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Search Workshop</label>
+                                    <input type="search" name="search" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Search Workshop via location" value="{{$search}}">
+                                </div>
+                                <button type="submit" class="btn btn-primary "><i class="fab fa-searchengin "></i>
+                                    Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Service Start -->
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Services</p>
-                <h2>We Provide Services</h2>
+                <h2>Services We Provide</h2>
             </div>
             <div class="icon-part">
                 <div class="container-fluid">
@@ -269,9 +290,18 @@
                     </div>
                 </div>
             </div>
+            <br>
+
+            <!-- Feature Start-->
+
+            <!-- Feature End-->
 
 
-
+            <div class="section-header text-center">
+                <p>Our Service Center</p>
+                <h2>Service Center List</h2>
+            </div>
+            @if ($search)
             <div class="row">
                 @foreach ($workshop as $item)
                     <div class="col-sm-12">
@@ -304,6 +334,10 @@
                     </div>
                 @endforeach
             </div>
+            @else
+            <h6>There is no service center in this location </h6>
+
+            @endif
         </div>
     </div>
     <!-- Service End -->
