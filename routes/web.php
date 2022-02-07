@@ -48,6 +48,10 @@ Route::resource('userprofile', ProfileController::class);
 
 Route::resource('emergency', EmergencyBreakDownController::class);
 
+Route::get('/notification',[UserController::class,'notify']);
+
+Route::post('/mark-as-read',[AdminController::class,'markNotification'])->name('markNotification');
+
 
 
 
