@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServiceRecordValidation;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\ServiceRecord;
@@ -44,22 +45,8 @@ class ServiceRecordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceRecordValidation $request)
     {
-        //  dd($request);
-
-        // $validated = $request->validate([
-        //     'name' => 'required|max:255',
-        //     'date' => 'required',
-        //     'kilometer' => 'required',
-        //     'part_change' => 'required',
-        //     'service_charge' => 'required',
-        //     'service_duration' => 'required',
-        //     'nextService' => 'required',
-        //     'serviceCenter_name' => 'required',
-        //     'image' => 'mimes:jpeg,jpg,png,gif|required|max:2000',
-        // ]);
-
 
 
         if ($request->hasFile('image')) {
@@ -69,8 +56,6 @@ class ServiceRecordController extends Controller
         } else {
             $imageName = null;
         }
-
-
 
 
         $service_record = new ServiceRecord();

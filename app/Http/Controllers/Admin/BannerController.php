@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use File;
+use Illuminate\Support\Facades\Validator;
 
 class BannerController extends Controller
 {
@@ -46,6 +47,15 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:1000',
+            'status' => 'required',
+        ]);
+
+
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -96,6 +106,8 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $banner = Banner::findorFail($id);
         if($request->hasFile('image'))
         {

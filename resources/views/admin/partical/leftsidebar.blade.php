@@ -150,11 +150,12 @@
                                             About</a>
                                     </li>
                                 @endcan
+                                    <li>
+                                        <a href="{{route('team.create')}}"><i class="mdi mdi-plus"></i>
+                                            Team Management</a>
+                                    </li>
 
-                                {{-- <li>
-                                    <a href=""><i class="mdi mdi-plus"></i>
-                                        Workshop</a>
-                                </li> --}}
+
 
 
                             </ul>

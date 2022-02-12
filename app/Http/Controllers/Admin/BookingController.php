@@ -45,45 +45,38 @@ class BookingController extends Controller
     {
         // dd($request->service_id);
 
-     $booking=Booking::all();
-     $currentTime = Carbon::parse($request->time);
-     foreach($booking as $item){
+        $booking = Booking::all();
+        $currentTime = Carbon::parse($request->time);
+        foreach ($booking as $item) {
 
-            $booked_date=$item->date;
-            $booked_start_time=$item->start_time;
-            $booked_end_time=$item->end_time;
+            $booked_date = $item->date;
+            $booked_start_time = $item->start_time;
+            $booked_end_time = $item->end_time;
 
-            $workshop_id=$item->workshop_id;
+            $workshop_id = $item->workshop_id;
 
-            if($workshop_id==$request->workshop_id){
-            
-                        if($booked_date == $request->date){
+            if ($workshop_id == $request->workshop_id) {
 
-                             if($currentTime->between($booked_start_time, $booked_end_time, true)){
+                if ($booked_date == $request->date) {
 
-                                return redirect()
-                                    ->back()
-                                    ->with('success', 'Booking unsuccessful,Time already reserved!');
-                                                                
-                                
-                                
-                            }
-                            
-                        
-                        }     
-             }
-             
+                    if ($currentTime->between($booked_start_time, $booked_end_time, true)) {
 
-         }
-    
+                        return redirect()
+                            ->back()
+                            ->with('success', 'Booking unsuccessful,Time already reserved!');
+                    }
+                }
+            }
+        }
 
-    
-    $service_id=$request->service_id;
-    $service=Service::where('id',$service_id)->first();
-    $duration=$service->duration;
-    $time = Carbon::parse($request->time);
-    $timenow= $time->format('g:i A');
-    $end_time= $time->addMinutes($duration)->format("g:i A");
+
+
+        $service_id = $request->service_id;
+        $service = Service::where('id', $service_id)->first();
+        $duration = $service->duration;
+        $time = Carbon::parse($request->time);
+        $timenow = $time->format('g:i A');
+        $end_time = $time->addMinutes($duration)->format("g:i A");
 
         Booking::create([
             'user_id' => Auth::id(),
@@ -92,7 +85,7 @@ class BookingController extends Controller
             'workshop_id' => $request->workshop_id,
             'date' => $request->date,
             'start_time' => $timenow,
-            'end_time'=>$end_time,
+            'end_time' => $end_time,
             'rate' => '1000',
             'status' => 'Pending',
         ]);

@@ -75,10 +75,13 @@
 
                      <div class="col-sm-12">
                          <label class="m-t-20">Description</label>
-                        <textarea class="form-control" name="description" rows="5" cols="55"></textarea>
+                         <textarea class="form-control" class="form-control @error('description') is-invalid @enderror"
+                             name="description" rows="5" cols="55"></textarea>
+                         @error('description')
+                             <div class="text-danger">{{ $message }}</div>
+                         @enderror
 
-
-                    </div>
+                     </div>
 
 
                      <div class="form-group">

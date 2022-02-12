@@ -37,6 +37,14 @@ class EmergencyBreakDownController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'location' => 'required',
+            'phone' => 'required|numeric',
+            'vehicle_number' => 'required',
+            'description' => 'required',
+        ]);
+
         $emergency = new EmergencyBreakDown();
         $emergency->name = $request->name;
         $emergency->location = $request->location;
