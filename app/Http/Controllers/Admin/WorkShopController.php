@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WorkshopValidation;
 use App\Models\WorkShop;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Validator;
 
 class WorkShopController extends Controller
 {
@@ -46,8 +49,9 @@ class WorkShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkshopValidation $request)
     {
+
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -66,7 +70,7 @@ class WorkShopController extends Controller
             'image' => $imageName,
             'description' => $request->description,
             'no_of_staff' => $request->no_of_staff,
-            'user_id' => 4,
+            'user_id' => Auth::id(),
         ]);
 
 
@@ -107,7 +111,7 @@ class WorkShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WorkshopValidation $request, $id)
     {
         $workshop = Workshop::findorfail($id);
         if ($request->hasFile('image')) {

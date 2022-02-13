@@ -62,7 +62,7 @@ class VehicleController extends Controller
             'lot' => 'required',
             'company' => 'required',
             'model' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:1000',
         ]);
 
         if ($request->hasFile('image')) {
