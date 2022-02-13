@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Team;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use File;
+use Intervention\Image\Facades\Image;
 
 class TeamController extends Controller
 {
@@ -41,9 +43,12 @@ class TeamController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('team_image'), $imageName);
-        } else {
-            $imageName = null;
+            $destinationPath = public_path('team_image');
+            $image= Image::make($image->getRealPath());
+            $image->reSize(300, 350, function($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$imageName);
+            // $image->move(public_path('team_image'), $imageName);
         }
 
         $team = new Team();
@@ -56,7 +61,7 @@ class TeamController extends Controller
         $team->status = $request->status;
         $team->save();
         toastr()->success('Team Member successfully added');
-        // return redirect()->route('team.index');
+        return redirect()->route('team.index');
 
     }
 
