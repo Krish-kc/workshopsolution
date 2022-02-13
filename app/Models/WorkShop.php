@@ -10,11 +10,16 @@ class WorkShop extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'PAN', 'location', 'starting_time', 'ending_time', 'image','description', 'no_of_staff', 'user_id'
+        'name', 'PAN', 'location', 'starting_time', 'ending_time','description', 'no_of_staff', 'user_id'
     ];
 
     public function services()
     {
         return $this->hasMany(Service::class, 'workshop_id');
+    }
+
+    public function Images()
+    {
+        return $this->hasMany(WorkshopImg::class, 'workshop_id');
     }
 }

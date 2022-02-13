@@ -53,8 +53,14 @@
                                              <td>{{ $item->name }}</td>
                                              <td>{{ $item->location }}</td>
                                              <td>
-                                                 <img src="{{ asset('workshop') }}/{{ $item->image }}"
-                                                     style="max-height: 100px;">
+                                                 @foreach ($item->images as $image)
+
+
+                                                 <img src="{{ asset('workshop') }}/{{ $image ->name }}"
+                                                     style=" max-width:auto;
+                                                     height:50px;">
+
+                                                     @endforeach
                                              </td>
                                              <td>{{ $item->description }}</td>
                                              <td>

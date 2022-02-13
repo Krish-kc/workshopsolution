@@ -29,7 +29,7 @@ class WorkshopValidation extends FormRequest
             'location'=>'required',
             'starting_time'=>'required',
             'ending_time'=>'required',
-            'image'=>'mimes:jpeg,jpg,png|required|max:1000',
+            // 'image' => 'image|required',
             'description'=>'required',
             'no_of_staff'=>'numeric',
 
