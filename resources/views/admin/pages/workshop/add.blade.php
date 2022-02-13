@@ -89,7 +89,7 @@
                          <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                              <input type="file"
                                  class="fileinput fileinput-new input-group @error('image') is-invalid @enderror"
-                                 name="image">
+                                 name="image[]" multiple = "multiple">
                              <div class="form-control" data-trigger="fileinput"></div>
                              @error('image')
                                  <div class="text-danger">{{ $message }}</div>

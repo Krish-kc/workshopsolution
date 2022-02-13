@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkshopValidation;
 use App\Models\WorkShop;
 use App\Models\Service;
+use App\Models\WorkshopImg;
 use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Facades\Auth;
@@ -52,26 +53,43 @@ class WorkShopController extends Controller
     public function store(WorkshopValidation $request)
     {
 
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('workshop'), $imageName);
-        } else {
-            $imageName = null;
-        }
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->move(public_path('workshop'), $imageName);
+        // } else {
+        //     $imageName = null;
+        // }
 
-        WorkShop::create([
-            'name' => $request->name,
-            'PAN' => $request->PAN,
-            'location' => $request->location,
-            'starting_time' => $request->starting_time,
-            'ending_time' => $request->ending_time,
-            'image' => $imageName,
-            'description' => $request->description,
-            'no_of_staff' => $request->no_of_staff,
-            'user_id' => Auth::id(),
-        ]);
+        $workshop = new WorkShop();
+        $workshop->name = $request->name;
+        $workshop->PAN = $request->PAN;
+        $workshop->location = $request->location;
+        $workshop->starting_time = $request->starting_time;
+        $workshop->ending_time = $request->ending_time;
+        $workshop->description = $request->description;
+        $workshop->no_of_staff = $request->no_of_staff;
+        $workshop->user_id = Auth::id();
+        $workshop->save();
+
+
+
+        if($request->hasFile('image')){
+            foreach($request->file('image')as $image){
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('workshop'), $imageName);
+                    WorkshopImg::create([
+                        'name'=>$imageName,
+                        'workshop_id'=> $workshop->id
+                    ]);
+                }
+            }
+
+
 
 
 
