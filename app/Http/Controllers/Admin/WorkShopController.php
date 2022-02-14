@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Validator;
+use Intervention\Image\Facades\Image;
 
 class WorkShopController extends Controller
 {
@@ -79,16 +80,28 @@ class WorkShopController extends Controller
 
 
 
-        if($request->hasFile('image')){
-            foreach($request->file('image')as $image){
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('workshop'), $imageName);
-                    WorkshopImg::create([
-                        'name'=>$imageName,
-                        'workshop_id'=> $workshop->id
-                    ]);
-                }
-            }
+            if ($request->hasFile('image')) {
+                        foreach($request->file('image') as $image)
+                        {
+                            
+                            $imageName=time().'.'.$image->getClientOriginalName();
+                            $destinationPath = public_path('workshop');
+
+                                if (!file_exists($destinationPath)) {
+                                    mkdir($destinationPath, 666, true);
+                                }
+                                $img = Image::make($image->path());
+                                $img->resize(250, 300, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($destinationPath.'/'.$imageName);
+                        
+                            WorkshopImg::create([
+                                        'name'=>$imageName,
+                                        'workshop_id'=> $workshop->id
+                                    ]);
+                        }
+                    }
+
 
 
 
