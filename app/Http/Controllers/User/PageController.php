@@ -29,44 +29,34 @@ class PageController extends Controller
         return view('userinterface.pages.about', compact('about', 'team'));
     }
 
-    public function service(Request $request){
-        $user_id=Auth::id();
-           $search =$request['search'] ?? "";
-                if($search != ""){
+    public function service(Request $request)
+    { {
+            $user_id = Auth::id();
+            $search = $request['search'] ?? "";
+            if ($search != "") {
 
+                $workshop = WorkShop::where('location', "LIKE", "%$search%")->get();
+            } else {
 
-            $workshop = WorkShop::all();
+                $workshop = WorkShop::all();
+            }
+            $vehicle = Vehicle::where('user_id', $user_id)->get();
+            return view('userinterface.pages.services', compact('workshop', 'vehicle', 'search'));
         }
-        $vehicle = Vehicle::where('user_id', $user_id)->get();
-
-        // $images = WorkshopImg::where('workshop_id',$workshop->id)->first();
-         return view('userinterface.pages.services', compact('workshop', 'vehicle', 'search'));
     }
 
-                    $workshop = WorkShop::where('location',"LIKE","%$search%")->get();
-                }else{
 
-                    $workshop=WorkShop::all();
-                }
-      
-        
-        $vehicle=Vehicle::where('user_id',$user_id)->get();
-        return view('userinterface.pages.services',compact('workshop','vehicle','search'));
-         } 
-  
-public function singleWorkshop(){
-        
-    $workshop=WorkShop::all();
-        
+    public function singleWorkshop($id)
+    {
 
-         return view('userinterface.pages.single_service',compact('workshop'));
- 
-}
-    
+        $workshop = WorkShop::findOrFail($id);
+        return view('userinterface.pages.single_service', compact('workshop'));
+    }
 
 
-   
-   
+
+
+
 
     public function contact()
     {
