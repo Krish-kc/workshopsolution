@@ -106,7 +106,8 @@ class WorkShopController extends Controller
     public function show($id)
     {
         $workshop = Workshop::findorFail($id);
-        return view('admin.pages.workshop.view', compact('workshop'));
+        // $images = WorkshopImg::where('workshop_id',$id)->first();
+        return view('admin.pages.workshop.view', compact('workshop','images'));
     }
 
     /**
