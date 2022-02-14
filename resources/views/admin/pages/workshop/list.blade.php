@@ -1,7 +1,5 @@
  @extends('admin.index')
  @section('content')
-
-
      <div class="container-fluid">
 
          <!-- ============================================================== -->
@@ -31,38 +29,28 @@
                                      role="grid" aria-describedby="myTable_info">
                                      <thead>
                                          <tr role="row">
-                                             <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1"
-                                                 colspan="1" aria-sort="ascending"
-                                                 aria-label="Name: activate to sort column descending"
-                                                 style="width: 173.266px;">WorkShop Name</th>
-                                             <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1"
-                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                 style="width: 283.344px;">Location</th>
-                                             <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1"
-                                                 colspan="1" aria-label="Office: activate to sort column ascending"
-                                                 style="width: 129.984px;">Image</th>
-                                             <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1"
-                                                 colspan="1" aria-label="Office: activate to sort column ascending"
-                                                 style="width: 129.984px;">Description</th>
-                                             <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1"
-                                                 colspan="1" aria-label="Age: activate to sort column ascending"
-                                                 style="width: 53.2188px;">Action</th>
+                                             <th>S.No</th>
+                                             <th>Name</th>
+                                             <th>Location</th>
+                                             <th>Image</th>
+                                             <th>Short Description</th>
+                                             <th>No.of staf</th>
+                                             <th>Long Description</th>
+                                             <th>Action</th>
                                      </thead>
                                      @foreach ($workshop as $item)
                                          <tr>
+                                             <td>{{$loop->iteration}}</td>
                                              <td>{{ $item->name }}</td>
                                              <td>{{ $item->location }}</td>
                                              <td>
-                                                 @foreach ($item->images as $image)
-
-
-                                                 <img src="{{ asset('workshop') }}/{{ $image ->name }}"
-                                                     style=" max-width:auto;
-                                                     height:50px;">
-
-                                                     @endforeach
+                                                 {{-- @foreach ($item->images as $image) --}}
+                                                     <img src="{{ asset('workshop') }}/{{ $item->singleimage->name }}" style=" max-width:150px;">
+                                                 {{-- @endforeach --}}
                                              </td>
-                                             <td>{{ $item->description }}</td>
+                                             <td>{{ $item->short_description }}</td>
+                                             <td>{{ $item->no_of_staff }}</td>
+                                             <td>{{ $item->long_description }}</td>
                                              <td>
                                                  <div class="btn-group">
                                                      @can('workshop-edit')
@@ -82,7 +70,6 @@
                                                          class="btn btn-success  m-1"><i class="fa fa-eye"></i>
                                                      </a>
 
-
                                                  </div>
 
                                              </td>
@@ -90,7 +77,6 @@
                                          <tbody>
 
                                          </tbody>
-
                                      @endforeach
 
                                  </table>
@@ -129,12 +115,6 @@
              </form>
          </div>
      </div>
-
-
-
-
-
-
  @endsection
 
  @section('js')

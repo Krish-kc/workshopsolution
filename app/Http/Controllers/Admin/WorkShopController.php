@@ -50,7 +50,7 @@ class WorkShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(WorkshopValidation $request)
+    public function store(Request $request)
     {
 
         // $request->validate([
@@ -71,7 +71,8 @@ class WorkShopController extends Controller
         $workshop->location = $request->location;
         $workshop->starting_time = $request->starting_time;
         $workshop->ending_time = $request->ending_time;
-        $workshop->description = $request->description;
+        $workshop->short_description = $request->short_description;
+        $workshop->long_description = $request->long_description;
         $workshop->no_of_staff = $request->no_of_staff;
         $workshop->user_id = Auth::id();
         $workshop->save();
@@ -106,8 +107,7 @@ class WorkShopController extends Controller
     public function show($id)
     {
         $workshop = Workshop::findorFail($id);
-        // $images = WorkshopImg::where('workshop_id',$id)->first();
-        return view('admin.pages.workshop.view', compact('workshop','images'));
+        return view('admin.pages.workshop.view', compact('workshop'));
     }
 
     /**
@@ -120,7 +120,7 @@ class WorkShopController extends Controller
     {
         $workshop = WorkShop::findOrFail($id);
         $service = Service::all();
-        return view('admin.pages.workshop.view', compact('workshop', 'service'));
+        return view('admin.pages.workshop.edit', compact('workshop', 'service'));
     }
 
     /**
@@ -154,9 +154,9 @@ class WorkShopController extends Controller
             'location' => $request->location,
             'starting_time' => $request->starting_time,
             'ending_time' => $request->ending_time,
-            'image' => $imageName,
+            'short_description' => $request->short_description,
+            'long_description' => $request->long_description,
             'no_of_staff' => $request->no_of_staff,
-            'user_id' => 4,
         ]);
         toastr()->success('workshop list has Successfully updated');
         return redirect()->route('workshop.index');

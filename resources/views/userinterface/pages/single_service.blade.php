@@ -6,10 +6,10 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="single-content wow fadeInUp">
-                        <img src="img/single.jpg" />
-                        <h2>Lorem ipsum dolor sit amet</h2>
+                        <img src="{{ asset('workshop/' . $workshop->singleimage->name) }}" />
+                        <h2>{{$workshop->name}}</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer molestie, lorem eu eleifend bibendum, augue purus mollis sapien, non rhoncus eros leo in nunc. Donec a nulla vel turpis consectetur tempor ac vel justo. In hac habitasse platea dictumst. Cras nec sollicitudin eros. Nunc eu enim non turpis sagittis rhoncus consectetur id augue. Mauris dignissim neque felis. Phasellus mollis mi a pharetra cursus. Maecenas vulputate augue placerat lacus mattis, nec ornare risus sollicitudin.
+                            {{$workshop->description}}
                         </p>
                         <p>
                             Mauris eu pulvinar tellus, eu luctus nisl. Pellentesque suscipit mi eu varius pulvinar. Aenean vulputate, massa eget elementum finibus, ipsum arcu commodo est, ut mattis eros orci ac risus. Suspendisse ornare, massa in feugiat facilisis, eros nisl auctor lacus, laoreet tempus elit dolor eu lorem. Nunc a arcu suscipit, suscipit quam quis, semper augue.
@@ -35,15 +35,7 @@
                             Nam sodales scelerisque nunc sed convallis. Vestibulum facilisis porta erat, sit amet pharetra tortor blandit id. Nunc velit tellus, consectetur sed convallis in, tincidunt finibus nulla. Integer vel ex in mauris tincidunt tincidunt nec sed elit. Etiam pretium lectus lectus, sed aliquet erat tristique euismod. Praesent faucibus nisl augue, ac tempus libero pellentesque malesuada. Vivamus iaculis imperdiet laoreet. Aliquam vel felis felis. Proin sed sapien erat. Etiam a quam et metus tempor rutrum. Curabitur in faucibus justo. Etiam imperdiet iaculis urna.
                         </p>
                     </div>
-                    <div class="single-tags wow fadeInUp">
-                        <a href="">National</a>
-                        <a href="">International</a>
-                        <a href="">Economics</a>
-                        <a href="">Politics</a>
-                        <a href="">Lifestyle</a>
-                        <a href="">Technology</a>
-                        <a href="">Trades</a>
-                    </div>
+
                     <div class="single-bio wow fadeInUp">
                         <div class="single-bio-img">
                             <img src="img/user.jpg" />
@@ -482,20 +474,6 @@
                             </div>
                         </div>
 
-                        <div class="sidebar-widget wow fadeInUp">
-                            <h2 class="widget-title">Categories</h2>
-                            <div class="category-widget">
-                                <ul>
-                                    <li><a href="">National</a><span>(98)</span></li>
-                                    <li><a href="">International</a><span>(87)</span></li>
-                                    <li><a href="">Economics</a><span>(76)</span></li>
-                                    <li><a href="">Politics</a><span>(65)</span></li>
-                                    <li><a href="">Lifestyle</a><span>(54)</span></li>
-                                    <li><a href="">Technology</a><span>(43)</span></li>
-                                    <li><a href="">Trades</a><span>(32)</span></li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <div class="sidebar-widget wow fadeInUp">
                             <div class="image-widget">
@@ -503,18 +481,7 @@
                             </div>
                         </div>
 
-                        <div class="sidebar-widget wow fadeInUp">
-                            <h2 class="widget-title">Tags Cloud</h2>
-                            <div class="tag-widget">
-                                <a href="">National</a>
-                                <a href="">International</a>
-                                <a href="">Economics</a>
-                                <a href="">Politics</a>
-                                <a href="">Lifestyle</a>
-                                <a href="">Technology</a>
-                                <a href="">Trades</a>
-                            </div>
-                        </div>
+
 
                         <div class="sidebar-widget wow fadeInUp">
                             <h2 class="widget-title">Text Widget</h2>

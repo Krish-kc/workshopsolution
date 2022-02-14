@@ -71,13 +71,20 @@
                          </div>
                      </div>
 
-
-
                      <div class="col-sm-12">
-                         <label class="m-t-20">Description</label>
-                         <textarea class="form-control" class="form-control @error('description') is-invalid @enderror"
-                             name="description" rows="5" cols="55"></textarea>
-                         @error('description')
+                         <label class="m-t-20">Short Description</label>
+                         <textarea class="form-control" class="form-control @error('short_description') is-invalid @enderror"
+                             name="short_description" rows="5" cols="55"></textarea>
+                         @error('short_description')
+                             <div class="text-danger">{{ $message }}</div>
+                         @enderror
+
+                     </div>
+                     <div class="col-sm-12">
+                         <label class="m-t-20">Long Description</label>
+                         <textarea class="form-control" class="form-control @error('long_description') is-invalid @enderror"
+                             name="long_description" rows="5" cols="55"></textarea>
+                         @error('long_description')
                              <div class="text-danger">{{ $message }}</div>
                          @enderror
 
