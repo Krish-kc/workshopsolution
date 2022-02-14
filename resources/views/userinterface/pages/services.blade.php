@@ -301,14 +301,17 @@
                 <p>Our Service Center</p>
                 <h2>Service Center List</h2>
             </div>
-            @if ($search)
+            @if (!$workshop->isEmpty())
             <div class="row">
                 @foreach ($workshop as $item)
-                    <div class="col-sm-12">
-                        <div class="service-item">
+                <div class="col-sm-12">
+                    <div class="service-item">
+
                             <div class="service-img">
-                                <img src="{{ asset('workshop/' . $item->image) }}" alt="Image">
+                                <img src="{{ asset('workshop/' . $item->singleimage->name) }}" alt="Image">
                             </div>
+
+
                             <div class="service-text">
                                 <div class="service-title">
                                     <h3>{{ $item->name }}</h3>

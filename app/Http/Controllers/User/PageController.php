@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\About;
 use App\Models\Team;
+use App\Models\WorkshopImg;
 
 class PageController extends Controller
 {
@@ -39,8 +40,11 @@ class PageController extends Controller
             $workshop = WorkShop::all();
         }
         $vehicle = Vehicle::where('user_id', $user_id)->get();
-        return view('userinterface.pages.services', compact('workshop', 'vehicle', 'search'));
+
+        // $images = WorkshopImg::where('workshop_id',$workshop->id)->first();
+         return view('userinterface.pages.services', compact('workshop', 'vehicle', 'search'));
     }
+
     public function contact()
     {
         return view('userinterface.pages.contact');

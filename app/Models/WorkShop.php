@@ -22,4 +22,8 @@ class WorkShop extends Model
     {
         return $this->hasMany(WorkshopImg::class, 'workshop_id');
     }
+
+    public function singleImage(){
+        return $this->hasone(WorkshopImg::class, 'workshop_id');
+    }
 }
