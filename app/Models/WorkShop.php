@@ -10,7 +10,7 @@ class WorkShop extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'PAN', 'location', 'starting_time', 'ending_time','description', 'no_of_staff', 'user_id'
+        'name', 'PAN', 'location', 'starting_time', 'ending_time','short_description','long_description', 'no_of_staff', 'user_id'
     ];
 
     public function services()

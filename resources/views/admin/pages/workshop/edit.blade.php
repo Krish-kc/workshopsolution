@@ -1,7 +1,5 @@
  @extends('admin.index')
  @section('content')
-
-
      <div class="container-fluid">
 
          <!-- ============================================================== -->
@@ -75,46 +73,56 @@
                          </div>
                      </div>
 
-
-
                      <div class="form-group">
                          <label>Short Description</label>
-                         <textarea name="description" class="form-control @error('description') is-invalid @enderror"
+                         <textarea name="short_description"
+                             class="form-control @error('short_description') is-invalid @enderror"
                              placeholder="Give some description about Workshop" rows="5"></textarea>
-                         @error('description')
+                         @error('short_description')
                              <div class="text-danger">{{ $message }}</div>
                          @enderror
                      </div>
 
 
                      <div class="form-group">
-                         <label>Upload Image</label>
-                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                             <input type="file"
-                                 class="fileinput fileinput-new input-group @error('image') is-invalid @enderror"
-                                 name="image">
-                             <div class="form-control" data-trigger="fileinput">
-                                 <img src="{{ asset('vehicle_image/' . $workshop->image) }}" </div>
-                                 @error('image')
-                                     <div class="text-danger">{{ $message }}</div>
-                                 @enderror
-                             </div>
-                         </div>
-                         <div class="form-group">
-                             <label>Number of Staff</label>
-                             <input type="number" value="{{ $workshop->no_of_staff }}" name="no_of_staff"
-                                 class="form-control @error('no_of_staff') is-invalid @enderror"
-                                 placeholder="Please Enter Number of Working Staff">
-                             @error('no_of_staff')
-                                 <div class="text-danger">{{ $message }}</div>
-                             @enderror
-                         </div>
+                         <label>Long Description</label>
+                         <textarea name="long_description"
+                             class="form-control @error('long_description') is-invalid @enderror"
+                             placeholder="Give some description about Workshop" rows="5"></textarea>
+                         @error('long_description')
+                             <div class="text-danger">{{ $message }}</div>
+                         @enderror
+                     </div>
 
-                         <div class="button-group">
-                             <button type="submit"
-                                 class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
-                             <button type="reset" class="btn waves-effect waves-light btn-rounded btn-danger">Exit</button>
-                         </div>
+
+
+
+                     <div class="form-group">
+                         <label for="target">Image Upload</label>
+                         <input type="file" name="image" class="form-control"
+                             class="@error('image') is-valid @enderror" />
+                         @foreach ($workshop->images as $item)
+                             @error('image')
+                                 <div class="alert alert-danger">{{ $message }}</div>
+                             @enderror
+                             <img src="{{ asset('workshop') }}/{{ $item->name }}" style="max-height: 100px;" />
+                         @endforeach
+                     </div>
+
+                     <div class="form-group">
+                         <label>Number of Staff</label>
+                         <input type="number" value="{{ $workshop->no_of_staff }}" name="no_of_staff"
+                             class="form-control @error('no_of_staff') is-invalid @enderror"
+                             placeholder="Please Enter Number of Working Staff">
+                         @error('no_of_staff')
+                             <div class="text-danger">{{ $message }}</div>
+                         @enderror
+                     </div>
+
+                     <div class="button-group">
+                         <button type="submit" class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
+                         <button type="reset" class="btn waves-effect waves-light btn-rounded btn-danger">Exit</button>
+                     </div>
                  </form>
 
              </div>
@@ -126,5 +134,4 @@
 
 
      </div>
-
  @endsection
