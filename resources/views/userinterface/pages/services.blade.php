@@ -210,12 +210,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-12 col-md-12">
                     <div class="feature-form ">
-                        <form>
+                        <form >
+                        
                             <div class="feature-group-2">
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Search Workshop</label>
                                     <input type="search" name="search" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Search Workshop via location" value="{{$search}}">
+                                        placeholder="Search Workshop via location" value={{$search}}>
                                 </div>
                                 <button type="submit" class="btn btn-primary "><i class="fab fa-searchengin "></i>
                                     Search</button>
@@ -301,7 +302,9 @@
                 <p>Our Service Center</p>
                 <h2>Service Center List</h2>
             </div>
-            @if ($search)
+            
+           @if (!$workshop->isEmpty())
+               
             <div class="row">
                 @foreach ($workshop as $item)
                     <div class="col-sm-12">
@@ -327,7 +330,7 @@
 
                                     </ul>
                                 @endforeach
-                                <a class="btn" href="img/service-1.jpg" data-lightbox="service">View More</a>
+                                <a class="btn" href="{{route('single.workshop',$item->id)}}" data-lightbox="service">View More</a>
                             </div>
                         </div>
 
@@ -335,9 +338,9 @@
                 @endforeach
             </div>
             @else
-            <h6>There is no service center in this location </h6>
+                <h2>No any workshop Found<h2>
 
-            @endif
+             @endif
         </div>
     </div>
     <!-- Service End -->
