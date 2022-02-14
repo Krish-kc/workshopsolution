@@ -211,7 +211,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="feature-form ">
                         <form >
-                        
+
                             <div class="feature-group-2">
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Search Workshop</label>
@@ -303,11 +303,11 @@
                 <h2>Service Center List</h2>
             </div>
 
-            
 
-            
+
+
            @if (!$workshop->isEmpty())
-               
+
 
             <div class="row">
                 @foreach ($workshop as $item)
@@ -336,8 +336,8 @@
                                         <li><i class="fas fa-angle-double-right"> {{ $krish->title }}</i></li>
 
                                     </ul>
-                                @endforeach
-                                <a class="btn" href="{{route('single.workshop',$item->id)}}" data-lightbox="service">View More</a>
+                                    @endforeach
+                                    <a class="btn" href="{{route('single.workshop',$item->id)}}">View More</a>
                             </div>
                         </div>
 
