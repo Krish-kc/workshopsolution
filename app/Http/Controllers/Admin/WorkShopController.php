@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WorkshopValidation;
 use App\Models\WorkShop;
 use App\Models\Service;
+use App\Models\WorkshopImg;
 use Illuminate\Http\Request;
 use File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Validator;
 
 class WorkShopController extends Controller
 {
@@ -46,28 +50,46 @@ class WorkShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkshopValidation $request)
     {
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('workshop'), $imageName);
-        } else {
-            $imageName = null;
-        }
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
 
-        WorkShop::create([
-            'name' => $request->name,
-            'PAN' => $request->PAN,
-            'location' => $request->location,
-            'starting_time' => $request->starting_time,
-            'ending_time' => $request->ending_time,
-            'image' => $imageName,
-            'description' => $request->description,
-            'no_of_staff' => $request->no_of_staff,
-            'user_id' => 4,
-        ]);
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->move(public_path('workshop'), $imageName);
+        // } else {
+        //     $imageName = null;
+        // }
+
+        $workshop = new WorkShop();
+        $workshop->name = $request->name;
+        $workshop->PAN = $request->PAN;
+        $workshop->location = $request->location;
+        $workshop->starting_time = $request->starting_time;
+        $workshop->ending_time = $request->ending_time;
+        $workshop->description = $request->description;
+        $workshop->no_of_staff = $request->no_of_staff;
+        $workshop->user_id = Auth::id();
+        $workshop->save();
+
+
+
+        if($request->hasFile('image')){
+            foreach($request->file('image')as $image){
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('workshop'), $imageName);
+                    WorkshopImg::create([
+                        'name'=>$imageName,
+                        'workshop_id'=> $workshop->id
+                    ]);
+                }
+            }
+
+
 
 
 
@@ -107,7 +129,7 @@ class WorkShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WorkshopValidation $request, $id)
     {
         $workshop = Workshop::findorfail($id);
         if ($request->hasFile('image')) {

@@ -45,6 +45,12 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:1000',
+            'status' => 'required',
+        ]);
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -96,6 +102,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $about = About::findorFail($id);
         if($request->hasFile('image'))
         {

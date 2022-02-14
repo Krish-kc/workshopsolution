@@ -11,18 +11,23 @@ use App\Models\WorkShop;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\About;
+use App\Models\Team;
 
 class PageController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         // $banner=Banner::all();
-        $banner=Banner::where('status','on')->get();
-        return view('userinterface.pages.home',compact('banner'));
+        $banner = Banner::where('status', 'on')->get();
+        return view('userinterface.pages.home', compact('banner'));
     }
-    public function about(){
-        $about=About::where('status','on')->get();
-        return view('userinterface.pages.about',compact('about'));
+    public function about()
+    {
+        $team = Team::where('status', 'on')->get();
+        $about = About::where('status', 'on')->get();
+        return view('userinterface.pages.about', compact('about', 'team'));
     }
+
     public function service(Request $request){
         $user_id=Auth::id();
            $search =$request['search'] ?? "";
@@ -50,7 +55,11 @@ public function singleWorkshop(){
     
 
 
-    public function contact(){
+   
+   
+    public function contact()
+    {
+
         return view('userinterface.pages.contact');
     }
 }

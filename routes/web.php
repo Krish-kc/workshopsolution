@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\EmergencyBreakDownController;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -110,4 +111,7 @@ Route::group(['middleware' => ['auth']], function () {
     //About  Route
 
     Route::resource('about', AboutController::class);
+
+    //
+    Route::resource('team',TeamController::class);
 });

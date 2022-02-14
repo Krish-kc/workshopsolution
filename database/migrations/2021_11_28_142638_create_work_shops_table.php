@@ -20,7 +20,6 @@ class CreateWorkShopsTable extends Migration
             $table->string('location');
             $table->string('starting_time');
             $table->string('ending_time');
-            $table->string('image');
             $table->longText('description');
             $table->string('no_of_staff');
             $table->string('user_id');
