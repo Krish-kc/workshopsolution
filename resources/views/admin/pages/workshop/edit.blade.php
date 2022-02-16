@@ -22,7 +22,7 @@
                  <form action="{{ route('shop.update', $workshop->id) }}" method="POST" enctype="multipart/form-data"
                      class="form-material m-t-40">
                      @method('PUT')
-                     @csrf
+                     <meta name="csrf-token" content="{{ csrf_token() }}">
                      <div class="form-group">
                          <label>WorkShop Name</label>
                          <input type="text" name="name" value="{{ $workshop->name }}"
@@ -99,13 +99,22 @@
 
                      <div class="form-group">
                          <label for="target">Image Upload</label>
-                         <input type="file" name="image" class="form-control"
-                             class="@error('image') is-valid @enderror" />
+                         <input type="file" name="image[]" class="form-control" class="@error('image') is-valid @enderror"
+                             multiple='multiple' />
                          @foreach ($workshop->images as $item)
                              @error('image')
                                  <div class="alert alert-danger">{{ $message }}</div>
                              @enderror
-                             <img src="{{ asset('workshop') }}/{{ $item->name }}" style="max-height: 100px;" />
+                             <a href="{{route('image.destroy',$item->id)}}">
+                                 <img src="{{ asset('workshop') }}/{{ $item->name }}" style="max-height: 100px;" />
+                                 <span aria-hidden="true" class="fa fa-trash"></span>
+                                </a>
+
+
+
+                             {{-- <a href="#"
+                                 class="handeldelete">
+                                 <i>&times;</i ></a> --}}
                          @endforeach
                      </div>
 
@@ -130,8 +139,178 @@
 
 
          </div>
-
-
-
      </div>
+
+
+     {{-- <div id="imagemodal" class="modal fade">
+         <div class="modal-dialog modal-confirm">
+             <form action="" method="" id="delete_img">
+                 @csrf
+                 @method('DELETE')
+
+                 <div class="modal-content">
+                     <div class="modal-header bg-danger ">
+                         <h4 class="modal-title w-100">Are you sure?</h4>
+                         <button type="button" class="close" data-dismiss="modal"
+                             aria-hidden="true">&times;</button>
+                     </div>
+
+                     <div class="modal-body">
+                         <p>Do you really want to delete these image? This process
+                             cannot be undone.</p>
+                         <input type="text" name="" id="deleting_img_id">
+                     </div>
+                     <div class="modal-footer justify-content-center">
+                         <button type="exit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                         <button type="submit"  class="btn btn-primary">Sumbit</button>
+                        </form>
+
+                     </div>
+                 </div>
+
+
+         </div>
+     </div> --}}
+ @endsection
+
+ @section('js')
+     <script>
+
+
+   function deleteimage(id){
+
+    if(confirm("Do you really want to delete the image")){
+
+        $.ajax({
+
+            url: url.href,
+            type:"GET",
+            data: {
+                _token : $("input[name=_token]").val()
+            },
+
+
+            success:function(response){
+
+                $("deleteimg"+id).remove();
+            }
+
+        });
+    }
+
+   }
+
+
+
+
+
+
+        //  $(document).ready(function() {
+
+        //      $("body").on("click", "#deleteimage", function(e) {
+
+        //          if (!confirm("Do you really want to delete this image")) {
+
+        //              return true;
+        //          }
+
+
+        //          e.preventDefault();
+
+        //          var id = $(this).data("id");
+        //          var token = $("meta[name='csrf-token']").attr("content");
+        //          var url = e.target;
+
+
+        //          $.ajax({
+
+        //              url: url.href,
+        //              type: "DELETE",
+        //              data: {
+        //                  _token: token,
+        //                  id: id
+        //              },
+        //              success: function(response) {
+        //                  $("#success").html(response.message)
+
+        //                  swal.fire(
+        //                      'Remind!',
+        //                      'Image deleted successfully!',
+        //                      'success'
+        //                  )
+        //              }
+
+        //          });
+        //          return false;
+        //      });
+
+
+        //  });
+
+
+         // $("#deleteimage ").click(function(){
+
+         //     var id = $(this).data("id");
+         //     var token = $("meta[name='csrf-token']").attr("content");
+
+         //     $.ajax({
+
+         //         url:"delete-image/" + id;
+         //         type:"DELETE";
+         //         data: {
+         //             "id": id,
+         //             "_token":token,
+         //         },
+         //         success: function(){
+         //             console.log("it fucking works")
+         //         }
+
+         //     });
+
+         // });
+
+
+
+
+         //end//
+
+         //   function handeldelete(id) {
+         //       var form = document.getElementById('deleteimage')
+         //       $('#imagemodal').modal('show')
+         //       form.action = 'image/' + id
+
+         //   }
+
+
+         //  $(document).on('click', '#deleteimage', function(e) {
+         //      e.preventDefault();
+
+         //      var img_id = $(this).val();
+         //      $('#imagemodal').modal('show');
+         //      $('#deleting_img_id').val(img_id);
+         //  })
+
+         //  $(document).on('click', '#delete_img', function(e) {
+         //              e.preventDefault();
+
+         //              var id = $('#deleting_img_id').val();
+
+         //              $.ajax({
+         //                  type: 'DELETE',
+         //                  url: '/delete-image/' + id,
+         //                  dataType:"json",
+         //                  success: function(response) {
+         //                         if(response.status == 404){
+         //                             alert(response.message);
+         //                             $('#imagemodal').modal('hide');
+
+         //                         }
+         //                         else if(response.status == 200){
+         //                             alert(response.message);
+         //                             $('#imagemodal').modal('hide');
+         //                         }
+         //                  }
+         //              });
+         //  });
+     </script>
  @endsection

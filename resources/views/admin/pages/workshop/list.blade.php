@@ -19,7 +19,7 @@
              <div class="card-body">
                  <h4 class="card-title">List of Register User</h4>
                  <h6 class="card-subtitle">Input the Required Information for Registering New User</h6>
-
+                 <a href="{{route('shop.create')}}" class="btn btn-primary">Add Workshop</a>
                  <div class="table-responsive m-t-40">
                      <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
@@ -44,13 +44,13 @@
                                              <td>{{ $item->name }}</td>
                                              <td>{{ $item->location }}</td>
                                              <td>
-                                                 {{-- @foreach ($item->images as $image) --}}
-                                                     <img src="{{ asset('workshop') }}/{{ $item->singleimage->name }}" style=" max-width:150px;">
-                                                 {{-- @endforeach --}}
+                                                <img src="{{ asset('workshop') }}/{{ $item->singleimage->name }}"  style=" max-width:150px;">
+                                            </a>
+
                                              </td>
-                                             <td>{{ $item->short_description }}</td>
+                                             <td>{{ Str::limit($item->short_description, 50, '...') }}</td>
                                              <td>{{ $item->no_of_staff }}</td>
-                                             <td>{{ $item->long_description }}</td>
+                                             <td>{{ Str::limit($item->long_description, 50, '...') }}</td>
                                              <td>
                                                  <div class="btn-group">
                                                      @can('workshop-edit')
@@ -65,7 +65,6 @@
                                                              <i class="fa fa-trash"></i>
                                                          </a>
                                                      @endcan
-
                                                      <a href="{{ route('shop.show', $item->id) }}"
                                                          class="btn btn-success  m-1"><i class="fa fa-eye"></i>
                                                      </a>
@@ -115,6 +114,8 @@
              </form>
          </div>
      </div>
+
+
  @endsection
 
  @section('js')

@@ -12,6 +12,8 @@ use File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Validator;
 use Intervention\Image\Facades\Image;
+use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Storage;
 
 class WorkShopController extends Controller
 {
@@ -80,31 +82,26 @@ class WorkShopController extends Controller
 
 
 
-            if ($request->hasFile('image')) {
-                        foreach($request->file('image') as $image)
-                        {
-                            
-                            $imageName=time().'.'.$image->getClientOriginalName();
-                            $destinationPath = public_path('workshop');
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
 
-                                if (!file_exists($destinationPath)) {
-                                    mkdir($destinationPath, 666, true);
-                                }
-                                $img = Image::make($image->path());
-                                $img->resize(250, 300, function ($constraint) {
-                                    $constraint->aspectRatio();
-                                })->save($destinationPath.'/'.$imageName);
-                        
-                            WorkshopImg::create([
-                                        'name'=>$imageName,
-                                        'workshop_id'=> $workshop->id
-                                    ]);
-                        }
-                    }
+                $imageName = time() . '.' . $image->getClientOriginalName();
+                $destinationPath = public_path('workshop');
 
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 666, true);
+                }
+                $img = Image::make($image->path());
+                $img->resize(250, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $imageName);
 
-
-
+                WorkshopImg::create([
+                    'name' => $imageName,
+                    'workshop_id' => $workshop->id
+                ]);
+            }
+        }
 
 
         toastr()->success('Workshop information has been successfully saved!');
@@ -143,24 +140,9 @@ class WorkShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(WorkshopValidation $request, $id)
+    public function update(Request $request, $id)
     {
         $workshop = Workshop::findorfail($id);
-        if ($request->hasFile('image')) {
-            $destination = 'vehicle_image' . $workshop->image;
-            if (File::exists($destination)) {
-                File::delete($destination);
-            }
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-            $imageName = time() . '.' . $extension;
-            $image->move('workshop', $imageName);
-            $workshop->image = $imageName;
-        } else {
-            $imageName = $workshop->image;
-        }
-
-
         $workshop->update([
             'name' => $request->name,
             'PAN' => $request->PAN,
@@ -171,8 +153,60 @@ class WorkShopController extends Controller
             'long_description' => $request->long_description,
             'no_of_staff' => $request->no_of_staff,
         ]);
+
+
+        $workshopImg = WorkshopImg::where('workshop_id',$id);
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
+
+                $imageName = time() . '.' . $image->getClientOriginalName();
+                $destinationPath = public_path('workshop');
+
+                if(File::exists($destinationPath))
+                {
+                    File::delete($destinationPath);
+                }
+                $img = Image::make($image->path());
+                $img->resize(250, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $imageName);
+
+                $workshopImg->update([
+                    'name'=> $imageName,
+                    'workshop_id'=>$workshop->id,
+                ]);
+            }
+        }
+
+
+
+        //  else {
+        //     $imageName = $workshop->image;
+        // }
+
+        // if ($request->hasFile('image')) {
+        //     foreach ($request->file('image') as $image) {
+
+        //         $imageName = time() . '.' . $image->getClientOriginalName();
+        //         $destinationPath = public_path('workshop');
+
+
+
+
+
+
+            // $image = WorkshopImg::findOrFail($id);
+            // if($request->hasFile('image')){
+            //     File::update('workshop'.'.'.$image->name);
+            //     $image->update([
+            //         'name' => $imageName,
+            //     ]);
+            // }
+
+
+
         toastr()->success('workshop list has Successfully updated');
-        return redirect()->route('workshop.index');
+        return redirect()->route('shop.index');
     }
 
     /**
@@ -183,10 +217,65 @@ class WorkShopController extends Controller
      */
     public function destroy($id)
     {
+
         WorkShop::findOrFail($id)->delete();
         toastr()->warning('workshop has Successfully delete');
         return redirect()->route('shop.index');
+        // WorkshopImg::where('workshop_id',$id)->delete($id);
+
+        // $images = WorkshopImg::findOrFail($id);
+        // $images->delete();
+        // foreach ($request->file('image') as $image)
+        // $image= WorkshopImg::where('workshop_id',$id);
+        // dd($id);
+        // Storage::delete($image->path);
+        // $image->delete();
+
+        // $image = WorkshopImg::where('workshop_id', $id);
+        // $destinationPath =  $destinationPath = public_path('workshop');
+        // if(File::exist($destinationPath)){
+        //     File::delete($destinationPath);
+        // }
+        // $image->destroy($id);
+
+
+        $image = WorkshopImg::where('workshop_id',$id);
+
+
+        $image->delete();
+
+        return response()->json([
+
+            'message' => 'Image deleted successfully!'
+
+        ]);
+
+
+
+
+        // if($image){
+
+        //     $path = public_path('workshop').$image->name;
+        //     if(File::exists($path)){
+        //         File::delete($path);
+        //     }
+        //     $image->delete();
+        //     return response()->json([
+        //         'status' =>200,
+        //         'message'=> 'Image deleted successfully'
+        //     ]);
+        // }
+        // else{
+        //     return response()->json([
+
+        //         'status' =>404,
+        //         'message' => 'sorry could not delete image'
+        //     ]);
+        // }
+
+
+
+
+
     }
-
-
 }
