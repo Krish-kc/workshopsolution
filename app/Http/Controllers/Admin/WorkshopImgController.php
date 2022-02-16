@@ -81,17 +81,8 @@ class WorkshopImgController extends Controller
      */
     public function destroy($id)
     {
-        dd('wellcome');
-        dd($id);
-        $image = WorkshopImg::where('workshop_id',$id);
-
-        $image->delete();
-
-        return response()->json([
-
-            'message' => 'Image deleted successfully!'
-
-        ]);
-
+        WorkshopImg::findOrfail($id)->delete();
+        return back();
+    
     }
 }
