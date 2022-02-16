@@ -143,18 +143,6 @@ class WorkShopController extends Controller
     public function update(Request $request, $id)
     {
         $workshop = Workshop::findorfail($id);
-        $workshop->update([
-            'name' => $request->name,
-            'PAN' => $request->PAN,
-            'location' => $request->location,
-            'starting_time' => $request->starting_time,
-            'ending_time' => $request->ending_time,
-            'short_description' => $request->short_description,
-            'long_description' => $request->long_description,
-            'no_of_staff' => $request->no_of_staff,
-        ]);
-
-
         $workshopImg = WorkshopImg::where('workshop_id',$id);
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
@@ -162,9 +150,8 @@ class WorkShopController extends Controller
                 $imageName = time() . '.' . $image->getClientOriginalName();
                 $destinationPath = public_path('workshop');
 
-                if(File::exists($destinationPath))
-                {
-                    File::delete($destinationPath);
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 666, true);
                 }
                 $img = Image::make($image->path());
                 $img->resize(250, 300, function ($constraint) {
@@ -178,7 +165,24 @@ class WorkShopController extends Controller
             }
         }
 
+        // $workshopImg = WorkshopImg::where('workshop_id',$id);
+        // if($request->hasFile('image')){
+        //     File::update('workshop'.'.'.$workshopImg->name);
+        //     $workshopImg->update([
+        //         'name' => $name,
+        //     ]);
+        // }
 
+        $workshop->update([
+            'name' => $request->name,
+            'PAN' => $request->PAN,
+            'location' => $request->location,
+            'starting_time' => $request->starting_time,
+            'ending_time' => $request->ending_time,
+            'short_description' => $request->short_description,
+            'long_description' => $request->long_description,
+            'no_of_staff' => $request->no_of_staff,
+        ]);
 
         //  else {
         //     $imageName = $workshop->image;
@@ -195,13 +199,7 @@ class WorkShopController extends Controller
 
 
 
-            // $image = WorkshopImg::findOrFail($id);
-            // if($request->hasFile('image')){
-            //     File::update('workshop'.'.'.$image->name);
-            //     $image->update([
-            //         'name' => $imageName,
-            //     ]);
-            // }
+
 
 
 
