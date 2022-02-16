@@ -87,6 +87,7 @@
 <script src="{{ asset('user_assets/lib/waypoints/waypoints.min.js') }}"></script>
 <script src="{{ asset('user_assets/lib/counterup/counterup.min.js') }}"></script>
 <script src="{{ asset('user_assets/lib/slick/slick.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <!-- Templateuser_assets/ Javascript -->
 <script src="{{ asset('user_assets/js/main.js') }}"></script>

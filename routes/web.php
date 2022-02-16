@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\EmergencyBreakDownController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\WorkshopImgController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\User\PageController;
@@ -62,6 +63,8 @@ Route::post('/reset',[ForgotPasswordController::class,'reset']);
 
 Route::get('/reset_password/{id}',[ResetPasswordController::class,'changepassword'])->name('reset_password');
 Route::post('/update_password',[ResetPasswordController::class,'passwordUpdate'])->name('update.password');
+
+Route::get('/delete_single_image/{$id}',[WorkshopImgController::class,'destroy'])->name('image.destroy');
 
 
 
