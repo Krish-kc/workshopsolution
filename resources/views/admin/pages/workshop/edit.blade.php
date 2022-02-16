@@ -22,7 +22,7 @@
                  <form action="{{ route('shop.update', $workshop->id) }}" method="POST" enctype="multipart/form-data"
                      class="form-material m-t-40">
                      @method('PUT')
-                     <meta name="csrf-token" content="{{ csrf_token() }}">
+                     @csrf
                      <div class="form-group">
                          <label>WorkShop Name</label>
                          <input type="text" name="name" value="{{ $workshop->name }}"
@@ -77,7 +77,7 @@
                          <label>Short Description</label>
                          <textarea name="short_description"
                              class="form-control @error('short_description') is-invalid @enderror"
-                             placeholder="Give some description about Workshop" rows="5"></textarea>
+                             placeholder="Give some short description about Workshop" rows="5">{{$workshop->short_description}}</textarea>
                          @error('short_description')
                              <div class="text-danger">{{ $message }}</div>
                          @enderror
@@ -88,7 +88,7 @@
                          <label>Long Description</label>
                          <textarea name="long_description"
                              class="form-control @error('long_description') is-invalid @enderror"
-                             placeholder="Give some description about Workshop" rows="5"></textarea>
+                             placeholder="Give some long description about Workshop" rows="5">{{$workshop->long_description}}</textarea>
                          @error('long_description')
                              <div class="text-danger">{{ $message }}</div>
                          @enderror
@@ -105,7 +105,7 @@
                              @error('image')
                                  <div class="alert alert-danger">{{ $message }}</div>
                              @enderror
-                             <a href="{{ route('image.destroy', $item->id) }}">
+                             <a href="{{ route('image.destroy', $item->id) }}" onclick="deleteimage({{$item->id}})">
                                  <img src="{{ asset('workshop') }}/{{ $item->name }}" style="max-height: 100px;" />
                                  <span aria-hidden="true" class="fa fa-trash"></span>
                              </a>

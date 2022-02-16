@@ -44,7 +44,7 @@
                                              <td>{{ $item->name }}</td>
                                              <td>{{ $item->location }}</td>
                                              <td>
-                                                <img src="{{ asset('workshop') }}/{{ $item->singleimage->name }}"  style=" max-width:150px;">
+                                                <img src="{{ asset('workshop') }}/{{ $item->singleImage}}"  style=" max-width:150px;">
                                             </a>
 
                                              </td>
