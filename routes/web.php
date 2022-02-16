@@ -64,7 +64,7 @@ Route::post('/reset',[ForgotPasswordController::class,'reset']);
 Route::get('/reset_password/{id}',[ResetPasswordController::class,'changepassword'])->name('reset_password');
 Route::post('/update_password',[ResetPasswordController::class,'passwordUpdate'])->name('update.password');
 
-Route::get('/delete_single_image/{$id}',[WorkshopImgController::class,'destroy'])->name('image.destroy');
+Route::get('/delete_single_image/{id}',[WorkshopImgController::class,'destroy'])->name('image.destroy');
 
 
 

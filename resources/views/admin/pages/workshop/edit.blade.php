@@ -105,10 +105,10 @@
                              @error('image')
                                  <div class="alert alert-danger">{{ $message }}</div>
                              @enderror
-                             <a href="{{route('image.destroy',$item->id)}}">
+                             <a href="{{ route('image.destroy', $item->id) }}">
                                  <img src="{{ asset('workshop') }}/{{ $item->name }}" style="max-height: 100px;" />
                                  <span aria-hidden="true" class="fa fa-trash"></span>
-                                </a>
+                             </a>
 
 
 
@@ -175,77 +175,75 @@
 
  @section('js')
      <script>
+         function deleteimage(id) {
+
+             if (confirm("Do you really want to delete the image")) {
+
+                 $.ajax({
+
+                     url: url.href,
+                     type: "GET",
+                     data: {
+                         _token: $("input[name=_token]").val()
+                     },
 
 
-   function deleteimage(id){
+                     success: function(response) {
 
-    if(confirm("Do you really want to delete the image")){
+                         $("deleteimg" + id).remove();
+                     }
 
-        $.ajax({
+                 });
+             }
 
-            url: url.href,
-            type:"GET",
-            data: {
-                _token : $("input[name=_token]").val()
-            },
-
-
-            success:function(response){
-
-                $("deleteimg"+id).remove();
-            }
-
-        });
-    }
-
-   }
+         }
 
 
 
 
 
 
-        //  $(document).ready(function() {
+         //  $(document).ready(function() {
 
-        //      $("body").on("click", "#deleteimage", function(e) {
+         //      $("body").on("click", "#deleteimage", function(e) {
 
-        //          if (!confirm("Do you really want to delete this image")) {
+         //          if (!confirm("Do you really want to delete this image")) {
 
-        //              return true;
-        //          }
-
-
-        //          e.preventDefault();
-
-        //          var id = $(this).data("id");
-        //          var token = $("meta[name='csrf-token']").attr("content");
-        //          var url = e.target;
+         //              return true;
+         //          }
 
 
-        //          $.ajax({
+         //          e.preventDefault();
 
-        //              url: url.href,
-        //              type: "DELETE",
-        //              data: {
-        //                  _token: token,
-        //                  id: id
-        //              },
-        //              success: function(response) {
-        //                  $("#success").html(response.message)
-
-        //                  swal.fire(
-        //                      'Remind!',
-        //                      'Image deleted successfully!',
-        //                      'success'
-        //                  )
-        //              }
-
-        //          });
-        //          return false;
-        //      });
+         //          var id = $(this).data("id");
+         //          var token = $("meta[name='csrf-token']").attr("content");
+         //          var url = e.target;
 
 
-        //  });
+         //          $.ajax({
+
+         //              url: url.href,
+         //              type: "DELETE",
+         //              data: {
+         //                  _token: token,
+         //                  id: id
+         //              },
+         //              success: function(response) {
+         //                  $("#success").html(response.message)
+
+         //                  swal.fire(
+         //                      'Remind!',
+         //                      'Image deleted successfully!',
+         //                      'success'
+         //                  )
+         //              }
+
+         //          });
+         //          return false;
+         //      });
+
+
+         //  });
 
 
          // $("#deleteimage ").click(function(){
