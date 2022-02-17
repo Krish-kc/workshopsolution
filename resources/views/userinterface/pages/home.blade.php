@@ -1,7 +1,149 @@
 @extends('userinterface.master')
+@section('css')
+    <style type="text/css">
+        .card {
+            margin: auto;
+            border: solid 1px #dbdad7;
+            width: auto;
+
+            padding-left: 10px !important;
+
+            padding-right: 10px !important;
+            padding-top: 0px !important
+        }
+
+        .card-title {
+            margin: auto;
+            padding: 15px;
+            background-color: #FDBE33;
+            color: white;
+            width: 80%
+        }
+
+        .card-titleE {
+            margin: auto;
+            padding: 15px;
+            background-color: #030F27;
+            color: white;
+            width: 80%
+        }
+
+        div.card-body {
+            padding: 0px
+        }
+
+        .custom-select {
+            width: 100%
+        }
+
+        .btn2 {
+            margin-left: 10%
+        }
+
+        input {
+            margin: 8px 0;
+            outline: 0 !important;
+            border-width: 0 0 2px !important;
+            border-color: #d1d1cf !important
+        }
+
+        input:focus {
+            border-color: #030F27 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important
+        }
+
+        textarea {
+            margin: 8px 0;
+            outline: 0 !important;
+            border-width: 0 0 2px !important;
+            border-color: #d1d1cf !important
+        }
+
+        textarea:focus {
+            border-color: #030F27 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important
+        }
+
+        select {
+            outline: 0 !important;
+            border-width: 0 0 2px !important;
+            border-color: #d1d1cf !important
+        }
+
+        select:focus {
+            border-color: #030F27 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important
+        }
+
+        button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .radiobtn {
+            margin-left: 3.5%
+        }
+
+        /* .icons {
+
+
+            .fa {
+                /* border-radius: 25px; */
+        width: 10%;
+        margin-left: 5%;
+        /* border: solid 2px #dbdad7; */
+        margin-top: 5%;
+        text-align: center
+        }
+
+        .fa-plane {
+            color: #9ead1c
+        }
+
+        .fa-taxi {
+            color: #c2f700
+        }
+
+        .fa-train {
+            color: red
+        }
+
+        @media only screen and (max-width: 600px) {
+            .card {
+                margin: auto;
+                border: solid 1px #dbdad7;
+                width: 90%;
+                padding-left: 10px !important;
+                padding-bottom: 10px !important;
+                padding-right: 10px !important;
+                padding-top: 0px !important
+            }
+
+            .fa {
+                border-radius: 25px;
+                width: 15%;
+                margin-left: 5%;
+                border: solid 2px #dbdad7;
+                margin-top: 5%;
+                text-align: center
+            }
+        }
+
+    </style>
+@endsection
 @section('content')
-
-
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @foreach ($banner as $key => $item)
@@ -89,89 +231,126 @@
     <div class="about wow fadeInUp" data-wow-delay="0.1s">
         <div class="container-fluid">
             <div class="row align-items-center">
-
+                @foreach ($about as $item)
                 <div class="col-lg-7 col-md-6">
                     <div class="about-wrap">
                         <div class="section-header text-left">
-                            <p>Welcome to Builderz</p>
-                            <h2>25 Years Experience</h2>
+                            <h2>{{$item->title}}</h2>
                         </div>
                         <div class="about-text">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id
-                                gravida condimentum, viverra quis sem.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
-                                Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id
-                                gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque
-                                maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non
-                                blandit.
-                            </p>
-                            <a class="btn" href="">Learn More</a>
+                            <p>{{$item->description}}</p>
+                            <a class="btn" href="{{route('aboutework')}}">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6">
                     <div class="about-img">
-                        <img src="user_assets/img/car.png" alt="Image">
+                        <img src="{{ asset('about_image/' . $item->image) }}" alt="Image">
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
     <!-- About End -->
 
+    @if (\Session::has('success'))
+    <div class="fact">
+        <div class="container-fluid">
+            <div class="row counters">
+                <div class="col-md-4 fact-left wow slideInLeft"
+                    style="visibility: visible; animation-name: slideInLeft;">
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="fact-text">
+
+                                <h2>Thankyou</h2>
+                            </div>
+                        </div>
+                        <div class="col-6">
+
+                            <div class="fact-text">
+                                <h2>{{ Auth::user()->name }} </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 fact-right wow slideInRight"
+                    style="visibility: visible; animation-name: slideInRight;">
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            <div class="fact-text">
+                                <h2>{!! \Session::get('success') !!}
+                                </h2>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
+
+
+
+    <div class="section-header text-center">
+        <p>Our Services</p>
+        <h2>We Provide Services</h2>
+    </div>
     <div class="icon-part">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="icon-block blue">
-                        <div class="fact-icon">
-                            <img src="user_assets/img/brand.svg" alt="">
+                <div class="col-sm-3 mb-2">
+                    <a href="" data-toggle="modal" data-target="#exampleModalCenter">
+                        <div class="icon-block blue">
+                            <div class="fact-icon">
+                                <img src="user_assets/img/service.svg" alt="">
+                            </div>
+                            <div class="fact-text">
+                                <h2>Servicing</h2>
+                                <p>To Service your Vehicle please click here !! .</p>
+
+                            </div>
                         </div>
-                        <div class="fact-text">
-                            <h2>all brands</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-sm-3">
-                    <div class="icon-block yellow">
-                        <div class="fact-icon">
-                            <img src="user_assets/img/support.svg" alt="">
+                <div class="col-sm-3 mb-2">
+                    <a href="" data-toggle="modal" data-target="#EmergencyBreakdownModal">
+                        <div class="icon-block yellow">
+                            <div class="fact-icon">
+                                <img src="user_assets/img/support.svg" alt="">
+                            </div>
+                            <div class="fact-text">
+                                <h2>Emergency Breakdown</h2>
+                                <p>If in Emergency breakdown of your vehicle Please Click here and give some information. We will look after it as soon as possible .</p>
+                            </div>
                         </div>
-                        <div class="fact-text">
-                            <h2>Free Support</h2>
-                            <p>Lorem ipsum dolor sit amet, conseenim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 mb-2">
                     <div class="icon-block blue">
                         <div class="fact-icon">
                             <img src="user_assets/img/dealership.svg" alt="">
                         </div>
                         <div class="fact-text">
-                            <h2>dealership</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sna aliqminim veniam, quis
-                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            <h2>DentPaint</h2>
+                            <p>To fix your vehicle or for dent paint of Vehicle please click here!  </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 mb-2">
                     <div class="icon-block yellow">
                         <div class="fact-icon">
-                            <img src="user_assets/img/affordable.svg" alt="">
+                            <img src="user_assets/img/bluebook.svg" alt="">
                         </div>
                         <div class="fact-text">
-                            <h2>affordable</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elaad minim veniam nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            <h2>BlueBook Renewal </h2>
+                            <p>For Renewal of your Registration certificate/BlueBook  please click here! </p>
                         </div>
                     </div>
                 </div>
@@ -180,216 +359,216 @@
     </div>
 
 
-    <!-- Fact Start -->
-    <!-- <div class="fact">
-                                                                                                                                                                                                                                                            <div class="container-fluid">
-                                                                                                                                                                                                                                                                <div class="row counters">
-                                                                                                                                                                                                                                                                    <div class="col-md-6 fact-left wow slideInLeft">
-                                                                                                                                                                                                                                                                        <div class="row">
-                                                                                                                                                                                                                                                                            <div class="col-6">
-                                                                                                                                                                                                                                                                                <div class="fact-icon">
-                                                                                                                                                                                                                                                                                    <i class="flaticon-worker"></i>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                <div class="fact-text">
-                                                                                                                                                                                                                                                                                    <h2 data-toggle="counter-up">109</h2>
-                                                                                                                                                                                                                                                                                    <p>Expert Workers</p>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                            <div class="col-6">
-                                                                                                                                                                                                                                                                                <div class="fact-icon">
-                                                                                                                                                                                                                                                                                    <i class="flaticon-building"></i>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                <div class="fact-text">
-                                                                                                                                                                                                                                                                                    <h2 data-toggle="counter-up">485</h2>
-                                                                                                                                                                                                                                                                                    <p>Happy Clients</p>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                    <div class="col-md-6 fact-right wow slideInRight">
-                                                                                                                                                                                                                                                                        <div class="row">
-                                                                                                                                                                                                                                                                            <div class="col-6">
-                                                                                                                                                                                                                                                                                <div class="fact-icon">
-                                                                                                                                                                                                                                                                                    <i class="flaticon-address"></i>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                <div class="fact-text">
-                                                                                                                                                                                                                                                                                    <h2 data-toggle="counter-up">789</h2>
-                                                                                                                                                                                                                                                                                    <p>Completed Projects</p>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                            <div class="col-6">
-                                                                                                                                                                                                                                                                                <div class="fact-icon">
-                                                                                                                                                                                                                                                                                    <i class="flaticon-crane"></i>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                <div class="fact-text">
-                                                                                                                                                                                                                                                                                    <h2 data-toggle="counter-up">890</h2>
-                                                                                                                                                                                                                                                                                    <p>Running Projects</p>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                        </div> -->
-    <!-- Fact End -->
+    <!--modal-service-body-->
+    <div class="modal custom fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form action="{{ route('booking.store') }}" method="POST" enctype="multipart/form-data">
+
+                    @csrf
+                    @method('POST')
+                    <div class="card shadow mb-5 bg-white rounded">
+                        <!--Card-Body-->
+                        <div class="card-body">
+                            <!--Card-Title-->
+                            <p class="card-title text-center shadow mb-5 rounded">Servicing Booking Form</p>
+                            <div class="icons text-center">
+                                <i class="fa fa-motorcycle fa-2x" aria-hidden="true"></i>
+                                <i class="fa fa-taxi fa-2x" aria-hidden="true"></i>
+
+                            </div>
+                            <hr>
+                            <p class="searchText"><strong>Please Select the Following </strong></p>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <select class="browser-default custom-select mb-4 " name="workshop_id"
+                                        id="workshop_name">
+                                        <option value="" disabled="" selected="">Select WorkShop</option>
+                                        @foreach ($workshop as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Enter Your Location">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--Third Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="date" class="form-label">Enter Date</label>
+
+                                <input type="date" name="date" class="form-control ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="time" class="form-label">Enter Time</label>
+
+                                <input type="time" name="time" class="form-control">
+                            </div>
+                        </div>
+                        <!--Fourth Row-->
+                        <div class="row mt-4">
+                            <div class="col-sm-6">
+                                <select class="browser-default custom-select mb-4" name="service_id" id="services">
+
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <select class="browser-default custom-select mb-4" name="vehicle_id">
+                                    <option value="" disabled="" selected="">Select Vehicle</option>
+                                    @foreach ($vehicle as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <!--Fifth Row-->
+                        <div class="row">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!--modal-service-body-end-->
+    <!--modal-emergency-breakdown-body-->
+    <div class="modal custom fade" id="EmergencyBreakdownModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form action="{{ route('emergency.store') }}" method="POST" enctype="multipart/form-data">
+
+                    @csrf
+                    @method('POST')
+                    <div class="card shadow mb-5 bg-white rounded">
+                        <!--Card-Body-->
+                        <div class="card-body">
+                            <!--Card-Title-->
+                            <p class="card-titleE text-center shadow mb-5 rounded">Emergency Breakdown</p>
+                            <div class="icons text-center">
+                                <i class="fa fa-motorcycle fa-2x" aria-hidden="true"></i>
+                                <i class="fa fa-taxi fa-2x" aria-hidden="true"></i>
+
+                            </div>
+                            <hr>
+                            <p class="searchText"><strong>Please Select the Following </strong></p>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Your Name">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Third Row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" name="location" placeholder=" Enter Your Location"
+                                    class="form-control">
+                            </div>
+                            <div class="col-sm-6">
+
+                                <input type="text" name="phone" placeholder="Enter Phone Number" class="form-control">
+                            </div>
+                        </div>
+                        <!--Fourth Row-->
+                        <div class="row mt-4">
+                            <div class="col-sm-6">
+
+                                <input type="text" name="vehicle_number" placeholder="Enter Vehicle Number"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <select class="browser-default custom-select mb-4" name="vehicle_type" id="select">
+                                    <option value="" disabled="" selected="">Select Vehicle</option>
+                                    <option value="Bike">Bike</option>
+                                    <option value="Scooter">Scooter</option>
+                                    <option value="Car">Car</option>
+                                    <option value="others">Others</option>
+
+
+                                </select>
+                            </div>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" name="description" rows="3" cols="55"
+                                    placeholder="Enter Problem Description"></textarea>
+
+
+                            </div>
+                        </div>
+                        <!--Fifth Row-->
+                        <div class="row">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!--modal-emergency-breakdown-body-end-->
+
+
+
+
+
+
 
 
     <!-- Service Start -->
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
-                <p>Our Services</p>
-                <h2>We Provide Services</h2>
+                <p>Our Service Centers</p>
+                <h2>Our Service Center and their Services</h2>
             </div>
             <div class="row">
                 <div class="owl-carousel owl-theme">
+                    @foreach ($workshop as $item)
                     <div class="service-item">
                         <div class="service-img">
                             <img src="img/service-1.jpg" alt="Image">
                         </div>
                         <div class="service-text">
                             <div class="service-title">
-                                <h3>Building Construction</h3>
+                                <h3>{{$item->name}}</h3>
                                 <div class="time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    5 hours
+                                    <i class="fa fa-map-marker"></i>
+                                    {{$item->location}}
                                 </div>
                             </div>
 
                             <h5>Service List</h5>
+                            @foreach ($item->services as $service)
                             <ul>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Phasellus nec pretium mi. Curabitur
-                                    facilisis ornare</li>
-                                <li><i class="fas fa-angle-double-right"></i> Aliquam metus tortor, auctor id
-                                    gravida condimentum, viverra quis sem</li>
-                            </ul>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">View
-                                More</a>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                        </div>
-                        <div class="service-text">
-                            <div class="service-title">
-                                <h3>Building Construction</h3>
-                                <div class="time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    5 hours
-                                </div>
-                            </div>
+                                <li><i class="fas fa-angle-double-right"></i> {{ $service->title }} </li>
 
-                            <h5>Service List</h5>
-                            <ul>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Phasellus nec pretium mi. Curabitur
-                                    facilisis ornare</li>
-                                <li><i class="fas fa-angle-double-right"></i> Aliquam metus tortor, auctor id
-                                    gravida condimentum, viverra quis sem</li>
                             </ul>
                             <a class="btn" href="img/service-1.jpg" data-lightbox="service">View
                                 More</a>
                         </div>
+                        @endforeach
                     </div>
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                        </div>
-                        <div class="service-text">
-                            <div class="service-title">
-                                <h3>Building Construction</h3>
-                                <div class="time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    5 hours
-                                </div>
-                            </div>
-
-                            <h5>Service List</h5>
-                            <ul>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Phasellus nec pretium mi. Curabitur
-                                    facilisis ornare</li>
-                                <li><i class="fas fa-angle-double-right"></i> Aliquam metus tortor, auctor id
-                                    gravida condimentum, viverra quis sem</li>
-                            </ul>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">View
-                                More</a>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                        </div>
-                        <div class="service-text">
-                            <div class="service-title">
-                                <h3>Building Construction</h3>
-                                <div class="time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    5 hours
-                                </div>
-                            </div>
-
-                            <h5>Service List</h5>
-                            <ul>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit.</li>
-                                <li><i class="fas fa-angle-double-right"></i> Phasellus nec pretium mi. Curabitur
-                                    facilisis ornare</li>
-                                <li><i class="fas fa-angle-double-right"></i> Aliquam metus tortor, auctor id
-                                    gravida condimentum, viverra quis sem</li>
-                            </ul>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">View
-                                More</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+
             </div>
         </div>
     </div>
     <!-- Service End -->
 
 
-    <!-- Video Start -->
-    <div class="video wow fadeIn" data-wow-delay="0.1s">
-        <div class="container">
-            <button type="button" class="btn-play" data-toggle="modal"
-                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
-                <span></span>
-            </button>
-        </div>
-    </div>
-
-    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <!-- 16:9 aspect ratio -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
-                            allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Video End -->
 
 
     <!-- Team Start -->
@@ -397,78 +576,28 @@
         <div class="container">
             <div class="section-header text-center">
                 <p>Our Team</p>
-                <h2>Meet Our Engineer</h2>
+                <h2>Meet Our Team</h2>
             </div>
+            @foreach ($team as $item)
             <div class="row">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="img/team-1.jpg" alt="Team Image">
+                            <img src="{{ asset('team_image/' . $item->image) }}" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Adam Phillips</h2>
-                            <p>CEO & Founder</p>
+                            <h2>{{$item->name}}</h2>
+                            <p>{{$item->post}}</p>
                         </div>
                         <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-2.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Dylan Adams</h2>
-                            <p>Civil Engineer</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-3.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Jhon Doe</h2>
-                            <p>Interior Designer</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-4.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Josh Dunn</h2>
-                            <p>Painter</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                            <a class="social-fb" href="{{$item->facebook}}"><i class="fab fa-facebook-f"></i></a>
+                            <a class="social-li" href="{{$item->linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="social-in" href="{{$item->instagram}}"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
     <!-- Team End -->
@@ -627,7 +756,7 @@
 
 
     <!-- Testimonial Start -->
-    <div class="testimonial wow fadeIn" data-wow-delay="0.1s">
+    {{-- <div class="testimonial wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -714,12 +843,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Testimonial End -->
 
 
     <!-- Blog Start -->
-    <div class="blog">
+    {{-- <div class="blog">
         <div class="container">
             <div class="section-header text-center">
                 <p>Latest Blog</p>
@@ -791,6 +920,42 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Blog End -->
+@endsection
+@section('js')
+<script>
+    $(document).ready(function() {
+        $('#workshop_name').on('change', function() {
+            var workshopID = $(this).val();
+            if (workshopID) {
+                $.ajax({
+                    url: '/serviceName/' + workshopID,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('#services').empty();
+                            $('#services').append('<option hidden>Choose Service</option>');
+                            $.each(data, function(index,
+                                services) {
+                                $('select[name="service_id"]').append(
+                                    '<option value="' + services.id + '">' +
+                                    services
+                                    .title + '</option>');
+                            });
+                        } else {
+                            $('#services').empty();
+                        }
+                    }
+                });
+            } else {
+                $('#services').empty();
+            }
+        });
+    });
+    </script>
 @endsection

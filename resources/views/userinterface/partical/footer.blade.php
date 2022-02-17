@@ -4,9 +4,9 @@
             <div class="col-md-6 col-lg-3">
                 <div class="footer-contact">
                     <h2>Office Contact</h2>
-                    <p><i class="fa fa-map-marker-alt"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope"></i>info@example.com</p>
+                    <p><i class="fa fa-map-marker-alt"></i>Thapathali Street, Kathmandu, Nepal</p>
+                    <p><i class="fa fa-phone-alt"></i>01 523345</p>
+                    <p><i class="fa fa-envelope"></i>eworkshop665@gmail.com</p>
                     <div class="footer-social">
                         <a href=""><i class="fab fa-twitter"></i></a>
                         <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -62,11 +62,8 @@
     </div>
     <div class="container copyright">
         <div class="row">
-            <div class="col-md-6">
-                <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>
-            </div>
-            <div class="col-md-6">
-                <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+            <div class="col-md-12">
+                <p>&copy; <a href="#">Eworkshop</a>, All Right Reserved 2022.</p>
             </div>
         </div>
     </div>

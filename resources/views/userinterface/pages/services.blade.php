@@ -315,7 +315,7 @@
                     <div class="service-item">
 
                             <div class="service-img">
-                                <img src="{{ asset('workshop/' . $item->singleimage->name) }}" alt="Image">
+                                <img src="{{ asset('workshop/' . $item->name) }}" alt="Image">
                             </div>
 
 
