@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    id="0"
+    sodipodi:docname="_svgclean2.svg"
+    viewBox="0 0 293.76 302.17"
+    version="1.0"
+    inkscape:version="0.48.3.1 r9886"
+  >
+  <sodipodi:namedview
+      id="namedview11"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      guidetolerance="10"
+      pagecolor="#ffffff"
+      gridtolerance="10"
+      inkscape:window-maximized="0"
+      inkscape:window-width="674"
+      inkscape:zoom="0.75919802"
+      objecttolerance="10"
+      showgrid="false"
+      borderopacity="1"
+      inkscape:current-layer="0"
+      inkscape:cx="146.98621"
+      inkscape:cy="-590.30236"
+      inkscape:window-y="0"
+      inkscape:window-x="0"
+      inkscape:window-height="645"
+      inkscape:pageopacity="0"
+  />
+  <g
+      id="1"
+      transform="translate(-4.2598 -4.4674)"
+    >
+    <path
+        id="2"
+        style="stroke-linejoin:round;fill-rule:evenodd;stroke:#000000;stroke-linecap:round;stroke-width:1.2653px;fill:#ffffff"
+        inkscape:connector-curvature="0"
+        d="m174.7 305.03-166.73-166.67-1.5591-1.26-1.0966-1.65-0.4218-1.56v-1.73l0.5905-2.32 1.3075-2.78 1.5183-2.36 169.17 169.2-2.78 11.13z"
+    />
+    <path
+        id="3"
+        style="stroke-linejoin:round;fill-rule:evenodd;stroke:#000000;stroke-linecap:round;stroke-width:1.2653px;fill:#ffffff"
+        inkscape:connector-curvature="0"
+        d="m7.8871 125.33 169.29 169.37 120.21-120.23-169.3-169.37-120.2 120.23z"
+    />
+    <path
+        id="4"
+        style="stroke-linejoin:round;fill-rule:evenodd;stroke:#000000;stroke-linecap:round;stroke-width:1.2653px;fill:#ffffff"
+        inkscape:connector-curvature="0"
+        d="m177.4 294.07-2.28 3.33-1.27 2.78-0.29 1.48 0.12 1.43 0.68 1.23 1.14 0.88 1.9 0.68 0.63 0.12 117.33-118.74 0.85-11.69-118.81 119v-0.5z"
+    />
+    <path
+        id="5"
+        style="stroke-linejoin:round;stroke:#000000;stroke-width:.63265px;stroke-linecap:round;fill:none"
+        inkscape:connector-curvature="0"
+        d="m175.71 300.31 120.24-120.27"
+    />
+    <path
+        id="6"
+        style="stroke-linejoin:round;stroke:#000000;stroke-width:.63265px;stroke-linecap:round;fill:none"
+        inkscape:connector-curvature="0"
+        d="m296.08 177.59-119.78 119.89"
+    />
+    <path
+        id="7"
+        style="stroke-linejoin:round;stroke:#000000;stroke-width:.63265px;stroke-linecap:round;fill:none"
+        inkscape:connector-curvature="0"
+        d="m295.7 182.66-119.36 119.38"
+    />
+    <path
+        id="8"
+        style="stroke-linejoin:round;stroke:#000000;stroke-width:.63265px;stroke-linecap:round;fill:none"
+        inkscape:connector-curvature="0"
+        d="m295.41 184.93-118.94 118.96"
+    />
+  </g
+  >
+  <metadata
+      id="metadata12"
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

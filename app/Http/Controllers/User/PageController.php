@@ -11,6 +11,7 @@ use App\Models\WorkShop;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\About;
+use App\Models\Service;
 use App\Models\Team;
 use App\Models\WorkshopImg;
 
@@ -18,9 +19,13 @@ class PageController extends Controller
 {
     public function home()
     {
-        // $banner=Banner::all();
+        $user_id = Auth::id();
+        $workshop = WorkShop::all();
+        $vehicle = Vehicle::where('user_id', $user_id)->get();
+        $about = About::where('status','on')->get();
+        $team = Team::where('status','on')->get();
         $banner = Banner::where('status', 'on')->get();
-        return view('userinterface.pages.home', compact('banner'));
+        return view('userinterface.pages.home', compact('banner','workshop','vehicle','about','team'));
     }
     public function about()
     {

@@ -17,7 +17,7 @@
 
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">List of Booking</h4>
+                <h4 class="card-title">List of Emergency Booking</h4>
                 {{-- <a href="{{route('permission.create')}}" class="btn btn-primary float-right">Add Permission</a> --}}
                 <h6 class="card-subtitle"></h6>
 
@@ -58,10 +58,6 @@
 
                                                 <td>
                                                     <div class="btn-group">
-
-                                                        <a href="" class="btn btn-success m-1"><i
-                                                                class="fa fa-edit"></i></a>
-
                                                         <a href="#" class="btn btn-danger m-1" onclick="handeldelete()">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
@@ -87,4 +83,47 @@
     </div>
 
 
+    {{-- delete modal for emergency booking  --}}
+    <div id="deleteemergencymodal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <form action="" method="POST" id="deleteEmergency">
+                @csrf
+                @method('DELETE')
+
+                <div class="modal-content">
+                    <div class="modal-header bg-danger ">
+                        <h4 class="modal-title w-100">Are you sure?</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you really want to delete this Emergency Booking? If the task isn't completed the booking data cannot be retrive. </p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Sumbit</button>
+
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    {{-- delete modal for emergency booking  end --}}
+
+
 @endsection
+
+@section('js')
+<script>
+    function handeldelete(id) {
+        var form = document.getElementById('deleteEmergency')
+        $('#deleteemergencymodal').modal('show')
+        form.action = 'emergency/' + id
+
+    }
+</script>
+@endsection
+
+
