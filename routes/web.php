@@ -12,10 +12,12 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\EmergencyBreakDownController;
+use App\Http\Controllers\Admin\SocialiteController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WorkshopImgController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\User\PageController;
 use App\Http\Controllers\User\ProfileController;
@@ -68,8 +70,16 @@ Route::get('/delete_single_image/{id}',[WorkshopImgController::class,'destroy'])
 
 
 
+//Socialite login route
 
+//Google Route
+Route::get('login/google',[SocialiteController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('auth/login/google/callback',[SocialiteController::class, 'loginWithGoogle']);
 
+//Facebook Route
+
+// Route::get('login/facebook',[SocialiteController::class, 'redirectToFacebook'])->name('login.facebook');
+// Route::get('login/facebook/callback',[SocialiteController::class, 'handleFacebookCallBack']);
 
 
 
@@ -117,4 +127,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     //
     Route::resource('team',TeamController::class);
+
+
 });
