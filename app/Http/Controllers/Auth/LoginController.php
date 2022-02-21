@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Spatie\Permission\Models\Role;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+
 
 class LoginController extends Controller
 {
@@ -49,4 +52,5 @@ class LoginController extends Controller
         $this->redirectTo = route('home');
         return $this->redirectTo;
     }
+
 }
