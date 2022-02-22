@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Event;
 use App\Models\Service;
 use App\Models\Vehicle;
 use Carbon\Carbon;
@@ -73,12 +74,13 @@ class BookingController extends Controller
 
         $service_id = $request->service_id;
         $service = Service::where('id', $service_id)->first();
+        $service_title=$service->title;
         $duration = $service->duration;
         $time = Carbon::parse($request->time);
         $timenow = $time->format('g:i A');
         $end_time = $time->addMinutes($duration)->format("g:i A");
 
-        Booking::create([
+       $new_booking= Booking::create([
             'user_id' => Auth::id(),
             'vehicle_id' => $request->vehicle_id,
             'service_id' => $request->service_id,
@@ -86,8 +88,22 @@ class BookingController extends Controller
             'date' => $request->date,
             'start_time' => $timenow,
             'end_time' => $end_time,
-            'rate' => '1000',
+            'rate' => $service->charge,
             'status' => 'Pending',
+        ]);
+
+
+        $event_st_time=Carbon::parse( $timenow)->format('Y-m-d H:i:s');
+        $event_ed_time=Carbon::parse( $end_time)->format('Y-m-d H:i:s');
+        
+
+        Event::create([
+            'title' => $service_title,
+            'date'=>$new_booking->date,
+            'start_time' => $event_st_time,
+            'end_time' => $event_ed_time,
+            'booking_id'=>$new_booking->id
+
         ]);
 
         return redirect()
