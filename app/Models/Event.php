@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-      protected $filable=[
+     protected $fillable = [
           'title','date','start_time','end_time','booking_id'
       ];
 }

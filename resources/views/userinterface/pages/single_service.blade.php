@@ -196,71 +196,7 @@
                             </div>
                         </div>
 
-                        <div class="sidebar-widget wow fadeInUp">
-                            <h2 class="widget-title">Recent Post</h2>
-                            <div class="recent-post">
-                                <div class="post-item">
-                                    <div class="post-img">
-                                        <img src="img/post-1.jpg" />
-                                    </div>
-                                    <div class="post-text">
-                                        <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                        <div class="post-meta">
-                                            <p>By<a href="">Admin</a></p>
-                                            <p>In<a href="">Design</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-item">
-                                    <div class="post-img">
-                                        <img src="img/post-2.jpg" />
-                                    </div>
-                                    <div class="post-text">
-                                        <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                        <div class="post-meta">
-                                            <p>By<a href="">Admin</a></p>
-                                            <p>In<a href="">Design</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-item">
-                                    <div class="post-img">
-                                        <img src="img/post-3.jpg" />
-                                    </div>
-                                    <div class="post-text">
-                                        <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                        <div class="post-meta">
-                                            <p>By<a href="">Admin</a></p>
-                                            <p>In<a href="">Design</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-item">
-                                    <div class="post-img">
-                                        <img src="img/post-4.jpg" />
-                                    </div>
-                                    <div class="post-text">
-                                        <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                        <div class="post-meta">
-                                            <p>By<a href="">Admin</a></p>
-                                            <p>In<a href="">Design</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-item">
-                                    <div class="post-img">
-                                        <img src="img/post-5.jpg" />
-                                    </div>
-                                    <div class="post-text">
-                                        <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                        <div class="post-meta">
-                                            <p>By<a href="">Admin</a></p>
-                                            <p>In<a href="">Design</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="sidebar-widget wow fadeInUp">
                             <div class="image-widget">
@@ -515,13 +451,34 @@
 
     <script>
         $(document).ready(function() {
-            // page is now ready, initialize the calendar...
-            $('#calendar').fullCalendar({
-                weekends: true,
-              
+            var SITEURL = "{{ url('/') }}";
+            url = $("#workshop_id").attr('href');
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var calendar = $('#calendar').fullCalendar({
+                editable: true,
+                header: {
+                    left: 'prev,next,today',
+                    center: 'title',
+                    right: 'agendaWeek,agendaDay'
+
+                },
+                events: url,
+                displayEventTime: true,
+                eventRender: function(event, element, view) {
+                    if (event.allDay === 'true') {
+                        event.allDay = true;
+                    } else {
+                        event.allDay = false;
+                    }
+                },
 
             });
+
         });
     </script>
     <script>

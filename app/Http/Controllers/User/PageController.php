@@ -11,6 +11,7 @@ use App\Models\WorkShop;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\About;
+use App\Models\Event;
 use App\Models\Service;
 use App\Models\Team;
 use App\Models\WorkshopImg;
@@ -51,8 +52,14 @@ class PageController extends Controller
     }
 
 
-    public function singleWorkshop($id)
+    public function singleWorkshop(Request $request,$id)
     {
+         if($request->ajax()) {  
+            $data = Event::whereDate('start_time', '>=', $request->start)
+                ->whereDate('end_time',   '<=', $request->end)
+                ->get(['id', 'title', 'start_time', 'end_time']);
+            return response()->json($data);
+        }
 
         $workshop = WorkShop::findOrFail($id);
         return view('userinterface.pages.single_service', compact('workshop'));
