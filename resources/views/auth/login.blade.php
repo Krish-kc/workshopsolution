@@ -137,7 +137,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <h2>Sign In</h2>
-            <p>Please Enter your Email & Password for signIn!</p>
+            <p>Please Enter your Email & Password for sign In!</p>
             <hr>
 
             <div class="form-group">
@@ -183,10 +183,26 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
             </div>
+
             <div class="text-center"><a href="/forgotpassword">Forgot password ? </a></div>
+            <div class="form-group mt-3">
+                {!! NoCaptcha::renderJs() !!}
+                {!! NoCaptcha::display() !!}
+            </div>
         </form>
-        <div class="text-center">New to this account? <a href="/register">Register here</a></div>
     </div>
+    <p style="text-align: center;">OR</p>
+
+    <div class="">
+
+        <div class="col-md-4 offset-md-4">
+            <a href="#" class="btn btn-primary btn-block" style="background: blue;">Login with Facebook</a>
+            <a href="{{ route('login.google') }}" class="btn btn-danger  btn-block" style="background-color: red;">Login
+                with Google</a>
+        </div>
+
+    </div>
+    <div class="text-center">New to this account? <a href="/register">Register here</a></div>
 </body>
 
 </html>
