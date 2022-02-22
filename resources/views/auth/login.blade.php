@@ -185,19 +185,24 @@
             </div>
 
             <div class="text-center"><a href="/forgotpassword">Forgot password ? </a></div>
+            <div class="form-group mt-3">
+                {!! NoCaptcha::renderJs() !!}
+                {!! NoCaptcha::display() !!}
+            </div>
         </form>
     </div>
-        <p style="text-align: center;">OR</p>
+    <p style="text-align: center;">OR</p>
 
-        <div class="">
+    <div class="">
 
-            <div class="col-md-4 offset-md-4">
-                <a href="#" class="btn btn-primary btn-block" style="background: blue;">Login with Facebook</a>
-                <a href="{{route('login.google')}}" class="btn btn-danger  btn-block" style="background-color: red;">Login with Google</a>
-            </div>
-
+        <div class="col-md-4 offset-md-4">
+            <a href="#" class="btn btn-primary btn-block" style="background: blue;">Login with Facebook</a>
+            <a href="{{ route('login.google') }}" class="btn btn-danger  btn-block" style="background-color: red;">Login
+                with Google</a>
         </div>
-        <div class="text-center">New to this account? <a href="/register">Register here</a></div>
+
+    </div>
+    <div class="text-center">New to this account? <a href="/register">Register here</a></div>
 </body>
 
 </html>
