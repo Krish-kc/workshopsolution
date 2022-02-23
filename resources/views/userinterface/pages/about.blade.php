@@ -37,8 +37,6 @@
                                 {{ $item->description }}
                             </p>
 
-
-
                             <a class="btn" href="">Learn More</a>
                         </div>
                     </div>
@@ -108,28 +106,30 @@
                 <p>Our Team</p>
                 <h2>Meet Our Team</h2>
             </div>
-            @foreach ($team as $item)
             <div class="row">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('team_image/' . $item->image) }} " alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>{{$item->name}}</h2>
-                            <p>{{$item->post}}</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-fb" href="{{$item->facebook}}"><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href="{{$item->linkedin}}"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href="{{$item->instagram}}"><i class="fab fa-instagram"></i></a>
+                @foreach ($team as $item)
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="{{ asset('team_image/' . $item->image) }} " alt="Team Image">
+                            </div>
+                            <div class="team-text">
+                                <h2>{{ $item->name }}</h2>
+                                <p>{{ $item->post }}</p>
+                            </div>
+                            <div class="team-social">
+                                <a class="social-fb" href="{{ $item->facebook }}"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="social-li" href="{{ $item->linkedin }}"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="social-in" href="{{ $item->instagram }}"><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
-            </div>
-        </div>
+    </div>
     </div>
     <!-- Team End -->
-
 @endsection
