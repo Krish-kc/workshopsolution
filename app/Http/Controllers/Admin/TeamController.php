@@ -40,12 +40,13 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('team_image');
             $image= Image::make($image->getRealPath());
-            $image->reSize(300, 350, function($constraint) {
+            $image->reSize(300, 300, function($constraint) {
                 $constraint->aspectRatio();
             })->save($destinationPath.'/'.$imageName);
             // $image->move(public_path('team_image'), $imageName);

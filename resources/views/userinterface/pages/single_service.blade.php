@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <div class="single-comment wow fadeInUp">
+                    {{-- <div class="single-comment wow fadeInUp">
                         <h2>3 Comments</h2>
                         <ul class="comment-list">
                             <li class="comment-item">
@@ -182,7 +182,9 @@
                                 <input type="submit" value="Post Comment" class="btn">
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
+
+                    @comments(['model' => $workshop])
                 </div>
 
                 <div class="col-lg-4">
