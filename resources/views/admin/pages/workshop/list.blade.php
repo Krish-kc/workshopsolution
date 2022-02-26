@@ -19,7 +19,7 @@
              <div class="card-body">
                  <h4 class="card-title">List of Register User</h4>
                  <h6 class="card-subtitle">Input the Required Information for Registering New User</h6>
-                 <a href="{{route('shop.create')}}" class="btn btn-primary">Add Workshop</a>
+                 <a href="{{ route('shop.create') }}" class="btn btn-primary">Add Workshop</a>
                  <div class="table-responsive m-t-40">
                      <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
@@ -40,12 +40,13 @@
                                      </thead>
                                      @foreach ($workshop as $item)
                                          <tr>
-                                             <td>{{$loop->iteration}}</td>
+                                             <td>{{ $loop->iteration }}</td>
                                              <td>{{ $item->name }}</td>
                                              <td>{{ $item->location }}</td>
                                              <td>
-                                                <img src="{{ asset('workshop') }}/{{ $item->name}}"  style=" max-width:150px;">
-                                            </a>
+                                                 <img src="{{ asset('workshop') }}/{{ $item->singleImage->name }}"
+                                                     style=" max-width:150px;">
+                                                 </a>
 
                                              </td>
                                              <td>{{ Str::limit($item->short_description, 50, '...') }}</td>
@@ -114,8 +115,6 @@
              </form>
          </div>
      </div>
-
-
  @endsection
 
  @section('js')

@@ -89,7 +89,7 @@ Route::get('auth/login/google/callback',[SocialiteController::class, 'loginWithG
 
 
 
-
+Route::get('/show-calendar',[WorkShopController::class,'calender'])->name('show.calender');
 
 Auth::routes(['verify'=>true]);
 //routes for admins pannel
