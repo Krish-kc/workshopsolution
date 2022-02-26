@@ -1,7 +1,7 @@
 @extends('userinterface.master')
 @section('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" rel="stylesheet" />
-    {{-- <style>
+    <style>
         .rating-css div {
             color: #ffe400;
             font-size: 30px;
@@ -31,7 +31,11 @@
             transition: 0.3s ease;
         }
 
-    </style> --}}
+        .checked {
+            color: #ffe600
+        }
+
+    </style>
 @endsection
 @section('content')
     <!-- single page Start -->
@@ -58,14 +62,36 @@
 
                     {{-- rating  section start --}}
 
+
                     <div class="single-bio wow fadeInUp">
+                        <div class="single-bio-text">
+                            <h3>Average rating of {{ $workshop->name }}</h3>
+                        </div>
 
+                        <div class="single-bio-text">
+                            @php
+                                $rate = number_format($rating_value);
+                            @endphp
+                            <div class="rating ">
+                                {{-- {{$rating->count()}} --}}
+
+                                @for ($i = 1; $i <= $rate; $i++)
+                                    <i class="fa fa-star checked"></i>
+                                @endfor
+                                @for ($j = $rate + 1; $j <= 5; $j++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
+
+                            </div>
+                        </div>
                     </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Rate Workshop
+                    </button>
 
 
 
-                    {{-- rating modal start here --}}
-                    {{-- rating modal end here --}}
+
 
 
 
@@ -496,9 +522,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Launch demo modal
-        </button>
+
     </div>
     <!-- Button trigger modal -->
 
@@ -507,22 +531,56 @@
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+
+                <form action="{{ route('rating.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="workshop_id" value="{{ $workshop->id }}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Rate {{ $workshop->name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="rating-css">
+                            <div class="star-icon">
+
+                                @if ($user_rating)
+                                    @for ($i = 1; $i <= $user_rating->stars_rated; $i++)
+                                        <input type="radio" value="{{ $i }}" name="workshop_rating" checked
+                                            id="rating{{ $i }}">
+                                        <label for="rating{{ $i }}" class="fa fa-star"></label>
+                                    @endfor
+                                    @for ($j = $user_rating->stars_rated + 1; $j <= 5; $j++)
+                                        <input type="radio" value="{{ $j }}" name="workshop_rating"
+                                            id="rating{{ $j }}">
+                                        <label for="rating{{ $j }}" class="fa fa-star"></label>
+                                    @endfor
+                                @else
+                                    <input type="radio" value="1" name="workshop_rating" checked id="rating1">
+                                    <label for="rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="workshop_rating" id="rating2">
+                                    <label for="rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="workshop_rating" id="rating3">
+                                    <label for="rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="workshop_rating" id="rating4">
+                                    <label for="rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="workshop_rating" id="rating5">
+                                    <label for="rating5" class="fa fa-star"></label>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+    {{-- rate modal end here --}}
 
 
 
@@ -661,13 +719,11 @@
 
 
 
-         function handeldelete() {
-             var form = document.getElementById('showorkshop')
-             $('#popmodal').modal('show')
+        function handeldelete() {
+            var form = document.getElementById('showorkshop')
+            $('#popmodal').modal('show')
 
 
-         }
-
-
+        }
     </script>
 @endsection
