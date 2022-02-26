@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\EmergencyBreakDownController;
+use App\Http\Controllers\Admin\RatingController;
 use App\Http\Controllers\Admin\SocialiteController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
@@ -125,8 +126,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('about', AboutController::class);
 
-    //
+    // team route
     Route::resource('team',TeamController::class);
 
+    //rating route
+
+    Route::resource('rating',RatingController::class);
 
 });

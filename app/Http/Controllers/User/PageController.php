@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\About;
 use App\Models\Event;
+use App\Models\Rating;
 use App\Models\Service;
 use App\Models\Team;
 use App\Models\WorkshopImg;
@@ -60,9 +61,18 @@ class PageController extends Controller
                 ->get(['id', 'title', 'start_time', 'end_time']);
             return response()->json($data);
         }
-        
+
         $workshop = WorkShop::findOrFail($id);
-        return view('userinterface.pages.single_service', compact('workshop'));
+        $rating = Rating::where('workshop_id',$workshop->id)->get();
+        $rating_sum = Rating::where('workshop_id',$workshop->id)->sum('stars_rated');
+        $user_rating = Rating::where('workshop_id',$workshop->id)->where('user_id', Auth::id())->first();
+        if($rating->count()>0){
+            $rating_value = $rating_sum/$rating->count();
+        }
+        else{
+            $rating_value = 0;
+        }
+        return view('userinterface.pages.single_service', compact('workshop','rating','rating_value','user_rating'));
     }
 
 

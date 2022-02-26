@@ -9,6 +9,7 @@ use App\Models\ServiceBook;
 use App\Models\Booking;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 class ProfileController extends Controller
 {
