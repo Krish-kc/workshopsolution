@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkshopValidation;
+use App\Models\Event;
 use App\Models\WorkShop;
 use App\Models\Service;
 use App\Models\WorkshopImg;
@@ -12,8 +13,8 @@ use File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Validator;
 use Intervention\Image\Facades\Image;
-use Symfony\Component\Console\Input\Input;
-use Illuminate\Support\Facades\Storage;
+use Calendar;
+use Carbon\Carbon;
 
 class WorkShopController extends Controller
 {
@@ -114,11 +115,55 @@ class WorkShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
         $workshop = Workshop::findorFail($id);
-        return view('admin.pages.workshop.view', compact('workshop'));
-    }
+        $events = Event::all();
+    
+
+
+
+
+
+
+        // $data = Event::all();
+        // if($data->count()) {
+        //     foreach ($data as $key => $value) {
+        //         $events[] = Calendar::event(
+        //             $value->title,
+        //             false,
+        //             new \DateTime(Carbon::parse($value->start_date)),
+        //             new \DateTime(Carbon::parse($value->end_date)),
+        //             null,
+        //             // Add color and link on event
+        //             [
+        //                 'color' => '#f05050',
+        //                 'url' => 'pass here url and any route',
+            
+        //             ]
+                     
+        //         );
+        //     }
+        // }
+        // $calendar = Calendar::addEvents($events);
+        
+        
+        // $calendar->setOptions([
+        //         'displayEventTime' => true,
+        //         'initialView' => 'timeGridDay',
+        //         'headerToolbar' => [
+        //             'left' => 'prev,next today',
+        //             'center' => 'title',
+        //             'right' => 'timeGridWeek,timeGridDay'
+        //         ],
+               
+        //         ]);
+
+        return view('admin.pages.workshop.view', compact('workshop','events'));
+
+
+    }    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -271,6 +316,15 @@ class WorkShopController extends Controller
         //     ]);
         // }
 
+    }
+
+
+
+    public function calender(Request $request){
+         if($request->ajax()) {  
+            $data = Event::all();
+            return response()->json($data);
+        }
     }
 
 }

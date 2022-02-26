@@ -60,7 +60,7 @@ class PageController extends Controller
                 ->get(['id', 'title', 'start_time', 'end_time']);
             return response()->json($data);
         }
-
+        
         $workshop = WorkShop::findOrFail($id);
         return view('userinterface.pages.single_service', compact('workshop'));
     }

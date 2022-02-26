@@ -1,5 +1,6 @@
 @extends('userinterface.master')
 
+
 @section('css')
     <style type="text/css">
         .card {

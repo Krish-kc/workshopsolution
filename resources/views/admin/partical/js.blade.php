@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.3.0/main.min.js"></script>
+
 <script data-cfasync="false"
 src="{{ asset('../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') }}"></script>
 <script src="{{ asset('../assets/plugins/jquery/jquery.min.js') }}"></script>

@@ -1,4 +1,9 @@
-@extends('admin.index');
+@extends('admin.index')
+@section('css')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" rel="stylesheet" />
+@endsection
+
+
 @section('content')
 
     <div class="container-fluid">
@@ -28,11 +33,22 @@
                 <h6 class="card-subtitle">workshop ending:{{ $workshop->ending_time }}</h6>
 
 
-                <img src="{{ asset('workshop') }}/{{ $workshop->image }}" style="max-height: 150px;">
+                <img src="{{ asset('workshop') }}/{{ $workshop->singleImage->name }}" style="max-height: 150px;">
 
 
 
             </div>
+
+
+            <div id='fcalendar'></div>
+
+            {{-- <div class="card-body">
+
+                {!! $calendar->calendar() !!}
+
+                {!! $calendar->script() !!}
+
+            </div> --}}
         </div>
         <div class="button-group">
             <button id="open" data-toggle="modal" data-target="#exampleModalLong" type="submit"
@@ -65,12 +81,6 @@
 
                                     @if (!$workshop->services->isEmpty())
                                         @foreach ($workshop->services as $item)
-
-
-
-
-
-
                                             <tbody>
 
 
@@ -124,7 +134,6 @@
                                                     </form>
                                                 </div>
                                             </div>
-
                                         @endforeach
                                     @endif
 
@@ -234,4 +243,46 @@
 
 
 
+@endsection
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            // pass _token in all ajax
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // initialize calendar in all events
+            var calendar = $('#fcalendar').fullCalendar({
+                defaultView: 'agendaDay',
+                // minTime: "07:00:00",
+                // maxTime: "18:00:00",
+                // editable: true,
+
+
+                events: "{{ route('show.calender') }}",
+                displayEventTime: true,
+                allDayDefault: false,
+
+
+                eventRender: function(event, element, view) {
+                    if (event.allDay === 'true') {
+                        event.allDay = true;
+                    } else {
+                        event.allDay = false;
+                    }
+                },
+                selectable: true,
+                selectHelper: true,
+
+            });
+        });
+    </script>
 @endsection
