@@ -54,7 +54,7 @@ class PageController extends Controller
 
     public function singleWorkshop(Request $request,$id)
     {
-         if($request->ajax()) {  
+         if($request->ajax()) {
             $data = Event::whereDate('start_time', '>=', $request->start)
                 ->whereDate('end_time',   '<=', $request->end)
                 ->get(['id', 'title', 'start_time', 'end_time']);
