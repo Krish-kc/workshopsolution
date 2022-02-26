@@ -1,6 +1,37 @@
 @extends('userinterface.master')
 @section('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" rel="stylesheet" />
+    {{-- <style>
+        .rating-css div {
+            color: #ffe400;
+            font-size: 30px;
+            font-family: sans-serif;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 20px 0;
+        }
+
+        .rating-css input {
+            display: none;
+        }
+
+        .rating-css input+label {
+            font-size: 60px;
+            text-shadow: 1px 1px 0 #8f8420;
+            cursor: pointer;
+        }
+
+        .rating-css input:checked+label~label {
+            color: #b4afaf;
+        }
+
+        .rating-css label:active {
+            transform: scale(0.8);
+            transition: 0.3s ease;
+        }
+
+    </style> --}}
 @endsection
 @section('content')
     <!-- single page Start -->
@@ -25,21 +56,43 @@
                     </div>
 
 
-
+                    {{-- rating  section start --}}
 
                     <div class="single-bio wow fadeInUp">
-                        <div class="single-bio-img">
-                            <img src="img/user.jpg" />
-                        </div>
-                        <div class="single-bio-text">
-                            <h3>Author Name</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis sapien, non eros
-                                leo in
-                                nunc. Donec a nulla vel turpis tempor ac vel justo. In hac platea dictumst.
-                            </p>
-                        </div>
+
                     </div>
+
+
+
+                    {{-- rating modal start here --}}
+                    {{-- rating modal end here --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <br>
+                    <br>
                     <div class="single-related wow fadeInUp">
                         <h2>Related Post</h2>
                         <div class="owl-carousel related-slider">
@@ -94,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="single-comment wow fadeInUp">
+                    {{-- <div class="single-comment wow fadeInUp">
                         <h2>3 Comments</h2>
                         <ul class="comment-list">
                             <li class="comment-item">
@@ -182,7 +235,9 @@
                                 <input type="submit" value="Post Comment" class="btn">
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
+
+                    @comments(['model' => $workshop])
                 </div>
 
                 <div class="col-lg-4">
@@ -468,7 +523,11 @@
             </div>
         </div>
     </div>
+
+
+
     <!-- single page End -->
+
 @endsection
 
 @section('js')
@@ -599,5 +658,16 @@
         function displayMessage(message) {
             toastr.success(message, 'Event');
         }
+
+
+
+         function handeldelete() {
+             var form = document.getElementById('showorkshop')
+             $('#popmodal').modal('show')
+
+
+         }
+
+
     </script>
 @endsection

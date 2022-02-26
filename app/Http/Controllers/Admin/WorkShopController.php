@@ -316,11 +316,8 @@ class WorkShopController extends Controller
         //     ]);
         // }
 
-
-
-
-
     }
+
 
 
     public function calender(Request $request){
@@ -329,4 +326,5 @@ class WorkShopController extends Controller
             return response()->json($data);
         }
     }
+
 }

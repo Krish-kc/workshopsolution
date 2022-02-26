@@ -534,8 +534,8 @@
                 <h2>Our Service Center and their Services</h2>
             </div>
             <div class="row">
+                @foreach ($workshop as $item)
                 <div class="owl-carousel owl-theme">
-                    @foreach ($workshop as $item)
                     <div class="service-item">
                         <div class="service-img">
                             <img src="img/service-1.jpg" alt="Image">
@@ -560,8 +560,8 @@
                         </div>
                         @endforeach
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
 
             </div>
         </div>
@@ -578,8 +578,8 @@
                 <p>Our Team</p>
                 <h2>Meet Our Team</h2>
             </div>
-            @foreach ($team as $item)
             <div class="row">
+                @foreach ($team as $item)
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
                         <div class="team-img">
@@ -596,10 +596,12 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
+</div>
+
     <!-- Team End -->
 
 
@@ -751,8 +753,13 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- FAQs End -->
+
+
+
+
 
 
     <!-- Testimonial Start -->
