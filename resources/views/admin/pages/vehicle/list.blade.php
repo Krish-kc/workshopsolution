@@ -19,7 +19,7 @@
             <div class="card-body">
                 <h4 class="card-title">List of Register Vehicle</h4>
                 <h6 class="card-subtitle">All the Required Information Of Register Vehicle</h6>
-
+                <a href="{{route('vehicle.create')}}" class="btn btn-primary float-right">Add Vehicle</a>
                 <div class="table-responsive m-t-40">
                     <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
