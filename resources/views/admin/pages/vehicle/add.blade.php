@@ -23,6 +23,7 @@
             <div class="card-body">
                 <h4 class="card-title">Vehicle Details</h4>
                 <h6 class="card-subtitle">Input the Required Information for fresh Service</h6>
+                <a href="{{route('vehicle.index')}}" class="btn btn-primary float-right">Vehicle List</a>
                 <form class="form-control-line m-t-40" action="{{ route('vehicle.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf

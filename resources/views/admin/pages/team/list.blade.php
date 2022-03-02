@@ -19,7 +19,7 @@
             <div class="card-body">
                 <h4 class="card-title">List of Team Members</h4>
                 <h6 class="card-subtitle">All the Required Information Of Team Members</h6>
-                <a href="{{route('team.create')}}" class="btn btn-primary ">Add Team</a>
+                <a href="{{route('team.create')}}" class="btn btn-primary float-right">Add Team</a>
                 <div class="table-responsive m-t-40">
                     <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 

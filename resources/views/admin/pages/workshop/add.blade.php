@@ -21,6 +21,7 @@
              <div class="card-body">
                  <h4 class="card-title">Add WorkShop</h4>
                  <h6 class="card-subtitle">Please add Workshop Information</h6>
+                 <a href="{{route('shop.index')}}" class="btn btn-primary float-right">Workshop List</a>
                  <form action="{{ route('shop.store') }}" method="POST" enctype="multipart/form-data"
                      class="form-material m-t-40">
                      @csrf
