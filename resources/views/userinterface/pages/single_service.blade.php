@@ -44,7 +44,27 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="single-content wow fadeInUp">
-                        <img src="{{ asset('workshop/' . $workshop->singleimage->name) }}" />
+
+                        <div id="myCarousel" class="carousel mycarousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach ($workshop->Images as $key => $item)
+                                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                        <img src="{{ asset('workshop/' . $item->name) }}" alt="Carousel Image">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"> </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+
+
                         <h2>{{ $workshop->name }}</h2>
                         <p>
                             {{ $workshop->short_description }}
@@ -268,7 +288,9 @@
 
                         <div class="sidebar-widget wow fadeInUp">
                             <div class="image-widget">
-                                <a href="#"><img src="img/blog-1.jpg" alt="Image"></a>
+
+                                <a href="#"><img src="{{ asset('workshop/' . $workshop->singleImage->name) }}" alt="Image"
+                                        style="max-height: 200px; width:250px;   "></a>
                             </div>
                         </div>
 
@@ -357,60 +379,12 @@
                                             <div class="post-text">
                                                 <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
                                                 <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
+                                                    <p>By<a  href="">Admin</a></p>
                                                     <p>In<a href="">Design</a></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-2.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-3.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-4.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-5.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                       </div>
                                     <div id="latest" class="container tab-pane fade">
                                         <div class="post-item">
                                             <div class="post-img">
@@ -582,23 +556,23 @@
 
     <script>
         $(document).ready(function() {
-            var SITEURL = "{{ url('/') }}";
-            url = $("#workshop_id").attr('href');
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
             var calendar = $('#calendar').fullCalendar({
-                editable: true,
+
+                initialView: 'timeGridWeek',
+
                 header: {
                     left: 'prev,next,today',
                     center: 'title',
                     right: 'agendaWeek,agendaDay'
 
                 },
-                events: url,
+
+                events: "{{ route('show.calender') }}",
                 displayEventTime: true,
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {
@@ -712,5 +686,26 @@
 
 
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            getGroceryData();
+
+            function getGroceryData() {
+                $.ajax({
+                    method: 'GET',
+                    url: '/popularworkshop',
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+        });
     </script>
 @endsection

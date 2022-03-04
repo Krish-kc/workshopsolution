@@ -22,21 +22,125 @@
         </div>
 
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Workshop</h4>
-
-                <p class="card-text">All the information of Workshop</p>
-                <h6 class="card-subtitle">Workshop Name:{{ $workshop->name }}</h6>
-                <h6 class="card-subtitle">Workshop Pan :{{ $workshop->PAN }}</h6>
-                <h6 class="card-subtitle">workshop Location:{{ $workshop->location }}</h6>
-                <h6 class="card-subtitle">workshop Starting time:{{ $workshop->starting_time }}</h6>
-                <h6 class="card-subtitle">workshop ending:{{ $workshop->ending_time }}</h6>
 
 
-                <img src="{{ asset('workshop') }}/{{ $workshop->singleImage->name }}" style="max-height: 150px;">
+            <div class="card-body ">
+                <h3 class="card-title text-center">Workshop</h3>
+                <p class="card-text text-center">All the information of Workshop</p>
+
+
+                <div class="row">
+                    <div class="col-lg-6 mt-4">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                @foreach ($workshop->Images as $key => $item)
+                                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+
+                                        <img class="img-responsive" src="{{ asset('workshop/' . $item->name) }}"
+                                            alt="First slide">
+                                    </div>
+                                @endforeach
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+
+                        </div>
 
 
 
+                    </div>
+
+
+                    <div class="col-lg-6 mt-4">
+
+
+                        <h4 class="card-subtitle">
+                            <span class="label label-rounded label-primary">
+                                Name
+                            </span>
+                            {{ $workshop->name }}
+                        </h4>
+                        <h4 class="card-subtitle">
+                            <span class="label label-rounded label-primary">
+                                Pan no
+                            </span>
+                            {{ $workshop->PAN }}
+                        </h4>
+                        <h4 class="card-subtitle"><span class="label label-rounded label-primary">
+                                Location
+                            </span>
+                            {{ $workshop->location }}</h4>
+
+                        <h4 class="card-subtitle"><span class="label label-rounded label-primary">
+                                Total staff
+                            </span>
+                            {{ $workshop->no_of_staff }}</h4>
+
+
+                        <div class="row">
+                            <div class="col-lg-6 mt-4">
+                                <h4 class="card-subtitle">
+                                    <span class="label label-rounded label-primary">
+                                        Opening
+                                    </span>
+                                    {{ Carbon\Carbon::parse($workshop->starting_time)->format('g:i A') }}
+                                </h4>
+
+                            </div>
+                            <div class="col-lg-6 mt-4">
+                                <h4 class="card-subtitle">
+
+                                    <span class="label label-rounded label-primary">
+                                        Closing </span>
+
+                                    {{ Carbon\Carbon::parse($workshop->ending_time)->format('g:i A') }}
+                                </h4>
+                            </div>
+
+                        </div>
+                        <h4 class="card-subtitle">
+                            {{ $workshop->short_description }}
+                        </h4>
+
+
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-9 mt-4">
+                        <h3 class="text-center">About WorkShop</h3>
+                        {{ $workshop->long_description }}
+
+
+
+                    </div>
+                    <div class="col-lg-3 mt-4">
+
+                        <img src="{{ asset('workshop') }}/{{ $workshop->singleImage->name }}"
+                            style="max-height: 150px;">
+
+                    </div>
+
+
+                </div>
             </div>
 
 
@@ -261,10 +365,18 @@
 
             // initialize calendar in all events
             var calendar = $('#fcalendar').fullCalendar({
+                timeZone: 'Asia/Kathmandu',
                 defaultView: 'agendaDay',
                 // minTime: "07:00:00",
                 // maxTime: "18:00:00",
                 // editable: true,
+                header: {
+                    left: 'prev,next,today',
+                    center: 'title',
+                    right: 'agendaWeek,agendaDay'
+
+                },
+
 
 
                 events: "{{ route('show.calender') }}",
@@ -272,15 +384,6 @@
                 allDayDefault: false,
 
 
-                eventRender: function(event, element, view) {
-                    if (event.allDay === 'true') {
-                        event.allDay = true;
-                    } else {
-                        event.allDay = false;
-                    }
-                },
-                selectable: true,
-                selectHelper: true,
 
             });
         });
