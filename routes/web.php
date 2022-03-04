@@ -49,6 +49,9 @@ Route::get('/aboutework', [PageController::class, 'about'])->name('aboutework');
 Route::get('/workshop-service', [PageController::class, 'service'])->name('workshop-service');
 Route::get('/workshop-single/{id}', [PageController::class, 'singleWorkshop'])->name('single.workshop');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/popularworkshop',[WorkShopController::class,'popularWorkshop'])->name('popular');
+
+
 
 Route::get("/serviceName/{id}", [ServiceController::class, 'serviceName']);
 

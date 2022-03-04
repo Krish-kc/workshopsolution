@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\About;
 use App\Models\Event;
+use App\Models\Profile;
 use App\Models\Rating;
 use App\Models\Service;
 use App\Models\Team;
+use App\Models\User;
 use App\Models\WorkshopImg;
+use Laravelista\Comments\Comment;
 
 class PageController extends Controller
 {
@@ -55,14 +58,10 @@ class PageController extends Controller
 
     public function singleWorkshop(Request $request,$id)
     {
-         if($request->ajax()) {
-            $data = Event::whereDate('start_time', '>=', $request->start)
-                ->whereDate('end_time',   '<=', $request->end)
-                ->get(['id', 'title', 'start_time', 'end_time']);
-            return response()->json($data);
-        }
+        
 
         $workshop = WorkShop::findOrFail($id);
+        
         $rating = Rating::where('workshop_id',$workshop->id)->get();
         $rating_sum = Rating::where('workshop_id',$workshop->id)->sum('stars_rated');
         $user_rating = Rating::where('workshop_id',$workshop->id)->where('user_id', Auth::id())->first();
@@ -72,6 +71,7 @@ class PageController extends Controller
         else{
             $rating_value = 0;
         }
+        
         return view('userinterface.pages.single_service', compact('workshop','rating','rating_value','user_rating'));
     }
 

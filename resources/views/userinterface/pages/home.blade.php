@@ -99,8 +99,8 @@
         /* .icons {
 
 
-            .fa {
-                /* border-radius: 25px; */
+                .fa {
+                    /* border-radius: 25px; */
         width: 10%;
         margin-left: 5%;
         /* border: solid 2px #dbdad7; */
@@ -232,22 +232,22 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 @foreach ($about as $item)
-                <div class="col-lg-7 col-md-6">
-                    <div class="about-wrap">
-                        <div class="section-header text-left">
-                            <h2>{{$item->title}}</h2>
-                        </div>
-                        <div class="about-text">
-                            <p>{{$item->description}}</p>
-                            <a class="btn" href="{{route('aboutework')}}">Learn More</a>
+                    <div class="col-lg-7 col-md-6">
+                        <div class="about-wrap">
+                            <div class="section-header text-left">
+                                <h2>{{ $item->title }}</h2>
+                            </div>
+                            <div class="about-text">
+                                <p>{{ $item->description }}</p>
+                                <a class="btn" href="{{ route('aboutework') }}">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-5 col-md-6">
-                    <div class="about-img">
-                        <img src="{{ asset('about_image/' . $item->image) }}" alt="Image">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="about-img">
+                            <img src="{{ asset('about_image/' . $item->image) }}" alt="Image">
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -255,45 +255,45 @@
     <!-- About End -->
 
     @if (\Session::has('success'))
-    <div class="fact">
-        <div class="container-fluid">
-            <div class="row counters">
-                <div class="col-md-4 fact-left wow slideInLeft"
-                    style="visibility: visible; animation-name: slideInLeft;">
-                    <div class="row">
-                        <div class="col-6">
+        <div class="fact">
+            <div class="container-fluid">
+                <div class="row counters">
+                    <div class="col-md-4 fact-left wow slideInLeft"
+                        style="visibility: visible; animation-name: slideInLeft;">
+                        <div class="row">
+                            <div class="col-6">
 
-                            <div class="fact-text">
+                                <div class="fact-text">
 
-                                <h2>Thankyou</h2>
+                                    <h2>Thankyou</h2>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
+                            <div class="col-6">
 
-                            <div class="fact-text">
-                                <h2>{{ Auth::user()->name }} </h2>
+                                <div class="fact-text">
+                                    <h2>{{ Auth::user()->name }} </h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-8 fact-right wow slideInRight"
-                    style="visibility: visible; animation-name: slideInRight;">
-                    <div class="row">
+                    <div class="col-md-8 fact-right wow slideInRight"
+                        style="visibility: visible; animation-name: slideInRight;">
+                        <div class="row">
 
-                        <div class="col-12">
+                            <div class="col-12">
 
-                            <div class="fact-text">
-                                <h2>{!! \Session::get('success') !!}
-                                </h2>
+                                <div class="fact-text">
+                                    <h2>{!! \Session::get('success') !!}
+                                    </h2>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endif
+    @endif
 
 
 
@@ -327,7 +327,8 @@
                             </div>
                             <div class="fact-text">
                                 <h2>Emergency Breakdown</h2>
-                                <p>If in Emergency breakdown of your vehicle Please Click here and give some information. We will look after it as soon as possible .</p>
+                                <p>If in Emergency breakdown of your vehicle Please Click here and give some information. We
+                                    will look after it as soon as possible .</p>
                             </div>
                         </div>
                     </a>
@@ -339,7 +340,7 @@
                         </div>
                         <div class="fact-text">
                             <h2>DentPaint</h2>
-                            <p>To fix your vehicle or for dent paint of Vehicle please click here!  </p>
+                            <p>To fix your vehicle or for dent paint of Vehicle please click here! </p>
                         </div>
                     </div>
                 </div>
@@ -350,7 +351,7 @@
                         </div>
                         <div class="fact-text">
                             <h2>BlueBook Renewal </h2>
-                            <p>For Renewal of your Registration certificate/BlueBook  please click here! </p>
+                            <p>For Renewal of your Registration certificate/BlueBook please click here! </p>
                         </div>
                     </div>
                 </div>
@@ -535,36 +536,36 @@
             </div>
             <div class="row">
                 @foreach ($workshop as $item)
-                <div class="owl-carousel owl-theme">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="img/service-1.jpg" alt="Image">
-                        </div>
-                        <div class="service-text">
-                            <div class="service-title">
-                                <h3>{{$item->name}}</h3>
-                                <div class="time">
-                                    <i class="fa fa-map-marker"></i>
-                                    {{$item->location}}
-                                </div>
+                    <div class="owl-carousel owl-theme">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/service-1.jpg" alt="Image">
                             </div>
+                            <div class="service-text">
+                                <div class="service-title">
+                                    <h3>{{ $item->name }}</h3>
+                                    <div class="time">
+                                        <i class="fa fa-map-marker"></i>
+                                        {{ $item->location }}
+                                    </div>
+                                </div>
 
-                            <h5>Service List</h5>
-                            @foreach ($item->services as $service)
-                            <ul>
-                                <li><i class="fas fa-angle-double-right"></i> {{ $service->title }} </li>
+                                <h5>Service List</h5>
+                                @foreach ($item->services as $service)
+                                    <ul>
+                                        <li><i class="fas fa-angle-double-right"></i> {{ $service->title }} </li>
 
-                            </ul>
-                            <a class="btn" href="img/service-1.jpg" data-lightbox="service">View
-                                More</a>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+                                    </ul>
+                                    <a class="btn" href="img/service-1.jpg" data-lightbox="service">View
+                                        More</a>
+                            </div>
                 @endforeach
-
             </div>
         </div>
+        @endforeach
+
+    </div>
+    </div>
     </div>
     <!-- Service End -->
 
@@ -580,27 +581,30 @@
             </div>
             <div class="row">
                 @foreach ($team as $item)
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('team_image/' . $item->image) }}" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>{{$item->name}}</h2>
-                            <p>{{$item->post}}</p>
-                        </div>
-                        <div class="team-social">
-                            <a class="social-fb" href="{{$item->facebook}}"><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href="{{$item->linkedin}}"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href="{{$item->instagram}}"><i class="fab fa-instagram"></i></a>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="{{ asset('team_image/' . $item->image) }}" alt="Team Image">
+                            </div>
+                            <div class="team-text">
+                                <h2>{{ $item->name }}</h2>
+                                <p>{{ $item->post }}</p>
+                            </div>
+                            <div class="team-social">
+                                <a class="social-fb" href="{{ $item->facebook }}"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="social-li" href="{{ $item->linkedin }}"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="social-in" href="{{ $item->instagram }}"><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
     </div>
-</div>
+    </div>
 
     <!-- Team End -->
 
@@ -931,38 +935,38 @@
     <!-- Blog End -->
 @endsection
 @section('js')
-<script>
-    $(document).ready(function() {
-        $('#workshop_name').on('change', function() {
-            var workshopID = $(this).val();
-            if (workshopID) {
-                $.ajax({
-                    url: '/serviceName/' + workshopID,
-                    type: "GET",
-                    data: {
-                        "_token": "{{ csrf_token() }}"
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        if (data) {
-                            $('#services').empty();
-                            $('#services').append('<option hidden>Choose Service</option>');
-                            $.each(data, function(index,
-                                services) {
-                                $('select[name="service_id"]').append(
-                                    '<option value="' + services.id + '">' +
-                                    services
-                                    .title + '</option>');
-                            });
-                        } else {
-                            $('#services').empty();
+    <script>
+        $(document).ready(function() {
+            $('#workshop_name').on('change', function() {
+                var workshopID = $(this).val();
+                if (workshopID) {
+                    $.ajax({
+                        url: '/serviceName/' + workshopID,
+                        type: "GET",
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data) {
+                                $('#services').empty();
+                                $('#services').append('<option hidden>Choose Service</option>');
+                                $.each(data, function(index,
+                                    services) {
+                                    $('select[name="service_id"]').append(
+                                        '<option value="' + services.id + '">' +
+                                        services
+                                        .title + '</option>');
+                                });
+                            } else {
+                                $('#services').empty();
+                            }
                         }
-                    }
-                });
-            } else {
-                $('#services').empty();
-            }
+                    });
+                } else {
+                    $('#services').empty();
+                }
+            });
         });
-    });
     </script>
 @endsection

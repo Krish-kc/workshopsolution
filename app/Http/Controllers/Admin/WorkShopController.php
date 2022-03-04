@@ -93,7 +93,7 @@ class WorkShopController extends Controller
                     mkdir($destinationPath, 666, true);
                 }
                 $img = Image::make($image->path());
-                $img->resize(250, 300, function ($constraint) {
+                $img->resize(330, 536, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $imageName);
 
@@ -199,7 +199,7 @@ class WorkShopController extends Controller
                     mkdir($destinationPath, 666, true);
                 }
                 $img = Image::make($image->path());
-                $img->resize(250, 300, function ($constraint) {
+                $img->resize(250, 550, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $imageName);
 
@@ -327,4 +327,28 @@ class WorkShopController extends Controller
         }
     }
 
+
+    public function popularWorkshop(){
+          $html = "";
+
+  // Load all columns in descending order based on the 'id' column
+  $popularworkshop = WorkShop::all();
+
+  // Loop result
+  foreach($popularworkshop as $workshop)
+  {
+    // Concatenate variable
+    $html .= '
+      <tr>
+        <td scope="row">'. $workshop->name .'</td>
+        <td scope="row">'. $workshop->starting_time .'</td>
+        <td scope="row">'. $workshop->location .'</td>
+      </tr>
+    ';
+  }
+  
+  // Return data as HTML
+  return response()->json($html);
+
+    }
 }
