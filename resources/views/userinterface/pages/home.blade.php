@@ -528,6 +528,7 @@
 
 
     <!-- Service Start -->
+
     <div class="service">
         <div class="container">
             <div class="section-header text-center">
@@ -535,6 +536,7 @@
                 <h2>Our Service Center and their Services</h2>
             </div>
             <div class="row">
+
                 @foreach ($workshop as $item)
                     <div class="owl-carousel owl-theme">
                         <div class="service-item">
@@ -548,7 +550,9 @@
                                         <i class="fa fa-map-marker"></i>
                                         {{ $item->location }}
                                     </div>
+
                                 </div>
+
 
                                 <h5>Service List</h5>
                                 @foreach ($item->services as $service)
@@ -560,6 +564,7 @@
                                         More</a>
                             </div>
                 @endforeach
+
             </div>
         </div>
         @endforeach
@@ -567,6 +572,7 @@
     </div>
     </div>
     </div>
+
     <!-- Service End -->
 
 

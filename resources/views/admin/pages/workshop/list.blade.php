@@ -19,7 +19,7 @@
              <div class="card-body">
                  <h4 class="card-title">List of Register User</h4>
                  <h6 class="card-subtitle">Input the Required Information for Registering New User</h6>
-                 <a href="{{ route('shop.create') }}" class="btn btn-primary">Add Workshop</a>
+                 <a href="{{ route('shop.create') }}" class="btn btn-primary float-right">Add Workshop</a>
                  <div class="table-responsive m-t-40">
                      <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 

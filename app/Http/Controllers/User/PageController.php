@@ -20,6 +20,7 @@ use App\Models\User;
 use App\Models\WorkshopImg;
 use Laravelista\Comments\Comment;
 
+
 class PageController extends Controller
 {
     public function home()
@@ -63,16 +64,30 @@ class PageController extends Controller
         $workshop = WorkShop::findOrFail($id);
         
         $rating = Rating::where('workshop_id',$workshop->id)->get();
+        $profile = Profile::findorFail($id);
+        // dd($profile);
+        // $user = User::where('user_id',Auth::id());
         $rating_sum = Rating::where('workshop_id',$workshop->id)->sum('stars_rated');
         $user_rating = Rating::where('workshop_id',$workshop->id)->where('user_id', Auth::id())->first();
+
+        // if($request->get('sort') =='latest'){
+
+        //     $workshop = WorkShop::where('workshop_id',$workshop->id)->orderBy('created_at','desc');
+
+        // }
+
+
+
         if($rating->count()>0){
             $rating_value = $rating_sum/$rating->count();
         }
         else{
             $rating_value = 0;
         }
+
         
         return view('userinterface.pages.single_service', compact('workshop','rating','rating_value','user_rating'));
+
     }
 
 

@@ -5,8 +5,10 @@ $markdown->setSafeMode(true);
 @endphp
 
 <div id="comment-{{ $comment->getKey() }}" class="media">
+
     <img class="mr-3" src="{{ asset('profile_image/' . $comment->avatar->profile->profile_pic) }}"
         style="max-height:80px; " alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar">
+
     <div class="media-body">
         <h5 class="mt-0 mb-1">{{ $comment->commenter->name ?? $comment->guest_name }} <small
                 class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
