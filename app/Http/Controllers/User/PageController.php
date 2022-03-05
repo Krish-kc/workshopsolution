@@ -61,12 +61,10 @@ class PageController extends Controller
     {
         
 
+      
         $workshop = WorkShop::findOrFail($id);
         
         $rating = Rating::where('workshop_id',$workshop->id)->get();
-        $profile = Profile::findorFail($id);
-        // dd($profile);
-        // $user = User::where('user_id',Auth::id());
         $rating_sum = Rating::where('workshop_id',$workshop->id)->sum('stars_rated');
         $user_rating = Rating::where('workshop_id',$workshop->id)->where('user_id', Auth::id())->first();
 
