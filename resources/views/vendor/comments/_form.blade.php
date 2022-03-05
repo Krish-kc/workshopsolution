@@ -39,14 +39,14 @@
             @endif
 
             <div class="form-group">
-                <label for="message">@lang('comments::comments.enter_your_message_here')</label>
-                <textarea class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
+                <label for="message">@lang('Leave a Comment :')</label>
+                <textarea class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="5"></textarea>
                 <div class="invalid-feedback">
                     @lang('comments::comments.your_message_is_required')
                 </div>
                 {{-- <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small> --}}
             </div>
-            <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">@lang('comments::comments.submit')</button>
+            <button type="submit" class="color">@lang('Post Comment')</button>
         </form>
     </div>
 </div>

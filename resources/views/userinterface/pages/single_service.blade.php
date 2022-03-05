@@ -35,6 +35,35 @@
             color: #ffe600
         }
 
+        button.color {
+            position: relative;
+            margin-top: 15px;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #030f27;
+            border-radius: 0;
+            background: #fdbe33;
+            transition: 0.3s;
+        }
+
+        button.color:hover {
+            color: #fdbe33;
+            background: #030f27;
+        }
+
+        .modalbutton {
+            color: #030f27;
+            background: #fdbe33;
+            padding: 4px 20px;
+            border-radius: 5px;
+        }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -85,7 +114,7 @@
 
                     <div class="single-bio wow fadeInUp">
                         <div class="single-bio-text">
-                            <h3>Average rating of {{ $workshop->name }}</h3>
+                            <h3>Average User Rating of {{ $workshop->name }}</h3>
                         </div>
 
                         <div class="single-bio-text">
@@ -105,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    <button type="button" class="color" data-toggle="modal" data-target="#exampleModalCenter">
                         Rate Workshop
                     </button>
 
@@ -193,95 +222,14 @@
                         </div>
                     </div>
 
-                    {{-- <div class="single-comment wow fadeInUp">
-                        <h2>3 Comments</h2>
-                        <ul class="comment-list">
-                            <li class="comment-item">
-                                <div class="comment-body">
-                                    <div class="comment-img">
-                                        <img src="img/user.jpg" />
-                                    </div>
-                                    <div class="comment-text">
-                                        <h3><a href="">Josh Dunn</a></h3>
-                                        <span>01 Jan 2045 at 12:00pm</span>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis
-                                            sapien, non
-                                            eros leo in nunc. Donec a nulla vel turpis tempor ac vel justo. In hac
-                                            platea
-                                            dictumst.
-                                        </p>
-                                        <a class="btn" href="">Reply</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="comment-item">
-                                <div class="comment-body">
-                                    <div class="comment-img">
-                                        <img src="img/user.jpg" />
-                                    </div>
-                                    <div class="comment-text">
-                                        <h3><a href="">Josh Dunn</a></h3>
-                                        <p><span>01 Jan 2045 at 12:00pm</span></p>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis
-                                            sapien, non
-                                            eros leo in nunc. Donec a nulla vel turpis tempor ac vel justo. In hac
-                                            platea
-                                            dictumst.
-                                        </p>
-                                        <a class="btn" href="">Reply</a>
-                                    </div>
-                                </div>
-                                <ul class="comment-child">
-                                    <li class="comment-item">
-                                        <div class="comment-body">
-                                            <div class="comment-img">
-                                                <img src="img/user.jpg" />
-                                            </div>
-                                            <div class="comment-text">
-                                                <h3><a href="">Josh Dunn</a></h3>
-                                                <p><span>01 Jan 2045 at 12:00pm</span></p>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet elit. Integer lorem augue purus
-                                                    mollis
-                                                    sapien, non eros leo in nunc. Donec a nulla vel turpis tempor ac
-                                                    vel
-                                                    justo. In hac platea dictumst.
-                                                </p>
-                                                <a class="btn" href="">Reply</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    @if ($comment->count() < 1)
+                        <div class="alert alert-warning">No comments yet</div>
+                    @else
+                        <div class="single-comment wow fadeInUp">
+                        <h3>{{$comment->count()}} Comments</h3>
                     </div>
-                    <div class="comment-form wow fadeInUp">
-                        <h2>Leave a comment</h2>
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" class="form-control" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" class="form-control" id="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="website">Website</label>
-                                <input type="url" class="form-control" id="website">
-                            </div>
+                    @endif
 
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Post Comment" class="btn">
-                            </div>
-                        </form>
-                    </div> --}}
 
                     @comments(['model' => $workshop])
                 </div>
@@ -547,7 +495,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="modalbutton">Submit</button>
                     </div>
                 </form>
             </div>

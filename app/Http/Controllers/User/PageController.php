@@ -59,11 +59,11 @@ class PageController extends Controller
 
     public function singleWorkshop(Request $request,$id)
     {
-        
 
-      
+
+
         $workshop = WorkShop::findOrFail($id);
-        
+
         $rating = Rating::where('workshop_id',$workshop->id)->get();
         $rating_sum = Rating::where('workshop_id',$workshop->id)->sum('stars_rated');
         $user_rating = Rating::where('workshop_id',$workshop->id)->where('user_id', Auth::id())->first();
@@ -74,6 +74,8 @@ class PageController extends Controller
 
         // }
 
+        $comment = Comment::all();
+
 
 
         if($rating->count()>0){
@@ -83,8 +85,8 @@ class PageController extends Controller
             $rating_value = 0;
         }
 
-        
-        return view('userinterface.pages.single_service', compact('workshop','rating','rating_value','user_rating'));
+
+        return view('userinterface.pages.single_service', compact('workshop','rating','rating_value','user_rating','comment'));
 
     }
 
