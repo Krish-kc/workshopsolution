@@ -50,7 +50,7 @@ $markdown->setSafeMode(true);
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="message">@lang('comments::comments.update_your_message_here')</label>
+                                    <label for="message">@lang('Update your comment here :')</label>
                                     <textarea required class="form-control" name="message"
                                         rows="3">{{ $comment->comment }}</textarea>
                                     {{-- <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small> --}}
@@ -59,8 +59,7 @@ $markdown->setSafeMode(true);
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase"
                                     data-dismiss="modal">@lang('comments::comments.cancel')</button>
-                                <button type="submit"
-                                    class="btn btn-sm btn-outline-success text-uppercase">@lang('comments::comments.update')</button>
+                                <button type="submit" class="modalbutton">@lang('comments::comments.update')</button>
                             </div>
                         </form>
                     </div>
@@ -75,25 +74,25 @@ $markdown->setSafeMode(true);
                         <form method="POST" action="{{ route('comments.reply', $comment->getKey()) }}">
                             @csrf
                             <div class="modal-header">
-                                <h5 class="modal-title">@lang('comments::comments.reply_to_comment')</h5>
+                                <h5 class="modal-title">@lang('Reply to ') {{$comment->commenter->name}}</h5>
                                 <button type="button" class="close" data-dismiss="modal">
                                     <span>&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="message">@lang('comments::comments.enter_your_message_here')</label>
-                                    <textarea required class="form-control" name="message" rows="3"></textarea>
-                                    <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet',
+                                    <label for="message">@lang('Leave your reply :')</label>
+                                    <textarea required class="form-control" name="message" rows="3">{{$comment->commenter->name}}</textarea>
+                                    {{-- <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet',
                                         ['url' =>
-                                        'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small>
+                                        'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small> --}}
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase"
                                     data-dismiss="modal">@lang('comments::comments.cancel')</button>
                                 <button type="submit"
-                                    class="btn btn-sm btn-outline-success text-uppercase">@lang('comments::comments.reply')</button>
+                                    class="modalbutton">@lang('comments::comments.reply')</button>
                             </div>
                         </form>
                     </div>
@@ -116,8 +115,8 @@ $markdown->setSafeMode(true);
             {{-- TODO: Don't repeat code. Extract to a new file and include it. --}}
             @foreach ($grouped_comments[$comment->getKey()] as $child)
                 @include('comments::_comment', [
-                'comment' => $child,
-                'grouped_comments' => $grouped_comments
+                    'comment' => $child,
+                    'grouped_comments' => $grouped_comments,
                 ])
             @endforeach
         @endif
@@ -130,8 +129,8 @@ $markdown->setSafeMode(true);
     {{-- TODO: Don't repeat code. Extract to a new file and include it. --}}
     @foreach ($grouped_comments[$comment->getKey()] as $child)
         @include('comments::_comment', [
-        'comment' => $child,
-        'grouped_comments' => $grouped_comments
+            'comment' => $child,
+            'grouped_comments' => $grouped_comments,
         ])
     @endforeach
 @endif

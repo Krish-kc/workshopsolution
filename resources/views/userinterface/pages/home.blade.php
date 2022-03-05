@@ -153,7 +153,7 @@
                         <h1 class="animated fadeInLeft">{{ $item->title }}</h1>
                         <p class="animated fadeInRight">{{ $item->description }}</p>
                         <a class="btn animated fadeInUp"
-                            href="https://htmlcodex.com/construction-company-website-template">Login</a>
+                            href="{{route('login')}}">Login</a>
                     </div>
                 </div>
             @endforeach
