@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ServiceRecordController;
 use App\Http\Controllers\Admin\EmergencyBreakDownController;
 use App\Http\Controllers\Admin\RatingController;
+use App\Http\Controllers\Admin\SlotController;
 use App\Http\Controllers\Admin\SocialiteController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
@@ -95,6 +96,8 @@ Route::get('auth/login/google/callback',[SocialiteController::class, 'loginWithG
 
 Route::get('/show-calendar',[WorkShopController::class,'calender'])->name('show.calender');
 
+Route::get('/slot-create/{id}',[SlotController::class,'create_slot'])->name('create.slot');
+
 Auth::routes(['verify'=>true]);
 //routes for admins pannel
 Route::group(['middleware' => ['auth']], function () {
@@ -135,5 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
     //rating route
 
     Route::resource('rating',RatingController::class);
+
+    Route::resource('slot',SlotController::class);
 
 });

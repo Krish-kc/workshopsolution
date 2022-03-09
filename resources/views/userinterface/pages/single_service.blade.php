@@ -169,21 +169,21 @@
                     <br>
                     <br>
                     <div class="single-related wow fadeInUp">
-                        <h2>Related Post</h2>
+                        <h2>Related Workshop</h2>
                         <div class="owl-carousel related-slider">
+                            @foreach ($related as $item)
+
                             <div class="post-item">
                                 <div class="post-img">
-                                    <img src="img/post-1.jpg" />
+                                    <img src="{{asset('workshop/'.$item->singleimage->name)}}" />
                                 </div>
                                 <div class="post-text">
-                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                    <div class="post-meta">
-                                        <p>By<a href="">Admin</a></p>
-                                        <p>In<a href="">Design</a></p>
-                                    </div>
+                                    <a href="{{route('single.workshop',$item->id)}}">{{$item->name}}</a>
+                                    <p>Opens at {{$item->starting_time}}</p>
                                 </div>
                             </div>
-                            <div class="post-item">
+                            @endforeach
+                            {{-- <div class="post-item">
                                 <div class="post-img">
                                     <img src="img/post-2.jpg" />
                                 </div>
@@ -194,8 +194,8 @@
                                         <p>In<a href="">Design</a></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="post-item">
+                            </div> --}}
+                            {{-- <div class="post-item">
                                 <div class="post-img">
                                     <img src="img/post-3.jpg" />
                                 </div>
@@ -206,8 +206,8 @@
                                         <p>In<a href="">Design</a></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="post-item">
+                            </div> --}}
+                            {{-- <div class="post-item">
                                 <div class="post-img">
                                     <img src="img/post-4.jpg" />
                                 </div>
@@ -218,7 +218,7 @@
                                         <p>In<a href="">Design</a></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
