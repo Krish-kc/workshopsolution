@@ -28,10 +28,10 @@ class PageController extends Controller
         $user_id = Auth::id();
         $workshop = WorkShop::all();
         $vehicle = Vehicle::where('user_id', $user_id)->get();
-        $about = About::where('status','on')->get();
-        $team = Team::where('status','on')->get();
+        $about = About::where('status', 'on')->get();
+        $team = Team::where('status', 'on')->get();
         $banner = Banner::where('status', 'on')->get();
-        return view('userinterface.pages.home', compact('banner','workshop','vehicle','about','team'));
+        return view('userinterface.pages.home', compact('banner', 'workshop', 'vehicle', 'about', 'team'));
     }
     public function about()
     {
@@ -57,39 +57,57 @@ class PageController extends Controller
     }
 
 
-    public function singleWorkshop(Request $request,$id)
+    public function singleWorkshop(Request $request, $id)
     {
 
 
 
         $workshop = WorkShop::findOrFail($id);
 
-        $rating = Rating::where('workshop_id',$workshop->id)->get();
-        $rating_sum = Rating::where('workshop_id',$workshop->id)->sum('stars_rated');
-        $user_rating = Rating::where('workshop_id',$workshop->id)->where('user_id', Auth::id())->first();
+        $related = WorkShop::all();
+        $rating = Rating::where('workshop_id', $workshop->id)->get();
+        $rating_sum = Rating::where('workshop_id', $workshop->id)->sum('stars_rated');
+        $user_rating = Rating::where('workshop_id', $workshop->id)->where('user_id', Auth::id())->first();
 
-        // if($request->get('sort') =='latest'){
+
+
+
+        // if(request('latest')){
+        //     $workshop->where('workshop_id',$workshop->id)->orderby('created_at','desc');
+        // }
+
+
+
+        // if ($request->method('sort') == 'latest' ){
 
         //     $workshop = WorkShop::where('workshop_id',$workshop->id)->orderBy('created_at','desc');
 
         // }
 
-        $comment = Comment::all();
+            // if ($request->get('sort') == 'popular') {
+
+            //     $filterworkshop = Rating::where('workshop_id', $workshop->id)->get();
+            // }
+
+
+            // if ($rating_sum >= 3){
+
+            //     $filterworkshop = WorkShop::where('stars_rated',$workshop->id)->get();
+            // }
+
+            $comment = Comment::all();
 
 
 
-        if($rating->count()>0){
-            $rating_value = $rating_sum/$rating->count();
-        }
-        else{
+        if ($rating->count() > 0) {
+            $rating_value = $rating_sum / $rating->count();
+        } else {
             $rating_value = 0;
         }
 
 
-        return view('userinterface.pages.single_service', compact('workshop','rating','rating_value','user_rating','comment'));
-
+        return view('userinterface.pages.single_service', compact('workshop', 'rating', 'rating_value', 'user_rating', 'comment','related'));
     }
-
 
 
 

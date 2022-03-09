@@ -200,8 +200,10 @@
 
                                                             <a href="{{ route('service.edit', $item->id) }}"
                                                                 class="btn btn-success"><i class="fa fa-edit"></i></a>
-                                                            <a href="" data-toggle="modal" data-target="#deletemodal"
+                                                            <a href="#" data-toggle="modal" data-target="#deletemodal"
                                                                 class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                                <a href="{{ route('create.slot', $item->id) }}"
+                                                                    class="btn btn-success"><i class="fa fa-eye"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -28,4 +28,6 @@ class WorkShop extends Model
     public function singleImage(){
         return $this->hasone(WorkshopImg::class, 'workshop_id');
     }
+
+
 }
