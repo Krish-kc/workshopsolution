@@ -368,7 +368,7 @@
                                         <div class="row">
 
                                         </div>
-                                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                                        <button type="submit" class="modalbutton float-right mt-5">Book Now</button>
                                     </div>
                                 </form>
                             </div>
