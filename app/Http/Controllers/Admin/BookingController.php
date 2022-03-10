@@ -95,8 +95,8 @@ class BookingController extends Controller
 
         $event_st_time=Carbon::parse( $timenow)->format('Y-m-d H:i:s');
         $event_ed_time=Carbon::parse( $end_time)->format('Y-m-d H:i:s');
-        
-
+           
+  
         Event::create([
             'title' => $service_title,
             'date'=>$new_booking->date,
