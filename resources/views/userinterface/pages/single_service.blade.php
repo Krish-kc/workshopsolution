@@ -226,8 +226,8 @@
                         <div class="alert alert-warning">No comments yet</div>
                     @else
                         <div class="single-comment wow fadeInUp">
-                        <h3>{{$comment->count()}} Comments</h3>
-                    </div>
+                            <h3>{{ $comment->count() }} Comments</h3>
+                        </div>
                     @endif
 
 
@@ -523,13 +523,18 @@
                 }
             });
             var calendar = $('#calendar').fullCalendar({
+                // timeZone: 'Asia/Kathmandu',
+                // minTime: "08:00",
+                // maxTime: "20:00",
+                // scrollTime: moment().format('H:m'),
+
 
                 initialView: 'timeGridWeek',
 
                 header: {
                     left: 'prev,next,today',
                     center: 'title',
-                    right: 'agendaWeek,agendaDay'
+                    right: 'agendaDay,listMonth'
 
                 },
 
@@ -542,6 +547,12 @@
                         event.allDay = false;
                     }
                 },
+
+
+
+
+
+
 
             });
 
