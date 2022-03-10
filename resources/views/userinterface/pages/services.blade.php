@@ -101,8 +101,8 @@
         /* .icons {
 
 
-                                                    .fa {
-                                                        /* border-radius: 25px; */
+                                                        .fa {
+                                                            /* border-radius: 25px; */
         width: 10%;
         margin-left: 5%;
         /* border: solid 2px #dbdad7; */
@@ -332,7 +332,8 @@
 
                                         </ul>
                                     @endforeach
-                                    <a class="btn" id="workshop_id" href="{{ route('single.workshop', $item->id) }}">View
+                                    <a class="btn" id="workshop_id"
+                                        href="{{ route('single.workshop', $item->id) }}">View
                                         More</a>
                                 </div>
                             </div>

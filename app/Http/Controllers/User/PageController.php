@@ -69,7 +69,7 @@ class PageController extends Controller
         $rating_sum = Rating::where('workshop_id', $workshop->id)->sum('stars_rated');
         $user_rating = Rating::where('workshop_id', $workshop->id)->where('user_id', Auth::id())->first();
 
-
+        $vehicle = Vehicle::all();
 
 
         // if(request('latest')){
@@ -106,7 +106,7 @@ class PageController extends Controller
         }
 
 
-        return view('userinterface.pages.single_service', compact('workshop', 'rating', 'rating_value', 'user_rating', 'comment','related'));
+        return view('userinterface.pages.single_service', compact('workshop', 'rating', 'rating_value', 'user_rating', 'comment','related','vehicle'));
     }
 
 
