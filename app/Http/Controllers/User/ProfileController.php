@@ -103,8 +103,15 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
+
+        if(Auth::user()->profile){
+
         $profile =Profile::where('user_id',$id)->first();
         return view('userinterface.pages.profile.edit',compact('profile'));
+        }
+        else{
+            return redirect()->route('userprofile.create');
+        }
 
     }
 

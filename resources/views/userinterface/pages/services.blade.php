@@ -143,6 +143,16 @@
             }
         }
 
+        .emergency{
+            background :#030f27;
+        }
+
+        .emergency:hover{
+            background-color: #fdbe33;
+            color: #030F27;
+            transition: 0.9s;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -243,7 +253,7 @@
                             <a href="" data-toggle="modal" data-target="#exampleModalCenter">
                                 <div class="icon-block blue">
                                     <div class="fact-icon">
-                                        <img src="user_assets/img/brand.svg" alt="">
+                                        <img src="user_assets/img/service.svg" alt="">
                                     </div>
                                     <div class="fact-text">
                                         <h2>Servicing</h2>
@@ -280,7 +290,7 @@
                         <div class="col-sm-3 mb-2">
                             <div class="icon-block yellow">
                                 <div class="fact-icon">
-                                    <img src="user_assets/img/affordable.svg" alt="">
+                                    <img src="user_assets/img/bluebook.svg" alt="">
                                 </div>
                                 <div class="fact-text">
                                     <h2>BlueBook Renewal </h2>
@@ -417,7 +427,7 @@
                         <div class="row">
 
                         </div>
-                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                        <button type="submit" class=" emergency float-right mt-5">Book Now</button>
                     </div>
                 </form>
             </div>
@@ -439,7 +449,7 @@
                         <!--Card-Body-->
                         <div class="card-body">
                             <!--Card-Title-->
-                            <p class="card-title text-center shadow mb-5 rounded">Servicing Booking Form</p>
+                            <p class="card-titleE text-center shadow mb-5 rounded">Servicing Booking Form</p>
                             <div class="icons text-center">
                                 <i class="fa fa-motorcycle fa-2x" aria-hidden="true"></i>
                                 <i class="fa fa-taxi fa-2x" aria-hidden="true"></i>
@@ -499,7 +509,7 @@
                         <div class="row">
 
                         </div>
-                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                        <button type="submit" class="emergency float-right mt-5">Book Now</button>
                     </div>
                 </form>
             </div>

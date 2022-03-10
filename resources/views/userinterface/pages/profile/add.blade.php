@@ -46,6 +46,10 @@
             border: solid 1px #ba68c8;
         }
 
+        .emergency {
+            background-color: #fdbe33;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -62,7 +66,7 @@
             <div class="col-md-9 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
+                        <h4 class="text-right">Set Up Your Profile</h4>
                     </div>
                     <form action="{{ route('userprofile.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -133,7 +137,7 @@
                                     <input type="file"
                                         class="fileinput fileinput-new input-group @error('image') is-invalid @enderror"
                                         name="image">
-                                    <div class="form-control" data-trigger="fileinput"></div>
+                                    {{-- <div class="form-control" data-trigger="fileinput"></div> --}}
                                     @error('image')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -142,7 +146,7 @@
                             </div>
 
                         <div class="button-group mt-5 text-center">
-                            <button type="submit" class="btn btn-primary profile-button">Save Profile</button>
+                            <button type="submit" class="emergency" style="border-radius: 5px">Save Profile</button>
                         </div>
                     </form>
                 </div>
@@ -150,8 +154,5 @@
 
         </div>
     </div>
-    </div>
-    </div>
-    </form>
 
 @endsection

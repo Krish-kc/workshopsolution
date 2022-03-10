@@ -16,7 +16,7 @@
                                     class="ti-email"></i> Inbox</a>
                             <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i
                                     class="ti-settings"></i> Account Setting</a>
-                            <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i
+                            <div class="dropdown-divider"></div> <a href="{{route('logout')}}" class="dropdown-item"><i
                                     class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>

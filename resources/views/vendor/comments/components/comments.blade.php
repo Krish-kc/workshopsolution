@@ -8,12 +8,7 @@ if (isset($approved) and $approved == true) {
 
 @section('css')
     <style>
-        .hello {
-            color: #030f27;
-            background: #fdbe33;
-            padding: 4px 20px;
-            border-radius: 5px;
-        }
+
 
     </style>
 @endsection
@@ -80,7 +75,7 @@ if (isset($approved) and $approved == true) {
 @else
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">@lang('Login Required')</h5>
+            <h5 class="card-titleE text-center shadow mb-5 rounded">@lang('Login Required')</h5>
             <p class="card-text">@lang('You must be a user to post a comment')</p>
             <a href="{{ route('login') }}"><button class="modalbutton">Log In / Sign Up</button></a>
         </div>

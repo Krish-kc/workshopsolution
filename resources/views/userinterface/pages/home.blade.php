@@ -141,6 +141,16 @@
             }
         }
 
+        .emergency{
+            background :#030f27;
+        }
+
+        .emergency:hover{
+            background-color: #fdbe33;
+            color: #030F27;
+            transition: 0.9s;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -373,7 +383,7 @@
                         <!--Card-Body-->
                         <div class="card-body">
                             <!--Card-Title-->
-                            <p class="card-title text-center shadow mb-5 rounded">Servicing Booking Form</p>
+                            <p class="card-titleE text-center shadow mb-5 rounded">Servicing Booking Form</p>
                             <div class="icons text-center">
                                 <i class="fa fa-motorcycle fa-2x" aria-hidden="true"></i>
                                 <i class="fa fa-taxi fa-2x" aria-hidden="true"></i>
@@ -433,7 +443,7 @@
                         <div class="row">
 
                         </div>
-                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                        <button type="submit" class="emergency float-right mt-5">Book Now</button>
                     </div>
                 </form>
             </div>
@@ -511,7 +521,7 @@
                         <div class="row">
 
                         </div>
-                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                        <button type="submit" class="emergency float-right mt-5">Book Now</button>
                     </div>
                 </form>
             </div>
