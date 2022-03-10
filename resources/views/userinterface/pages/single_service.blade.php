@@ -64,6 +64,146 @@
             font-weight: bold;
         }
 
+        .card {
+            margin: auto;
+            border: solid 1px #dbdad7;
+            width: auto;
+
+            padding-left: 10px !important;
+
+            padding-right: 10px !important;
+            padding-top: 0px !important
+        }
+
+        .card-title {
+            margin: auto;
+            padding: 15px;
+            background-color: #FDBE33;
+            color: white;
+            width: 80%
+        }
+
+        .card-titleE {
+            margin: auto;
+            padding: 15px;
+            background-color: #030F27;
+            color: white;
+            width: 80%
+        }
+
+        div.card-body {
+            padding: 0px
+        }
+
+        .custom-select {
+            width: 100%
+        }
+
+        .btn2 {
+            margin-left: 10%
+        }
+
+        input {
+            margin: 8px 0;
+            outline: 0 !important;
+            border-width: 0 0 2px !important;
+            border-color: #d1d1cf !important
+        }
+
+        input:focus {
+            border-color: #030F27 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important
+        }
+
+        textarea {
+            margin: 8px 0;
+            outline: 0 !important;
+            border-width: 0 0 2px !important;
+            border-color: #d1d1cf !important
+        }
+
+        textarea:focus {
+            border-color: #030F27 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important
+        }
+
+        select {
+            outline: 0 !important;
+            border-width: 0 0 2px !important;
+            border-color: #d1d1cf !important
+        }
+
+        select:focus {
+            border-color: #030F27 !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important
+        }
+
+        button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .radiobtn {
+            margin-left: 3.5%
+        }
+
+        /* .icons {
+
+
+                                                                .fa {
+                                                                    /* border-radius: 25px; */
+        width: 10%;
+        margin-left: 5%;
+        /* border: solid 2px #dbdad7; */
+        margin-top: 5%;
+        text-align: center
+        }
+
+        .fa-plane {
+            color: #9ead1c
+        }
+
+        .fa-taxi {
+            color: #c2f700
+        }
+
+        .fa-train {
+            color: red
+        }
+
+        @media only screen and (max-width: 600px) {
+            .card {
+                margin: auto;
+                border: solid 1px #dbdad7;
+                width: 90%;
+                padding-left: 10px !important;
+                padding-bottom: 10px !important;
+                padding-right: 10px !important;
+                padding-top: 0px !important
+            }
+
+            .fa {
+                border-radius: 25px;
+                width: 15%;
+                margin-left: 5%;
+                border: solid 2px #dbdad7;
+                margin-top: 5%;
+                text-align: center
+            }
+        }
+
     </style>
 @endsection
 @section('content')
@@ -134,36 +274,110 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="color" data-toggle="modal" data-target="#exampleModalCenter">
-                        Rate Workshop
-                    </button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="color" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                                Rate Workshop
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="color" data-toggle="modal" data-target="#servicing">
+                                Book Servicing
+                            </button>
+                        </div>
+                    </div>
 
 
 
 
+                    {{-- modal of servicing form --}}
+
+                    <div class="modal custom fade" id="servicing" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <form action="{{ route('booking.store') }}" method="POST" enctype="multipart/form-data">
+
+                                    @csrf
+                                    @method('POST')
+                                    <div class="card shadow mb-5 bg-white rounded">
+                                        <!--Card-Body-->
+                                        <div class="card-body">
+                                            <!--Card-Title-->
+                                            <p class="card-title text-center shadow mb-5 rounded">Servicing Booking Form</p>
+                                            <div class="icons text-center">
+                                                <i class="fa fa-motorcycle fa-2x" aria-hidden="true"></i>
+                                                <i class="fa fa-taxi fa-2x" aria-hidden="true"></i>
+
+                                            </div>
+                                            <hr>
+                                            <p class="searchText"><strong>Please Select the Following </strong></p>
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <select class="browser-default custom-select mb-4 " name="workshop_id"
+                                                        id="workshop_name">
+                                                        <option value="" disabled="" selected="">Choose Workshop</option>
+                                                        {{-- @foreach ($workshop as $item) --}}
+                                                        <option value="{{ $workshop->id }}">{{ $workshop->name }}
+                                                        </option>
+                                                        {{-- @endforeach --}}
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Enter Your Location">
+                                                </div>
+                                            </div>
+                                        </div>
 
 
+                                        <!--Third Row-->
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label for="date" class="form-label">Enter Date</label>
+
+                                                <input type="date" name="date" class="form-control ">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label for="time" class="form-label">Enter Time</label>
+
+                                                <input type="time" name="time" class="form-control">
+                                            </div>
+                                        </div>
+                                        <!--Fourth Row-->
+                                        <div class="row mt-4">
+                                            <div class="col-sm-6">
+                                                <select class="browser-default custom-select mb-4" name="service_id"
+                                                    id="services">
+
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <select class="browser-default custom-select mb-4" name="vehicle_id">
+                                                    <option value="" disabled="" selected="">Select Vehicle</option>
+                                                    @foreach ($vehicle as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--Fifth Row-->
+                                        <div class="row">
+
+                                        </div>
+                                        <button type="submit" class="btn btn-primary float-right mt-5">Book Now</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    {{-- modal of servicing form end right here --}}
 
 
                     <br>
@@ -172,53 +386,16 @@
                         <h2>Related Workshop</h2>
                         <div class="owl-carousel related-slider">
                             @foreach ($related as $item)
-
-                            <div class="post-item">
-                                <div class="post-img">
-                                    <img src="{{asset('workshop/'.$item->singleimage->name)}}" />
+                                <div class="post-item">
+                                    <div class="post-img">
+                                        <img src="{{ asset('workshop/' . $item->singleimage->name) }}" />
+                                    </div>
+                                    <div class="post-text">
+                                        <a href="{{ route('single.workshop', $item->id) }}">{{ $item->name }}</a>
+                                        <p>Opens at {{ $item->starting_time }}</p>
+                                    </div>
                                 </div>
-                                <div class="post-text">
-                                    <a href="{{route('single.workshop',$item->id)}}">{{$item->name}}</a>
-                                    <p>Opens at {{$item->starting_time}}</p>
-                                </div>
-                            </div>
                             @endforeach
-                            {{-- <div class="post-item">
-                                <div class="post-img">
-                                    <img src="img/post-2.jpg" />
-                                </div>
-                                <div class="post-text">
-                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                    <div class="post-meta">
-                                        <p>By<a href="">Admin</a></p>
-                                        <p>In<a href="">Design</a></p>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- <div class="post-item">
-                                <div class="post-img">
-                                    <img src="img/post-3.jpg" />
-                                </div>
-                                <div class="post-text">
-                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                    <div class="post-meta">
-                                        <p>By<a href="">Admin</a></p>
-                                        <p>In<a href="">Design</a></p>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- <div class="post-item">
-                                <div class="post-img">
-                                    <img src="img/post-4.jpg" />
-                                </div>
-                                <div class="post-text">
-                                    <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                    <div class="post-meta">
-                                        <p>By<a href="">Admin</a></p>
-                                        <p>In<a href="">Design</a></p>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
 
@@ -226,8 +403,8 @@
                         <div class="alert alert-warning">No comments yet</div>
                     @else
                         <div class="single-comment wow fadeInUp">
-                        <h3>{{$comment->count()}} Comments</h3>
-                    </div>
+                            <h3>{{ $comment->count() }} Comments</h3>
+                        </div>
                     @endif
 
 
@@ -250,88 +427,27 @@
                         <div class="sidebar-widget wow fadeInUp">
                             <div class="image-widget">
 
-                                <a href="#"><img src="{{ asset('workshop/' . $workshop->singleImage->name) }}" alt="Image"
-                                        style="max-height: 200px; width:250px;   "></a>
+                                <a href="#"><img src="{{ asset('workshop/' . $workshop->singleImage->name) }}"
+                                        alt="Image" style="max-height: 200px; width:250px;   "></a>
                             </div>
                         </div>
 
                         <div class="sidebar-widget wow fadeInUp">
                             <div class="tab-post">
                                 <ul class="nav nav-pills nav-justified">
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a class="nav-link active" data-toggle="pill" href="#featured">Featured</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="pill" href="#popular">Popular</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="pill" href="#latest">Latest</a>
+                                        <a class="nav-link" data-toggle="pill" href="#latest">Latest Workshop</a>
                                     </li>
                                 </ul>
 
                                 <div class="tab-content">
-                                    <div id="featured" class="container tab-pane active">
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-1.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-2.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-3.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-4.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-5.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div id="popular" class="container tab-pane fade">
                                         <div class="post-item">
                                             <div class="post-img">
@@ -347,81 +463,25 @@
                                         </div>
                                     </div>
                                     <div id="latest" class="container tab-pane fade">
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-1.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
+                                        @forelse ($latestworkshop as $item)
+                                            <div class="post-item">
+                                                <div class="post-img">
+                                                    <img src="{{ asset('workshop/' . $item->singleimage->name) }}" />
+                                                </div>
+                                                <div class="post-text">
+                                                    <a
+                                                        href="{{ route('single.workshop', $item->id) }}">{{ $item->name }}</a>
+                                                    <div class="post-meta">
+                                                        <p>Verified At<a>{{ $item->created_at }}</a></p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-2.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-3.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-4.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-5.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @empty
+                                            No latest workshop
+                                        @endforelse
+
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-widget wow fadeInUp">
-                            <div class="image-widget">
-                                <a href="#"><img src="img/blog-2.jpg" alt="Image"></a>
-                            </div>
-                        </div>
-
-
-                        <div class="sidebar-widget wow fadeInUp">
-                            <div class="image-widget">
-                                <a href="#"><img src="img/blog-3.jpg" alt="Image"></a>
                             </div>
                         </div>
 
@@ -443,8 +503,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <!-- Button trigger modal -->
 
@@ -667,6 +725,40 @@
                 });
             }
 
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#workshop_name').on('change', function() {
+                var workshopID = $(this).val();
+                if (workshopID) {
+                    $.ajax({
+                        url: '/serviceName/' + workshopID,
+                        type: "GET",
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data) {
+                                $('#services').empty();
+                                $('#services').append('<option hidden>Choose Service</option>');
+                                $.each(data, function(index,
+                                    services) {
+                                    $('select[name="service_id"]').append(
+                                        '<option value="' + services.id + '">' +
+                                        services
+                                        .title + '</option>');
+                                });
+                            } else {
+                                $('#services').empty();
+                            }
+                        }
+                    });
+                } else {
+                    $('#services').empty();
+                }
+            });
         });
     </script>
 @endsection
