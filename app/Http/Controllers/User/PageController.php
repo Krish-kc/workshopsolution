@@ -11,6 +11,7 @@ use App\Models\WorkShop;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\About;
+use App\Models\Contact;
 use App\Models\Event;
 use App\Models\Profile;
 use App\Models\Rating;
@@ -19,6 +20,7 @@ use App\Models\Team;
 use App\Models\User;
 use App\Models\WorkshopImg;
 use Laravelista\Comments\Comment;
+
 
 
 class PageController extends Controller
@@ -71,6 +73,8 @@ class PageController extends Controller
 
         $vehicle = Vehicle::all();
 
+        $latestworkshop = WorkShop::latest()->take(3)->get();
+
 
         // if(request('latest')){
         //     $workshop->where('workshop_id',$workshop->id)->orderby('created_at','desc');
@@ -106,7 +110,7 @@ class PageController extends Controller
         }
 
 
-        return view('userinterface.pages.single_service', compact('workshop', 'rating', 'rating_value', 'user_rating', 'comment','related','vehicle'));
+        return view('userinterface.pages.single_service', compact('workshop', 'rating', 'rating_value', 'user_rating', 'comment','related','vehicle','latestworkshop'));
     }
 
 
@@ -117,5 +121,23 @@ class PageController extends Controller
     {
 
         return view('userinterface.pages.contact');
+    }
+
+    public function contactStore(Request $request){
+
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
+        return redirect()->back();
+
+    }
+
+    public function index(){
+
+        $contactqueries = Contact::all();
+        return view('userinterface.pages.contactlist',compact('contactqueries'));
     }
 }

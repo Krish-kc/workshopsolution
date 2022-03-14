@@ -175,6 +175,10 @@
                                         <a href="{{route('emergency.index')}}"><i class="fas fa-bars "></i>
                                             Emergency Booking list</a>
                                     </li>
+                                    <li>
+                                        <a href="{{route('contact.index')}}"><i class="fas fa-bars "></i>
+                                            Contact Queries list</a>
+                                    </li>
                             </ul>
                         </li>
                         {{-- <li>

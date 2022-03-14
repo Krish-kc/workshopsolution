@@ -86,7 +86,10 @@ Route::get('auth/login/google/callback',[SocialiteController::class, 'loginWithG
 // Route::get('login/facebook',[SocialiteController::class, 'redirectToFacebook'])->name('login.facebook');
 // Route::get('login/facebook/callback',[SocialiteController::class, 'handleFacebookCallBack']);
 
+// contact store route
 
+Route::post('/contactstore',[PageController::class,'contactStore'])->name('contact.store');
+Route::get('admin/contactqueries',[PageController::class,'index'])->name('contact.index');
 
 
 
