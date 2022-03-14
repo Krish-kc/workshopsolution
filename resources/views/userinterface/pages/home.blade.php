@@ -547,7 +547,7 @@
             </div>
             <div class="row">
 
-                @foreach ($workshop as $item)
+                {{-- @foreach ($workshop as $item) --}}
                     <div class="owl-carousel owl-theme">
                         <div class="service-item">
                             <div class="service-img">
@@ -555,29 +555,29 @@
                             </div>
                             <div class="service-text">
                                 <div class="service-title">
-                                    <h3>{{ $item->name }}</h3>
+                                    {{-- <h3>{{ $item->name }}</h3> --}}
                                     <div class="time">
                                         <i class="fa fa-map-marker"></i>
-                                        {{ $item->location }}
+                                        {{-- {{ $item->location }} --}}
                                     </div>
 
                                 </div>
 
 
                                 <h5>Service List</h5>
-                                @foreach ($item->services as $service)
+                                {{-- @foreach ($item->services as $service) --}}
                                     <ul>
-                                        <li><i class="fas fa-angle-double-right"></i> {{ $service->title }} </li>
+                                        {{-- <li><i class="fas fa-angle-double-right"></i> {{ $service->title }} </li> --}}
 
                                     </ul>
                                     <a class="btn" href="img/service-1.jpg" data-lightbox="service">View
                                         More</a>
                             </div>
-                @endforeach
+                {{-- @endforeach --}}
 
             </div>
         </div>
-        @endforeach
+        {{-- @endforeach --}}
 
     </div>
     </div>

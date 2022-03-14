@@ -58,7 +58,7 @@
 
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-danger m-1" onclick="handeldelete()">
+                                                        <a href="#" class="btn btn-danger m-1" onclick="handeldelete({{ $item->id }})">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                     </div>
