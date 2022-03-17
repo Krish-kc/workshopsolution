@@ -19,7 +19,9 @@ use App\Models\Service;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\WorkshopImg;
+use Illuminate\Support\Facades\Mail;
 use Laravelista\Comments\Comment;
+use App\Mail\ContactMail;
 
 
 
@@ -125,13 +127,25 @@ class PageController extends Controller
 
     public function contactStore(Request $request){
 
-        $contact = new Contact();
-        $contact->name = $request->name;
-        $contact->email = $request->email;
-        $contact->subject = $request->subject;
-        $contact->message = $request->message;
-        $contact->save();
-        return redirect()->back();
+        // $contact = new Contact();
+        // $contact->name = $request->name;
+        // $contact->email = $request->email;
+        // $contact->subject = $request->subject;
+        // $contact->message = $request->message;
+        // $contact->save();
+        // return redirect()->back();
+
+        $contact = $request->all();
+        Contact::create($contact);
+
+        Mail::to('eworkshop655@gmail.com')->send(new ContactMail($contact));
+        // Mail::send('auth.email.contactmail', ['id' => $id], function($message) use($request){
+        //     $message->to('eworkshop655@gmail.com');
+        //     $message->subject($request->get('subject'));
+        // });
+
+        return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
+
 
     }
 
