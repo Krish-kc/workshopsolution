@@ -12,4 +12,9 @@ class Slot extends Model
     protected $fillable = [
         'service_id'
     ];
+
+
+    public function Intervals(){
+        return $this->hasMany(Interval::class);
+    }
 }

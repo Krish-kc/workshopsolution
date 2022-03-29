@@ -9,7 +9,7 @@ class Interval extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+   protected $fillable = [
 
         'solt_id',
         'start_time',

@@ -502,12 +502,6 @@
         </div>
     </div>
 
-    {{-- rate modal end here --}}
-
-
-
-    <!-- single page End -->
-
 @endsection
 
 @section('js')
@@ -547,12 +541,6 @@
                         event.allDay = false;
                     }
                 },
-
-
-
-
-
-
 
             });
 
