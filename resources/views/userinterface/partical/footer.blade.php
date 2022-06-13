@@ -89,5 +89,9 @@
 <!-- Templateuser_assets/ Javascript -->
 <script src="{{ asset('user_assets/js/main.js') }}"></script>
 <script src="{{ asset('user_assets/js/simplepicker.js') }}"></script>
+{{-- khalti --}}
+<script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+{{-- khaltiend --}}
+
 
 @yield('js')

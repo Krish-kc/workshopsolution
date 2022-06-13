@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Interval;
+use App\Models\Booking;
+use App\Models\Profile;
+use App\Models\Vehicle;
+use App\Models\WorkShop;
 use App\Models\Service;
-use App\Models\Slot;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use League\OAuth1\Client\Server\Server;
-use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Support\Facades\Auth;
 
-class SlotController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class SlotController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -29,13 +29,8 @@ class SlotController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
-
     {
-
-
-
-        return view('admin.pages.workshop.slot.slotadd');
+        //
     }
 
     /**
@@ -47,24 +42,6 @@ class SlotController extends Controller
     public function store(Request $request)
     {
         //
-
-        // if($request->number_of_slot >= 1 && $request->number_of_slot <= 5 ){
-        //     $startTime=Carbon::parse($request->start_time);
-        //     $endTime=Carbon::parse($request->end_time);
-        //     $totalDuration =  $startTime->diffInHours($endTime);
-        //     dd($totalDuration);
-        //     for ($i=0; $i < $request->number_of_slot ; $i++) {
-
-        //       $slot = Slot::create([
-        //             'service_id'=>$request->service_id,
-        //         ]);
-        //         $slot_id = $slot->id;
-
-        //     }
-
-
-
-        // };
     }
 
     /**
@@ -75,7 +52,11 @@ class SlotController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $booking = Booking::findOrFail($id);
+
+
+        return view('userinterface.pages.profile.checkout',compact('booking'));
     }
 
     /**
@@ -111,10 +92,4 @@ class SlotController extends Controller
     {
         //
     }
-    public function create_slot($id)
-    {
-    $service= Service::findOrFail($id);
-    return view('admin.pages.workshop.slot.slotadd',compact('service'));
-    }
-
 }
