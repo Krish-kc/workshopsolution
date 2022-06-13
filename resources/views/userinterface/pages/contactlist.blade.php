@@ -38,10 +38,6 @@
                                         <th>Action</th>
                                 </thead>
                                 @foreach ($contactqueries as $item)
-
-
-
-
                                     <tbody>
 
                                         <tr role="row" class="odd">
@@ -53,9 +49,10 @@
 
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="#" class="btn btn-danger m-1" onclick="handeldelete({{$item->id}})">
-                                                        <i class="fa fa-trash"></i>
-                                                    </a>
+                                                    <a href="#" class="btn btn-danger m-1"
+                                                    onclick="handeldelete({{ $item->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
                                                 </div>
 
                                             </td>
@@ -76,11 +73,11 @@
 
 
         {{-- delete modal for contact booking  --}}
-        <div id="deletecontactquerymodal" class="modal fade">
+        <div id="deletemodal" class="modal fade">
             <div class="modal-dialog modal-confirm">
-                <form action="" method="POST" id="deletecontactquery">
+                <form action="#" method="POST" id="deleteworkshop">
                     @csrf
-                    @method('DELETE')
+                    @method('POST')
 
                     <div class="modal-content">
                         <div class="modal-header bg-danger ">
@@ -89,7 +86,8 @@
                                 aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Do you really want to delete this Query ? The process cannot be undone. </p>
+                            <p>Do you really want to delete these records? This process
+                                cannot be undone.</p>
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -102,7 +100,7 @@
                 </form>
             </div>
         </div>
-        {{-- delete modal for emergency booking  end --}}
+        {{-- delete modal for contact booking  end --}}
 
 
 </div>
@@ -111,9 +109,9 @@
 @section('js')
 <script>
     function handeldelete(id) {
-        var form = document.getElementById('deletecontactquery')
-        $('#deletecontactquerymodal').modal('show')
-        form.action = 'contactquery/' + id
+        var form = document.getElementById('deleteworkshop')
+        $('#deletemodal').modal('show')
+        form.action = 'contact/' + id
 
     }
 </script>

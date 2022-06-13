@@ -15,7 +15,7 @@
                       <li class="breadcrumb-item active">Dashboard</li>
                   </ol>
               </div>
-              <div class="col-md-7 col-4 align-self-center">
+              {{-- <div class="col-md-7 col-4 align-self-center">
                   <div class="d-flex m-t-10 justify-content-end">
                       <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                           <div class="chart-text m-r-10">
@@ -41,7 +41,7 @@
                                   class="ti-settings text-white"></i></button>
                       </div>
                   </div>
-              </div>
+              </div> --}}
           </div>
 
           @hasrole('admin')
@@ -136,7 +136,7 @@
 
 
 
-          <div class="row">
+          {{-- <div class="row">
               <div class="col-lg-4 col-md-12">
                   <div class="card card-inverse card-primary">
                       <div class="card-body">
@@ -906,7 +906,7 @@
                       </div>
                   </div>
               </div>
-          </div>
+          </div> --}}
 
 
 

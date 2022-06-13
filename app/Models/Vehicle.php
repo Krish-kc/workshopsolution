@@ -16,4 +16,6 @@ class Vehicle extends Model
     {
         return $this->hasOne(ServiceBook::class, 'vechile_id');
     }
+
+
 }

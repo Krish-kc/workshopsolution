@@ -27,7 +27,7 @@ class ServiceRecordController extends Controller
     }
     public function index()
     {
-        //
+        return view('admin.pages.vehicle.view');
     }
 
     /**

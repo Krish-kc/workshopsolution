@@ -154,4 +154,12 @@ class PageController extends Controller
         $contactqueries = Contact::all();
         return view('userinterface.pages.contactlist',compact('contactqueries'));
     }
+
+    public function contactdestroy($id)
+    {
+
+        Contact::findOrFail($id)->delete();
+        toastr()->warning('Contact list  has Successfully delete');
+        return redirect()->route('contact.index');
+    }
 }

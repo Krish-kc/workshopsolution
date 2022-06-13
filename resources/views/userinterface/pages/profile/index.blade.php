@@ -209,6 +209,31 @@
             color: #333;
         }
 
+        button.color {
+            position: relative;
+            margin-top: 15px;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #030f27;
+            border-radius: 0;
+            background: #fdbe33;
+            transition: 0.3s;
+        }
+
+        button.color:hover {
+            color: #fdbe33;
+            background: #030f27;
+        }
+
+        .modalbutton {
+            color: #030f27;
+            background-color: #fdbe33;
+            padding: 4px 20px;
+            border-radius: 5px;
+        }
+
         h1 {
             text-align: center;
             color: #666;
@@ -329,7 +354,7 @@
                     </div>
                     <div class="col-6 col-lg-3">
                         <div class="count-data text-center">
-                            <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                            <h6 class="count h2" data-to="190" data-speed="190">0</h6>
                             <p class="m-0px font-w-600">Service Records</p>
                         </div>
                     </div>
@@ -383,8 +408,8 @@
                                                 style="max-height: 150px;" alt="Card image cap">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $item->name }}</h5>
-                                                <a href="{{ route('userprofile.show', $item->id) }}"
-                                                    class="btn btn-primary">Service Book</a>
+                                               <a href="{{ route('userprofile.show', $item->id) }}"
+                                                > <button class="modalbutton"> Service Book </button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -395,7 +420,7 @@
 
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="color" data-toggle="modal" data-target="#exampleModal">
                                 Add Vehicle
                             </button>
 
@@ -502,7 +527,7 @@
                             <div class="table-responsive m-t-40">
                                 <div id="myTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
-                                    <div class="row">
+                                    <div class="row-sm-12">
                                         <div class="col-sm-12">
                                             @if (!$booking->isEmpty())
                                             <table id="myTable" class="table table-bordered table-striped dataTable no-footer"
@@ -513,9 +538,11 @@
                                                         <th>Workshop Name</th>
                                                         <th>Service Type</th>
                                                         <th>Date</th>
+                                                        <th>Vehicle Name</th>
                                                         <th>Time</th>
                                                         <th>Rate</th>
                                                         <th>Status</th>
+                                                        <th>Action</th>
                                                 </thead>
 
 
@@ -528,9 +555,11 @@
                                                             <td>{{$item->workshop->name}}</td>
                                                             <td>{{$item->service->title}}</td>
                                                             <td>{{$item->date}}</td>
+                                                            <td>{{$item->vehicle->name}}</td>
                                                             <td>{{$item->time}}</td>
                                                             <td>{{$item->rate}}</td>
                                                             <td>{{$item->status}}</td>
+                                                            <td><a href="{{route('checkout.show', $item->id )}}" > <button class="modalbutton">Pay Now</button></a></td>
 
                                                         </tr>
                                                     </tbody>
@@ -546,6 +575,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+
 
                         </div>
 

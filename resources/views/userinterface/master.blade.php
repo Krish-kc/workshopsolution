@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="top-bar-text">
                                         <h3>Email Us</h3>
-                                        <p>info@example.com</p>
+                                        <p>eworkshop665@gmail.com</p>
                                     </div>
                                 </div>
                             </div>

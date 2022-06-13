@@ -21,8 +21,10 @@ use App\Http\Controllers\Admin\WorkshopImgController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\PageController;
 use App\Http\Controllers\User\ProfileController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,6 +92,7 @@ Route::get('auth/login/google/callback',[SocialiteController::class, 'loginWithG
 
 Route::post('/contactstore',[PageController::class,'contactStore'])->name('contact.store');
 Route::get('admin/contactqueries',[PageController::class,'index'])->name('contact.index');
+Route::post('admin/contact/{id}',[PageController::class,'contactdestroy']);
 
 
 
@@ -142,6 +145,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('rating',RatingController::class);
 
+    //slot route
     Route::resource('slot',SlotController::class);
+
+    //checkout route
+    Route::resource('checkout',CheckoutController::class);
 
 });

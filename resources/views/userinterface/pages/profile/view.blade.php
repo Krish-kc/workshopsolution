@@ -20,7 +20,7 @@
         }
 
         /* About Me
-                                                                                                                                                                        ---------------------*/
+                                                                                                                                                                            ---------------------*/
         .about-text h3 {
             font-size: 45px;
             font-weight: 700;
@@ -142,11 +142,11 @@
         }
 
         /*
-                                                                                                                                                                        *
-                                                                                                                                                                        * ==========================================
-                                                                                                                                                                        * CUSTOM UTIL CLASSES
-                                                                                                                                                                        * ==========================================
-                                                                                                                                                                        */
+                                                                                                                                                                            *
+                                                                                                                                                                            * ==========================================
+                                                                                                                                                                            * CUSTOM UTIL CLASSES
+                                                                                                                                                                            * ==========================================
+                                                                                                                                                                            */
         .nav-pills-custom .nav-link {
             color: #aaa;
             background: #fff;
@@ -198,6 +198,31 @@
             overflow: hidden;
         }
 
+        button.color {
+            position: relative;
+            margin-top: 15px;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #030f27;
+            border-radius: 0;
+            background: #fdbe33;
+            transition: 0.3s;
+        }
+
+        button.color:hover {
+            color: #fdbe33;
+            background: #030f27;
+        }
+
+        .modalbutton {
+            color: #030f27;
+            background: #fdbe33;
+            padding: 4px 20px;
+            border-radius: 5px;
+        }
+
         p span {
             color: #f00;
         }
@@ -241,7 +266,6 @@
         }
 
     </style>
-
 @endsection
 @section('content')
     <section class="section about-section gray-bg" id="about">
@@ -429,7 +453,6 @@
 
                                                             </tr>
                                                         </tbody>
-
                                                     @endforeach
                                                 @else
                                                     No record Founds
@@ -443,12 +466,10 @@
                 </div>
         </div>
         </div>
-
-
     @else
         <p> No service Book Available Please create your service Book</p>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="color" data-toggle="modal" data-target="#exampleModal">
             Add ServiceBook
         </button>
 
@@ -486,7 +507,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="modalbutton">Save changes</button>
                     </div>
                     </form>
 

@@ -157,14 +157,14 @@
                        <!-- ============================================================== -->
                        <!-- Comment -->
                        <!-- ============================================================== -->
-                       <li class="nav-item dropdown">
+                       {{-- <li class="nav-item dropdown">
                            <a class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href="#"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
                                    class="mdi mdi-message"></i>
                                <div class="notify"> <span class="heartbit"></span> <span
                                        class="point"></span> </div>
-                           </a>
-                           <div class="dropdown-menu dropdown-menu-right mailbox scale-up">
+                           </a> --}}
+                           {{-- <div class="dropdown-menu dropdown-menu-right mailbox scale-up">
                                <ul>
                                    <li>
                                        <div class="drop-title">Notifications</div>
@@ -215,15 +215,15 @@
                                                notifications</strong> <i class="fa fa-angle-right"></i> </a>
                                    </li>
                                </ul>
-                           </div>
-                       </li>
+                           </div> --}}
+                       {{-- </li> --}}
                        <!-- ============================================================== -->
                        <!-- End Comment -->
                        <!-- ============================================================== -->
                        <!-- ============================================================== -->
                        <!-- Messages -->
                        <!-- ============================================================== -->
-                       <li class="nav-item dropdown">
+                       {{-- <li class="nav-item dropdown">
                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="2"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
                                    class="mdi mdi-email"></i>
@@ -289,7 +289,7 @@
                                    </li>
                                </ul>
                            </div>
-                       </li>
+                       </li> --}}
                        <!-- ============================================================== -->
                        <!-- End Messages -->
                        <!-- ============================================================== -->
@@ -315,7 +315,7 @@
                                            </div>
                                    </li>
                                    <li role="separator" class="divider"></li>
-                                   <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                   <li><a href="{{route('userprofile.index')}}"><i class="ti-user"></i> My Profile</a></li>
                                    <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
                                    <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                                    <li role="separator" class="divider"></li>
